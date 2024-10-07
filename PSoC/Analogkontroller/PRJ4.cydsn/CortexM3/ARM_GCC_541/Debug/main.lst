@@ -1,0 +1,2990 @@
+ARM GAS  C:\Users\frede\AppData\Local\Temp\ccUuc9U3.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"main.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.ISR_toggle_handler,"ax",%progbits
+  20              		.align	2
+  21              		.global	ISR_toggle_handler
+  22              		.thumb
+  23              		.thumb_func
+  24              		.type	ISR_toggle_handler, %function
+  25              	ISR_toggle_handler:
+  26              	.LFB70:
+  27              		.file 1 "main.c"
+   1:main.c        **** #include "project.h"
+   2:main.c        **** #include <stdio.h>
+   3:main.c        **** #include <stdlib.h>
+   4:main.c        **** 
+   5:main.c        **** //ISR Prototypes
+   6:main.c        **** CY_ISR_PROTO(ISR_toggle_handler);
+   7:main.c        **** CY_ISR_PROTO(ISR_print_handler);
+   8:main.c        **** 
+   9:main.c        **** //Functions
+  10:main.c        **** int adcToDegrees(int adc_value);
+  11:main.c        **** int Gradient_SW();
+  12:main.c        **** int AdjustDeg_SW();
+  13:main.c        **** void Init_ALL();
+  14:main.c        **** void Init_LCD();
+  15:main.c        **** void Init_ADC();
+  16:main.c        **** void Init_PWM();
+  17:main.c        **** void Init_ISR();
+  18:main.c        **** 
+  19:main.c        **** 
+  20:main.c        ****     
+  21:main.c        **** 
+  22:main.c        **** 
+  23:main.c        **** 
+  24:main.c        **** //Global Variels.
+  25:main.c        **** int16_t convertedResult = 0;
+  26:main.c        **** int toggle = 0;
+  27:main.c        **** int deg = 0;
+  28:main.c        **** char LCDbuffer[20];
+  29:main.c        **** int block = 0;
+  30:main.c        **** char tempbuffer[20];
+ARM GAS  C:\Users\frede\AppData\Local\Temp\ccUuc9U3.s 			page 2
+
+
+  31:main.c        **** int pass = 1;
+  32:main.c        **** 
+  33:main.c        **** 
+  34:main.c        **** /* The LCD format in characters */
+  35:main.c        **** #define LCD_ROWS                (2u)
+  36:main.c        **** #define LCD_COLUMNS             (16u)
+  37:main.c        **** 
+  38:main.c        **** 
+  39:main.c        **** 
+  40:main.c        **** int main(void)
+  41:main.c        **** {
+  42:main.c        ****     
+  43:main.c        ****     LCD_ClearDisplay();
+  44:main.c        ****     LCD_Start();
+  45:main.c        ****     LCD_Position(0, 0);
+  46:main.c        ****     LCD_PrintString("Password:");
+  47:main.c        ****     
+  48:main.c        ****     
+  49:main.c        ****   
+  50:main.c        ****     
+  51:main.c        ****     CyDelay(1000); 
+  52:main.c        ****     Init_ALL();
+  53:main.c        **** 
+  54:main.c        **** 
+  55:main.c        ****     for(;;)
+  56:main.c        ****     {
+  57:main.c        ****       
+  58:main.c        ****        
+  59:main.c        ****         if(toggle==1)
+  60:main.c        ****         { 
+  61:main.c        ****             LCD_Position(0,0);
+  62:main.c        ****             LCD_PrintString("mode 1");
+  63:main.c        ****             LCD_Position(0,15);
+  64:main.c        ****             LCD_PutChar(1);
+  65:main.c        ****             
+  66:main.c        ****             AdjustDeg_SW();
+  67:main.c        ****              
+  68:main.c        ****         }
+  69:main.c        ****         else
+  70:main.c        ****         {
+  71:main.c        ****    
+  72:main.c        ****             
+  73:main.c        ****             CyDelay(160);
+  74:main.c        ****             Gradient_SW();   
+  75:main.c        ****                 
+  76:main.c        ****         }                  
+  77:main.c        ****     }
+  78:main.c        **** }
+  79:main.c        **** 
+  80:main.c        **** void Init_ALL(){
+  81:main.c        ****     Init_LCD();
+  82:main.c        ****     Init_ISR();
+  83:main.c        ****     Init_PWM();
+  84:main.c        ****     Init_ADC();
+  85:main.c        **** }
+  86:main.c        **** 
+  87:main.c        **** 
+ARM GAS  C:\Users\frede\AppData\Local\Temp\ccUuc9U3.s 			page 3
+
+
+  88:main.c        **** void Init_LCD(){
+  89:main.c        ****     LCD_ClearDisplay();
+  90:main.c        ****     LCD_Start();
+  91:main.c        ****     LCD_Position(0, 0);
+  92:main.c        ****     LCD_PrintString("Starting");
+  93:main.c        ****     LCD_Position(1, 0);
+  94:main.c        ****     LCD_PrintString("Application");
+  95:main.c        ****     CyDelay(1000);    
+  96:main.c        **** }
+  97:main.c        **** 
+  98:main.c        **** void Init_ADC(){
+  99:main.c        ****     ADC_SAR_1_Start();
+ 100:main.c        ****     ADC_SAR_1_StartConvert(); 
+ 101:main.c        **** }
+ 102:main.c        **** 
+ 103:main.c        **** void Init_PWM(){
+ 104:main.c        ****     PWM_1_Start();    
+ 105:main.c        **** }
+ 106:main.c        **** 
+ 107:main.c        **** void Init_ISR(){
+ 108:main.c        ****     CyGlobalIntEnable; /* Enable global interrupts. */
+ 109:main.c        ****     isr_toggle_StartEx(ISR_toggle_handler);
+ 110:main.c        ****     isr_print_StartEx(ISR_print_handler);   
+ 111:main.c        **** }
+ 112:main.c        **** 
+ 113:main.c        **** 
+ 114:main.c        **** CY_ISR(ISR_toggle_handler){
+  28              		.loc 1 114 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              		@ link register save eliminated.
+ 115:main.c        ****     deg = convertedResult;
+  33              		.loc 1 115 0
+  34 0000 044A     		ldr	r2, .L2
+  35 0002 B2F90430 		ldrsh	r3, [r2, #4]
+  36 0006 1360     		str	r3, [r2]
+ 116:main.c        ****     convertedResult = deg;
+ 117:main.c        ****     toggle = !toggle;
+  37              		.loc 1 117 0
+  38 0008 9368     		ldr	r3, [r2, #8]
+  39 000a B3FA83F3 		clz	r3, r3
+  40 000e 5B09     		lsrs	r3, r3, #5
+  41 0010 9360     		str	r3, [r2, #8]
+  42 0012 7047     		bx	lr
+  43              	.L3:
+  44              		.align	2
+  45              	.L2:
+  46 0014 00000000 		.word	.LANCHOR0
+  47              		.cfi_endproc
+  48              	.LFE70:
+  49              		.size	ISR_toggle_handler, .-ISR_toggle_handler
+  50              		.section	.text.ISR_print_handler,"ax",%progbits
+  51              		.align	2
+  52              		.global	ISR_print_handler
+  53              		.thumb
+  54              		.thumb_func
+ARM GAS  C:\Users\frede\AppData\Local\Temp\ccUuc9U3.s 			page 4
+
+
+  55              		.type	ISR_print_handler, %function
+  56              	ISR_print_handler:
+  57              	.LFB71:
+ 118:main.c        ****    
+ 119:main.c        ****    
+ 120:main.c        **** }
+ 121:main.c        **** 
+ 122:main.c        **** 
+ 123:main.c        **** CY_ISR(ISR_print_handler){
+  58              		.loc 1 123 0
+  59              		.cfi_startproc
+  60              		@ args = 0, pretend = 0, frame = 0
+  61              		@ frame_needed = 0, uses_anonymous_args = 0
+  62 0000 10B5     		push	{r4, lr}
+  63              		.cfi_def_cfa_offset 8
+  64              		.cfi_offset 4, -8
+  65              		.cfi_offset 14, -4
+ 124:main.c        ****     
+ 125:main.c        ****     if(toggle==1)
+  66              		.loc 1 125 0
+  67 0002 2A4B     		ldr	r3, .L8
+  68 0004 9B68     		ldr	r3, [r3, #8]
+  69 0006 012B     		cmp	r3, #1
+  70 0008 27D1     		bne	.L5
+ 126:main.c        ****     {
+ 127:main.c        ****             LCD_ClearDisplay();
+  71              		.loc 1 127 0
+  72 000a 0120     		movs	r0, #1
+  73 000c FFF7FEFF 		bl	LCD_WriteControl
+  74              	.LVL0:
+ 128:main.c        ****             LCD_Position(0,0);
+  75              		.loc 1 128 0
+  76 0010 0021     		movs	r1, #0
+  77 0012 0846     		mov	r0, r1
+  78 0014 FFF7FEFF 		bl	LCD_Position
+  79              	.LVL1:
+ 129:main.c        ****             LCD_PrintString("mode 1");
+  80              		.loc 1 129 0
+  81 0018 2548     		ldr	r0, .L8+4
+  82 001a FFF7FEFF 		bl	LCD_PrintString
+  83              	.LVL2:
+ 130:main.c        ****             LCD_Position(0,15);
+  84              		.loc 1 130 0
+  85 001e 0F21     		movs	r1, #15
+  86 0020 0020     		movs	r0, #0
+  87 0022 FFF7FEFF 		bl	LCD_Position
+  88              	.LVL3:
+ 131:main.c        ****             LCD_PutChar(1);
+  89              		.loc 1 131 0
+  90 0026 0120     		movs	r0, #1
+  91 0028 FFF7FEFF 		bl	LCD_PutChar
+  92              	.LVL4:
+ 132:main.c        ****             sprintf(LCDbuffer, "%i             ", convertedResult);    
+  93              		.loc 1 132 0
+  94 002c 214C     		ldr	r4, .L8+8
+  95 002e 1F4B     		ldr	r3, .L8
+  96 0030 B3F90420 		ldrsh	r2, [r3, #4]
+ARM GAS  C:\Users\frede\AppData\Local\Temp\ccUuc9U3.s 			page 5
+
+
+  97 0034 2049     		ldr	r1, .L8+12
+  98 0036 2046     		mov	r0, r4
+  99 0038 FFF7FEFF 		bl	sprintf
+ 100              	.LVL5:
+ 133:main.c        ****             LCD_Position(1, 0);
+ 101              		.loc 1 133 0
+ 102 003c 0021     		movs	r1, #0
+ 103 003e 0120     		movs	r0, #1
+ 104 0040 FFF7FEFF 		bl	LCD_Position
+ 105              	.LVL6:
+ 134:main.c        ****             LCD_PrintString(LCDbuffer);
+ 106              		.loc 1 134 0
+ 107 0044 2046     		mov	r0, r4
+ 108 0046 FFF7FEFF 		bl	LCD_PrintString
+ 109              	.LVL7:
+ 135:main.c        ****             LCD_Position(1,15);
+ 110              		.loc 1 135 0
+ 111 004a 0F21     		movs	r1, #15
+ 112 004c 0120     		movs	r0, #1
+ 113 004e FFF7FEFF 		bl	LCD_Position
+ 114              	.LVL8:
+ 136:main.c        ****             LCD_PutChar(0);
+ 115              		.loc 1 136 0
+ 116 0052 0020     		movs	r0, #0
+ 117 0054 FFF7FEFF 		bl	LCD_PutChar
+ 118              	.LVL9:
+ 119 0058 10BD     		pop	{r4, pc}
+ 120              	.L5:
+ 137:main.c        ****     }
+ 138:main.c        ****     else
+ 139:main.c        ****     {
+ 140:main.c        ****             LCD_ClearDisplay();
+ 121              		.loc 1 140 0
+ 122 005a 0120     		movs	r0, #1
+ 123 005c FFF7FEFF 		bl	LCD_WriteControl
+ 124              	.LVL10:
+ 141:main.c        ****             LCD_Position(0,0);
+ 125              		.loc 1 141 0
+ 126 0060 0021     		movs	r1, #0
+ 127 0062 0846     		mov	r0, r1
+ 128 0064 FFF7FEFF 		bl	LCD_Position
+ 129              	.LVL11:
+ 142:main.c        ****             LCD_PrintString("mode 2");
+ 130              		.loc 1 142 0
+ 131 0068 1448     		ldr	r0, .L8+16
+ 132 006a FFF7FEFF 		bl	LCD_PrintString
+ 133              	.LVL12:
+ 143:main.c        ****             LCD_Position(0,15);
+ 134              		.loc 1 143 0
+ 135 006e 0F21     		movs	r1, #15
+ 136 0070 0020     		movs	r0, #0
+ 137 0072 FFF7FEFF 		bl	LCD_Position
+ 138              	.LVL13:
+ 144:main.c        ****             LCD_PutChar(3);
+ 139              		.loc 1 144 0
+ 140 0076 0320     		movs	r0, #3
+ 141 0078 FFF7FEFF 		bl	LCD_PutChar
+ARM GAS  C:\Users\frede\AppData\Local\Temp\ccUuc9U3.s 			page 6
+
+
+ 142              	.LVL14:
+ 145:main.c        ****             sprintf(LCDbuffer, "%i             ", convertedResult);   
+ 143              		.loc 1 145 0
+ 144 007c 0D4C     		ldr	r4, .L8+8
+ 145 007e 0B4B     		ldr	r3, .L8
+ 146 0080 B3F90420 		ldrsh	r2, [r3, #4]
+ 147 0084 0C49     		ldr	r1, .L8+12
+ 148 0086 2046     		mov	r0, r4
+ 149 0088 FFF7FEFF 		bl	sprintf
+ 150              	.LVL15:
+ 146:main.c        ****             LCD_Position(1, 0);
+ 151              		.loc 1 146 0
+ 152 008c 0021     		movs	r1, #0
+ 153 008e 0120     		movs	r0, #1
+ 154 0090 FFF7FEFF 		bl	LCD_Position
+ 155              	.LVL16:
+ 147:main.c        ****             LCD_PrintString(LCDbuffer);
+ 156              		.loc 1 147 0
+ 157 0094 2046     		mov	r0, r4
+ 158 0096 FFF7FEFF 		bl	LCD_PrintString
+ 159              	.LVL17:
+ 148:main.c        ****             LCD_Position(1,15);
+ 160              		.loc 1 148 0
+ 161 009a 0F21     		movs	r1, #15
+ 162 009c 0120     		movs	r0, #1
+ 163 009e FFF7FEFF 		bl	LCD_Position
+ 164              	.LVL18:
+ 149:main.c        ****             LCD_PutChar(0);
+ 165              		.loc 1 149 0
+ 166 00a2 0020     		movs	r0, #0
+ 167 00a4 FFF7FEFF 		bl	LCD_PutChar
+ 168              	.LVL19:
+ 169 00a8 10BD     		pop	{r4, pc}
+ 170              	.L9:
+ 171 00aa 00BF     		.align	2
+ 172              	.L8:
+ 173 00ac 00000000 		.word	.LANCHOR0
+ 174 00b0 00000000 		.word	.LC0
+ 175 00b4 00000000 		.word	LCDbuffer
+ 176 00b8 08000000 		.word	.LC1
+ 177 00bc 18000000 		.word	.LC2
+ 178              		.cfi_endproc
+ 179              	.LFE71:
+ 180              		.size	ISR_print_handler, .-ISR_print_handler
+ 181              		.section	.text.Init_LCD,"ax",%progbits
+ 182              		.align	2
+ 183              		.global	Init_LCD
+ 184              		.thumb
+ 185              		.thumb_func
+ 186              		.type	Init_LCD, %function
+ 187              	Init_LCD:
+ 188              	.LFB66:
+  88:main.c        ****     LCD_ClearDisplay();
+ 189              		.loc 1 88 0
+ 190              		.cfi_startproc
+ 191              		@ args = 0, pretend = 0, frame = 0
+ 192              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  C:\Users\frede\AppData\Local\Temp\ccUuc9U3.s 			page 7
+
+
+ 193 0000 08B5     		push	{r3, lr}
+ 194              		.cfi_def_cfa_offset 8
+ 195              		.cfi_offset 3, -8
+ 196              		.cfi_offset 14, -4
+  89:main.c        ****     LCD_Start();
+ 197              		.loc 1 89 0
+ 198 0002 0120     		movs	r0, #1
+ 199 0004 FFF7FEFF 		bl	LCD_WriteControl
+ 200              	.LVL20:
+  90:main.c        ****     LCD_Position(0, 0);
+ 201              		.loc 1 90 0
+ 202 0008 FFF7FEFF 		bl	LCD_Start
+ 203              	.LVL21:
+  91:main.c        ****     LCD_PrintString("Starting");
+ 204              		.loc 1 91 0
+ 205 000c 0021     		movs	r1, #0
+ 206 000e 0846     		mov	r0, r1
+ 207 0010 FFF7FEFF 		bl	LCD_Position
+ 208              	.LVL22:
+  92:main.c        ****     LCD_Position(1, 0);
+ 209              		.loc 1 92 0
+ 210 0014 0748     		ldr	r0, .L12
+ 211 0016 FFF7FEFF 		bl	LCD_PrintString
+ 212              	.LVL23:
+  93:main.c        ****     LCD_PrintString("Application");
+ 213              		.loc 1 93 0
+ 214 001a 0021     		movs	r1, #0
+ 215 001c 0120     		movs	r0, #1
+ 216 001e FFF7FEFF 		bl	LCD_Position
+ 217              	.LVL24:
+  94:main.c        ****     CyDelay(1000);    
+ 218              		.loc 1 94 0
+ 219 0022 0548     		ldr	r0, .L12+4
+ 220 0024 FFF7FEFF 		bl	LCD_PrintString
+ 221              	.LVL25:
+  95:main.c        **** }
+ 222              		.loc 1 95 0
+ 223 0028 4FF47A70 		mov	r0, #1000
+ 224 002c FFF7FEFF 		bl	CyDelay
+ 225              	.LVL26:
+ 226 0030 08BD     		pop	{r3, pc}
+ 227              	.L13:
+ 228 0032 00BF     		.align	2
+ 229              	.L12:
+ 230 0034 20000000 		.word	.LC3
+ 231 0038 2C000000 		.word	.LC4
+ 232              		.cfi_endproc
+ 233              	.LFE66:
+ 234              		.size	Init_LCD, .-Init_LCD
+ 235              		.section	.text.Init_ADC,"ax",%progbits
+ 236              		.align	2
+ 237              		.global	Init_ADC
+ 238              		.thumb
+ 239              		.thumb_func
+ 240              		.type	Init_ADC, %function
+ 241              	Init_ADC:
+ 242              	.LFB67:
+ARM GAS  C:\Users\frede\AppData\Local\Temp\ccUuc9U3.s 			page 8
+
+
+  98:main.c        ****     ADC_SAR_1_Start();
+ 243              		.loc 1 98 0
+ 244              		.cfi_startproc
+ 245              		@ args = 0, pretend = 0, frame = 0
+ 246              		@ frame_needed = 0, uses_anonymous_args = 0
+ 247 0000 08B5     		push	{r3, lr}
+ 248              		.cfi_def_cfa_offset 8
+ 249              		.cfi_offset 3, -8
+ 250              		.cfi_offset 14, -4
+  99:main.c        ****     ADC_SAR_1_StartConvert(); 
+ 251              		.loc 1 99 0
+ 252 0002 FFF7FEFF 		bl	ADC_SAR_1_Start
+ 253              	.LVL27:
+ 100:main.c        **** }
+ 254              		.loc 1 100 0
+ 255 0006 FFF7FEFF 		bl	ADC_SAR_1_StartConvert
+ 256              	.LVL28:
+ 257 000a 08BD     		pop	{r3, pc}
+ 258              		.cfi_endproc
+ 259              	.LFE67:
+ 260              		.size	Init_ADC, .-Init_ADC
+ 261              		.section	.text.Init_PWM,"ax",%progbits
+ 262              		.align	2
+ 263              		.global	Init_PWM
+ 264              		.thumb
+ 265              		.thumb_func
+ 266              		.type	Init_PWM, %function
+ 267              	Init_PWM:
+ 268              	.LFB68:
+ 103:main.c        ****     PWM_1_Start();    
+ 269              		.loc 1 103 0
+ 270              		.cfi_startproc
+ 271              		@ args = 0, pretend = 0, frame = 0
+ 272              		@ frame_needed = 0, uses_anonymous_args = 0
+ 273 0000 08B5     		push	{r3, lr}
+ 274              		.cfi_def_cfa_offset 8
+ 275              		.cfi_offset 3, -8
+ 276              		.cfi_offset 14, -4
+ 104:main.c        **** }
+ 277              		.loc 1 104 0
+ 278 0002 FFF7FEFF 		bl	PWM_1_Start
+ 279              	.LVL29:
+ 280 0006 08BD     		pop	{r3, pc}
+ 281              		.cfi_endproc
+ 282              	.LFE68:
+ 283              		.size	Init_PWM, .-Init_PWM
+ 284              		.section	.text.Init_ISR,"ax",%progbits
+ 285              		.align	2
+ 286              		.global	Init_ISR
+ 287              		.thumb
+ 288              		.thumb_func
+ 289              		.type	Init_ISR, %function
+ 290              	Init_ISR:
+ 291              	.LFB69:
+ 107:main.c        ****     CyGlobalIntEnable; /* Enable global interrupts. */
+ 292              		.loc 1 107 0
+ 293              		.cfi_startproc
+ARM GAS  C:\Users\frede\AppData\Local\Temp\ccUuc9U3.s 			page 9
+
+
+ 294              		@ args = 0, pretend = 0, frame = 0
+ 295              		@ frame_needed = 0, uses_anonymous_args = 0
+ 296 0000 08B5     		push	{r3, lr}
+ 297              		.cfi_def_cfa_offset 8
+ 298              		.cfi_offset 3, -8
+ 299              		.cfi_offset 14, -4
+ 108:main.c        ****     isr_toggle_StartEx(ISR_toggle_handler);
+ 300              		.loc 1 108 0
+ 301              		.syntax unified
+ 302              	@ 108 "main.c" 1
+ 303 0002 62B6     		CPSIE   i
+ 304              	@ 0 "" 2
+ 109:main.c        ****     isr_print_StartEx(ISR_print_handler);   
+ 305              		.loc 1 109 0
+ 306              		.thumb
+ 307              		.syntax unified
+ 308 0004 0348     		ldr	r0, .L20
+ 309 0006 FFF7FEFF 		bl	isr_toggle_StartEx
+ 310              	.LVL30:
+ 110:main.c        **** }
+ 311              		.loc 1 110 0
+ 312 000a 0348     		ldr	r0, .L20+4
+ 313 000c FFF7FEFF 		bl	isr_print_StartEx
+ 314              	.LVL31:
+ 315 0010 08BD     		pop	{r3, pc}
+ 316              	.L21:
+ 317 0012 00BF     		.align	2
+ 318              	.L20:
+ 319 0014 00000000 		.word	ISR_toggle_handler
+ 320 0018 00000000 		.word	ISR_print_handler
+ 321              		.cfi_endproc
+ 322              	.LFE69:
+ 323              		.size	Init_ISR, .-Init_ISR
+ 324              		.section	.text.Init_ALL,"ax",%progbits
+ 325              		.align	2
+ 326              		.global	Init_ALL
+ 327              		.thumb
+ 328              		.thumb_func
+ 329              		.type	Init_ALL, %function
+ 330              	Init_ALL:
+ 331              	.LFB65:
+  80:main.c        ****     Init_LCD();
+ 332              		.loc 1 80 0
+ 333              		.cfi_startproc
+ 334              		@ args = 0, pretend = 0, frame = 0
+ 335              		@ frame_needed = 0, uses_anonymous_args = 0
+ 336 0000 08B5     		push	{r3, lr}
+ 337              		.cfi_def_cfa_offset 8
+ 338              		.cfi_offset 3, -8
+ 339              		.cfi_offset 14, -4
+  81:main.c        ****     Init_ISR();
+ 340              		.loc 1 81 0
+ 341 0002 FFF7FEFF 		bl	Init_LCD
+ 342              	.LVL32:
+  82:main.c        ****     Init_PWM();
+ 343              		.loc 1 82 0
+ 344 0006 FFF7FEFF 		bl	Init_ISR
+ARM GAS  C:\Users\frede\AppData\Local\Temp\ccUuc9U3.s 			page 10
+
+
+ 345              	.LVL33:
+  83:main.c        ****     Init_ADC();
+ 346              		.loc 1 83 0
+ 347 000a FFF7FEFF 		bl	Init_PWM
+ 348              	.LVL34:
+  84:main.c        **** }
+ 349              		.loc 1 84 0
+ 350 000e FFF7FEFF 		bl	Init_ADC
+ 351              	.LVL35:
+ 352 0012 08BD     		pop	{r3, pc}
+ 353              		.cfi_endproc
+ 354              	.LFE65:
+ 355              		.size	Init_ALL, .-Init_ALL
+ 356              		.section	.text.Gradient_SW,"ax",%progbits
+ 357              		.align	2
+ 358              		.global	Gradient_SW
+ 359              		.thumb
+ 360              		.thumb_func
+ 361              		.type	Gradient_SW, %function
+ 362              	Gradient_SW:
+ 363              	.LFB72:
+ 150:main.c        ****     }
+ 151:main.c        **** }
+ 152:main.c        **** 
+ 153:main.c        **** 
+ 154:main.c        **** int Gradient_SW(){
+ 364              		.loc 1 154 0
+ 365              		.cfi_startproc
+ 366              		@ args = 0, pretend = 0, frame = 0
+ 367              		@ frame_needed = 0, uses_anonymous_args = 0
+ 368 0000 08B5     		push	{r3, lr}
+ 369              		.cfi_def_cfa_offset 8
+ 370              		.cfi_offset 3, -8
+ 371              		.cfi_offset 14, -4
+ 372              	.LVL36:
+ 155:main.c        ****     int jump = 1;
+ 156:main.c        ****                            
+ 157:main.c        ****         if(ADC_SAR_1_GetResult16()>2200&&ADC_SAR_1_GetResult16()<3400) //middle
+ 373              		.loc 1 157 0
+ 374 0002 FFF7FEFF 		bl	ADC_SAR_1_GetResult16
+ 375              	.LVL37:
+ 376 0006 40F69803 		movw	r3, #2200
+ 377 000a 9842     		cmp	r0, r3
+ 378 000c 0ADD     		ble	.L25
+ 379              		.loc 1 157 0 is_stmt 0 discriminator 1
+ 380 000e FFF7FEFF 		bl	ADC_SAR_1_GetResult16
+ 381              	.LVL38:
+ 382 0012 40F64753 		movw	r3, #3399
+ 383 0016 9842     		cmp	r0, r3
+ 384 0018 04DC     		bgt	.L25
+ 158:main.c        ****         {
+ 159:main.c        ****             jump = 1;
+ 160:main.c        ****             deg = deg + jump;
+ 385              		.loc 1 160 0 is_stmt 1
+ 386 001a 1F4A     		ldr	r2, .L32
+ 387 001c 1368     		ldr	r3, [r2]
+ 388 001e 0133     		adds	r3, r3, #1
+ARM GAS  C:\Users\frede\AppData\Local\Temp\ccUuc9U3.s 			page 11
+
+
+ 389 0020 1360     		str	r3, [r2]
+ 390 0022 24E0     		b	.L26
+ 391              	.L25:
+ 161:main.c        ****         }
+ 162:main.c        ****         else if(ADC_SAR_1_GetResult16()<1900&&ADC_SAR_1_GetResult16()>600) //middle
+ 392              		.loc 1 162 0
+ 393 0024 FFF7FEFF 		bl	ADC_SAR_1_GetResult16
+ 394              	.LVL39:
+ 395 0028 40F26B73 		movw	r3, #1899
+ 396 002c 9842     		cmp	r0, r3
+ 397 002e 09DC     		bgt	.L27
+ 398              		.loc 1 162 0 is_stmt 0 discriminator 1
+ 399 0030 FFF7FEFF 		bl	ADC_SAR_1_GetResult16
+ 400              	.LVL40:
+ 401 0034 B0F5167F 		cmp	r0, #600
+ 402 0038 04DD     		ble	.L27
+ 163:main.c        ****         {
+ 164:main.c        ****            jump = 1;
+ 165:main.c        ****            deg = deg - jump;
+ 403              		.loc 1 165 0 is_stmt 1
+ 404 003a 174A     		ldr	r2, .L32
+ 405 003c 1368     		ldr	r3, [r2]
+ 406 003e 013B     		subs	r3, r3, #1
+ 407 0040 1360     		str	r3, [r2]
+ 408 0042 14E0     		b	.L26
+ 409              	.L27:
+ 166:main.c        ****         }
+ 167:main.c        ****         else if(ADC_SAR_1_GetResult16()>3401) //edge
+ 410              		.loc 1 167 0
+ 411 0044 FFF7FEFF 		bl	ADC_SAR_1_GetResult16
+ 412              	.LVL41:
+ 413 0048 40F64953 		movw	r3, #3401
+ 414 004c 9842     		cmp	r0, r3
+ 415 004e 04DD     		ble	.L28
+ 416              	.LVL42:
+ 168:main.c        ****         {
+ 169:main.c        ****             jump = 2;
+ 170:main.c        ****             deg = deg + jump;
+ 417              		.loc 1 170 0
+ 418 0050 114A     		ldr	r2, .L32
+ 419 0052 1368     		ldr	r3, [r2]
+ 420 0054 0233     		adds	r3, r3, #2
+ 421 0056 1360     		str	r3, [r2]
+ 422 0058 09E0     		b	.L26
+ 423              	.LVL43:
+ 424              	.L28:
+ 171:main.c        ****             
+ 172:main.c        ****         }
+ 173:main.c        ****         else if(ADC_SAR_1_GetResult16()<599) //edge
+ 425              		.loc 1 173 0
+ 426 005a FFF7FEFF 		bl	ADC_SAR_1_GetResult16
+ 427              	.LVL44:
+ 428 005e 40F25623 		movw	r3, #598
+ 429 0062 9842     		cmp	r0, r3
+ 430 0064 03DC     		bgt	.L26
+ 431              	.LVL45:
+ 174:main.c        ****         {
+ARM GAS  C:\Users\frede\AppData\Local\Temp\ccUuc9U3.s 			page 12
+
+
+ 175:main.c        ****             jump = 2;
+ 176:main.c        ****            deg = deg - jump;
+ 432              		.loc 1 176 0
+ 433 0066 0C4A     		ldr	r2, .L32
+ 434 0068 1368     		ldr	r3, [r2]
+ 435 006a 023B     		subs	r3, r3, #2
+ 436 006c 1360     		str	r3, [r2]
+ 437              	.LVL46:
+ 438              	.L26:
+ 177:main.c        ****         }
+ 178:main.c        ****         
+ 179:main.c        ****         //boundaries
+ 180:main.c        ****         if(deg<-41)
+ 439              		.loc 1 180 0
+ 440 006e 0A4B     		ldr	r3, .L32
+ 441 0070 1B68     		ldr	r3, [r3]
+ 442 0072 13F1290F 		cmn	r3, #41
+ 443 0076 03DA     		bge	.L29
+ 181:main.c        ****             {
+ 182:main.c        ****             deg = -41;
+ 444              		.loc 1 182 0
+ 445 0078 6FF02802 		mvn	r2, #40
+ 446 007c 064B     		ldr	r3, .L32
+ 447 007e 1A60     		str	r2, [r3]
+ 448              	.L29:
+ 183:main.c        ****             }
+ 184:main.c        ****            
+ 185:main.c        ****         if(deg>41)
+ 449              		.loc 1 185 0
+ 450 0080 054B     		ldr	r3, .L32
+ 451 0082 1B68     		ldr	r3, [r3]
+ 452 0084 292B     		cmp	r3, #41
+ 453 0086 02DD     		ble	.L30
+ 186:main.c        ****         {
+ 187:main.c        ****         deg = 41;
+ 454              		.loc 1 187 0
+ 455 0088 2922     		movs	r2, #41
+ 456 008a 034B     		ldr	r3, .L32
+ 457 008c 1A60     		str	r2, [r3]
+ 458              	.L30:
+ 188:main.c        ****         }
+ 189:main.c        ****        
+ 190:main.c        ****            
+ 191:main.c        **** return convertedResult = deg;  
+ 459              		.loc 1 191 0
+ 460 008e 024B     		ldr	r3, .L32
+ 461 0090 B3F90000 		ldrsh	r0, [r3]
+ 462 0094 9880     		strh	r0, [r3, #4]	@ movhi
+ 192:main.c        **** }
+ 463              		.loc 1 192 0
+ 464 0096 08BD     		pop	{r3, pc}
+ 465              	.L33:
+ 466              		.align	2
+ 467              	.L32:
+ 468 0098 00000000 		.word	.LANCHOR0
+ 469              		.cfi_endproc
+ 470              	.LFE72:
+ARM GAS  C:\Users\frede\AppData\Local\Temp\ccUuc9U3.s 			page 13
+
+
+ 471              		.size	Gradient_SW, .-Gradient_SW
+ 472              		.section	.text.adcToDegrees,"ax",%progbits
+ 473              		.align	2
+ 474              		.global	adcToDegrees
+ 475              		.thumb
+ 476              		.thumb_func
+ 477              		.type	adcToDegrees, %function
+ 478              	adcToDegrees:
+ 479              	.LFB74:
+ 193:main.c        **** 
+ 194:main.c        **** int AdjustDeg_SW(){
+ 195:main.c        ****     
+ 196:main.c        ****     //average
+ 197:main.c        ****     int loops = 10;
+ 198:main.c        ****             long sum = 0;
+ 199:main.c        ****             for (int i = 0; i < loops; i++)
+ 200:main.c        ****             {
+ 201:main.c        ****                 sum = sum + ADC_SAR_1_GetResult16();
+ 202:main.c        ****             }
+ 203:main.c        ****             sum = sum / loops;
+ 204:main.c        ****             convertedResult = adcToDegrees(sum);
+ 205:main.c        ****      return convertedResult;
+ 206:main.c        ****     
+ 207:main.c        **** }
+ 208:main.c        **** 
+ 209:main.c        **** 
+ 210:main.c        **** 
+ 211:main.c        **** int adcToDegrees(int adc_value){
+ 480              		.loc 1 211 0
+ 481              		.cfi_startproc
+ 482              		@ args = 0, pretend = 0, frame = 0
+ 483              		@ frame_needed = 0, uses_anonymous_args = 0
+ 484              		@ link register save eliminated.
+ 485              	.LVL47:
+ 212:main.c        ****     // Define constants
+ 213:main.c        ****     const int adc_min = 30;     // ADC value corresponding to -41 degrees
+ 214:main.c        ****     const int adc_max = 4050;   // ADC value corresponding to +41 degrees
+ 215:main.c        ****     const int deg_min = -41;    // Minimum degrees
+ 216:main.c        ****     const int deg_max = 41;     // Maximum degrees
+ 217:main.c        ****     
+ 218:main.c        ****     // Check if adc_value is out of bounds
+ 219:main.c        ****     if (adc_value < adc_min) {
+ 486              		.loc 1 219 0
+ 487 0000 1D28     		cmp	r0, #29
+ 488 0002 04DD     		ble	.L36
+ 220:main.c        ****         adc_value = adc_min;
+ 221:main.c        ****     } else if (adc_value > adc_max) {
+ 489              		.loc 1 221 0
+ 490 0004 40F6D273 		movw	r3, #4050
+ 491 0008 9842     		cmp	r0, r3
+ 492 000a 02DC     		bgt	.L37
+ 493 000c 03E0     		b	.L35
+ 494              	.L36:
+ 220:main.c        ****         adc_value = adc_min;
+ 495              		.loc 1 220 0
+ 496 000e 1E20     		movs	r0, #30
+ 497              	.LVL48:
+ARM GAS  C:\Users\frede\AppData\Local\Temp\ccUuc9U3.s 			page 14
+
+
+ 498 0010 01E0     		b	.L35
+ 499              	.LVL49:
+ 500              	.L37:
+ 222:main.c        ****         adc_value = adc_max;
+ 501              		.loc 1 222 0
+ 502 0012 40F6D270 		movw	r0, #4050
+ 503              	.LVL50:
+ 504              	.L35:
+ 223:main.c        ****     }
+ 224:main.c        ****     
+ 225:main.c        ****     // Calculate degrees using linear interpolation formula
+ 226:main.c        ****     int degrees = ((adc_value - adc_min) * (deg_max - deg_min)) / (adc_max - adc_min) + deg_min;
+ 505              		.loc 1 226 0
+ 506 0016 1E38     		subs	r0, r0, #30
+ 507              	.LVL51:
+ 508 0018 5223     		movs	r3, #82
+ 509 001a 03FB00F3 		mul	r3, r3, r0
+ 510 001e 0448     		ldr	r0, .L38
+ 511              	.LVL52:
+ 512 0020 80FB0320 		smull	r2, r0, r0, r3
+ 513 0024 DB17     		asrs	r3, r3, #31
+ 514 0026 C3EBA020 		rsb	r0, r3, r0, asr #10
+ 515              	.LVL53:
+ 227:main.c        **** 
+ 228:main.c        ****     return degrees;
+ 229:main.c        **** }
+ 516              		.loc 1 229 0
+ 517 002a 2938     		subs	r0, r0, #41
+ 518              	.LVL54:
+ 519 002c 7047     		bx	lr
+ 520              	.L39:
+ 521 002e 00BF     		.align	2
+ 522              	.L38:
+ 523 0030 4DBF3541 		.word	1094041421
+ 524              		.cfi_endproc
+ 525              	.LFE74:
+ 526              		.size	adcToDegrees, .-adcToDegrees
+ 527              		.section	.text.AdjustDeg_SW,"ax",%progbits
+ 528              		.align	2
+ 529              		.global	AdjustDeg_SW
+ 530              		.thumb
+ 531              		.thumb_func
+ 532              		.type	AdjustDeg_SW, %function
+ 533              	AdjustDeg_SW:
+ 534              	.LFB73:
+ 194:main.c        ****     
+ 535              		.loc 1 194 0
+ 536              		.cfi_startproc
+ 537              		@ args = 0, pretend = 0, frame = 0
+ 538              		@ frame_needed = 0, uses_anonymous_args = 0
+ 539 0000 38B5     		push	{r3, r4, r5, lr}
+ 540              		.cfi_def_cfa_offset 16
+ 541              		.cfi_offset 3, -16
+ 542              		.cfi_offset 4, -12
+ 543              		.cfi_offset 5, -8
+ 544              		.cfi_offset 14, -4
+ 545              	.LVL55:
+ARM GAS  C:\Users\frede\AppData\Local\Temp\ccUuc9U3.s 			page 15
+
+
+ 546              	.LBB2:
+ 199:main.c        ****             {
+ 547              		.loc 1 199 0
+ 548 0002 0024     		movs	r4, #0
+ 549              	.LBE2:
+ 198:main.c        ****             for (int i = 0; i < loops; i++)
+ 550              		.loc 1 198 0
+ 551 0004 2546     		mov	r5, r4
+ 552              	.LBB3:
+ 199:main.c        ****             {
+ 553              		.loc 1 199 0
+ 554 0006 03E0     		b	.L41
+ 555              	.LVL56:
+ 556              	.L42:
+ 201:main.c        ****             }
+ 557              		.loc 1 201 0 discriminator 3
+ 558 0008 FFF7FEFF 		bl	ADC_SAR_1_GetResult16
+ 559              	.LVL57:
+ 560 000c 0544     		add	r5, r5, r0
+ 561              	.LVL58:
+ 199:main.c        ****             {
+ 562              		.loc 1 199 0 discriminator 3
+ 563 000e 0134     		adds	r4, r4, #1
+ 564              	.LVL59:
+ 565              	.L41:
+ 199:main.c        ****             {
+ 566              		.loc 1 199 0 is_stmt 0 discriminator 1
+ 567 0010 092C     		cmp	r4, #9
+ 568 0012 F9DD     		ble	.L42
+ 569              	.LBE3:
+ 203:main.c        ****             convertedResult = adcToDegrees(sum);
+ 570              		.loc 1 203 0 is_stmt 1
+ 571 0014 0548     		ldr	r0, .L44
+ 572 0016 80FB0530 		smull	r3, r0, r0, r5
+ 573 001a ED17     		asrs	r5, r5, #31
+ 574              	.LVL60:
+ 204:main.c        ****      return convertedResult;
+ 575              		.loc 1 204 0
+ 576 001c C5EBA000 		rsb	r0, r5, r0, asr #2
+ 577              	.LVL61:
+ 578 0020 FFF7FEFF 		bl	adcToDegrees
+ 579              	.LVL62:
+ 580 0024 00B2     		sxth	r0, r0
+ 581 0026 024B     		ldr	r3, .L44+4
+ 582 0028 9880     		strh	r0, [r3, #4]	@ movhi
+ 207:main.c        **** 
+ 583              		.loc 1 207 0
+ 584 002a 38BD     		pop	{r3, r4, r5, pc}
+ 585              	.LVL63:
+ 586              	.L45:
+ 587              		.align	2
+ 588              	.L44:
+ 589 002c 67666666 		.word	1717986919
+ 590 0030 00000000 		.word	.LANCHOR0
+ 591              		.cfi_endproc
+ 592              	.LFE73:
+ 593              		.size	AdjustDeg_SW, .-AdjustDeg_SW
+ARM GAS  C:\Users\frede\AppData\Local\Temp\ccUuc9U3.s 			page 16
+
+
+ 594              		.section	.text.main,"ax",%progbits
+ 595              		.align	2
+ 596              		.global	main
+ 597              		.thumb
+ 598              		.thumb_func
+ 599              		.type	main, %function
+ 600              	main:
+ 601              	.LFB64:
+  41:main.c        ****     
+ 602              		.loc 1 41 0
+ 603              		.cfi_startproc
+ 604              		@ Volatile: function does not return.
+ 605              		@ args = 0, pretend = 0, frame = 0
+ 606              		@ frame_needed = 0, uses_anonymous_args = 0
+ 607 0000 08B5     		push	{r3, lr}
+ 608              		.cfi_def_cfa_offset 8
+ 609              		.cfi_offset 3, -8
+ 610              		.cfi_offset 14, -4
+  43:main.c        ****     LCD_Start();
+ 611              		.loc 1 43 0
+ 612 0002 0120     		movs	r0, #1
+ 613 0004 FFF7FEFF 		bl	LCD_WriteControl
+ 614              	.LVL64:
+  44:main.c        ****     LCD_Position(0, 0);
+ 615              		.loc 1 44 0
+ 616 0008 FFF7FEFF 		bl	LCD_Start
+ 617              	.LVL65:
+  45:main.c        ****     LCD_PrintString("Password:");
+ 618              		.loc 1 45 0
+ 619 000c 0021     		movs	r1, #0
+ 620 000e 0846     		mov	r0, r1
+ 621 0010 FFF7FEFF 		bl	LCD_Position
+ 622              	.LVL66:
+  46:main.c        ****     
+ 623              		.loc 1 46 0
+ 624 0014 1148     		ldr	r0, .L51
+ 625 0016 FFF7FEFF 		bl	LCD_PrintString
+ 626              	.LVL67:
+  51:main.c        ****     Init_ALL();
+ 627              		.loc 1 51 0
+ 628 001a 4FF47A70 		mov	r0, #1000
+ 629 001e FFF7FEFF 		bl	CyDelay
+ 630              	.LVL68:
+  52:main.c        **** 
+ 631              		.loc 1 52 0
+ 632 0022 FFF7FEFF 		bl	Init_ALL
+ 633              	.LVL69:
+ 634              	.L47:
+  59:main.c        ****         { 
+ 635              		.loc 1 59 0
+ 636 0026 0E4B     		ldr	r3, .L51+4
+ 637 0028 9B68     		ldr	r3, [r3, #8]
+ 638 002a 012B     		cmp	r3, #1
+ 639 002c 10D1     		bne	.L48
+  61:main.c        ****             LCD_PrintString("mode 1");
+ 640              		.loc 1 61 0
+ 641 002e 0021     		movs	r1, #0
+ARM GAS  C:\Users\frede\AppData\Local\Temp\ccUuc9U3.s 			page 17
+
+
+ 642 0030 0846     		mov	r0, r1
+ 643 0032 FFF7FEFF 		bl	LCD_Position
+ 644              	.LVL70:
+  62:main.c        ****             LCD_Position(0,15);
+ 645              		.loc 1 62 0
+ 646 0036 0B48     		ldr	r0, .L51+8
+ 647 0038 FFF7FEFF 		bl	LCD_PrintString
+ 648              	.LVL71:
+  63:main.c        ****             LCD_PutChar(1);
+ 649              		.loc 1 63 0
+ 650 003c 0F21     		movs	r1, #15
+ 651 003e 0020     		movs	r0, #0
+ 652 0040 FFF7FEFF 		bl	LCD_Position
+ 653              	.LVL72:
+  64:main.c        ****             
+ 654              		.loc 1 64 0
+ 655 0044 0120     		movs	r0, #1
+ 656 0046 FFF7FEFF 		bl	LCD_PutChar
+ 657              	.LVL73:
+  66:main.c        ****              
+ 658              		.loc 1 66 0
+ 659 004a FFF7FEFF 		bl	AdjustDeg_SW
+ 660              	.LVL74:
+ 661 004e EAE7     		b	.L47
+ 662              	.L48:
+  73:main.c        ****             Gradient_SW();   
+ 663              		.loc 1 73 0
+ 664 0050 A020     		movs	r0, #160
+ 665 0052 FFF7FEFF 		bl	CyDelay
+ 666              	.LVL75:
+  74:main.c        ****                 
+ 667              		.loc 1 74 0
+ 668 0056 FFF7FEFF 		bl	Gradient_SW
+ 669              	.LVL76:
+ 670 005a E4E7     		b	.L47
+ 671              	.L52:
+ 672              		.align	2
+ 673              	.L51:
+ 674 005c 38000000 		.word	.LC5
+ 675 0060 00000000 		.word	.LANCHOR0
+ 676 0064 00000000 		.word	.LC0
+ 677              		.cfi_endproc
+ 678              	.LFE64:
+ 679              		.size	main, .-main
+ 680              		.global	pass
+ 681              		.comm	tempbuffer,20,4
+ 682              		.global	block
+ 683              		.comm	LCDbuffer,20,4
+ 684              		.global	deg
+ 685              		.global	toggle
+ 686              		.global	convertedResult
+ 687              		.data
+ 688              		.align	2
+ 689              		.type	pass, %object
+ 690              		.size	pass, 4
+ 691              	pass:
+ 692 0000 01000000 		.word	1
+ARM GAS  C:\Users\frede\AppData\Local\Temp\ccUuc9U3.s 			page 18
+
+
+ 693              		.section	.rodata.str1.4,"aMS",%progbits,1
+ 694              		.align	2
+ 695              	.LC0:
+ 696 0000 6D6F6465 		.ascii	"mode 1\000"
+ 696      203100
+ 697 0007 00       		.space	1
+ 698              	.LC1:
+ 699 0008 25692020 		.ascii	"%i             \000"
+ 699      20202020 
+ 699      20202020 
+ 699      20202000 
+ 700              	.LC2:
+ 701 0018 6D6F6465 		.ascii	"mode 2\000"
+ 701      203200
+ 702 001f 00       		.space	1
+ 703              	.LC3:
+ 704 0020 53746172 		.ascii	"Starting\000"
+ 704      74696E67 
+ 704      00
+ 705 0029 000000   		.space	3
+ 706              	.LC4:
+ 707 002c 4170706C 		.ascii	"Application\000"
+ 707      69636174 
+ 707      696F6E00 
+ 708              	.LC5:
+ 709 0038 50617373 		.ascii	"Password:\000"
+ 709      776F7264 
+ 709      3A00
+ 710              		.bss
+ 711              		.align	2
+ 712              		.set	.LANCHOR0,. + 0
+ 713              		.type	deg, %object
+ 714              		.size	deg, 4
+ 715              	deg:
+ 716 0000 00000000 		.space	4
+ 717              		.type	convertedResult, %object
+ 718              		.size	convertedResult, 2
+ 719              	convertedResult:
+ 720 0004 0000     		.space	2
+ 721 0006 0000     		.space	2
+ 722              		.type	toggle, %object
+ 723              		.size	toggle, 4
+ 724              	toggle:
+ 725 0008 00000000 		.space	4
+ 726              		.type	block, %object
+ 727              		.size	block, 4
+ 728              	block:
+ 729 000c 00000000 		.space	4
+ 730              		.text
+ 731              	.Letext0:
+ 732              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 733              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 734              		.file 4 "Generated_Source\\PSoC5/core_cm3.h"
+ 735              		.file 5 "Generated_Source\\PSoC5/LCD.h"
+ 736              		.file 6 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 737              		.file 7 "Generated_Source\\PSoC5/CyLib.h"
+ 738              		.file 8 "Generated_Source\\PSoC5/ADC_SAR_1.h"
+ARM GAS  C:\Users\frede\AppData\Local\Temp\ccUuc9U3.s 			page 19
+
+
+ 739              		.file 9 "Generated_Source\\PSoC5/PWM_1.h"
+ 740              		.file 10 "Generated_Source\\PSoC5/isr_toggle.h"
+ 741              		.file 11 "Generated_Source\\PSoC5/isr_print.h"
+ 742              		.section	.debug_info,"",%progbits
+ 743              	.Ldebug_info0:
+ 744 0000 53070000 		.4byte	0x753
+ 745 0004 0400     		.2byte	0x4
+ 746 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 747 000a 04       		.byte	0x4
+ 748 000b 01       		.uleb128 0x1
+ 749 000c 99020000 		.4byte	.LASF53
+ 750 0010 0C       		.byte	0xc
+ 751 0011 01020000 		.4byte	.LASF54
+ 752 0015 E4000000 		.4byte	.LASF55
+ 753 0019 18000000 		.4byte	.Ldebug_ranges0+0x18
+ 754 001d 00000000 		.4byte	0
+ 755 0021 00000000 		.4byte	.Ldebug_line0
+ 756 0025 02       		.uleb128 0x2
+ 757 0026 01       		.byte	0x1
+ 758 0027 06       		.byte	0x6
+ 759 0028 5C010000 		.4byte	.LASF0
+ 760 002c 02       		.uleb128 0x2
+ 761 002d 01       		.byte	0x1
+ 762 002e 08       		.byte	0x8
+ 763 002f 46010000 		.4byte	.LASF1
+ 764 0033 03       		.uleb128 0x3
+ 765 0034 63020000 		.4byte	.LASF4
+ 766 0038 02       		.byte	0x2
+ 767 0039 29       		.byte	0x29
+ 768 003a 3E000000 		.4byte	0x3e
+ 769 003e 02       		.uleb128 0x2
+ 770 003f 02       		.byte	0x2
+ 771 0040 05       		.byte	0x5
+ 772 0041 40000000 		.4byte	.LASF2
+ 773 0045 02       		.uleb128 0x2
+ 774 0046 02       		.byte	0x2
+ 775 0047 07       		.byte	0x7
+ 776 0048 AD010000 		.4byte	.LASF3
+ 777 004c 03       		.uleb128 0x3
+ 778 004d 59020000 		.4byte	.LASF5
+ 779 0051 02       		.byte	0x2
+ 780 0052 3F       		.byte	0x3f
+ 781 0053 57000000 		.4byte	0x57
+ 782 0057 02       		.uleb128 0x2
+ 783 0058 04       		.byte	0x4
+ 784 0059 05       		.byte	0x5
+ 785 005a CC000000 		.4byte	.LASF6
+ 786 005e 02       		.uleb128 0x2
+ 787 005f 04       		.byte	0x4
+ 788 0060 07       		.byte	0x7
+ 789 0061 08020000 		.4byte	.LASF7
+ 790 0065 02       		.uleb128 0x2
+ 791 0066 08       		.byte	0x8
+ 792 0067 05       		.byte	0x5
+ 793 0068 B2000000 		.4byte	.LASF8
+ 794 006c 02       		.uleb128 0x2
+ 795 006d 08       		.byte	0x8
+ARM GAS  C:\Users\frede\AppData\Local\Temp\ccUuc9U3.s 			page 20
+
+
+ 796 006e 07       		.byte	0x7
+ 797 006f 68010000 		.4byte	.LASF9
+ 798 0073 04       		.uleb128 0x4
+ 799 0074 04       		.byte	0x4
+ 800 0075 05       		.byte	0x5
+ 801 0076 696E7400 		.ascii	"int\000"
+ 802 007a 02       		.uleb128 0x2
+ 803 007b 04       		.byte	0x4
+ 804 007c 07       		.byte	0x7
+ 805 007d 7F010000 		.4byte	.LASF10
+ 806 0081 03       		.uleb128 0x3
+ 807 0082 F9010000 		.4byte	.LASF11
+ 808 0086 03       		.byte	0x3
+ 809 0087 20       		.byte	0x20
+ 810 0088 33000000 		.4byte	0x33
+ 811 008c 03       		.uleb128 0x3
+ 812 008d E9010000 		.4byte	.LASF12
+ 813 0091 03       		.byte	0x3
+ 814 0092 2C       		.byte	0x2c
+ 815 0093 4C000000 		.4byte	0x4c
+ 816 0097 02       		.uleb128 0x2
+ 817 0098 04       		.byte	0x4
+ 818 0099 04       		.byte	0x4
+ 819 009a AC000000 		.4byte	.LASF13
+ 820 009e 02       		.uleb128 0x2
+ 821 009f 08       		.byte	0x8
+ 822 00a0 04       		.byte	0x4
+ 823 00a1 1A020000 		.4byte	.LASF14
+ 824 00a5 02       		.uleb128 0x2
+ 825 00a6 01       		.byte	0x1
+ 826 00a7 08       		.byte	0x8
+ 827 00a8 C5010000 		.4byte	.LASF15
+ 828 00ac 02       		.uleb128 0x2
+ 829 00ad 08       		.byte	0x8
+ 830 00ae 04       		.byte	0x4
+ 831 00af 13010000 		.4byte	.LASF16
+ 832 00b3 02       		.uleb128 0x2
+ 833 00b4 04       		.byte	0x4
+ 834 00b5 07       		.byte	0x7
+ 835 00b6 4A000000 		.4byte	.LASF17
+ 836 00ba 05       		.uleb128 0x5
+ 837 00bb 36030000 		.4byte	.LASF56
+ 838 00bf 01       		.byte	0x1
+ 839 00c0 72       		.byte	0x72
+ 840 00c1 00000000 		.4byte	.LFB70
+ 841 00c5 18000000 		.4byte	.LFE70-.LFB70
+ 842 00c9 01       		.uleb128 0x1
+ 843 00ca 9C       		.byte	0x9c
+ 844 00cb 06       		.uleb128 0x6
+ 845 00cc 34010000 		.4byte	.LASF23
+ 846 00d0 01       		.byte	0x1
+ 847 00d1 7B       		.byte	0x7b
+ 848 00d2 00000000 		.4byte	.LFB71
+ 849 00d6 C0000000 		.4byte	.LFE71-.LFB71
+ 850 00da 01       		.uleb128 0x1
+ 851 00db 9C       		.byte	0x9c
+ 852 00dc 9F020000 		.4byte	0x29f
+ARM GAS  C:\Users\frede\AppData\Local\Temp\ccUuc9U3.s 			page 21
+
+
+ 853 00e0 07       		.uleb128 0x7
+ 854 00e1 10000000 		.4byte	.LVL0
+ 855 00e5 C7060000 		.4byte	0x6c7
+ 856 00e9 F3000000 		.4byte	0xf3
+ 857 00ed 08       		.uleb128 0x8
+ 858 00ee 01       		.uleb128 0x1
+ 859 00ef 50       		.byte	0x50
+ 860 00f0 01       		.uleb128 0x1
+ 861 00f1 31       		.byte	0x31
+ 862 00f2 00       		.byte	0
+ 863 00f3 07       		.uleb128 0x7
+ 864 00f4 18000000 		.4byte	.LVL1
+ 865 00f8 D2060000 		.4byte	0x6d2
+ 866 00fc 0B010000 		.4byte	0x10b
+ 867 0100 08       		.uleb128 0x8
+ 868 0101 01       		.uleb128 0x1
+ 869 0102 50       		.byte	0x50
+ 870 0103 01       		.uleb128 0x1
+ 871 0104 30       		.byte	0x30
+ 872 0105 08       		.uleb128 0x8
+ 873 0106 01       		.uleb128 0x1
+ 874 0107 51       		.byte	0x51
+ 875 0108 01       		.uleb128 0x1
+ 876 0109 30       		.byte	0x30
+ 877 010a 00       		.byte	0
+ 878 010b 07       		.uleb128 0x7
+ 879 010c 1E000000 		.4byte	.LVL2
+ 880 0110 DD060000 		.4byte	0x6dd
+ 881 0114 22010000 		.4byte	0x122
+ 882 0118 08       		.uleb128 0x8
+ 883 0119 01       		.uleb128 0x1
+ 884 011a 50       		.byte	0x50
+ 885 011b 05       		.uleb128 0x5
+ 886 011c 03       		.byte	0x3
+ 887 011d 00000000 		.4byte	.LC0
+ 888 0121 00       		.byte	0
+ 889 0122 07       		.uleb128 0x7
+ 890 0123 26000000 		.4byte	.LVL3
+ 891 0127 D2060000 		.4byte	0x6d2
+ 892 012b 3A010000 		.4byte	0x13a
+ 893 012f 08       		.uleb128 0x8
+ 894 0130 01       		.uleb128 0x1
+ 895 0131 50       		.byte	0x50
+ 896 0132 01       		.uleb128 0x1
+ 897 0133 30       		.byte	0x30
+ 898 0134 08       		.uleb128 0x8
+ 899 0135 01       		.uleb128 0x1
+ 900 0136 51       		.byte	0x51
+ 901 0137 01       		.uleb128 0x1
+ 902 0138 3F       		.byte	0x3f
+ 903 0139 00       		.byte	0
+ 904 013a 07       		.uleb128 0x7
+ 905 013b 2C000000 		.4byte	.LVL4
+ 906 013f E8060000 		.4byte	0x6e8
+ 907 0143 4D010000 		.4byte	0x14d
+ 908 0147 08       		.uleb128 0x8
+ 909 0148 01       		.uleb128 0x1
+ARM GAS  C:\Users\frede\AppData\Local\Temp\ccUuc9U3.s 			page 22
+
+
+ 910 0149 50       		.byte	0x50
+ 911 014a 01       		.uleb128 0x1
+ 912 014b 31       		.byte	0x31
+ 913 014c 00       		.byte	0
+ 914 014d 07       		.uleb128 0x7
+ 915 014e 3C000000 		.4byte	.LVL5
+ 916 0152 F3060000 		.4byte	0x6f3
+ 917 0156 6A010000 		.4byte	0x16a
+ 918 015a 08       		.uleb128 0x8
+ 919 015b 01       		.uleb128 0x1
+ 920 015c 50       		.byte	0x50
+ 921 015d 02       		.uleb128 0x2
+ 922 015e 74       		.byte	0x74
+ 923 015f 00       		.sleb128 0
+ 924 0160 08       		.uleb128 0x8
+ 925 0161 01       		.uleb128 0x1
+ 926 0162 51       		.byte	0x51
+ 927 0163 05       		.uleb128 0x5
+ 928 0164 03       		.byte	0x3
+ 929 0165 08000000 		.4byte	.LC1
+ 930 0169 00       		.byte	0
+ 931 016a 07       		.uleb128 0x7
+ 932 016b 44000000 		.4byte	.LVL6
+ 933 016f D2060000 		.4byte	0x6d2
+ 934 0173 82010000 		.4byte	0x182
+ 935 0177 08       		.uleb128 0x8
+ 936 0178 01       		.uleb128 0x1
+ 937 0179 50       		.byte	0x50
+ 938 017a 01       		.uleb128 0x1
+ 939 017b 31       		.byte	0x31
+ 940 017c 08       		.uleb128 0x8
+ 941 017d 01       		.uleb128 0x1
+ 942 017e 51       		.byte	0x51
+ 943 017f 01       		.uleb128 0x1
+ 944 0180 30       		.byte	0x30
+ 945 0181 00       		.byte	0
+ 946 0182 07       		.uleb128 0x7
+ 947 0183 4A000000 		.4byte	.LVL7
+ 948 0187 DD060000 		.4byte	0x6dd
+ 949 018b 96010000 		.4byte	0x196
+ 950 018f 08       		.uleb128 0x8
+ 951 0190 01       		.uleb128 0x1
+ 952 0191 50       		.byte	0x50
+ 953 0192 02       		.uleb128 0x2
+ 954 0193 74       		.byte	0x74
+ 955 0194 00       		.sleb128 0
+ 956 0195 00       		.byte	0
+ 957 0196 07       		.uleb128 0x7
+ 958 0197 52000000 		.4byte	.LVL8
+ 959 019b D2060000 		.4byte	0x6d2
+ 960 019f AE010000 		.4byte	0x1ae
+ 961 01a3 08       		.uleb128 0x8
+ 962 01a4 01       		.uleb128 0x1
+ 963 01a5 50       		.byte	0x50
+ 964 01a6 01       		.uleb128 0x1
+ 965 01a7 31       		.byte	0x31
+ 966 01a8 08       		.uleb128 0x8
+ARM GAS  C:\Users\frede\AppData\Local\Temp\ccUuc9U3.s 			page 23
+
+
+ 967 01a9 01       		.uleb128 0x1
+ 968 01aa 51       		.byte	0x51
+ 969 01ab 01       		.uleb128 0x1
+ 970 01ac 3F       		.byte	0x3f
+ 971 01ad 00       		.byte	0
+ 972 01ae 07       		.uleb128 0x7
+ 973 01af 58000000 		.4byte	.LVL9
+ 974 01b3 E8060000 		.4byte	0x6e8
+ 975 01b7 C1010000 		.4byte	0x1c1
+ 976 01bb 08       		.uleb128 0x8
+ 977 01bc 01       		.uleb128 0x1
+ 978 01bd 50       		.byte	0x50
+ 979 01be 01       		.uleb128 0x1
+ 980 01bf 30       		.byte	0x30
+ 981 01c0 00       		.byte	0
+ 982 01c1 07       		.uleb128 0x7
+ 983 01c2 60000000 		.4byte	.LVL10
+ 984 01c6 C7060000 		.4byte	0x6c7
+ 985 01ca D4010000 		.4byte	0x1d4
+ 986 01ce 08       		.uleb128 0x8
+ 987 01cf 01       		.uleb128 0x1
+ 988 01d0 50       		.byte	0x50
+ 989 01d1 01       		.uleb128 0x1
+ 990 01d2 31       		.byte	0x31
+ 991 01d3 00       		.byte	0
+ 992 01d4 07       		.uleb128 0x7
+ 993 01d5 68000000 		.4byte	.LVL11
+ 994 01d9 D2060000 		.4byte	0x6d2
+ 995 01dd EC010000 		.4byte	0x1ec
+ 996 01e1 08       		.uleb128 0x8
+ 997 01e2 01       		.uleb128 0x1
+ 998 01e3 50       		.byte	0x50
+ 999 01e4 01       		.uleb128 0x1
+ 1000 01e5 30       		.byte	0x30
+ 1001 01e6 08       		.uleb128 0x8
+ 1002 01e7 01       		.uleb128 0x1
+ 1003 01e8 51       		.byte	0x51
+ 1004 01e9 01       		.uleb128 0x1
+ 1005 01ea 30       		.byte	0x30
+ 1006 01eb 00       		.byte	0
+ 1007 01ec 07       		.uleb128 0x7
+ 1008 01ed 6E000000 		.4byte	.LVL12
+ 1009 01f1 DD060000 		.4byte	0x6dd
+ 1010 01f5 03020000 		.4byte	0x203
+ 1011 01f9 08       		.uleb128 0x8
+ 1012 01fa 01       		.uleb128 0x1
+ 1013 01fb 50       		.byte	0x50
+ 1014 01fc 05       		.uleb128 0x5
+ 1015 01fd 03       		.byte	0x3
+ 1016 01fe 18000000 		.4byte	.LC2
+ 1017 0202 00       		.byte	0
+ 1018 0203 07       		.uleb128 0x7
+ 1019 0204 76000000 		.4byte	.LVL13
+ 1020 0208 D2060000 		.4byte	0x6d2
+ 1021 020c 1B020000 		.4byte	0x21b
+ 1022 0210 08       		.uleb128 0x8
+ 1023 0211 01       		.uleb128 0x1
+ARM GAS  C:\Users\frede\AppData\Local\Temp\ccUuc9U3.s 			page 24
+
+
+ 1024 0212 50       		.byte	0x50
+ 1025 0213 01       		.uleb128 0x1
+ 1026 0214 30       		.byte	0x30
+ 1027 0215 08       		.uleb128 0x8
+ 1028 0216 01       		.uleb128 0x1
+ 1029 0217 51       		.byte	0x51
+ 1030 0218 01       		.uleb128 0x1
+ 1031 0219 3F       		.byte	0x3f
+ 1032 021a 00       		.byte	0
+ 1033 021b 07       		.uleb128 0x7
+ 1034 021c 7C000000 		.4byte	.LVL14
+ 1035 0220 E8060000 		.4byte	0x6e8
+ 1036 0224 2E020000 		.4byte	0x22e
+ 1037 0228 08       		.uleb128 0x8
+ 1038 0229 01       		.uleb128 0x1
+ 1039 022a 50       		.byte	0x50
+ 1040 022b 01       		.uleb128 0x1
+ 1041 022c 33       		.byte	0x33
+ 1042 022d 00       		.byte	0
+ 1043 022e 07       		.uleb128 0x7
+ 1044 022f 8C000000 		.4byte	.LVL15
+ 1045 0233 F3060000 		.4byte	0x6f3
+ 1046 0237 4B020000 		.4byte	0x24b
+ 1047 023b 08       		.uleb128 0x8
+ 1048 023c 01       		.uleb128 0x1
+ 1049 023d 50       		.byte	0x50
+ 1050 023e 02       		.uleb128 0x2
+ 1051 023f 74       		.byte	0x74
+ 1052 0240 00       		.sleb128 0
+ 1053 0241 08       		.uleb128 0x8
+ 1054 0242 01       		.uleb128 0x1
+ 1055 0243 51       		.byte	0x51
+ 1056 0244 05       		.uleb128 0x5
+ 1057 0245 03       		.byte	0x3
+ 1058 0246 08000000 		.4byte	.LC1
+ 1059 024a 00       		.byte	0
+ 1060 024b 07       		.uleb128 0x7
+ 1061 024c 94000000 		.4byte	.LVL16
+ 1062 0250 D2060000 		.4byte	0x6d2
+ 1063 0254 63020000 		.4byte	0x263
+ 1064 0258 08       		.uleb128 0x8
+ 1065 0259 01       		.uleb128 0x1
+ 1066 025a 50       		.byte	0x50
+ 1067 025b 01       		.uleb128 0x1
+ 1068 025c 31       		.byte	0x31
+ 1069 025d 08       		.uleb128 0x8
+ 1070 025e 01       		.uleb128 0x1
+ 1071 025f 51       		.byte	0x51
+ 1072 0260 01       		.uleb128 0x1
+ 1073 0261 30       		.byte	0x30
+ 1074 0262 00       		.byte	0
+ 1075 0263 07       		.uleb128 0x7
+ 1076 0264 9A000000 		.4byte	.LVL17
+ 1077 0268 DD060000 		.4byte	0x6dd
+ 1078 026c 77020000 		.4byte	0x277
+ 1079 0270 08       		.uleb128 0x8
+ 1080 0271 01       		.uleb128 0x1
+ARM GAS  C:\Users\frede\AppData\Local\Temp\ccUuc9U3.s 			page 25
+
+
+ 1081 0272 50       		.byte	0x50
+ 1082 0273 02       		.uleb128 0x2
+ 1083 0274 74       		.byte	0x74
+ 1084 0275 00       		.sleb128 0
+ 1085 0276 00       		.byte	0
+ 1086 0277 07       		.uleb128 0x7
+ 1087 0278 A2000000 		.4byte	.LVL18
+ 1088 027c D2060000 		.4byte	0x6d2
+ 1089 0280 8F020000 		.4byte	0x28f
+ 1090 0284 08       		.uleb128 0x8
+ 1091 0285 01       		.uleb128 0x1
+ 1092 0286 50       		.byte	0x50
+ 1093 0287 01       		.uleb128 0x1
+ 1094 0288 31       		.byte	0x31
+ 1095 0289 08       		.uleb128 0x8
+ 1096 028a 01       		.uleb128 0x1
+ 1097 028b 51       		.byte	0x51
+ 1098 028c 01       		.uleb128 0x1
+ 1099 028d 3F       		.byte	0x3f
+ 1100 028e 00       		.byte	0
+ 1101 028f 09       		.uleb128 0x9
+ 1102 0290 A8000000 		.4byte	.LVL19
+ 1103 0294 E8060000 		.4byte	0x6e8
+ 1104 0298 08       		.uleb128 0x8
+ 1105 0299 01       		.uleb128 0x1
+ 1106 029a 50       		.byte	0x50
+ 1107 029b 01       		.uleb128 0x1
+ 1108 029c 30       		.byte	0x30
+ 1109 029d 00       		.byte	0
+ 1110 029e 00       		.byte	0
+ 1111 029f 0A       		.uleb128 0xa
+ 1112 02a0 83020000 		.4byte	.LASF18
+ 1113 02a4 01       		.byte	0x1
+ 1114 02a5 58       		.byte	0x58
+ 1115 02a6 00000000 		.4byte	.LFB66
+ 1116 02aa 3C000000 		.4byte	.LFE66-.LFB66
+ 1117 02ae 01       		.uleb128 0x1
+ 1118 02af 9C       		.byte	0x9c
+ 1119 02b0 40030000 		.4byte	0x340
+ 1120 02b4 07       		.uleb128 0x7
+ 1121 02b5 08000000 		.4byte	.LVL20
+ 1122 02b9 C7060000 		.4byte	0x6c7
+ 1123 02bd C7020000 		.4byte	0x2c7
+ 1124 02c1 08       		.uleb128 0x8
+ 1125 02c2 01       		.uleb128 0x1
+ 1126 02c3 50       		.byte	0x50
+ 1127 02c4 01       		.uleb128 0x1
+ 1128 02c5 31       		.byte	0x31
+ 1129 02c6 00       		.byte	0
+ 1130 02c7 0B       		.uleb128 0xb
+ 1131 02c8 0C000000 		.4byte	.LVL21
+ 1132 02cc FE060000 		.4byte	0x6fe
+ 1133 02d0 07       		.uleb128 0x7
+ 1134 02d1 14000000 		.4byte	.LVL22
+ 1135 02d5 D2060000 		.4byte	0x6d2
+ 1136 02d9 E8020000 		.4byte	0x2e8
+ 1137 02dd 08       		.uleb128 0x8
+ARM GAS  C:\Users\frede\AppData\Local\Temp\ccUuc9U3.s 			page 26
+
+
+ 1138 02de 01       		.uleb128 0x1
+ 1139 02df 50       		.byte	0x50
+ 1140 02e0 01       		.uleb128 0x1
+ 1141 02e1 30       		.byte	0x30
+ 1142 02e2 08       		.uleb128 0x8
+ 1143 02e3 01       		.uleb128 0x1
+ 1144 02e4 51       		.byte	0x51
+ 1145 02e5 01       		.uleb128 0x1
+ 1146 02e6 30       		.byte	0x30
+ 1147 02e7 00       		.byte	0
+ 1148 02e8 07       		.uleb128 0x7
+ 1149 02e9 1A000000 		.4byte	.LVL23
+ 1150 02ed DD060000 		.4byte	0x6dd
+ 1151 02f1 FF020000 		.4byte	0x2ff
+ 1152 02f5 08       		.uleb128 0x8
+ 1153 02f6 01       		.uleb128 0x1
+ 1154 02f7 50       		.byte	0x50
+ 1155 02f8 05       		.uleb128 0x5
+ 1156 02f9 03       		.byte	0x3
+ 1157 02fa 20000000 		.4byte	.LC3
+ 1158 02fe 00       		.byte	0
+ 1159 02ff 07       		.uleb128 0x7
+ 1160 0300 22000000 		.4byte	.LVL24
+ 1161 0304 D2060000 		.4byte	0x6d2
+ 1162 0308 17030000 		.4byte	0x317
+ 1163 030c 08       		.uleb128 0x8
+ 1164 030d 01       		.uleb128 0x1
+ 1165 030e 50       		.byte	0x50
+ 1166 030f 01       		.uleb128 0x1
+ 1167 0310 31       		.byte	0x31
+ 1168 0311 08       		.uleb128 0x8
+ 1169 0312 01       		.uleb128 0x1
+ 1170 0313 51       		.byte	0x51
+ 1171 0314 01       		.uleb128 0x1
+ 1172 0315 30       		.byte	0x30
+ 1173 0316 00       		.byte	0
+ 1174 0317 07       		.uleb128 0x7
+ 1175 0318 28000000 		.4byte	.LVL25
+ 1176 031c DD060000 		.4byte	0x6dd
+ 1177 0320 2E030000 		.4byte	0x32e
+ 1178 0324 08       		.uleb128 0x8
+ 1179 0325 01       		.uleb128 0x1
+ 1180 0326 50       		.byte	0x50
+ 1181 0327 05       		.uleb128 0x5
+ 1182 0328 03       		.byte	0x3
+ 1183 0329 2C000000 		.4byte	.LC4
+ 1184 032d 00       		.byte	0
+ 1185 032e 09       		.uleb128 0x9
+ 1186 032f 30000000 		.4byte	.LVL26
+ 1187 0333 09070000 		.4byte	0x709
+ 1188 0337 08       		.uleb128 0x8
+ 1189 0338 01       		.uleb128 0x1
+ 1190 0339 50       		.byte	0x50
+ 1191 033a 03       		.uleb128 0x3
+ 1192 033b 0A       		.byte	0xa
+ 1193 033c E803     		.2byte	0x3e8
+ 1194 033e 00       		.byte	0
+ARM GAS  C:\Users\frede\AppData\Local\Temp\ccUuc9U3.s 			page 27
+
+
+ 1195 033f 00       		.byte	0
+ 1196 0340 0A       		.uleb128 0xa
+ 1197 0341 DB000000 		.4byte	.LASF19
+ 1198 0345 01       		.byte	0x1
+ 1199 0346 62       		.byte	0x62
+ 1200 0347 00000000 		.4byte	.LFB67
+ 1201 034b 0C000000 		.4byte	.LFE67-.LFB67
+ 1202 034f 01       		.uleb128 0x1
+ 1203 0350 9C       		.byte	0x9c
+ 1204 0351 68030000 		.4byte	0x368
+ 1205 0355 0B       		.uleb128 0xb
+ 1206 0356 06000000 		.4byte	.LVL27
+ 1207 035a 14070000 		.4byte	0x714
+ 1208 035e 0B       		.uleb128 0xb
+ 1209 035f 0A000000 		.4byte	.LVL28
+ 1210 0363 1F070000 		.4byte	0x71f
+ 1211 0367 00       		.byte	0
+ 1212 0368 0A       		.uleb128 0xa
+ 1213 0369 2D020000 		.4byte	.LASF20
+ 1214 036d 01       		.byte	0x1
+ 1215 036e 67       		.byte	0x67
+ 1216 036f 00000000 		.4byte	.LFB68
+ 1217 0373 08000000 		.4byte	.LFE68-.LFB68
+ 1218 0377 01       		.uleb128 0x1
+ 1219 0378 9C       		.byte	0x9c
+ 1220 0379 87030000 		.4byte	0x387
+ 1221 037d 0B       		.uleb128 0xb
+ 1222 037e 06000000 		.4byte	.LVL29
+ 1223 0382 2A070000 		.4byte	0x72a
+ 1224 0386 00       		.byte	0
+ 1225 0387 0A       		.uleb128 0xa
+ 1226 0388 6D020000 		.4byte	.LASF21
+ 1227 038c 01       		.byte	0x1
+ 1228 038d 6B       		.byte	0x6b
+ 1229 038e 00000000 		.4byte	.LFB69
+ 1230 0392 1C000000 		.4byte	.LFE69-.LFB69
+ 1231 0396 01       		.uleb128 0x1
+ 1232 0397 9C       		.byte	0x9c
+ 1233 0398 C7030000 		.4byte	0x3c7
+ 1234 039c 07       		.uleb128 0x7
+ 1235 039d 0A000000 		.4byte	.LVL30
+ 1236 03a1 35070000 		.4byte	0x735
+ 1237 03a5 B3030000 		.4byte	0x3b3
+ 1238 03a9 08       		.uleb128 0x8
+ 1239 03aa 01       		.uleb128 0x1
+ 1240 03ab 50       		.byte	0x50
+ 1241 03ac 05       		.uleb128 0x5
+ 1242 03ad 03       		.byte	0x3
+ 1243 03ae 00000000 		.4byte	ISR_toggle_handler
+ 1244 03b2 00       		.byte	0
+ 1245 03b3 09       		.uleb128 0x9
+ 1246 03b4 10000000 		.4byte	.LVL31
+ 1247 03b8 40070000 		.4byte	0x740
+ 1248 03bc 08       		.uleb128 0x8
+ 1249 03bd 01       		.uleb128 0x1
+ 1250 03be 50       		.byte	0x50
+ 1251 03bf 05       		.uleb128 0x5
+ARM GAS  C:\Users\frede\AppData\Local\Temp\ccUuc9U3.s 			page 28
+
+
+ 1252 03c0 03       		.byte	0x3
+ 1253 03c1 00000000 		.4byte	ISR_print_handler
+ 1254 03c5 00       		.byte	0
+ 1255 03c6 00       		.byte	0
+ 1256 03c7 0A       		.uleb128 0xa
+ 1257 03c8 A4010000 		.4byte	.LASF22
+ 1258 03cc 01       		.byte	0x1
+ 1259 03cd 50       		.byte	0x50
+ 1260 03ce 00000000 		.4byte	.LFB65
+ 1261 03d2 14000000 		.4byte	.LFE65-.LFB65
+ 1262 03d6 01       		.uleb128 0x1
+ 1263 03d7 9C       		.byte	0x9c
+ 1264 03d8 01040000 		.4byte	0x401
+ 1265 03dc 0B       		.uleb128 0xb
+ 1266 03dd 06000000 		.4byte	.LVL32
+ 1267 03e1 9F020000 		.4byte	0x29f
+ 1268 03e5 0B       		.uleb128 0xb
+ 1269 03e6 0A000000 		.4byte	.LVL33
+ 1270 03ea 87030000 		.4byte	0x387
+ 1271 03ee 0B       		.uleb128 0xb
+ 1272 03ef 0E000000 		.4byte	.LVL34
+ 1273 03f3 68030000 		.4byte	0x368
+ 1274 03f7 0B       		.uleb128 0xb
+ 1275 03f8 12000000 		.4byte	.LVL35
+ 1276 03fc 40030000 		.4byte	0x340
+ 1277 0400 00       		.byte	0
+ 1278 0401 0C       		.uleb128 0xc
+ 1279 0402 C0000000 		.4byte	.LASF24
+ 1280 0406 01       		.byte	0x1
+ 1281 0407 9A       		.byte	0x9a
+ 1282 0408 73000000 		.4byte	0x73
+ 1283 040c 00000000 		.4byte	.LFB72
+ 1284 0410 9C000000 		.4byte	.LFE72-.LFB72
+ 1285 0414 01       		.uleb128 0x1
+ 1286 0415 9C       		.byte	0x9c
+ 1287 0416 60040000 		.4byte	0x460
+ 1288 041a 0D       		.uleb128 0xd
+ 1289 041b 53000000 		.4byte	.LASF25
+ 1290 041f 01       		.byte	0x1
+ 1291 0420 9B       		.byte	0x9b
+ 1292 0421 73000000 		.4byte	0x73
+ 1293 0425 00000000 		.4byte	.LLST0
+ 1294 0429 0B       		.uleb128 0xb
+ 1295 042a 06000000 		.4byte	.LVL37
+ 1296 042e 4B070000 		.4byte	0x74b
+ 1297 0432 0B       		.uleb128 0xb
+ 1298 0433 12000000 		.4byte	.LVL38
+ 1299 0437 4B070000 		.4byte	0x74b
+ 1300 043b 0B       		.uleb128 0xb
+ 1301 043c 28000000 		.4byte	.LVL39
+ 1302 0440 4B070000 		.4byte	0x74b
+ 1303 0444 0B       		.uleb128 0xb
+ 1304 0445 34000000 		.4byte	.LVL40
+ 1305 0449 4B070000 		.4byte	0x74b
+ 1306 044d 0B       		.uleb128 0xb
+ 1307 044e 48000000 		.4byte	.LVL41
+ 1308 0452 4B070000 		.4byte	0x74b
+ARM GAS  C:\Users\frede\AppData\Local\Temp\ccUuc9U3.s 			page 29
+
+
+ 1309 0456 0B       		.uleb128 0xb
+ 1310 0457 5E000000 		.4byte	.LVL44
+ 1311 045b 4B070000 		.4byte	0x74b
+ 1312 045f 00       		.byte	0
+ 1313 0460 0E       		.uleb128 0xe
+ 1314 0461 27010000 		.4byte	.LASF57
+ 1315 0465 01       		.byte	0x1
+ 1316 0466 D3       		.byte	0xd3
+ 1317 0467 73000000 		.4byte	0x73
+ 1318 046b 00000000 		.4byte	.LFB74
+ 1319 046f 34000000 		.4byte	.LFE74-.LFB74
+ 1320 0473 01       		.uleb128 0x1
+ 1321 0474 9C       		.byte	0x9c
+ 1322 0475 C9040000 		.4byte	0x4c9
+ 1323 0479 0F       		.uleb128 0xf
+ 1324 047a 67000000 		.4byte	.LASF58
+ 1325 047e 01       		.byte	0x1
+ 1326 047f D3       		.byte	0xd3
+ 1327 0480 73000000 		.4byte	0x73
+ 1328 0484 38000000 		.4byte	.LLST1
+ 1329 0488 10       		.uleb128 0x10
+ 1330 0489 CA010000 		.4byte	.LASF26
+ 1331 048d 01       		.byte	0x1
+ 1332 048e D5       		.byte	0xd5
+ 1333 048f C9040000 		.4byte	0x4c9
+ 1334 0493 1E       		.byte	0x1e
+ 1335 0494 11       		.uleb128 0x11
+ 1336 0495 38000000 		.4byte	.LASF27
+ 1337 0499 01       		.byte	0x1
+ 1338 049a D6       		.byte	0xd6
+ 1339 049b C9040000 		.4byte	0x4c9
+ 1340 049f D20F     		.2byte	0xfd2
+ 1341 04a1 12       		.uleb128 0x12
+ 1342 04a2 F1010000 		.4byte	.LASF28
+ 1343 04a6 01       		.byte	0x1
+ 1344 04a7 D7       		.byte	0xd7
+ 1345 04a8 C9040000 		.4byte	0x4c9
+ 1346 04ac 57       		.sleb128 -41
+ 1347 04ad 10       		.uleb128 0x10
+ 1348 04ae 9C010000 		.4byte	.LASF29
+ 1349 04b2 01       		.byte	0x1
+ 1350 04b3 D8       		.byte	0xd8
+ 1351 04b4 C9040000 		.4byte	0x4c9
+ 1352 04b8 29       		.byte	0x29
+ 1353 04b9 0D       		.uleb128 0xd
+ 1354 04ba 1F010000 		.4byte	.LASF30
+ 1355 04be 01       		.byte	0x1
+ 1356 04bf E2       		.byte	0xe2
+ 1357 04c0 73000000 		.4byte	0x73
+ 1358 04c4 71000000 		.4byte	.LLST2
+ 1359 04c8 00       		.byte	0
+ 1360 04c9 13       		.uleb128 0x13
+ 1361 04ca 73000000 		.4byte	0x73
+ 1362 04ce 0C       		.uleb128 0xc
+ 1363 04cf 89000000 		.4byte	.LASF31
+ 1364 04d3 01       		.byte	0x1
+ 1365 04d4 C2       		.byte	0xc2
+ARM GAS  C:\Users\frede\AppData\Local\Temp\ccUuc9U3.s 			page 30
+
+
+ 1366 04d5 73000000 		.4byte	0x73
+ 1367 04d9 00000000 		.4byte	.LFB73
+ 1368 04dd 34000000 		.4byte	.LFE73-.LFB73
+ 1369 04e1 01       		.uleb128 0x1
+ 1370 04e2 9C       		.byte	0x9c
+ 1371 04e3 2C050000 		.4byte	0x52c
+ 1372 04e7 10       		.uleb128 0x10
+ 1373 04e8 71000000 		.4byte	.LASF32
+ 1374 04ec 01       		.byte	0x1
+ 1375 04ed C5       		.byte	0xc5
+ 1376 04ee 73000000 		.4byte	0x73
+ 1377 04f2 0A       		.byte	0xa
+ 1378 04f3 14       		.uleb128 0x14
+ 1379 04f4 73756D00 		.ascii	"sum\000"
+ 1380 04f8 01       		.byte	0x1
+ 1381 04f9 C6       		.byte	0xc6
+ 1382 04fa 57000000 		.4byte	0x57
+ 1383 04fe 91000000 		.4byte	.LLST3
+ 1384 0502 15       		.uleb128 0x15
+ 1385 0503 00000000 		.4byte	.Ldebug_ranges0+0
+ 1386 0507 22050000 		.4byte	0x522
+ 1387 050b 14       		.uleb128 0x14
+ 1388 050c 6900     		.ascii	"i\000"
+ 1389 050e 01       		.byte	0x1
+ 1390 050f C7       		.byte	0xc7
+ 1391 0510 73000000 		.4byte	0x73
+ 1392 0514 CD000000 		.4byte	.LLST4
+ 1393 0518 0B       		.uleb128 0xb
+ 1394 0519 0C000000 		.4byte	.LVL57
+ 1395 051d 4B070000 		.4byte	0x74b
+ 1396 0521 00       		.byte	0
+ 1397 0522 0B       		.uleb128 0xb
+ 1398 0523 24000000 		.4byte	.LVL62
+ 1399 0527 60040000 		.4byte	0x460
+ 1400 052b 00       		.byte	0
+ 1401 052c 16       		.uleb128 0x16
+ 1402 052d 58000000 		.4byte	.LASF59
+ 1403 0531 01       		.byte	0x1
+ 1404 0532 28       		.byte	0x28
+ 1405 0533 73000000 		.4byte	0x73
+ 1406 0537 00000000 		.4byte	.LFB64
+ 1407 053b 68000000 		.4byte	.LFE64-.LFB64
+ 1408 053f 01       		.uleb128 0x1
+ 1409 0540 9C       		.byte	0x9c
+ 1410 0541 2F060000 		.4byte	0x62f
+ 1411 0545 07       		.uleb128 0x7
+ 1412 0546 08000000 		.4byte	.LVL64
+ 1413 054a C7060000 		.4byte	0x6c7
+ 1414 054e 58050000 		.4byte	0x558
+ 1415 0552 08       		.uleb128 0x8
+ 1416 0553 01       		.uleb128 0x1
+ 1417 0554 50       		.byte	0x50
+ 1418 0555 01       		.uleb128 0x1
+ 1419 0556 31       		.byte	0x31
+ 1420 0557 00       		.byte	0
+ 1421 0558 0B       		.uleb128 0xb
+ 1422 0559 0C000000 		.4byte	.LVL65
+ARM GAS  C:\Users\frede\AppData\Local\Temp\ccUuc9U3.s 			page 31
+
+
+ 1423 055d FE060000 		.4byte	0x6fe
+ 1424 0561 07       		.uleb128 0x7
+ 1425 0562 14000000 		.4byte	.LVL66
+ 1426 0566 D2060000 		.4byte	0x6d2
+ 1427 056a 79050000 		.4byte	0x579
+ 1428 056e 08       		.uleb128 0x8
+ 1429 056f 01       		.uleb128 0x1
+ 1430 0570 50       		.byte	0x50
+ 1431 0571 01       		.uleb128 0x1
+ 1432 0572 30       		.byte	0x30
+ 1433 0573 08       		.uleb128 0x8
+ 1434 0574 01       		.uleb128 0x1
+ 1435 0575 51       		.byte	0x51
+ 1436 0576 01       		.uleb128 0x1
+ 1437 0577 30       		.byte	0x30
+ 1438 0578 00       		.byte	0
+ 1439 0579 07       		.uleb128 0x7
+ 1440 057a 1A000000 		.4byte	.LVL67
+ 1441 057e DD060000 		.4byte	0x6dd
+ 1442 0582 90050000 		.4byte	0x590
+ 1443 0586 08       		.uleb128 0x8
+ 1444 0587 01       		.uleb128 0x1
+ 1445 0588 50       		.byte	0x50
+ 1446 0589 05       		.uleb128 0x5
+ 1447 058a 03       		.byte	0x3
+ 1448 058b 38000000 		.4byte	.LC5
+ 1449 058f 00       		.byte	0
+ 1450 0590 07       		.uleb128 0x7
+ 1451 0591 22000000 		.4byte	.LVL68
+ 1452 0595 09070000 		.4byte	0x709
+ 1453 0599 A5050000 		.4byte	0x5a5
+ 1454 059d 08       		.uleb128 0x8
+ 1455 059e 01       		.uleb128 0x1
+ 1456 059f 50       		.byte	0x50
+ 1457 05a0 03       		.uleb128 0x3
+ 1458 05a1 0A       		.byte	0xa
+ 1459 05a2 E803     		.2byte	0x3e8
+ 1460 05a4 00       		.byte	0
+ 1461 05a5 0B       		.uleb128 0xb
+ 1462 05a6 26000000 		.4byte	.LVL69
+ 1463 05aa C7030000 		.4byte	0x3c7
+ 1464 05ae 07       		.uleb128 0x7
+ 1465 05af 36000000 		.4byte	.LVL70
+ 1466 05b3 D2060000 		.4byte	0x6d2
+ 1467 05b7 C6050000 		.4byte	0x5c6
+ 1468 05bb 08       		.uleb128 0x8
+ 1469 05bc 01       		.uleb128 0x1
+ 1470 05bd 50       		.byte	0x50
+ 1471 05be 01       		.uleb128 0x1
+ 1472 05bf 30       		.byte	0x30
+ 1473 05c0 08       		.uleb128 0x8
+ 1474 05c1 01       		.uleb128 0x1
+ 1475 05c2 51       		.byte	0x51
+ 1476 05c3 01       		.uleb128 0x1
+ 1477 05c4 30       		.byte	0x30
+ 1478 05c5 00       		.byte	0
+ 1479 05c6 07       		.uleb128 0x7
+ARM GAS  C:\Users\frede\AppData\Local\Temp\ccUuc9U3.s 			page 32
+
+
+ 1480 05c7 3C000000 		.4byte	.LVL71
+ 1481 05cb DD060000 		.4byte	0x6dd
+ 1482 05cf DD050000 		.4byte	0x5dd
+ 1483 05d3 08       		.uleb128 0x8
+ 1484 05d4 01       		.uleb128 0x1
+ 1485 05d5 50       		.byte	0x50
+ 1486 05d6 05       		.uleb128 0x5
+ 1487 05d7 03       		.byte	0x3
+ 1488 05d8 00000000 		.4byte	.LC0
+ 1489 05dc 00       		.byte	0
+ 1490 05dd 07       		.uleb128 0x7
+ 1491 05de 44000000 		.4byte	.LVL72
+ 1492 05e2 D2060000 		.4byte	0x6d2
+ 1493 05e6 F5050000 		.4byte	0x5f5
+ 1494 05ea 08       		.uleb128 0x8
+ 1495 05eb 01       		.uleb128 0x1
+ 1496 05ec 50       		.byte	0x50
+ 1497 05ed 01       		.uleb128 0x1
+ 1498 05ee 30       		.byte	0x30
+ 1499 05ef 08       		.uleb128 0x8
+ 1500 05f0 01       		.uleb128 0x1
+ 1501 05f1 51       		.byte	0x51
+ 1502 05f2 01       		.uleb128 0x1
+ 1503 05f3 3F       		.byte	0x3f
+ 1504 05f4 00       		.byte	0
+ 1505 05f5 07       		.uleb128 0x7
+ 1506 05f6 4A000000 		.4byte	.LVL73
+ 1507 05fa E8060000 		.4byte	0x6e8
+ 1508 05fe 08060000 		.4byte	0x608
+ 1509 0602 08       		.uleb128 0x8
+ 1510 0603 01       		.uleb128 0x1
+ 1511 0604 50       		.byte	0x50
+ 1512 0605 01       		.uleb128 0x1
+ 1513 0606 31       		.byte	0x31
+ 1514 0607 00       		.byte	0
+ 1515 0608 0B       		.uleb128 0xb
+ 1516 0609 4E000000 		.4byte	.LVL74
+ 1517 060d CE040000 		.4byte	0x4ce
+ 1518 0611 07       		.uleb128 0x7
+ 1519 0612 56000000 		.4byte	.LVL75
+ 1520 0616 09070000 		.4byte	0x709
+ 1521 061a 25060000 		.4byte	0x625
+ 1522 061e 08       		.uleb128 0x8
+ 1523 061f 01       		.uleb128 0x1
+ 1524 0620 50       		.byte	0x50
+ 1525 0621 02       		.uleb128 0x2
+ 1526 0622 08       		.byte	0x8
+ 1527 0623 A0       		.byte	0xa0
+ 1528 0624 00       		.byte	0
+ 1529 0625 0B       		.uleb128 0xb
+ 1530 0626 5A000000 		.4byte	.LVL76
+ 1531 062a 01040000 		.4byte	0x401
+ 1532 062e 00       		.byte	0
+ 1533 062f 17       		.uleb128 0x17
+ 1534 0630 8C020000 		.4byte	.LASF33
+ 1535 0634 04       		.byte	0x4
+ 1536 0635 1207     		.2byte	0x712
+ARM GAS  C:\Users\frede\AppData\Local\Temp\ccUuc9U3.s 			page 33
+
+
+ 1537 0637 3B060000 		.4byte	0x63b
+ 1538 063b 18       		.uleb128 0x18
+ 1539 063c 8C000000 		.4byte	0x8c
+ 1540 0640 19       		.uleb128 0x19
+ 1541 0641 36020000 		.4byte	.LASF34
+ 1542 0645 01       		.byte	0x1
+ 1543 0646 19       		.byte	0x19
+ 1544 0647 81000000 		.4byte	0x81
+ 1545 064b 05       		.uleb128 0x5
+ 1546 064c 03       		.byte	0x3
+ 1547 064d 00000000 		.4byte	convertedResult
+ 1548 0651 19       		.uleb128 0x19
+ 1549 0652 2F030000 		.4byte	.LASF35
+ 1550 0656 01       		.byte	0x1
+ 1551 0657 1A       		.byte	0x1a
+ 1552 0658 73000000 		.4byte	0x73
+ 1553 065c 05       		.uleb128 0x5
+ 1554 065d 03       		.byte	0x3
+ 1555 065e 00000000 		.4byte	toggle
+ 1556 0662 1A       		.uleb128 0x1a
+ 1557 0663 64656700 		.ascii	"deg\000"
+ 1558 0667 01       		.byte	0x1
+ 1559 0668 1B       		.byte	0x1b
+ 1560 0669 73000000 		.4byte	0x73
+ 1561 066d 05       		.uleb128 0x5
+ 1562 066e 03       		.byte	0x3
+ 1563 066f 00000000 		.4byte	deg
+ 1564 0673 1B       		.uleb128 0x1b
+ 1565 0674 A5000000 		.4byte	0xa5
+ 1566 0678 83060000 		.4byte	0x683
+ 1567 067c 1C       		.uleb128 0x1c
+ 1568 067d B3000000 		.4byte	0xb3
+ 1569 0681 13       		.byte	0x13
+ 1570 0682 00       		.byte	0
+ 1571 0683 19       		.uleb128 0x19
+ 1572 0684 5D000000 		.4byte	.LASF36
+ 1573 0688 01       		.byte	0x1
+ 1574 0689 1C       		.byte	0x1c
+ 1575 068a 73060000 		.4byte	0x673
+ 1576 068e 05       		.uleb128 0x5
+ 1577 068f 03       		.byte	0x3
+ 1578 0690 00000000 		.4byte	LCDbuffer
+ 1579 0694 19       		.uleb128 0x19
+ 1580 0695 D5000000 		.4byte	.LASF37
+ 1581 0699 01       		.byte	0x1
+ 1582 069a 1D       		.byte	0x1d
+ 1583 069b 73000000 		.4byte	0x73
+ 1584 069f 05       		.uleb128 0x5
+ 1585 06a0 03       		.byte	0x3
+ 1586 06a1 00000000 		.4byte	block
+ 1587 06a5 19       		.uleb128 0x19
+ 1588 06a6 1C000000 		.4byte	.LASF38
+ 1589 06aa 01       		.byte	0x1
+ 1590 06ab 1E       		.byte	0x1e
+ 1591 06ac 73060000 		.4byte	0x673
+ 1592 06b0 05       		.uleb128 0x5
+ 1593 06b1 03       		.byte	0x3
+ARM GAS  C:\Users\frede\AppData\Local\Temp\ccUuc9U3.s 			page 34
+
+
+ 1594 06b2 00000000 		.4byte	tempbuffer
+ 1595 06b6 19       		.uleb128 0x19
+ 1596 06b7 C0010000 		.4byte	.LASF39
+ 1597 06bb 01       		.byte	0x1
+ 1598 06bc 1F       		.byte	0x1f
+ 1599 06bd 73000000 		.4byte	0x73
+ 1600 06c1 05       		.uleb128 0x5
+ 1601 06c2 03       		.byte	0x3
+ 1602 06c3 00000000 		.4byte	pass
+ 1603 06c7 1D       		.uleb128 0x1d
+ 1604 06c8 27000000 		.4byte	.LASF40
+ 1605 06cc 27000000 		.4byte	.LASF40
+ 1606 06d0 05       		.byte	0x5
+ 1607 06d1 3A       		.byte	0x3a
+ 1608 06d2 1D       		.uleb128 0x1d
+ 1609 06d3 76020000 		.4byte	.LASF41
+ 1610 06d7 76020000 		.4byte	.LASF41
+ 1611 06db 05       		.byte	0x5
+ 1612 06dc 3D       		.byte	0x3d
+ 1613 06dd 1D       		.uleb128 0x1d
+ 1614 06de 8C010000 		.4byte	.LASF42
+ 1615 06e2 8C010000 		.4byte	.LASF42
+ 1616 06e6 05       		.byte	0x5
+ 1617 06e7 3C       		.byte	0x3c
+ 1618 06e8 1D       		.uleb128 0x1d
+ 1619 06e9 21020000 		.4byte	.LASF43
+ 1620 06ed 21020000 		.4byte	.LASF43
+ 1621 06f1 05       		.byte	0x5
+ 1622 06f2 3E       		.byte	0x3e
+ 1623 06f3 1D       		.uleb128 0x1d
+ 1624 06f4 54010000 		.4byte	.LASF44
+ 1625 06f8 54010000 		.4byte	.LASF44
+ 1626 06fc 06       		.byte	0x6
+ 1627 06fd E7       		.byte	0xe7
+ 1628 06fe 1D       		.uleb128 0x1d
+ 1629 06ff 09010000 		.4byte	.LASF45
+ 1630 0703 09010000 		.4byte	.LASF45
+ 1631 0707 05       		.byte	0x5
+ 1632 0708 38       		.byte	0x38
+ 1633 0709 1D       		.uleb128 0x1d
+ 1634 070a 27030000 		.4byte	.LASF46
+ 1635 070e 27030000 		.4byte	.LASF46
+ 1636 0712 07       		.byte	0x7
+ 1637 0713 76       		.byte	0x76
+ 1638 0714 1D       		.uleb128 0x1d
+ 1639 0715 00000000 		.4byte	.LASF47
+ 1640 0719 00000000 		.4byte	.LASF47
+ 1641 071d 08       		.byte	0x8
+ 1642 071e 34       		.byte	0x34
+ 1643 071f 1D       		.uleb128 0x1d
+ 1644 0720 D2010000 		.4byte	.LASF48
+ 1645 0724 D2010000 		.4byte	.LASF48
+ 1646 0728 08       		.byte	0x8
+ 1647 0729 D1       		.byte	0xd1
+ 1648 072a 1D       		.uleb128 0x1d
+ 1649 072b 10000000 		.4byte	.LASF49
+ 1650 072f 10000000 		.4byte	.LASF49
+ARM GAS  C:\Users\frede\AppData\Local\Temp\ccUuc9U3.s 			page 35
+
+
+ 1651 0733 09       		.byte	0x9
+ 1652 0734 92       		.byte	0x92
+ 1653 0735 1D       		.uleb128 0x1d
+ 1654 0736 46020000 		.4byte	.LASF50
+ 1655 073a 46020000 		.4byte	.LASF50
+ 1656 073e 0A       		.byte	0xa
+ 1657 073f 18       		.byte	0x18
+ 1658 0740 1D       		.uleb128 0x1d
+ 1659 0741 77000000 		.4byte	.LASF51
+ 1660 0745 77000000 		.4byte	.LASF51
+ 1661 0749 0B       		.byte	0xb
+ 1662 074a 18       		.byte	0x18
+ 1663 074b 1D       		.uleb128 0x1d
+ 1664 074c 96000000 		.4byte	.LASF52
+ 1665 0750 96000000 		.4byte	.LASF52
+ 1666 0754 08       		.byte	0x8
+ 1667 0755 3B       		.byte	0x3b
+ 1668 0756 00       		.byte	0
+ 1669              		.section	.debug_abbrev,"",%progbits
+ 1670              	.Ldebug_abbrev0:
+ 1671 0000 01       		.uleb128 0x1
+ 1672 0001 11       		.uleb128 0x11
+ 1673 0002 01       		.byte	0x1
+ 1674 0003 25       		.uleb128 0x25
+ 1675 0004 0E       		.uleb128 0xe
+ 1676 0005 13       		.uleb128 0x13
+ 1677 0006 0B       		.uleb128 0xb
+ 1678 0007 03       		.uleb128 0x3
+ 1679 0008 0E       		.uleb128 0xe
+ 1680 0009 1B       		.uleb128 0x1b
+ 1681 000a 0E       		.uleb128 0xe
+ 1682 000b 55       		.uleb128 0x55
+ 1683 000c 17       		.uleb128 0x17
+ 1684 000d 11       		.uleb128 0x11
+ 1685 000e 01       		.uleb128 0x1
+ 1686 000f 10       		.uleb128 0x10
+ 1687 0010 17       		.uleb128 0x17
+ 1688 0011 00       		.byte	0
+ 1689 0012 00       		.byte	0
+ 1690 0013 02       		.uleb128 0x2
+ 1691 0014 24       		.uleb128 0x24
+ 1692 0015 00       		.byte	0
+ 1693 0016 0B       		.uleb128 0xb
+ 1694 0017 0B       		.uleb128 0xb
+ 1695 0018 3E       		.uleb128 0x3e
+ 1696 0019 0B       		.uleb128 0xb
+ 1697 001a 03       		.uleb128 0x3
+ 1698 001b 0E       		.uleb128 0xe
+ 1699 001c 00       		.byte	0
+ 1700 001d 00       		.byte	0
+ 1701 001e 03       		.uleb128 0x3
+ 1702 001f 16       		.uleb128 0x16
+ 1703 0020 00       		.byte	0
+ 1704 0021 03       		.uleb128 0x3
+ 1705 0022 0E       		.uleb128 0xe
+ 1706 0023 3A       		.uleb128 0x3a
+ 1707 0024 0B       		.uleb128 0xb
+ARM GAS  C:\Users\frede\AppData\Local\Temp\ccUuc9U3.s 			page 36
+
+
+ 1708 0025 3B       		.uleb128 0x3b
+ 1709 0026 0B       		.uleb128 0xb
+ 1710 0027 49       		.uleb128 0x49
+ 1711 0028 13       		.uleb128 0x13
+ 1712 0029 00       		.byte	0
+ 1713 002a 00       		.byte	0
+ 1714 002b 04       		.uleb128 0x4
+ 1715 002c 24       		.uleb128 0x24
+ 1716 002d 00       		.byte	0
+ 1717 002e 0B       		.uleb128 0xb
+ 1718 002f 0B       		.uleb128 0xb
+ 1719 0030 3E       		.uleb128 0x3e
+ 1720 0031 0B       		.uleb128 0xb
+ 1721 0032 03       		.uleb128 0x3
+ 1722 0033 08       		.uleb128 0x8
+ 1723 0034 00       		.byte	0
+ 1724 0035 00       		.byte	0
+ 1725 0036 05       		.uleb128 0x5
+ 1726 0037 2E       		.uleb128 0x2e
+ 1727 0038 00       		.byte	0
+ 1728 0039 3F       		.uleb128 0x3f
+ 1729 003a 19       		.uleb128 0x19
+ 1730 003b 03       		.uleb128 0x3
+ 1731 003c 0E       		.uleb128 0xe
+ 1732 003d 3A       		.uleb128 0x3a
+ 1733 003e 0B       		.uleb128 0xb
+ 1734 003f 3B       		.uleb128 0x3b
+ 1735 0040 0B       		.uleb128 0xb
+ 1736 0041 27       		.uleb128 0x27
+ 1737 0042 19       		.uleb128 0x19
+ 1738 0043 11       		.uleb128 0x11
+ 1739 0044 01       		.uleb128 0x1
+ 1740 0045 12       		.uleb128 0x12
+ 1741 0046 06       		.uleb128 0x6
+ 1742 0047 40       		.uleb128 0x40
+ 1743 0048 18       		.uleb128 0x18
+ 1744 0049 9742     		.uleb128 0x2117
+ 1745 004b 19       		.uleb128 0x19
+ 1746 004c 00       		.byte	0
+ 1747 004d 00       		.byte	0
+ 1748 004e 06       		.uleb128 0x6
+ 1749 004f 2E       		.uleb128 0x2e
+ 1750 0050 01       		.byte	0x1
+ 1751 0051 3F       		.uleb128 0x3f
+ 1752 0052 19       		.uleb128 0x19
+ 1753 0053 03       		.uleb128 0x3
+ 1754 0054 0E       		.uleb128 0xe
+ 1755 0055 3A       		.uleb128 0x3a
+ 1756 0056 0B       		.uleb128 0xb
+ 1757 0057 3B       		.uleb128 0x3b
+ 1758 0058 0B       		.uleb128 0xb
+ 1759 0059 27       		.uleb128 0x27
+ 1760 005a 19       		.uleb128 0x19
+ 1761 005b 11       		.uleb128 0x11
+ 1762 005c 01       		.uleb128 0x1
+ 1763 005d 12       		.uleb128 0x12
+ 1764 005e 06       		.uleb128 0x6
+ARM GAS  C:\Users\frede\AppData\Local\Temp\ccUuc9U3.s 			page 37
+
+
+ 1765 005f 40       		.uleb128 0x40
+ 1766 0060 18       		.uleb128 0x18
+ 1767 0061 9742     		.uleb128 0x2117
+ 1768 0063 19       		.uleb128 0x19
+ 1769 0064 01       		.uleb128 0x1
+ 1770 0065 13       		.uleb128 0x13
+ 1771 0066 00       		.byte	0
+ 1772 0067 00       		.byte	0
+ 1773 0068 07       		.uleb128 0x7
+ 1774 0069 898201   		.uleb128 0x4109
+ 1775 006c 01       		.byte	0x1
+ 1776 006d 11       		.uleb128 0x11
+ 1777 006e 01       		.uleb128 0x1
+ 1778 006f 31       		.uleb128 0x31
+ 1779 0070 13       		.uleb128 0x13
+ 1780 0071 01       		.uleb128 0x1
+ 1781 0072 13       		.uleb128 0x13
+ 1782 0073 00       		.byte	0
+ 1783 0074 00       		.byte	0
+ 1784 0075 08       		.uleb128 0x8
+ 1785 0076 8A8201   		.uleb128 0x410a
+ 1786 0079 00       		.byte	0
+ 1787 007a 02       		.uleb128 0x2
+ 1788 007b 18       		.uleb128 0x18
+ 1789 007c 9142     		.uleb128 0x2111
+ 1790 007e 18       		.uleb128 0x18
+ 1791 007f 00       		.byte	0
+ 1792 0080 00       		.byte	0
+ 1793 0081 09       		.uleb128 0x9
+ 1794 0082 898201   		.uleb128 0x4109
+ 1795 0085 01       		.byte	0x1
+ 1796 0086 11       		.uleb128 0x11
+ 1797 0087 01       		.uleb128 0x1
+ 1798 0088 31       		.uleb128 0x31
+ 1799 0089 13       		.uleb128 0x13
+ 1800 008a 00       		.byte	0
+ 1801 008b 00       		.byte	0
+ 1802 008c 0A       		.uleb128 0xa
+ 1803 008d 2E       		.uleb128 0x2e
+ 1804 008e 01       		.byte	0x1
+ 1805 008f 3F       		.uleb128 0x3f
+ 1806 0090 19       		.uleb128 0x19
+ 1807 0091 03       		.uleb128 0x3
+ 1808 0092 0E       		.uleb128 0xe
+ 1809 0093 3A       		.uleb128 0x3a
+ 1810 0094 0B       		.uleb128 0xb
+ 1811 0095 3B       		.uleb128 0x3b
+ 1812 0096 0B       		.uleb128 0xb
+ 1813 0097 11       		.uleb128 0x11
+ 1814 0098 01       		.uleb128 0x1
+ 1815 0099 12       		.uleb128 0x12
+ 1816 009a 06       		.uleb128 0x6
+ 1817 009b 40       		.uleb128 0x40
+ 1818 009c 18       		.uleb128 0x18
+ 1819 009d 9742     		.uleb128 0x2117
+ 1820 009f 19       		.uleb128 0x19
+ 1821 00a0 01       		.uleb128 0x1
+ARM GAS  C:\Users\frede\AppData\Local\Temp\ccUuc9U3.s 			page 38
+
+
+ 1822 00a1 13       		.uleb128 0x13
+ 1823 00a2 00       		.byte	0
+ 1824 00a3 00       		.byte	0
+ 1825 00a4 0B       		.uleb128 0xb
+ 1826 00a5 898201   		.uleb128 0x4109
+ 1827 00a8 00       		.byte	0
+ 1828 00a9 11       		.uleb128 0x11
+ 1829 00aa 01       		.uleb128 0x1
+ 1830 00ab 31       		.uleb128 0x31
+ 1831 00ac 13       		.uleb128 0x13
+ 1832 00ad 00       		.byte	0
+ 1833 00ae 00       		.byte	0
+ 1834 00af 0C       		.uleb128 0xc
+ 1835 00b0 2E       		.uleb128 0x2e
+ 1836 00b1 01       		.byte	0x1
+ 1837 00b2 3F       		.uleb128 0x3f
+ 1838 00b3 19       		.uleb128 0x19
+ 1839 00b4 03       		.uleb128 0x3
+ 1840 00b5 0E       		.uleb128 0xe
+ 1841 00b6 3A       		.uleb128 0x3a
+ 1842 00b7 0B       		.uleb128 0xb
+ 1843 00b8 3B       		.uleb128 0x3b
+ 1844 00b9 0B       		.uleb128 0xb
+ 1845 00ba 49       		.uleb128 0x49
+ 1846 00bb 13       		.uleb128 0x13
+ 1847 00bc 11       		.uleb128 0x11
+ 1848 00bd 01       		.uleb128 0x1
+ 1849 00be 12       		.uleb128 0x12
+ 1850 00bf 06       		.uleb128 0x6
+ 1851 00c0 40       		.uleb128 0x40
+ 1852 00c1 18       		.uleb128 0x18
+ 1853 00c2 9742     		.uleb128 0x2117
+ 1854 00c4 19       		.uleb128 0x19
+ 1855 00c5 01       		.uleb128 0x1
+ 1856 00c6 13       		.uleb128 0x13
+ 1857 00c7 00       		.byte	0
+ 1858 00c8 00       		.byte	0
+ 1859 00c9 0D       		.uleb128 0xd
+ 1860 00ca 34       		.uleb128 0x34
+ 1861 00cb 00       		.byte	0
+ 1862 00cc 03       		.uleb128 0x3
+ 1863 00cd 0E       		.uleb128 0xe
+ 1864 00ce 3A       		.uleb128 0x3a
+ 1865 00cf 0B       		.uleb128 0xb
+ 1866 00d0 3B       		.uleb128 0x3b
+ 1867 00d1 0B       		.uleb128 0xb
+ 1868 00d2 49       		.uleb128 0x49
+ 1869 00d3 13       		.uleb128 0x13
+ 1870 00d4 02       		.uleb128 0x2
+ 1871 00d5 17       		.uleb128 0x17
+ 1872 00d6 00       		.byte	0
+ 1873 00d7 00       		.byte	0
+ 1874 00d8 0E       		.uleb128 0xe
+ 1875 00d9 2E       		.uleb128 0x2e
+ 1876 00da 01       		.byte	0x1
+ 1877 00db 3F       		.uleb128 0x3f
+ 1878 00dc 19       		.uleb128 0x19
+ARM GAS  C:\Users\frede\AppData\Local\Temp\ccUuc9U3.s 			page 39
+
+
+ 1879 00dd 03       		.uleb128 0x3
+ 1880 00de 0E       		.uleb128 0xe
+ 1881 00df 3A       		.uleb128 0x3a
+ 1882 00e0 0B       		.uleb128 0xb
+ 1883 00e1 3B       		.uleb128 0x3b
+ 1884 00e2 0B       		.uleb128 0xb
+ 1885 00e3 27       		.uleb128 0x27
+ 1886 00e4 19       		.uleb128 0x19
+ 1887 00e5 49       		.uleb128 0x49
+ 1888 00e6 13       		.uleb128 0x13
+ 1889 00e7 11       		.uleb128 0x11
+ 1890 00e8 01       		.uleb128 0x1
+ 1891 00e9 12       		.uleb128 0x12
+ 1892 00ea 06       		.uleb128 0x6
+ 1893 00eb 40       		.uleb128 0x40
+ 1894 00ec 18       		.uleb128 0x18
+ 1895 00ed 9742     		.uleb128 0x2117
+ 1896 00ef 19       		.uleb128 0x19
+ 1897 00f0 01       		.uleb128 0x1
+ 1898 00f1 13       		.uleb128 0x13
+ 1899 00f2 00       		.byte	0
+ 1900 00f3 00       		.byte	0
+ 1901 00f4 0F       		.uleb128 0xf
+ 1902 00f5 05       		.uleb128 0x5
+ 1903 00f6 00       		.byte	0
+ 1904 00f7 03       		.uleb128 0x3
+ 1905 00f8 0E       		.uleb128 0xe
+ 1906 00f9 3A       		.uleb128 0x3a
+ 1907 00fa 0B       		.uleb128 0xb
+ 1908 00fb 3B       		.uleb128 0x3b
+ 1909 00fc 0B       		.uleb128 0xb
+ 1910 00fd 49       		.uleb128 0x49
+ 1911 00fe 13       		.uleb128 0x13
+ 1912 00ff 02       		.uleb128 0x2
+ 1913 0100 17       		.uleb128 0x17
+ 1914 0101 00       		.byte	0
+ 1915 0102 00       		.byte	0
+ 1916 0103 10       		.uleb128 0x10
+ 1917 0104 34       		.uleb128 0x34
+ 1918 0105 00       		.byte	0
+ 1919 0106 03       		.uleb128 0x3
+ 1920 0107 0E       		.uleb128 0xe
+ 1921 0108 3A       		.uleb128 0x3a
+ 1922 0109 0B       		.uleb128 0xb
+ 1923 010a 3B       		.uleb128 0x3b
+ 1924 010b 0B       		.uleb128 0xb
+ 1925 010c 49       		.uleb128 0x49
+ 1926 010d 13       		.uleb128 0x13
+ 1927 010e 1C       		.uleb128 0x1c
+ 1928 010f 0B       		.uleb128 0xb
+ 1929 0110 00       		.byte	0
+ 1930 0111 00       		.byte	0
+ 1931 0112 11       		.uleb128 0x11
+ 1932 0113 34       		.uleb128 0x34
+ 1933 0114 00       		.byte	0
+ 1934 0115 03       		.uleb128 0x3
+ 1935 0116 0E       		.uleb128 0xe
+ARM GAS  C:\Users\frede\AppData\Local\Temp\ccUuc9U3.s 			page 40
+
+
+ 1936 0117 3A       		.uleb128 0x3a
+ 1937 0118 0B       		.uleb128 0xb
+ 1938 0119 3B       		.uleb128 0x3b
+ 1939 011a 0B       		.uleb128 0xb
+ 1940 011b 49       		.uleb128 0x49
+ 1941 011c 13       		.uleb128 0x13
+ 1942 011d 1C       		.uleb128 0x1c
+ 1943 011e 05       		.uleb128 0x5
+ 1944 011f 00       		.byte	0
+ 1945 0120 00       		.byte	0
+ 1946 0121 12       		.uleb128 0x12
+ 1947 0122 34       		.uleb128 0x34
+ 1948 0123 00       		.byte	0
+ 1949 0124 03       		.uleb128 0x3
+ 1950 0125 0E       		.uleb128 0xe
+ 1951 0126 3A       		.uleb128 0x3a
+ 1952 0127 0B       		.uleb128 0xb
+ 1953 0128 3B       		.uleb128 0x3b
+ 1954 0129 0B       		.uleb128 0xb
+ 1955 012a 49       		.uleb128 0x49
+ 1956 012b 13       		.uleb128 0x13
+ 1957 012c 1C       		.uleb128 0x1c
+ 1958 012d 0D       		.uleb128 0xd
+ 1959 012e 00       		.byte	0
+ 1960 012f 00       		.byte	0
+ 1961 0130 13       		.uleb128 0x13
+ 1962 0131 26       		.uleb128 0x26
+ 1963 0132 00       		.byte	0
+ 1964 0133 49       		.uleb128 0x49
+ 1965 0134 13       		.uleb128 0x13
+ 1966 0135 00       		.byte	0
+ 1967 0136 00       		.byte	0
+ 1968 0137 14       		.uleb128 0x14
+ 1969 0138 34       		.uleb128 0x34
+ 1970 0139 00       		.byte	0
+ 1971 013a 03       		.uleb128 0x3
+ 1972 013b 08       		.uleb128 0x8
+ 1973 013c 3A       		.uleb128 0x3a
+ 1974 013d 0B       		.uleb128 0xb
+ 1975 013e 3B       		.uleb128 0x3b
+ 1976 013f 0B       		.uleb128 0xb
+ 1977 0140 49       		.uleb128 0x49
+ 1978 0141 13       		.uleb128 0x13
+ 1979 0142 02       		.uleb128 0x2
+ 1980 0143 17       		.uleb128 0x17
+ 1981 0144 00       		.byte	0
+ 1982 0145 00       		.byte	0
+ 1983 0146 15       		.uleb128 0x15
+ 1984 0147 0B       		.uleb128 0xb
+ 1985 0148 01       		.byte	0x1
+ 1986 0149 55       		.uleb128 0x55
+ 1987 014a 17       		.uleb128 0x17
+ 1988 014b 01       		.uleb128 0x1
+ 1989 014c 13       		.uleb128 0x13
+ 1990 014d 00       		.byte	0
+ 1991 014e 00       		.byte	0
+ 1992 014f 16       		.uleb128 0x16
+ARM GAS  C:\Users\frede\AppData\Local\Temp\ccUuc9U3.s 			page 41
+
+
+ 1993 0150 2E       		.uleb128 0x2e
+ 1994 0151 01       		.byte	0x1
+ 1995 0152 3F       		.uleb128 0x3f
+ 1996 0153 19       		.uleb128 0x19
+ 1997 0154 03       		.uleb128 0x3
+ 1998 0155 0E       		.uleb128 0xe
+ 1999 0156 3A       		.uleb128 0x3a
+ 2000 0157 0B       		.uleb128 0xb
+ 2001 0158 3B       		.uleb128 0x3b
+ 2002 0159 0B       		.uleb128 0xb
+ 2003 015a 27       		.uleb128 0x27
+ 2004 015b 19       		.uleb128 0x19
+ 2005 015c 49       		.uleb128 0x49
+ 2006 015d 13       		.uleb128 0x13
+ 2007 015e 8701     		.uleb128 0x87
+ 2008 0160 19       		.uleb128 0x19
+ 2009 0161 11       		.uleb128 0x11
+ 2010 0162 01       		.uleb128 0x1
+ 2011 0163 12       		.uleb128 0x12
+ 2012 0164 06       		.uleb128 0x6
+ 2013 0165 40       		.uleb128 0x40
+ 2014 0166 18       		.uleb128 0x18
+ 2015 0167 9742     		.uleb128 0x2117
+ 2016 0169 19       		.uleb128 0x19
+ 2017 016a 01       		.uleb128 0x1
+ 2018 016b 13       		.uleb128 0x13
+ 2019 016c 00       		.byte	0
+ 2020 016d 00       		.byte	0
+ 2021 016e 17       		.uleb128 0x17
+ 2022 016f 34       		.uleb128 0x34
+ 2023 0170 00       		.byte	0
+ 2024 0171 03       		.uleb128 0x3
+ 2025 0172 0E       		.uleb128 0xe
+ 2026 0173 3A       		.uleb128 0x3a
+ 2027 0174 0B       		.uleb128 0xb
+ 2028 0175 3B       		.uleb128 0x3b
+ 2029 0176 05       		.uleb128 0x5
+ 2030 0177 49       		.uleb128 0x49
+ 2031 0178 13       		.uleb128 0x13
+ 2032 0179 3F       		.uleb128 0x3f
+ 2033 017a 19       		.uleb128 0x19
+ 2034 017b 3C       		.uleb128 0x3c
+ 2035 017c 19       		.uleb128 0x19
+ 2036 017d 00       		.byte	0
+ 2037 017e 00       		.byte	0
+ 2038 017f 18       		.uleb128 0x18
+ 2039 0180 35       		.uleb128 0x35
+ 2040 0181 00       		.byte	0
+ 2041 0182 49       		.uleb128 0x49
+ 2042 0183 13       		.uleb128 0x13
+ 2043 0184 00       		.byte	0
+ 2044 0185 00       		.byte	0
+ 2045 0186 19       		.uleb128 0x19
+ 2046 0187 34       		.uleb128 0x34
+ 2047 0188 00       		.byte	0
+ 2048 0189 03       		.uleb128 0x3
+ 2049 018a 0E       		.uleb128 0xe
+ARM GAS  C:\Users\frede\AppData\Local\Temp\ccUuc9U3.s 			page 42
+
+
+ 2050 018b 3A       		.uleb128 0x3a
+ 2051 018c 0B       		.uleb128 0xb
+ 2052 018d 3B       		.uleb128 0x3b
+ 2053 018e 0B       		.uleb128 0xb
+ 2054 018f 49       		.uleb128 0x49
+ 2055 0190 13       		.uleb128 0x13
+ 2056 0191 3F       		.uleb128 0x3f
+ 2057 0192 19       		.uleb128 0x19
+ 2058 0193 02       		.uleb128 0x2
+ 2059 0194 18       		.uleb128 0x18
+ 2060 0195 00       		.byte	0
+ 2061 0196 00       		.byte	0
+ 2062 0197 1A       		.uleb128 0x1a
+ 2063 0198 34       		.uleb128 0x34
+ 2064 0199 00       		.byte	0
+ 2065 019a 03       		.uleb128 0x3
+ 2066 019b 08       		.uleb128 0x8
+ 2067 019c 3A       		.uleb128 0x3a
+ 2068 019d 0B       		.uleb128 0xb
+ 2069 019e 3B       		.uleb128 0x3b
+ 2070 019f 0B       		.uleb128 0xb
+ 2071 01a0 49       		.uleb128 0x49
+ 2072 01a1 13       		.uleb128 0x13
+ 2073 01a2 3F       		.uleb128 0x3f
+ 2074 01a3 19       		.uleb128 0x19
+ 2075 01a4 02       		.uleb128 0x2
+ 2076 01a5 18       		.uleb128 0x18
+ 2077 01a6 00       		.byte	0
+ 2078 01a7 00       		.byte	0
+ 2079 01a8 1B       		.uleb128 0x1b
+ 2080 01a9 01       		.uleb128 0x1
+ 2081 01aa 01       		.byte	0x1
+ 2082 01ab 49       		.uleb128 0x49
+ 2083 01ac 13       		.uleb128 0x13
+ 2084 01ad 01       		.uleb128 0x1
+ 2085 01ae 13       		.uleb128 0x13
+ 2086 01af 00       		.byte	0
+ 2087 01b0 00       		.byte	0
+ 2088 01b1 1C       		.uleb128 0x1c
+ 2089 01b2 21       		.uleb128 0x21
+ 2090 01b3 00       		.byte	0
+ 2091 01b4 49       		.uleb128 0x49
+ 2092 01b5 13       		.uleb128 0x13
+ 2093 01b6 2F       		.uleb128 0x2f
+ 2094 01b7 0B       		.uleb128 0xb
+ 2095 01b8 00       		.byte	0
+ 2096 01b9 00       		.byte	0
+ 2097 01ba 1D       		.uleb128 0x1d
+ 2098 01bb 2E       		.uleb128 0x2e
+ 2099 01bc 00       		.byte	0
+ 2100 01bd 3F       		.uleb128 0x3f
+ 2101 01be 19       		.uleb128 0x19
+ 2102 01bf 3C       		.uleb128 0x3c
+ 2103 01c0 19       		.uleb128 0x19
+ 2104 01c1 6E       		.uleb128 0x6e
+ 2105 01c2 0E       		.uleb128 0xe
+ 2106 01c3 03       		.uleb128 0x3
+ARM GAS  C:\Users\frede\AppData\Local\Temp\ccUuc9U3.s 			page 43
+
+
+ 2107 01c4 0E       		.uleb128 0xe
+ 2108 01c5 3A       		.uleb128 0x3a
+ 2109 01c6 0B       		.uleb128 0xb
+ 2110 01c7 3B       		.uleb128 0x3b
+ 2111 01c8 0B       		.uleb128 0xb
+ 2112 01c9 00       		.byte	0
+ 2113 01ca 00       		.byte	0
+ 2114 01cb 00       		.byte	0
+ 2115              		.section	.debug_loc,"",%progbits
+ 2116              	.Ldebug_loc0:
+ 2117              	.LLST0:
+ 2118 0000 02000000 		.4byte	.LVL36
+ 2119 0004 50000000 		.4byte	.LVL42
+ 2120 0008 0200     		.2byte	0x2
+ 2121 000a 31       		.byte	0x31
+ 2122 000b 9F       		.byte	0x9f
+ 2123 000c 50000000 		.4byte	.LVL42
+ 2124 0010 5A000000 		.4byte	.LVL43
+ 2125 0014 0200     		.2byte	0x2
+ 2126 0016 32       		.byte	0x32
+ 2127 0017 9F       		.byte	0x9f
+ 2128 0018 5A000000 		.4byte	.LVL43
+ 2129 001c 66000000 		.4byte	.LVL45
+ 2130 0020 0200     		.2byte	0x2
+ 2131 0022 31       		.byte	0x31
+ 2132 0023 9F       		.byte	0x9f
+ 2133 0024 66000000 		.4byte	.LVL45
+ 2134 0028 6E000000 		.4byte	.LVL46
+ 2135 002c 0200     		.2byte	0x2
+ 2136 002e 32       		.byte	0x32
+ 2137 002f 9F       		.byte	0x9f
+ 2138 0030 00000000 		.4byte	0
+ 2139 0034 00000000 		.4byte	0
+ 2140              	.LLST1:
+ 2141 0038 00000000 		.4byte	.LVL47
+ 2142 003c 10000000 		.4byte	.LVL48
+ 2143 0040 0100     		.2byte	0x1
+ 2144 0042 50       		.byte	0x50
+ 2145 0043 10000000 		.4byte	.LVL48
+ 2146 0047 12000000 		.4byte	.LVL49
+ 2147 004b 0400     		.2byte	0x4
+ 2148 004d F3       		.byte	0xf3
+ 2149 004e 01       		.uleb128 0x1
+ 2150 004f 50       		.byte	0x50
+ 2151 0050 9F       		.byte	0x9f
+ 2152 0051 12000000 		.4byte	.LVL49
+ 2153 0055 18000000 		.4byte	.LVL51
+ 2154 0059 0100     		.2byte	0x1
+ 2155 005b 50       		.byte	0x50
+ 2156 005c 18000000 		.4byte	.LVL51
+ 2157 0060 20000000 		.4byte	.LVL52
+ 2158 0064 0300     		.2byte	0x3
+ 2159 0066 70       		.byte	0x70
+ 2160 0067 1E       		.sleb128 30
+ 2161 0068 9F       		.byte	0x9f
+ 2162 0069 00000000 		.4byte	0
+ 2163 006d 00000000 		.4byte	0
+ARM GAS  C:\Users\frede\AppData\Local\Temp\ccUuc9U3.s 			page 44
+
+
+ 2164              	.LLST2:
+ 2165 0071 2A000000 		.4byte	.LVL53
+ 2166 0075 2C000000 		.4byte	.LVL54
+ 2167 0079 0300     		.2byte	0x3
+ 2168 007b 70       		.byte	0x70
+ 2169 007c 57       		.sleb128 -41
+ 2170 007d 9F       		.byte	0x9f
+ 2171 007e 2C000000 		.4byte	.LVL54
+ 2172 0082 34000000 		.4byte	.LFE74
+ 2173 0086 0100     		.2byte	0x1
+ 2174 0088 50       		.byte	0x50
+ 2175 0089 00000000 		.4byte	0
+ 2176 008d 00000000 		.4byte	0
+ 2177              	.LLST3:
+ 2178 0091 02000000 		.4byte	.LVL55
+ 2179 0095 08000000 		.4byte	.LVL56
+ 2180 0099 0200     		.2byte	0x2
+ 2181 009b 30       		.byte	0x30
+ 2182 009c 9F       		.byte	0x9f
+ 2183 009d 08000000 		.4byte	.LVL56
+ 2184 00a1 1C000000 		.4byte	.LVL60
+ 2185 00a5 0100     		.2byte	0x1
+ 2186 00a7 55       		.byte	0x55
+ 2187 00a8 1C000000 		.4byte	.LVL60
+ 2188 00ac 20000000 		.4byte	.LVL61
+ 2189 00b0 0800     		.2byte	0x8
+ 2190 00b2 70       		.byte	0x70
+ 2191 00b3 00       		.sleb128 0
+ 2192 00b4 32       		.byte	0x32
+ 2193 00b5 26       		.byte	0x26
+ 2194 00b6 75       		.byte	0x75
+ 2195 00b7 00       		.sleb128 0
+ 2196 00b8 1C       		.byte	0x1c
+ 2197 00b9 9F       		.byte	0x9f
+ 2198 00ba 20000000 		.4byte	.LVL61
+ 2199 00be 23000000 		.4byte	.LVL62-1
+ 2200 00c2 0100     		.2byte	0x1
+ 2201 00c4 50       		.byte	0x50
+ 2202 00c5 00000000 		.4byte	0
+ 2203 00c9 00000000 		.4byte	0
+ 2204              	.LLST4:
+ 2205 00cd 02000000 		.4byte	.LVL55
+ 2206 00d1 08000000 		.4byte	.LVL56
+ 2207 00d5 0200     		.2byte	0x2
+ 2208 00d7 30       		.byte	0x30
+ 2209 00d8 9F       		.byte	0x9f
+ 2210 00d9 08000000 		.4byte	.LVL56
+ 2211 00dd 2C000000 		.4byte	.LVL63
+ 2212 00e1 0100     		.2byte	0x1
+ 2213 00e3 54       		.byte	0x54
+ 2214 00e4 00000000 		.4byte	0
+ 2215 00e8 00000000 		.4byte	0
+ 2216              		.section	.debug_aranges,"",%progbits
+ 2217 0000 6C000000 		.4byte	0x6c
+ 2218 0004 0200     		.2byte	0x2
+ 2219 0006 00000000 		.4byte	.Ldebug_info0
+ 2220 000a 04       		.byte	0x4
+ARM GAS  C:\Users\frede\AppData\Local\Temp\ccUuc9U3.s 			page 45
+
+
+ 2221 000b 00       		.byte	0
+ 2222 000c 0000     		.2byte	0
+ 2223 000e 0000     		.2byte	0
+ 2224 0010 00000000 		.4byte	.LFB70
+ 2225 0014 18000000 		.4byte	.LFE70-.LFB70
+ 2226 0018 00000000 		.4byte	.LFB71
+ 2227 001c C0000000 		.4byte	.LFE71-.LFB71
+ 2228 0020 00000000 		.4byte	.LFB66
+ 2229 0024 3C000000 		.4byte	.LFE66-.LFB66
+ 2230 0028 00000000 		.4byte	.LFB67
+ 2231 002c 0C000000 		.4byte	.LFE67-.LFB67
+ 2232 0030 00000000 		.4byte	.LFB68
+ 2233 0034 08000000 		.4byte	.LFE68-.LFB68
+ 2234 0038 00000000 		.4byte	.LFB69
+ 2235 003c 1C000000 		.4byte	.LFE69-.LFB69
+ 2236 0040 00000000 		.4byte	.LFB65
+ 2237 0044 14000000 		.4byte	.LFE65-.LFB65
+ 2238 0048 00000000 		.4byte	.LFB72
+ 2239 004c 9C000000 		.4byte	.LFE72-.LFB72
+ 2240 0050 00000000 		.4byte	.LFB74
+ 2241 0054 34000000 		.4byte	.LFE74-.LFB74
+ 2242 0058 00000000 		.4byte	.LFB73
+ 2243 005c 34000000 		.4byte	.LFE73-.LFB73
+ 2244 0060 00000000 		.4byte	.LFB64
+ 2245 0064 68000000 		.4byte	.LFE64-.LFB64
+ 2246 0068 00000000 		.4byte	0
+ 2247 006c 00000000 		.4byte	0
+ 2248              		.section	.debug_ranges,"",%progbits
+ 2249              	.Ldebug_ranges0:
+ 2250 0000 02000000 		.4byte	.LBB2
+ 2251 0004 04000000 		.4byte	.LBE2
+ 2252 0008 06000000 		.4byte	.LBB3
+ 2253 000c 14000000 		.4byte	.LBE3
+ 2254 0010 00000000 		.4byte	0
+ 2255 0014 00000000 		.4byte	0
+ 2256 0018 00000000 		.4byte	.LFB70
+ 2257 001c 18000000 		.4byte	.LFE70
+ 2258 0020 00000000 		.4byte	.LFB71
+ 2259 0024 C0000000 		.4byte	.LFE71
+ 2260 0028 00000000 		.4byte	.LFB66
+ 2261 002c 3C000000 		.4byte	.LFE66
+ 2262 0030 00000000 		.4byte	.LFB67
+ 2263 0034 0C000000 		.4byte	.LFE67
+ 2264 0038 00000000 		.4byte	.LFB68
+ 2265 003c 08000000 		.4byte	.LFE68
+ 2266 0040 00000000 		.4byte	.LFB69
+ 2267 0044 1C000000 		.4byte	.LFE69
+ 2268 0048 00000000 		.4byte	.LFB65
+ 2269 004c 14000000 		.4byte	.LFE65
+ 2270 0050 00000000 		.4byte	.LFB72
+ 2271 0054 9C000000 		.4byte	.LFE72
+ 2272 0058 00000000 		.4byte	.LFB74
+ 2273 005c 34000000 		.4byte	.LFE74
+ 2274 0060 00000000 		.4byte	.LFB73
+ 2275 0064 34000000 		.4byte	.LFE73
+ 2276 0068 00000000 		.4byte	.LFB64
+ 2277 006c 68000000 		.4byte	.LFE64
+ARM GAS  C:\Users\frede\AppData\Local\Temp\ccUuc9U3.s 			page 46
+
+
+ 2278 0070 00000000 		.4byte	0
+ 2279 0074 00000000 		.4byte	0
+ 2280              		.section	.debug_line,"",%progbits
+ 2281              	.Ldebug_line0:
+ 2282 0000 23030000 		.section	.debug_str,"MS",%progbits,1
+ 2282      0200FF01 
+ 2282      00000201 
+ 2282      FB0E0D00 
+ 2282      01010101 
+ 2283              	.LASF47:
+ 2284 0000 4144435F 		.ascii	"ADC_SAR_1_Start\000"
+ 2284      5341525F 
+ 2284      315F5374 
+ 2284      61727400 
+ 2285              	.LASF49:
+ 2286 0010 50574D5F 		.ascii	"PWM_1_Start\000"
+ 2286      315F5374 
+ 2286      61727400 
+ 2287              	.LASF38:
+ 2288 001c 74656D70 		.ascii	"tempbuffer\000"
+ 2288      62756666 
+ 2288      657200
+ 2289              	.LASF40:
+ 2290 0027 4C43445F 		.ascii	"LCD_WriteControl\000"
+ 2290      57726974 
+ 2290      65436F6E 
+ 2290      74726F6C 
+ 2290      00
+ 2291              	.LASF27:
+ 2292 0038 6164635F 		.ascii	"adc_max\000"
+ 2292      6D617800 
+ 2293              	.LASF2:
+ 2294 0040 73686F72 		.ascii	"short int\000"
+ 2294      7420696E 
+ 2294      7400
+ 2295              	.LASF17:
+ 2296 004a 73697A65 		.ascii	"sizetype\000"
+ 2296      74797065 
+ 2296      00
+ 2297              	.LASF25:
+ 2298 0053 6A756D70 		.ascii	"jump\000"
+ 2298      00
+ 2299              	.LASF59:
+ 2300 0058 6D61696E 		.ascii	"main\000"
+ 2300      00
+ 2301              	.LASF36:
+ 2302 005d 4C434462 		.ascii	"LCDbuffer\000"
+ 2302      75666665 
+ 2302      7200
+ 2303              	.LASF58:
+ 2304 0067 6164635F 		.ascii	"adc_value\000"
+ 2304      76616C75 
+ 2304      6500
+ 2305              	.LASF32:
+ 2306 0071 6C6F6F70 		.ascii	"loops\000"
+ 2306      7300
+ 2307              	.LASF51:
+ARM GAS  C:\Users\frede\AppData\Local\Temp\ccUuc9U3.s 			page 47
+
+
+ 2308 0077 6973725F 		.ascii	"isr_print_StartEx\000"
+ 2308      7072696E 
+ 2308      745F5374 
+ 2308      61727445 
+ 2308      7800
+ 2309              	.LASF31:
+ 2310 0089 41646A75 		.ascii	"AdjustDeg_SW\000"
+ 2310      73744465 
+ 2310      675F5357 
+ 2310      00
+ 2311              	.LASF52:
+ 2312 0096 4144435F 		.ascii	"ADC_SAR_1_GetResult16\000"
+ 2312      5341525F 
+ 2312      315F4765 
+ 2312      74526573 
+ 2312      756C7431 
+ 2313              	.LASF13:
+ 2314 00ac 666C6F61 		.ascii	"float\000"
+ 2314      7400
+ 2315              	.LASF8:
+ 2316 00b2 6C6F6E67 		.ascii	"long long int\000"
+ 2316      206C6F6E 
+ 2316      6720696E 
+ 2316      7400
+ 2317              	.LASF24:
+ 2318 00c0 47726164 		.ascii	"Gradient_SW\000"
+ 2318      69656E74 
+ 2318      5F535700 
+ 2319              	.LASF6:
+ 2320 00cc 6C6F6E67 		.ascii	"long int\000"
+ 2320      20696E74 
+ 2320      00
+ 2321              	.LASF37:
+ 2322 00d5 626C6F63 		.ascii	"block\000"
+ 2322      6B00
+ 2323              	.LASF19:
+ 2324 00db 496E6974 		.ascii	"Init_ADC\000"
+ 2324      5F414443 
+ 2324      00
+ 2325              	.LASF55:
+ 2326 00e4 433A5C53 		.ascii	"C:\\Skole\\Analogkontroller\\PRJ4.cydsn\000"
+ 2326      6B6F6C65 
+ 2326      5C416E61 
+ 2326      6C6F676B 
+ 2326      6F6E7472 
+ 2327              	.LASF45:
+ 2328 0109 4C43445F 		.ascii	"LCD_Start\000"
+ 2328      53746172 
+ 2328      7400
+ 2329              	.LASF16:
+ 2330 0113 6C6F6E67 		.ascii	"long double\000"
+ 2330      20646F75 
+ 2330      626C6500 
+ 2331              	.LASF30:
+ 2332 011f 64656772 		.ascii	"degrees\000"
+ 2332      65657300 
+ 2333              	.LASF57:
+ARM GAS  C:\Users\frede\AppData\Local\Temp\ccUuc9U3.s 			page 48
+
+
+ 2334 0127 61646354 		.ascii	"adcToDegrees\000"
+ 2334      6F446567 
+ 2334      72656573 
+ 2334      00
+ 2335              	.LASF23:
+ 2336 0134 4953525F 		.ascii	"ISR_print_handler\000"
+ 2336      7072696E 
+ 2336      745F6861 
+ 2336      6E646C65 
+ 2336      7200
+ 2337              	.LASF1:
+ 2338 0146 756E7369 		.ascii	"unsigned char\000"
+ 2338      676E6564 
+ 2338      20636861 
+ 2338      7200
+ 2339              	.LASF44:
+ 2340 0154 73707269 		.ascii	"sprintf\000"
+ 2340      6E746600 
+ 2341              	.LASF0:
+ 2342 015c 7369676E 		.ascii	"signed char\000"
+ 2342      65642063 
+ 2342      68617200 
+ 2343              	.LASF9:
+ 2344 0168 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 2344      206C6F6E 
+ 2344      6720756E 
+ 2344      7369676E 
+ 2344      65642069 
+ 2345              	.LASF10:
+ 2346 017f 756E7369 		.ascii	"unsigned int\000"
+ 2346      676E6564 
+ 2346      20696E74 
+ 2346      00
+ 2347              	.LASF42:
+ 2348 018c 4C43445F 		.ascii	"LCD_PrintString\000"
+ 2348      5072696E 
+ 2348      74537472 
+ 2348      696E6700 
+ 2349              	.LASF29:
+ 2350 019c 6465675F 		.ascii	"deg_max\000"
+ 2350      6D617800 
+ 2351              	.LASF22:
+ 2352 01a4 496E6974 		.ascii	"Init_ALL\000"
+ 2352      5F414C4C 
+ 2352      00
+ 2353              	.LASF3:
+ 2354 01ad 73686F72 		.ascii	"short unsigned int\000"
+ 2354      7420756E 
+ 2354      7369676E 
+ 2354      65642069 
+ 2354      6E7400
+ 2355              	.LASF39:
+ 2356 01c0 70617373 		.ascii	"pass\000"
+ 2356      00
+ 2357              	.LASF15:
+ 2358 01c5 63686172 		.ascii	"char\000"
+ 2358      00
+ARM GAS  C:\Users\frede\AppData\Local\Temp\ccUuc9U3.s 			page 49
+
+
+ 2359              	.LASF26:
+ 2360 01ca 6164635F 		.ascii	"adc_min\000"
+ 2360      6D696E00 
+ 2361              	.LASF48:
+ 2362 01d2 4144435F 		.ascii	"ADC_SAR_1_StartConvert\000"
+ 2362      5341525F 
+ 2362      315F5374 
+ 2362      61727443 
+ 2362      6F6E7665 
+ 2363              	.LASF12:
+ 2364 01e9 696E7433 		.ascii	"int32_t\000"
+ 2364      325F7400 
+ 2365              	.LASF28:
+ 2366 01f1 6465675F 		.ascii	"deg_min\000"
+ 2366      6D696E00 
+ 2367              	.LASF11:
+ 2368 01f9 696E7431 		.ascii	"int16_t\000"
+ 2368      365F7400 
+ 2369              	.LASF54:
+ 2370 0201 6D61696E 		.ascii	"main.c\000"
+ 2370      2E6300
+ 2371              	.LASF7:
+ 2372 0208 6C6F6E67 		.ascii	"long unsigned int\000"
+ 2372      20756E73 
+ 2372      69676E65 
+ 2372      6420696E 
+ 2372      7400
+ 2373              	.LASF14:
+ 2374 021a 646F7562 		.ascii	"double\000"
+ 2374      6C6500
+ 2375              	.LASF43:
+ 2376 0221 4C43445F 		.ascii	"LCD_PutChar\000"
+ 2376      50757443 
+ 2376      68617200 
+ 2377              	.LASF20:
+ 2378 022d 496E6974 		.ascii	"Init_PWM\000"
+ 2378      5F50574D 
+ 2378      00
+ 2379              	.LASF34:
+ 2380 0236 636F6E76 		.ascii	"convertedResult\000"
+ 2380      65727465 
+ 2380      64526573 
+ 2380      756C7400 
+ 2381              	.LASF50:
+ 2382 0246 6973725F 		.ascii	"isr_toggle_StartEx\000"
+ 2382      746F6767 
+ 2382      6C655F53 
+ 2382      74617274 
+ 2382      457800
+ 2383              	.LASF5:
+ 2384 0259 5F5F696E 		.ascii	"__int32_t\000"
+ 2384      7433325F 
+ 2384      7400
+ 2385              	.LASF4:
+ 2386 0263 5F5F696E 		.ascii	"__int16_t\000"
+ 2386      7431365F 
+ 2386      7400
+ARM GAS  C:\Users\frede\AppData\Local\Temp\ccUuc9U3.s 			page 50
+
+
+ 2387              	.LASF21:
+ 2388 026d 496E6974 		.ascii	"Init_ISR\000"
+ 2388      5F495352 
+ 2388      00
+ 2389              	.LASF41:
+ 2390 0276 4C43445F 		.ascii	"LCD_Position\000"
+ 2390      506F7369 
+ 2390      74696F6E 
+ 2390      00
+ 2391              	.LASF18:
+ 2392 0283 496E6974 		.ascii	"Init_LCD\000"
+ 2392      5F4C4344 
+ 2392      00
+ 2393              	.LASF33:
+ 2394 028c 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 2394      52784275 
+ 2394      66666572 
+ 2394      00
+ 2395              	.LASF53:
+ 2396 0299 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 2396      43313120 
+ 2396      352E342E 
+ 2396      31203230 
+ 2396      31363036 
+ 2397 02cc 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 2397      20726576 
+ 2397      6973696F 
+ 2397      6E203233 
+ 2397      37373135 
+ 2398 02ff 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 2398      66756E63 
+ 2398      74696F6E 
+ 2398      2D736563 
+ 2398      74696F6E 
+ 2399              	.LASF46:
+ 2400 0327 43794465 		.ascii	"CyDelay\000"
+ 2400      6C617900 
+ 2401              	.LASF35:
+ 2402 032f 746F6767 		.ascii	"toggle\000"
+ 2402      6C6500
+ 2403              	.LASF56:
+ 2404 0336 4953525F 		.ascii	"ISR_toggle_handler\000"
+ 2404      746F6767 
+ 2404      6C655F68 
+ 2404      616E646C 
+ 2404      657200
+ 2405              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
