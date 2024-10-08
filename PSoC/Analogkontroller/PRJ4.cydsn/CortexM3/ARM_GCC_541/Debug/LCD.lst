@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 1
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccMZ9jR7.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 1
   29:Generated_Source\PSoC5/LCD.c **** uint8 LCD_initVar = 0u;
   30:Generated_Source\PSoC5/LCD.c **** 
   31:Generated_Source\PSoC5/LCD.c **** 
-ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 2
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccMZ9jR7.s 			page 2
 
 
   32:Generated_Source\PSoC5/LCD.c **** /*******************************************************************************
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 1
   86:Generated_Source\PSoC5/LCD.c **** *
   87:Generated_Source\PSoC5/LCD.c **** * Summary:
   88:Generated_Source\PSoC5/LCD.c **** *  Turns on the display.
-ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 3
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccMZ9jR7.s 			page 3
 
 
   89:Generated_Source\PSoC5/LCD.c **** *
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 1
  143:Generated_Source\PSoC5/LCD.c ****         LCD_initVar = 1u;
  144:Generated_Source\PSoC5/LCD.c ****     }
  145:Generated_Source\PSoC5/LCD.c **** 
-ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 4
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccMZ9jR7.s 			page 4
 
 
  146:Generated_Source\PSoC5/LCD.c ****     /* Turn on the LCD */
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 1
  200:Generated_Source\PSoC5/LCD.c ****         case (uint8)0:
  201:Generated_Source\PSoC5/LCD.c ****             LCD_WriteControl(LCD_ROW_0_START + column);
  202:Generated_Source\PSoC5/LCD.c ****             break;
-ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 5
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccMZ9jR7.s 			page 5
 
 
  203:Generated_Source\PSoC5/LCD.c ****         case (uint8) 1:
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 1
  257:Generated_Source\PSoC5/LCD.c **** * Parameters:
  258:Generated_Source\PSoC5/LCD.c **** *  character: Character to be written to LCD
  259:Generated_Source\PSoC5/LCD.c **** *
-ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 6
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccMZ9jR7.s 			page 6
 
 
  260:Generated_Source\PSoC5/LCD.c **** * Return:
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 1
  314:Generated_Source\PSoC5/LCD.c **** void LCD_WriteControl(uint8 cByte) 
  315:Generated_Source\PSoC5/LCD.c **** {
  316:Generated_Source\PSoC5/LCD.c ****     uint8 nibble;
-ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 7
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccMZ9jR7.s 			page 7
 
 
  317:Generated_Source\PSoC5/LCD.c **** 
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 1
  371:Generated_Source\PSoC5/LCD.c ****         /* Mask off data pins to clear old values out */
  372:Generated_Source\PSoC5/LCD.c ****         value = LCD_PORT_DM0_REG & ((uint8)(~LCD_DATA_MASK));
  373:Generated_Source\PSoC5/LCD.c ****         /* Load in high Z values for data pins, others unchanged */
-ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 8
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccMZ9jR7.s 			page 8
 
 
  374:Generated_Source\PSoC5/LCD.c ****         LCD_PORT_DM0_REG = value | (LCD_HIGH_Z_DM0 & LCD_DATA_MASK);
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 1
  428:Generated_Source\PSoC5/LCD.c ****         {
  429:Generated_Source\PSoC5/LCD.c ****             CyDelayUs(10u);
  430:Generated_Source\PSoC5/LCD.c ****         }
-ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 9
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccMZ9jR7.s 			page 9
 
 
  431:Generated_Source\PSoC5/LCD.c **** 
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 1
  485:Generated_Source\PSoC5/LCD.c **** *******************************************************************************/
  486:Generated_Source\PSoC5/LCD.c **** static void LCD_WrDatNib(uint8 nibble) 
  487:Generated_Source\PSoC5/LCD.c **** {
-ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 10
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccMZ9jR7.s 			page 10
 
 
  488:Generated_Source\PSoC5/LCD.c ****     /* RS should be low to select data register */
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 1
   37 0002 0B4C     		ldr	r4, .L3
   38 0004 2378     		ldrb	r3, [r4]	@ zero_extendqisi2
   39 0006 03F09F03 		and	r3, r3, #159
-ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 11
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccMZ9jR7.s 			page 11
 
 
   40 000a 2370     		strb	r3, [r4]
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 1
   76              		@ args = 0, pretend = 0, frame = 0
   77              		@ frame_needed = 0, uses_anonymous_args = 0
   78              	.LVL3:
-ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 12
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccMZ9jR7.s 			page 12
 
 
   79 0000 38B5     		push	{r3, r4, r5, lr}
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 1
  126              		.align	2
  127              		.global	LCD_IsReady
  128              		.thumb
-ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 13
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccMZ9jR7.s 			page 13
 
 
  129              		.thumb_func
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 1
  174              		.loc 1 389 0
  175 0030 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
  176              	.LVL13:
-ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 14
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccMZ9jR7.s 			page 14
 
 
  177 0032 02F0DF02 		and	r2, r2, #223
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 1
  221 0076 43F01003 		orr	r3, r3, #16
  222 007a 2B70     		strb	r3, [r5]
  421:Generated_Source\PSoC5/LCD.c **** 
-ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 15
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccMZ9jR7.s 			page 15
 
 
  223              		.loc 1 421 0
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 1
  460:Generated_Source\PSoC5/LCD.c **** 
  267              		.loc 1 460 0
  268 00c0 43F00F03 		orr	r3, r3, #15
-ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 16
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccMZ9jR7.s 			page 16
 
 
  269              	.LVL26:
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 1
  317 000e 04F00F00 		and	r0, r4, #15
  318 0012 FFF7FEFF 		bl	LCD_WrDatNib
  319              	.LVL33:
-ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 17
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccMZ9jR7.s 			page 17
 
 
  320 0016 10BD     		pop	{r4, pc}
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 1
  366              		.loc 1 239 0
  367 0014 0028     		cmp	r0, #0
  368 0016 F8D1     		bne	.L20
-ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 18
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccMZ9jR7.s 			page 18
 
 
  245:Generated_Source\PSoC5/LCD.c **** 
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 1
  418              	.LVL45:
  323:Generated_Source\PSoC5/LCD.c ****     nibble = cByte & LCD_NIBBLE_MASK;
  419              		.loc 1 323 0
-ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 19
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccMZ9jR7.s 			page 19
 
 
  420 0008 2009     		lsrs	r0, r4, #4
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 1
   63:Generated_Source\PSoC5/LCD.c ****     CyDelay(1u);                                                         /* Delay 1 ms */
  467              		.loc 1 63 0
  468 0020 0320     		movs	r0, #3
-ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 20
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccMZ9jR7.s 			page 20
 
 
  469 0022 FFF7FEFF 		bl	LCD_WrCntrlNib
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 1
  512 0062 0520     		movs	r0, #5
  513 0064 FFF7FEFF 		bl	CyDelay
  514              	.LVL64:
-ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 21
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccMZ9jR7.s 			page 21
 
 
   78:Generated_Source\PSoC5/LCD.c ****     #endif /* LCD_CUSTOM_CHAR_SET != LCD_NONE */
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 1
  565              	LCD_Start:
  566              	.LFB2:
  138:Generated_Source\PSoC5/LCD.c ****     /* If not initialized, perform initialization */
-ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 22
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccMZ9jR7.s 			page 22
 
 
  567              		.loc 1 138 0
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 1
  615 0002 0820     		movs	r0, #8
  616 0004 FFF7FEFF 		bl	LCD_WriteControl
  617              	.LVL69:
-ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 23
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccMZ9jR7.s 			page 23
 
 
  172:Generated_Source\PSoC5/LCD.c **** }
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 1
  204:Generated_Source\PSoC5/LCD.c ****             break;
  667              		.loc 1 204 0
  668 0018 A1F14000 		sub	r0, r1, #64
-ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 24
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccMZ9jR7.s 			page 24
 
 
  669              	.LVL74:
@@ -1438,13 +1438,13 @@ ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 1
  719 0006 00000000 		.4byte	.Ldebug_abbrev0
  720 000a 04       		.byte	0x4
  721 000b 01       		.uleb128 0x1
-ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 25
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccMZ9jR7.s 			page 25
 
 
- 722 000c 98000000 		.4byte	.LASF46
+ 722 000c 05010000 		.4byte	.LASF46
  723 0010 0C       		.byte	0xc
- 724 0011 07020000 		.4byte	.LASF47
- 725 0015 B2010000 		.4byte	.LASF48
+ 724 0011 4F020000 		.4byte	.LASF47
+ 725 0015 49000000 		.4byte	.LASF48
  726 0019 00000000 		.4byte	.Ldebug_ranges0+0
  727 001d 00000000 		.4byte	0
  728 0021 00000000 		.4byte	.Ldebug_line0
@@ -1455,27 +1455,27 @@ ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 1
  733 002c 03       		.uleb128 0x3
  734 002d 04       		.byte	0x4
  735 002e 07       		.byte	0x7
- 736 002f A5010000 		.4byte	.LASF0
+ 736 002f 12020000 		.4byte	.LASF0
  737 0033 03       		.uleb128 0x3
  738 0034 08       		.byte	0x8
  739 0035 05       		.byte	0x5
- 740 0036 33020000 		.4byte	.LASF1
+ 740 0036 7B020000 		.4byte	.LASF1
  741 003a 03       		.uleb128 0x3
  742 003b 08       		.byte	0x8
  743 003c 04       		.byte	0x4
- 744 003d 92020000 		.4byte	.LASF2
+ 744 003d DA020000 		.4byte	.LASF2
  745 0041 03       		.uleb128 0x3
  746 0042 01       		.byte	0x1
  747 0043 06       		.byte	0x6
- 748 0044 9E020000 		.4byte	.LASF3
+ 748 0044 E6020000 		.4byte	.LASF3
  749 0048 03       		.uleb128 0x3
  750 0049 01       		.byte	0x1
  751 004a 08       		.byte	0x8
- 752 004b 8A000000 		.4byte	.LASF4
+ 752 004b F7000000 		.4byte	.LASF4
  753 004f 03       		.uleb128 0x3
  754 0050 02       		.byte	0x2
  755 0051 05       		.byte	0x5
- 756 0052 62020000 		.4byte	.LASF5
+ 756 0052 AA020000 		.4byte	.LASF5
  757 0056 03       		.uleb128 0x3
  758 0057 02       		.byte	0x2
  759 0058 07       		.byte	0x7
@@ -1483,58 +1483,58 @@ ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 1
  761 005d 03       		.uleb128 0x3
  762 005e 04       		.byte	0x4
  763 005f 05       		.byte	0x5
- 764 0060 74020000 		.4byte	.LASF7
+ 764 0060 BC020000 		.4byte	.LASF7
  765 0064 03       		.uleb128 0x3
  766 0065 04       		.byte	0x4
  767 0066 07       		.byte	0x7
- 768 0067 2B010000 		.4byte	.LASF8
+ 768 0067 98010000 		.4byte	.LASF8
  769 006b 03       		.uleb128 0x3
  770 006c 08       		.byte	0x8
  771 006d 07       		.byte	0x7
- 772 006e D7010000 		.4byte	.LASF9
+ 772 006e 1F020000 		.4byte	.LASF9
  773 0072 03       		.uleb128 0x3
  774 0073 04       		.byte	0x4
  775 0074 07       		.byte	0x7
- 776 0075 24020000 		.4byte	.LASF10
+ 776 0075 6C020000 		.4byte	.LASF10
  777 0079 03       		.uleb128 0x3
  778 007a 01       		.byte	0x1
-ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 26
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccMZ9jR7.s 			page 26
 
 
  779 007b 08       		.byte	0x8
- 780 007c 7D020000 		.4byte	.LASF11
+ 780 007c C5020000 		.4byte	.LASF11
  781 0080 04       		.uleb128 0x4
- 782 0081 51010000 		.4byte	.LASF12
+ 782 0081 BE010000 		.4byte	.LASF12
  783 0085 02       		.byte	0x2
  784 0086 E801     		.2byte	0x1e8
  785 0088 48000000 		.4byte	0x48
  786 008c 04       		.uleb128 0x4
- 787 008d 9E010000 		.4byte	.LASF13
+ 787 008d 0B020000 		.4byte	.LASF13
  788 0091 02       		.byte	0x2
  789 0092 EA01     		.2byte	0x1ea
  790 0094 64000000 		.4byte	0x64
  791 0098 03       		.uleb128 0x3
  792 0099 04       		.byte	0x4
  793 009a 04       		.byte	0x4
- 794 009b 7A000000 		.4byte	.LASF14
+ 794 009b E7000000 		.4byte	.LASF14
  795 009f 03       		.uleb128 0x3
  796 00a0 08       		.byte	0x8
  797 00a1 04       		.byte	0x4
- 798 00a2 66010000 		.4byte	.LASF15
+ 798 00a2 D3010000 		.4byte	.LASF15
  799 00a6 04       		.uleb128 0x4
- 800 00a7 2D020000 		.4byte	.LASF16
+ 800 00a7 75020000 		.4byte	.LASF16
  801 00ab 02       		.byte	0x2
  802 00ac F901     		.2byte	0x1f9
  803 00ae 79000000 		.4byte	0x79
  804 00b2 04       		.uleb128 0x4
- 805 00b3 26010000 		.4byte	.LASF17
+ 805 00b3 93010000 		.4byte	.LASF17
  806 00b7 02       		.byte	0x2
  807 00b8 9202     		.2byte	0x292
  808 00ba BE000000 		.4byte	0xbe
  809 00be 05       		.uleb128 0x5
  810 00bf 80000000 		.4byte	0x80
  811 00c3 06       		.uleb128 0x6
- 812 00c4 57010000 		.4byte	.LASF18
+ 812 00c4 C4010000 		.4byte	.LASF18
  813 00c8 01       		.byte	0x1
  814 00c9 1002     		.2byte	0x210
  815 00cb 00000000 		.4byte	.LFB11
@@ -1543,7 +1543,7 @@ ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 1
  818 00d4 9C       		.byte	0x9c
  819 00d5 F9000000 		.4byte	0xf9
  820 00d9 07       		.uleb128 0x7
- 821 00da BE020000 		.4byte	.LASF20
+ 821 00da 06030000 		.4byte	.LASF20
  822 00de 01       		.byte	0x1
  823 00df 1002     		.2byte	0x210
  824 00e1 80000000 		.4byte	0x80
@@ -1558,11 +1558,11 @@ ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 1
  833 00f6 31       		.byte	0x31
  834 00f7 00       		.byte	0
  835 00f8 00       		.byte	0
-ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 27
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccMZ9jR7.s 			page 27
 
 
  836 00f9 06       		.uleb128 0x6
- 837 00fa 58000000 		.4byte	.LASF19
+ 837 00fa C5000000 		.4byte	.LASF19
  838 00fe 01       		.byte	0x1
  839 00ff E601     		.2byte	0x1e6
  840 0101 00000000 		.4byte	.LFB10
@@ -1571,7 +1571,7 @@ ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 1
  843 010a 9C       		.byte	0x9c
  844 010b 42010000 		.4byte	0x142
  845 010f 07       		.uleb128 0x7
- 846 0110 BE020000 		.4byte	.LASF20
+ 846 0110 06030000 		.4byte	.LASF20
  847 0114 01       		.byte	0x1
  848 0115 E601     		.2byte	0x1e6
  849 0117 80000000 		.4byte	0x80
@@ -1597,7 +1597,7 @@ ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 1
  869 0140 00       		.byte	0
  870 0141 00       		.byte	0
  871 0142 0B       		.uleb128 0xb
- 872 0143 92010000 		.4byte	.LASF23
+ 872 0143 FF010000 		.4byte	.LASF23
  873 0147 01       		.byte	0x1
  874 0148 5C01     		.2byte	0x15c
  875 014a 00000000 		.4byte	.LFB9
@@ -1612,13 +1612,13 @@ ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 1
  884 0160 80000000 		.4byte	0x80
  885 0164 42000000 		.4byte	.LLST2
  886 0168 0C       		.uleb128 0xc
- 887 0169 41020000 		.4byte	.LASF22
+ 887 0169 89020000 		.4byte	.LASF22
  888 016d 01       		.byte	0x1
  889 016e 5F01     		.2byte	0x15f
  890 0170 8C000000 		.4byte	0x8c
  891 0174 AF000000 		.4byte	.LLST3
  892 0178 0A       		.uleb128 0xa
-ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 28
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccMZ9jR7.s 			page 28
 
 
  893 0179 4A000000 		.4byte	.LVL16
@@ -1671,25 +1671,25 @@ ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 1
  940 01d2 00       		.byte	0
  941 01d3 00       		.byte	0
  942 01d4 0B       		.uleb128 0xb
- 943 01d5 6C000000 		.4byte	.LASF24
+ 943 01d5 D9000000 		.4byte	.LASF24
  944 01d9 01       		.byte	0x1
  945 01da 1C01     		.2byte	0x11c
  946 01dc 00000000 		.4byte	.LFB7
  947 01e0 18000000 		.4byte	.LFE7-.LFB7
  948 01e4 01       		.uleb128 0x1
  949 01e5 9C       		.byte	0x9c
-ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 29
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccMZ9jR7.s 			page 29
 
 
  950 01e6 3C020000 		.4byte	0x23c
  951 01ea 07       		.uleb128 0x7
- 952 01eb AA020000 		.4byte	.LASF25
+ 952 01eb F2020000 		.4byte	.LASF25
  953 01ef 01       		.byte	0x1
  954 01f0 1C01     		.2byte	0x11c
  955 01f2 80000000 		.4byte	0x80
  956 01f6 D0000000 		.4byte	.LLST4
  957 01fa 0C       		.uleb128 0xc
- 958 01fb BE020000 		.4byte	.LASF20
+ 958 01fb 06030000 		.4byte	.LASF20
  959 01ff 01       		.byte	0x1
  960 0200 1E01     		.2byte	0x11e
  961 0202 80000000 		.4byte	0x80
@@ -1724,7 +1724,7 @@ ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 1
  990 023a 00       		.byte	0
  991 023b 00       		.byte	0
  992 023c 0E       		.uleb128 0xe
- 993 023d 78010000 		.4byte	.LASF26
+ 993 023d E5010000 		.4byte	.LASF26
  994 0241 01       		.byte	0x1
  995 0242 E9       		.byte	0xe9
  996 0243 00000000 		.4byte	.LFB5
@@ -1733,22 +1733,22 @@ ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 1
  999 024c 9C       		.byte	0x9c
  1000 024d 88020000 		.4byte	0x288
  1001 0251 0F       		.uleb128 0xf
- 1002 0252 51000000 		.4byte	.LASF27
+ 1002 0252 BE000000 		.4byte	.LASF27
  1003 0256 01       		.byte	0x1
  1004 0257 E9       		.byte	0xe9
  1005 0258 88020000 		.4byte	0x288
  1006 025c 17010000 		.4byte	.LLST6
-ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 30
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccMZ9jR7.s 			page 30
 
 
  1007 0260 10       		.uleb128 0x10
- 1008 0261 49000000 		.4byte	.LASF28
+ 1008 0261 B6000000 		.4byte	.LASF28
  1009 0265 01       		.byte	0x1
  1010 0266 EB       		.byte	0xeb
  1011 0267 80000000 		.4byte	0x80
  1012 026b 35010000 		.4byte	.LLST7
  1013 026f 10       		.uleb128 0x10
- 1014 0270 6C020000 		.4byte	.LASF29
+ 1014 0270 B4020000 		.4byte	.LASF29
  1015 0274 01       		.byte	0x1
  1016 0275 EC       		.byte	0xec
  1017 0276 A6000000 		.4byte	0xa6
@@ -1763,7 +1763,7 @@ ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 1
  1026 028e 12       		.uleb128 0x12
  1027 028f A6000000 		.4byte	0xa6
  1028 0293 0B       		.uleb128 0xb
- 1029 0294 FB010000 		.4byte	.LASF30
+ 1029 0294 43020000 		.4byte	.LASF30
  1030 0298 01       		.byte	0x1
  1031 0299 0801     		.2byte	0x108
  1032 029b 00000000 		.4byte	.LFB6
@@ -1791,14 +1791,14 @@ ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 1
  1054 02d4 9C       		.byte	0x9c
  1055 02d5 2B030000 		.4byte	0x32b
  1056 02d9 07       		.uleb128 0x7
- 1057 02da B8020000 		.4byte	.LASF33
+ 1057 02da 00030000 		.4byte	.LASF33
  1058 02de 01       		.byte	0x1
  1059 02df 3A01     		.2byte	0x13a
  1060 02e1 80000000 		.4byte	0x80
  1061 02e5 9E010000 		.4byte	.LLST10
  1062 02e9 0C       		.uleb128 0xc
- 1063 02ea BE020000 		.4byte	.LASF20
-ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 31
+ 1063 02ea 06030000 		.4byte	.LASF20
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccMZ9jR7.s 			page 31
 
 
  1064 02ee 01       		.byte	0x1
@@ -1835,7 +1835,7 @@ ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 1
  1095 0329 00       		.byte	0
  1096 032a 00       		.byte	0
  1097 032b 0E       		.uleb128 0xe
- 1098 032c 59020000 		.4byte	.LASF34
+ 1098 032c A1020000 		.4byte	.LASF34
  1099 0330 01       		.byte	0x1
  1100 0331 37       		.byte	0x37
  1101 0332 00000000 		.4byte	.LFB0
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 1
  1118 0355 0E000000 		.4byte	.LVL49
  1119 0359 C3000000 		.4byte	0xc3
  1120 035d 67030000 		.4byte	0x367
-ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 32
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccMZ9jR7.s 			page 32
 
 
  1121 0361 09       		.uleb128 0x9
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 1
  1175 03c4 31       		.byte	0x31
  1176 03c5 00       		.byte	0
  1177 03c6 0A       		.uleb128 0xa
-ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 33
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccMZ9jR7.s 			page 33
 
 
  1178 03c7 32000000 		.4byte	.LVL55
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 1
  1232 0433 09       		.uleb128 0x9
  1233 0434 01       		.uleb128 0x1
  1234 0435 50       		.byte	0x50
-ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 34
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccMZ9jR7.s 			page 34
 
 
  1235 0436 01       		.uleb128 0x1
@@ -2029,7 +2029,7 @@ ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 1
  1280 048a B6050000 		.4byte	0x5b6
  1281 048e 00       		.byte	0
  1282 048f 0E       		.uleb128 0xe
- 1283 0490 6D010000 		.4byte	.LASF35
+ 1283 0490 DA010000 		.4byte	.LASF35
  1284 0494 01       		.byte	0x1
  1285 0495 68       		.byte	0x68
  1286 0496 00000000 		.4byte	.LFB1
@@ -2038,7 +2038,7 @@ ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 1
  1289 049f 9C       		.byte	0x9c
  1290 04a0 B4040000 		.4byte	0x4b4
  1291 04a4 08       		.uleb128 0x8
-ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 35
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccMZ9jR7.s 			page 35
 
 
  1292 04a5 08000000 		.4byte	.LVL66
@@ -2051,7 +2051,7 @@ ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 1
  1299 04b2 00       		.byte	0
  1300 04b3 00       		.byte	0
  1301 04b4 0E       		.uleb128 0xe
- 1302 04b5 80000000 		.4byte	.LASF36
+ 1302 04b5 ED000000 		.4byte	.LASF36
  1303 04b9 01       		.byte	0x1
  1304 04ba 89       		.byte	0x89
  1305 04bb 00000000 		.4byte	.LFB2
@@ -2086,7 +2086,7 @@ ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 1
  1334 04ff 00       		.byte	0
  1335 0500 00       		.byte	0
  1336 0501 0E       		.uleb128 0xe
- 1337 0502 EE010000 		.4byte	.LASF38
+ 1337 0502 36020000 		.4byte	.LASF38
  1338 0506 01       		.byte	0x1
  1339 0507 C4       		.byte	0xc4
  1340 0508 00000000 		.4byte	.LFB4
@@ -2098,13 +2098,13 @@ ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 1
  1346 0517 726F7700 		.ascii	"row\000"
  1347 051b 01       		.byte	0x1
  1348 051c C4       		.byte	0xc4
-ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 36
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccMZ9jR7.s 			page 36
 
 
  1349 051d 80000000 		.4byte	0x80
  1350 0521 E5010000 		.4byte	.LLST12
  1351 0525 0F       		.uleb128 0xf
- 1352 0526 65000000 		.4byte	.LASF39
+ 1352 0526 D2000000 		.4byte	.LASF39
  1353 052a 01       		.byte	0x1
  1354 052b C4       		.byte	0xc4
  1355 052c 80000000 		.4byte	0x80
@@ -2131,7 +2131,7 @@ ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 1
  1376 0565 03       		.byte	0x3
  1377 0566 00000000 		.4byte	LCD_initVar
  1378 056a 14       		.uleb128 0x14
- 1379 056b 49020000 		.4byte	.LASF41
+ 1379 056b 91020000 		.4byte	.LASF41
  1380 056f 01       		.byte	0x1
  1381 0570 1B       		.byte	0x1b
  1382 0571 80000000 		.4byte	0x80
@@ -2148,28 +2148,28 @@ ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 1
  1393 058b 12       		.uleb128 0x12
  1394 058c 80000000 		.4byte	0x80
  1395 0590 17       		.uleb128 0x17
- 1396 0591 82020000 		.4byte	.LASF42
+ 1396 0591 CA020000 		.4byte	.LASF42
  1397 0595 03       		.byte	0x3
  1398 0596 77       		.byte	0x77
  1399 0597 9B050000 		.4byte	0x59b
  1400 059b 12       		.uleb128 0x12
  1401 059c 7B050000 		.4byte	0x57b
  1402 05a0 18       		.uleb128 0x18
- 1403 05a1 88010000 		.4byte	.LASF43
- 1404 05a5 88010000 		.4byte	.LASF43
+ 1403 05a1 F5010000 		.4byte	.LASF43
+ 1404 05a5 F5010000 		.4byte	.LASF43
  1405 05a9 04       		.byte	0x4
-ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 37
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccMZ9jR7.s 			page 37
 
 
  1406 05aa 77       		.byte	0x77
  1407 05ab 18       		.uleb128 0x18
- 1408 05ac B0020000 		.4byte	.LASF44
- 1409 05b0 B0020000 		.4byte	.LASF44
+ 1408 05ac F8020000 		.4byte	.LASF44
+ 1409 05b0 F8020000 		.4byte	.LASF44
  1410 05b4 04       		.byte	0x4
  1411 05b5 76       		.byte	0x76
  1412 05b6 18       		.uleb128 0x18
- 1413 05b7 3D010000 		.4byte	.LASF45
- 1414 05bb 3D010000 		.4byte	.LASF45
+ 1413 05b7 AA010000 		.4byte	.LASF45
+ 1414 05bb AA010000 		.4byte	.LASF45
  1415 05bf 03       		.byte	0x3
  1416 05c0 55       		.byte	0x55
  1417 05c1 00       		.byte	0
@@ -2218,7 +2218,7 @@ ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 1
  1460 0028 00       		.byte	0
  1461 0029 04       		.uleb128 0x4
  1462 002a 16       		.uleb128 0x16
-ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 38
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccMZ9jR7.s 			page 38
 
 
  1463 002b 00       		.byte	0
@@ -2278,7 +2278,7 @@ ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 1
  1517 0062 00       		.byte	0
  1518 0063 00       		.byte	0
  1519 0064 08       		.uleb128 0x8
-ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 39
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccMZ9jR7.s 			page 39
 
 
  1520 0065 898201   		.uleb128 0x4109
@@ -2338,7 +2338,7 @@ ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 1
  1574 00a3 34       		.uleb128 0x34
  1575 00a4 00       		.byte	0
  1576 00a5 03       		.uleb128 0x3
-ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 40
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccMZ9jR7.s 			page 40
 
 
  1577 00a6 0E       		.uleb128 0xe
@@ -2398,7 +2398,7 @@ ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 1
  1631 00df 49       		.uleb128 0x49
  1632 00e0 13       		.uleb128 0x13
  1633 00e1 02       		.uleb128 0x2
-ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 41
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccMZ9jR7.s 			page 41
 
 
  1634 00e2 17       		.uleb128 0x17
@@ -2458,7 +2458,7 @@ ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 1
  1688 0118 3A       		.uleb128 0x3a
  1689 0119 0B       		.uleb128 0xb
  1690 011a 3B       		.uleb128 0x3b
-ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 42
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccMZ9jR7.s 			page 42
 
 
  1691 011b 0B       		.uleb128 0xb
@@ -2518,7 +2518,7 @@ ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 1
  1745 0151 0E       		.uleb128 0xe
  1746 0152 3A       		.uleb128 0x3a
  1747 0153 0B       		.uleb128 0xb
-ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 43
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccMZ9jR7.s 			page 43
 
 
  1748 0154 3B       		.uleb128 0x3b
@@ -2578,7 +2578,7 @@ ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 1
  1802 0073 38000000 		.4byte	.LVL14
  1803 0077 0200     		.2byte	0x2
  1804 0079 71       		.byte	0x71
-ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 44
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccMZ9jR7.s 			page 44
 
 
  1805 007a 00       		.sleb128 0
@@ -2638,7 +2638,7 @@ ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 1
  1859 00ff 9F       		.byte	0x9f
  1860 0100 0E000000 		.4byte	.LVL32
  1861 0104 18000000 		.4byte	.LFE7
-ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 45
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccMZ9jR7.s 			page 45
 
 
  1862 0108 0500     		.2byte	0x5
@@ -2698,7 +2698,7 @@ ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 1
  1916 0192 F3       		.byte	0xf3
  1917 0193 01       		.uleb128 0x1
  1918 0194 50       		.byte	0x50
-ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 46
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccMZ9jR7.s 			page 46
 
 
  1919 0195 9F       		.byte	0x9f
@@ -2758,7 +2758,7 @@ ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 1
  1973 0211 0400     		.2byte	0x4
  1974 0213 F3       		.byte	0xf3
  1975 0214 01       		.uleb128 0x1
-ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 47
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccMZ9jR7.s 			page 47
 
 
  1976 0215 50       		.byte	0x50
@@ -2818,7 +2818,7 @@ ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 1
  2030 0292 30000000 		.4byte	.LVL79
  2031 0296 0400     		.2byte	0x4
  2032 0298 F3       		.byte	0xf3
-ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 48
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccMZ9jR7.s 			page 48
 
 
  2033 0299 01       		.uleb128 0x1
@@ -2878,7 +2878,7 @@ ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 1
  2087 0008 00000000 		.4byte	.LFB10
  2088 000c 44000000 		.4byte	.LFE10
  2089 0010 00000000 		.4byte	.LFB9
-ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 49
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccMZ9jR7.s 			page 49
 
 
  2090 0014 E4000000 		.4byte	.LFE9
@@ -2936,204 +2936,214 @@ ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 1
  2125      7369676E 
  2125      65642069 
  2125      6E7400
- 2126              	.LASF28:
- 2127 0049 696E6465 		.ascii	"indexU8\000"
-ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 50
+ 2126              	.LASF48:
+ 2127 0049 433A5C55 		.ascii	"C:\\Users\\degn\\OneDrive - Aarhus universitet\\Skr"
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccMZ9jR7.s 			page 50
 
 
- 2127      78553800 
- 2128              	.LASF27:
- 2129 0051 73747269 		.ascii	"string\000"
- 2129      6E6700
- 2130              	.LASF19:
- 2131 0058 4C43445F 		.ascii	"LCD_WrDatNib\000"
- 2131      57724461 
- 2131      744E6962 
- 2131      00
- 2132              	.LASF39:
- 2133 0065 636F6C75 		.ascii	"column\000"
- 2133      6D6E00
- 2134              	.LASF24:
- 2135 006c 4C43445F 		.ascii	"LCD_WriteData\000"
- 2135      57726974 
- 2135      65446174 
- 2135      6100
- 2136              	.LASF14:
- 2137 007a 666C6F61 		.ascii	"float\000"
- 2137      7400
- 2138              	.LASF36:
- 2139 0080 4C43445F 		.ascii	"LCD_Start\000"
- 2139      53746172 
- 2139      7400
- 2140              	.LASF4:
- 2141 008a 756E7369 		.ascii	"unsigned char\000"
- 2141      676E6564 
- 2141      20636861 
- 2141      7200
- 2142              	.LASF46:
- 2143 0098 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
- 2143      43313120 
- 2143      352E342E 
- 2143      31203230 
- 2143      31363036 
- 2144 00cb 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
- 2144      20726576 
- 2144      6973696F 
- 2144      6E203233 
- 2144      37373135 
- 2145 00fe 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
- 2145      66756E63 
- 2145      74696F6E 
- 2145      2D736563 
- 2145      74696F6E 
- 2146              	.LASF17:
- 2147 0126 72656738 		.ascii	"reg8\000"
- 2147      00
- 2148              	.LASF8:
- 2149 012b 6C6F6E67 		.ascii	"long unsigned int\000"
- 2149      20756E73 
- 2149      69676E65 
- 2149      6420696E 
- 2149      7400
- 2150              	.LASF45:
- 2151 013d 4C43445F 		.ascii	"LCD_LoadCustomFonts\000"
- 2151      4C6F6164 
-ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 51
+ 2127      73657273 
+ 2127      5C646567 
+ 2127      6E5C4F6E 
+ 2127      65447269 
+ 2128 0078 69766562 		.ascii	"ivebord\\AU\\E4\\PRJ4\\Git\\E4PRJ\\PSoC\\Analogkont"
+ 2128      6F72645C 
+ 2128      41555C45 
+ 2128      345C5052 
+ 2128      4A345C47 
+ 2129 00a4 726F6C6C 		.ascii	"roller\\PRJ4.cydsn\000"
+ 2129      65725C50 
+ 2129      524A342E 
+ 2129      63796473 
+ 2129      6E00
+ 2130              	.LASF28:
+ 2131 00b6 696E6465 		.ascii	"indexU8\000"
+ 2131      78553800 
+ 2132              	.LASF27:
+ 2133 00be 73747269 		.ascii	"string\000"
+ 2133      6E6700
+ 2134              	.LASF19:
+ 2135 00c5 4C43445F 		.ascii	"LCD_WrDatNib\000"
+ 2135      57724461 
+ 2135      744E6962 
+ 2135      00
+ 2136              	.LASF39:
+ 2137 00d2 636F6C75 		.ascii	"column\000"
+ 2137      6D6E00
+ 2138              	.LASF24:
+ 2139 00d9 4C43445F 		.ascii	"LCD_WriteData\000"
+ 2139      57726974 
+ 2139      65446174 
+ 2139      6100
+ 2140              	.LASF14:
+ 2141 00e7 666C6F61 		.ascii	"float\000"
+ 2141      7400
+ 2142              	.LASF36:
+ 2143 00ed 4C43445F 		.ascii	"LCD_Start\000"
+ 2143      53746172 
+ 2143      7400
+ 2144              	.LASF4:
+ 2145 00f7 756E7369 		.ascii	"unsigned char\000"
+ 2145      676E6564 
+ 2145      20636861 
+ 2145      7200
+ 2146              	.LASF46:
+ 2147 0105 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 2147      43313120 
+ 2147      352E342E 
+ 2147      31203230 
+ 2147      31363036 
+ 2148 0138 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 2148      20726576 
+ 2148      6973696F 
+ 2148      6E203233 
+ 2148      37373135 
+ 2149 016b 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccMZ9jR7.s 			page 51
 
 
- 2151      43757374 
- 2151      6F6D466F 
- 2151      6E747300 
- 2152              	.LASF12:
- 2153 0151 75696E74 		.ascii	"uint8\000"
- 2153      3800
- 2154              	.LASF18:
- 2155 0157 4C43445F 		.ascii	"LCD_WrCntrlNib\000"
- 2155      5772436E 
- 2155      74726C4E 
- 2155      696200
- 2156              	.LASF15:
- 2157 0166 646F7562 		.ascii	"double\000"
- 2157      6C6500
- 2158              	.LASF35:
- 2159 016d 4C43445F 		.ascii	"LCD_Enable\000"
- 2159      456E6162 
- 2159      6C6500
- 2160              	.LASF26:
- 2161 0178 4C43445F 		.ascii	"LCD_PrintString\000"
- 2161      5072696E 
- 2161      74537472 
- 2161      696E6700 
- 2162              	.LASF43:
- 2163 0188 43794465 		.ascii	"CyDelayUs\000"
- 2163      6C617955 
- 2163      7300
- 2164              	.LASF23:
- 2165 0192 4C43445F 		.ascii	"LCD_IsReady\000"
- 2165      49735265 
- 2165      61647900 
- 2166              	.LASF13:
- 2167 019e 75696E74 		.ascii	"uint32\000"
- 2167      333200
- 2168              	.LASF0:
- 2169 01a5 756E7369 		.ascii	"unsigned int\000"
- 2169      676E6564 
- 2169      20696E74 
- 2169      00
- 2170              	.LASF48:
- 2171 01b2 433A5C53 		.ascii	"C:\\Skole\\Analogkontroller\\PRJ4.cydsn\000"
- 2171      6B6F6C65 
- 2171      5C416E61 
- 2171      6C6F676B 
- 2171      6F6E7472 
- 2172              	.LASF9:
- 2173 01d7 6C6F6E67 		.ascii	"long long unsigned int\000"
- 2173      206C6F6E 
- 2173      6720756E 
- 2173      7369676E 
- 2173      65642069 
- 2174              	.LASF38:
- 2175 01ee 4C43445F 		.ascii	"LCD_Position\000"
- 2175      506F7369 
- 2175      74696F6E 
- 2175      00
- 2176              	.LASF30:
-ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 52
+ 2149      66756E63 
+ 2149      74696F6E 
+ 2149      2D736563 
+ 2149      74696F6E 
+ 2150              	.LASF17:
+ 2151 0193 72656738 		.ascii	"reg8\000"
+ 2151      00
+ 2152              	.LASF8:
+ 2153 0198 6C6F6E67 		.ascii	"long unsigned int\000"
+ 2153      20756E73 
+ 2153      69676E65 
+ 2153      6420696E 
+ 2153      7400
+ 2154              	.LASF45:
+ 2155 01aa 4C43445F 		.ascii	"LCD_LoadCustomFonts\000"
+ 2155      4C6F6164 
+ 2155      43757374 
+ 2155      6F6D466F 
+ 2155      6E747300 
+ 2156              	.LASF12:
+ 2157 01be 75696E74 		.ascii	"uint8\000"
+ 2157      3800
+ 2158              	.LASF18:
+ 2159 01c4 4C43445F 		.ascii	"LCD_WrCntrlNib\000"
+ 2159      5772436E 
+ 2159      74726C4E 
+ 2159      696200
+ 2160              	.LASF15:
+ 2161 01d3 646F7562 		.ascii	"double\000"
+ 2161      6C6500
+ 2162              	.LASF35:
+ 2163 01da 4C43445F 		.ascii	"LCD_Enable\000"
+ 2163      456E6162 
+ 2163      6C6500
+ 2164              	.LASF26:
+ 2165 01e5 4C43445F 		.ascii	"LCD_PrintString\000"
+ 2165      5072696E 
+ 2165      74537472 
+ 2165      696E6700 
+ 2166              	.LASF43:
+ 2167 01f5 43794465 		.ascii	"CyDelayUs\000"
+ 2167      6C617955 
+ 2167      7300
+ 2168              	.LASF23:
+ 2169 01ff 4C43445F 		.ascii	"LCD_IsReady\000"
+ 2169      49735265 
+ 2169      61647900 
+ 2170              	.LASF13:
+ 2171 020b 75696E74 		.ascii	"uint32\000"
+ 2171      333200
+ 2172              	.LASF0:
+ 2173 0212 756E7369 		.ascii	"unsigned int\000"
+ 2173      676E6564 
+ 2173      20696E74 
+ 2173      00
+ 2174              	.LASF9:
+ 2175 021f 6C6F6E67 		.ascii	"long long unsigned int\000"
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccMZ9jR7.s 			page 52
 
 
- 2177 01fb 4C43445F 		.ascii	"LCD_PutChar\000"
- 2177      50757443 
- 2177      68617200 
- 2178              	.LASF47:
- 2179 0207 47656E65 		.ascii	"Generated_Source\\PSoC5\\LCD.c\000"
- 2179      72617465 
- 2179      645F536F 
- 2179      75726365 
- 2179      5C50536F 
- 2180              	.LASF10:
- 2181 0224 73697A65 		.ascii	"sizetype\000"
- 2181      74797065 
- 2181      00
- 2182              	.LASF16:
- 2183 022d 63686172 		.ascii	"char8\000"
- 2183      3800
- 2184              	.LASF1:
- 2185 0233 6C6F6E67 		.ascii	"long long int\000"
- 2185      206C6F6E 
- 2185      6720696E 
- 2185      7400
- 2186              	.LASF22:
- 2187 0241 74696D65 		.ascii	"timeout\000"
- 2187      6F757400 
- 2188              	.LASF41:
- 2189 0249 4C43445F 		.ascii	"LCD_enableState\000"
- 2189      656E6162 
- 2189      6C655374 
- 2189      61746500 
- 2190              	.LASF34:
- 2191 0259 4C43445F 		.ascii	"LCD_Init\000"
- 2191      496E6974 
- 2191      00
- 2192              	.LASF5:
- 2193 0262 73686F72 		.ascii	"short int\000"
- 2193      7420696E 
- 2193      7400
- 2194              	.LASF29:
- 2195 026c 63757272 		.ascii	"current\000"
- 2195      656E7400 
- 2196              	.LASF7:
- 2197 0274 6C6F6E67 		.ascii	"long int\000"
- 2197      20696E74 
- 2197      00
- 2198              	.LASF11:
- 2199 027d 63686172 		.ascii	"char\000"
+ 2175      206C6F6E 
+ 2175      6720756E 
+ 2175      7369676E 
+ 2175      65642069 
+ 2176              	.LASF38:
+ 2177 0236 4C43445F 		.ascii	"LCD_Position\000"
+ 2177      506F7369 
+ 2177      74696F6E 
+ 2177      00
+ 2178              	.LASF30:
+ 2179 0243 4C43445F 		.ascii	"LCD_PutChar\000"
+ 2179      50757443 
+ 2179      68617200 
+ 2180              	.LASF47:
+ 2181 024f 47656E65 		.ascii	"Generated_Source\\PSoC5\\LCD.c\000"
+ 2181      72617465 
+ 2181      645F536F 
+ 2181      75726365 
+ 2181      5C50536F 
+ 2182              	.LASF10:
+ 2183 026c 73697A65 		.ascii	"sizetype\000"
+ 2183      74797065 
+ 2183      00
+ 2184              	.LASF16:
+ 2185 0275 63686172 		.ascii	"char8\000"
+ 2185      3800
+ 2186              	.LASF1:
+ 2187 027b 6C6F6E67 		.ascii	"long long int\000"
+ 2187      206C6F6E 
+ 2187      6720696E 
+ 2187      7400
+ 2188              	.LASF22:
+ 2189 0289 74696D65 		.ascii	"timeout\000"
+ 2189      6F757400 
+ 2190              	.LASF41:
+ 2191 0291 4C43445F 		.ascii	"LCD_enableState\000"
+ 2191      656E6162 
+ 2191      6C655374 
+ 2191      61746500 
+ 2192              	.LASF34:
+ 2193 02a1 4C43445F 		.ascii	"LCD_Init\000"
+ 2193      496E6974 
+ 2193      00
+ 2194              	.LASF5:
+ 2195 02aa 73686F72 		.ascii	"short int\000"
+ 2195      7420696E 
+ 2195      7400
+ 2196              	.LASF29:
+ 2197 02b4 63757272 		.ascii	"current\000"
+ 2197      656E7400 
+ 2198              	.LASF7:
+ 2199 02bc 6C6F6E67 		.ascii	"long int\000"
+ 2199      20696E74 
  2199      00
- 2200              	.LASF42:
- 2201 0282 4C43445F 		.ascii	"LCD_customFonts\000"
- 2201      63757374 
- 2201      6F6D466F 
- 2201      6E747300 
- 2202              	.LASF2:
- 2203 0292 6C6F6E67 		.ascii	"long double\000"
- 2203      20646F75 
- 2203      626C6500 
- 2204              	.LASF3:
-ARM GAS  C:\Users\frede\AppData\Local\Temp\ccEMIvk2.s 			page 53
+ 2200              	.LASF11:
+ 2201 02c5 63686172 		.ascii	"char\000"
+ 2201      00
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccMZ9jR7.s 			page 53
 
 
- 2205 029e 7369676E 		.ascii	"signed char\000"
- 2205      65642063 
- 2205      68617200 
- 2206              	.LASF25:
- 2207 02aa 64427974 		.ascii	"dByte\000"
- 2207      6500
- 2208              	.LASF44:
- 2209 02b0 43794465 		.ascii	"CyDelay\000"
- 2209      6C617900 
- 2210              	.LASF33:
- 2211 02b8 63427974 		.ascii	"cByte\000"
- 2211      6500
- 2212              	.LASF20:
- 2213 02be 6E696262 		.ascii	"nibble\000"
- 2213      6C6500
- 2214              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
+ 2202              	.LASF42:
+ 2203 02ca 4C43445F 		.ascii	"LCD_customFonts\000"
+ 2203      63757374 
+ 2203      6F6D466F 
+ 2203      6E747300 
+ 2204              	.LASF2:
+ 2205 02da 6C6F6E67 		.ascii	"long double\000"
+ 2205      20646F75 
+ 2205      626C6500 
+ 2206              	.LASF3:
+ 2207 02e6 7369676E 		.ascii	"signed char\000"
+ 2207      65642063 
+ 2207      68617200 
+ 2208              	.LASF25:
+ 2209 02f2 64427974 		.ascii	"dByte\000"
+ 2209      6500
+ 2210              	.LASF44:
+ 2211 02f8 43794465 		.ascii	"CyDelay\000"
+ 2211      6C617900 
+ 2212              	.LASF33:
+ 2213 0300 63427974 		.ascii	"cByte\000"
+ 2213      6500
+ 2214              	.LASF20:
+ 2215 0306 6E696262 		.ascii	"nibble\000"
+ 2215      6C6500
+ 2216              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

@@ -1,14 +1,19 @@
 #include "project.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
 //ISR Prototypes
 CY_ISR_PROTO(ISR_toggle_handler);
 CY_ISR_PROTO(ISR_print_handler);
 
+//nyt
+CY_ISR_PROTO(ISR_gradient_handler);
+
 //Functions
 int adcToDegrees(int adc_value);
 int Gradient_SW();
+int Gradient();
 int AdjustDeg_SW();
 void Init_ALL();
 void Init_LCD();
@@ -16,19 +21,22 @@ void Init_ADC();
 void Init_PWM();
 void Init_ISR();
 
-
     
 
 
 
 //Global Variels.
 int16_t convertedResult = 0;
-int toggle = 0;
+int toggle = 2;
 int deg = 0;
 char LCDbuffer[20];
 int block = 0;
 char tempbuffer[20];
 int pass = 1;
+
+//nyt
+int gradientShift = 0;
+int gradientCount = 0;
 
 
 /* The LCD format in characters */
@@ -39,24 +47,18 @@ int pass = 1;
 
 int main(void)
 {
-    
-    LCD_ClearDisplay();
-    LCD_Start();
-    LCD_Position(0, 0);
-    LCD_PrintString("Password:");
-    
-    
-  
-    
+
     CyDelay(1000); 
     Init_ALL();
-
-
+    
+    // test
+    Clock_3_Start();
+    PWM_2_Start();
+    isr_gradient_StartEx(ISR_gradient_handler);
+    
     for(;;)
     {
-      
-       
-        if(toggle==1)
+        if(toggle == 0)
         { 
             LCD_Position(0,0);
             LCD_PrintString("mode 1");
@@ -64,18 +66,42 @@ int main(void)
             LCD_PutChar(1);
             
             AdjustDeg_SW();
-             
+            
+            //nyt - reset mode 2
+            gradientCount = 0;
+        }
+        else if (toggle == 1)
+        {
+            CyDelay(160);
+            Gradient_SW();
+            gradientCount = 0;
         }
         else
         {
-   
+            int adc = ADC_SAR_1_GetResult16();
+            if (adc > 2052)
+            {
+                PWM_2_WritePeriod(10000/((adc-2050)/400));
+                gradientShift = 1;
+            }
+            else if (adc < 2048)
+            {
+                PWM_2_WritePeriod(10000/((2050-adc)/400));
+                gradientShift = -1;
+            }
+            else 
+            {
+                gradientShift = 0; 
+            }
             
             CyDelay(160);
-            Gradient_SW();   
+            //Gradient_SW();   
                 
         }                  
     }
 }
+
+
 
 void Init_ALL(){
     Init_LCD();
@@ -111,18 +137,51 @@ void Init_ISR(){
 }
 
 
+CY_ISR(ISR_gradient_handler)
+{
+    if (0 == gradientShift)
+    {
+        return;
+    }
+    else if (-1 == gradientShift)
+    {
+        if (-40 <= gradientCount)
+        {
+            gradientCount = gradientCount - 1;
+        }
+        
+    }
+    else if (1 == gradientShift)
+    {
+        if (40 >= gradientCount)
+        {
+            gradientCount = gradientCount + 1;
+        }
+    }
+}
+
+
 CY_ISR(ISR_toggle_handler){
     deg = convertedResult;
     convertedResult = deg;
-    toggle = !toggle;
-   
-   
+    if (0 == toggle)
+    {
+        toggle = 1;
+    }
+    else if (1 == toggle)
+    {
+        toggle = 2;
+    }
+    else if (2 == toggle)
+    {
+        toggle = 0;
+    }
 }
 
 
 CY_ISR(ISR_print_handler){
     
-    if(toggle==1)
+    if(0 == toggle)
     {
             LCD_ClearDisplay();
             LCD_Position(0,0);
@@ -135,14 +194,27 @@ CY_ISR(ISR_print_handler){
             LCD_Position(1,15);
             LCD_PutChar(0);
     }
-    else
+    else if (1 == toggle)
     {
-            LCD_ClearDisplay();
+        LCD_ClearDisplay();
             LCD_Position(0,0);
             LCD_PrintString("mode 2");
             LCD_Position(0,15);
             LCD_PutChar(3);
             sprintf(LCDbuffer, "%i             ", convertedResult);   
+            LCD_Position(1, 0);
+            LCD_PrintString(LCDbuffer);
+            LCD_Position(1,15);
+            LCD_PutChar(0);
+    }
+    else
+    {
+            LCD_ClearDisplay();
+            LCD_Position(0,0);
+            LCD_PrintString("mode 3");
+            LCD_Position(0,15);
+            LCD_PutChar(3);
+            sprintf(LCDbuffer, "%i             ", gradientCount);   
             LCD_Position(1, 0);
             LCD_PrintString(LCDbuffer);
             LCD_Position(1,15);
