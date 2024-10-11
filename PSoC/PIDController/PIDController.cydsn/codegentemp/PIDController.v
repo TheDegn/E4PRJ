@@ -1,6 +1,6 @@
 // ======================================================================
 // PIDController.v generated from TopDesign.cysch
-// 10/09/2024 at 14:48
+// 10/11/2024 at 17:04
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -406,6 +406,7 @@ endmodule
 // top
 module top ;
 
+          wire  Net_224;
           wire  Net_61;
           wire  Net_211;
           wire  Net_210;
@@ -430,6 +431,7 @@ module top ;
           wire  Net_3;
           wire  Net_2;
           wire  Net_1;
+          wire  Net_225;
           wire  Net_103;
           wire  Net_77;
           wire  Net_5;
@@ -640,7 +642,7 @@ module top ;
 		#(.id("85d7d8f1-8fc4-4a41-b5ad-8964a15412cc"),
 		  .source_clock_id(""),
 		  .divisor(0),
-		  .period("83333333.3333333"),
+		  .period("41666666.6666667"),
 		  .is_direct(0),
 		  .is_digital(1))
 		Clock_1
@@ -721,6 +723,25 @@ module top ;
 		  .out_reset({1'b0}));
 
 	assign tmpOE__PWM1_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
+
+
+	cy_clock_v1_0
+		#(.id("53556c30-7343-4d07-a677-d64b9cd9edd6"),
+		  .source_clock_id(""),
+		  .divisor(0),
+		  .period("3003003003003"),
+		  .is_direct(0),
+		  .is_digital(1))
+		Clock_2
+		 (.clock_out(Net_225));
+
+
+
+	cy_isr_v1_0
+		#(.int_type(2'b10))
+		isr_pid
+		 (.int_signal(Net_225));
+
 
 
 

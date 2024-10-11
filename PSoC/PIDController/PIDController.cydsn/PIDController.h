@@ -1,22 +1,19 @@
 #pragma once
+#include "project.h"
 
-// The PIDControl_StartUp function initializes the PID controller with the given parameters. 
-// Kp is the proportional gain factor, Ki is the integral gain factor, and Kd is the derivative gain factor. 
-// Additionally, integralMax and integralMin define the maximum and minimum limits for the integral term, respectively. 
+// The PIDStartUp function initializes the PID controller with the given parameters.
+// kp is the proportional gain factor, ki is the integral gain factor, and kd is the derivative gain factor.
+// Additionally, iMax and iMin define the maximum and minimum limits for the integral term, respectively.
 // The time interval between each sample is specified by the parameter dt, in seconds.
-void PIDControl_StartUp(float Kp, float Ki, float Kd, float integralMax, float integralMin, float dt);
+void PIDStartUp(float kp, float ki, float kd, float iMax, float iMin, float dt);
 
-/**
- * The PIDControl_changeSetPoint function updates the setpoint, which is the target value the system 
- * should reach. This target value is provided through the setPoint parameter.
- */
-void PIDControl_changeSetPoint(float setPoint);
+//The PIDSetpointChange function updates the setpoint, which is the target value the system 
+//should reach. This target value is provided through the setpoint parameter.
+void PIDSetpointChange(float setpoint);
 
-/**
- * The PIDControl_OneStep function performs a single step of the PID control algorithm. 
- * The parameters proportionalPart, integralPart, and derivativePart are useful for analysis or debugging, 
- * as they hold the values of the proportional, integral, and derivative terms respectively. 
- * The current system output is provided via the systemOutput parameter, and the PID controller’s result is 
- * returned as a float.
- */
-float PIDControl_OneStep(float systemOutput, float* proportionalPart, float* integralPart, float* derivativePart);
+
+//The PIDUpdate function performs a single step of the PID control algorithm. 
+//The parameters proportional, integral, and derivative are useful for analysis or debugging, 
+//as they hold the values of the proportional, integral, and derivative terms respectively. 
+//The current system output is provided via the currentOutput parameter, and the PID controller’s output result is returned as a float.
+float PIDUpdate(float currentOutput, float* proportional, float* integral, float* derivative);

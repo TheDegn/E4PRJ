@@ -2,7 +2,7 @@
 --	Conversion of PIDController.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Wed Oct 09 14:48:18 2024
+--	Fri Oct 11 17:04:52 2024
 --
 
 USE cypress.cypress.all;
@@ -718,6 +718,7 @@ SIGNAL tmpFB_0__PWM1_net_0 : bit;
 SIGNAL tmpIO_0__PWM1_net_0 : bit;
 TERMINAL tmpSIOVREF__PWM1_net_0 : bit;
 SIGNAL tmpINTERRUPT_0__PWM1_net_0 : bit;
+SIGNAL Net_225 : bit;
 SIGNAL \UART_1:BUART:reset_reg\\D\ : bit;
 SIGNAL \UART_1:BUART:txn\\D\ : bit;
 SIGNAL \UART_1:BUART:tx_state_1\\D\ : bit;
@@ -1465,7 +1466,7 @@ Clock_1:cy_clock_v1_0
 		id=>"85d7d8f1-8fc4-4a41-b5ad-8964a15412cc",
 		source_clock_id=>"",
 		divisor=>0,
-		period=>"83333333.3333333",
+		period=>"41666666.6666667",
 		is_direct=>'0',
 		is_digital=>'1')
 	PORT MAP(clock_out=>Net_77,
@@ -1540,6 +1541,20 @@ PWM1:cy_psoc3_pins_v1_10
 		out_clock_en=>one,
 		out_reset=>zero,
 		interrupt=>tmpINTERRUPT_0__PWM1_net_0);
+Clock_2:cy_clock_v1_0
+	GENERIC MAP(cy_registers=>"",
+		id=>"53556c30-7343-4d07-a677-d64b9cd9edd6",
+		source_clock_id=>"",
+		divisor=>0,
+		period=>"3003003003003",
+		is_direct=>'0',
+		is_digital=>'1')
+	PORT MAP(clock_out=>Net_225,
+		dig_domain_out=>open);
+isr_pid:cy_isr_v1_0
+	GENERIC MAP(int_type=>"10",
+		is_nmi=>'0')
+	PORT MAP(int_signal=>Net_225);
 \UART_1:BUART:reset_reg\:cy_dff
 	PORT MAP(d=>zero,
 		clk=>\UART_1:BUART:clock_op\,

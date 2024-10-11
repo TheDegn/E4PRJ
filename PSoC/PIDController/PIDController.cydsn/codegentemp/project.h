@@ -25,6 +25,8 @@
 #include "Clock_1.h"
 #include "PWM1_aliases.h"
 #include "PWM1.h"
+#include "Clock_2.h"
+#include "isr_pid.h"
 #include "UART_1_IntClock.h"
 #include "core_cm3_psoc5.h"
 #include "CyDmac.h"

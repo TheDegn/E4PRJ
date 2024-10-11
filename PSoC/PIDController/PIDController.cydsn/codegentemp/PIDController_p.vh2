@@ -1,5 +1,5 @@
 -- Project:   PIDController
--- Generated: 10/09/2024 14:48:19
+-- Generated: 10/11/2024 17:04:52
 -- PSoC Creator  4.4
 
 ENTITY PIDController IS
@@ -32,6 +32,9 @@ ARCHITECTURE __DEFAULT__ OF PIDController IS
     SIGNAL ClockBlock_XTAL_32KHZ : bit;
     SIGNAL Net_103 : bit;
     SIGNAL Net_15 : bit;
+    SIGNAL Net_225 : bit;
+    ATTRIBUTE global_signal OF Net_225 : SIGNAL IS true;
+    SIGNAL Net_225_local : bit;
     SIGNAL Net_5 : bit;
     SIGNAL Net_77 : bit;
     ATTRIBUTE udbclken_assigned OF Net_77 : SIGNAL IS "True";
@@ -493,7 +496,9 @@ BEGIN
             dclk_glb_0 => Net_77,
             dclk_0 => Net_77_local,
             dclk_glb_1 => \UART_1:Net_9\,
-            dclk_1 => \UART_1:Net_9_local\);
+            dclk_1 => \UART_1:Net_9_local\,
+            dclk_glb_2 => Net_225,
+            dclk_2 => Net_225_local);
 
     Rx_1:logicalport
         GENERIC MAP(
@@ -1120,6 +1125,14 @@ BEGIN
             z0_comb => \PWM_1:PWMUDB:tc_i\,
             f1_blk_stat_comb => \PWM_1:PWMUDB:status_3\,
             busclk => ClockBlock_BUS_CLK);
+
+    isr_pid:interrupt
+        GENERIC MAP(
+            int_type => "10",
+            is_nmi => 0)
+        PORT MAP(
+            interrupt => Net_225_local,
+            clock => ClockBlock_BUS_CLK);
 
     \UART_1:BUART:txn\:macrocell
         GENERIC MAP(
