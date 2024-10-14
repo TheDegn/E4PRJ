@@ -33,6 +33,7 @@ int main(void)
     UART_1_Start();
     isr_uart_rx_StartEx(UART_HANDLER);
     isr_pid_StartEx(PID_HANDLER);
+    //PIDStartUp
     UART_1_PutString("PID Controller started - Please choose the following parameters:\r\n");
     UART_1_PutString("Kp: ");
     scanf("%f",&kp);
@@ -86,9 +87,17 @@ void handleByteReceived(uint8_t byteReceived)
         {
            UART_1_PutString("Please choose a new setpoint:");
            scanf("%f",&setpoint);
+            //PIDSetpointChange
            UART_1_PutString("\r\nSetpoint is changed!\r\n"); 
+            
            return;
         }
         break;
     }  
 }
+
+/*
+scanf virker kun i terminal ikke UART
+switch case i handle byte received med forskelle prædifineret cases
+Setpoint change og startup ikke indskevet i main
+*/
