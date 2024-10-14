@@ -1,5 +1,5 @@
 # PRJ4
-# 2024-10-08 10:56:16Z
+# 2024-10-14 10:25:06Z
 
 # IO_0@[IOP=(1)][IoId=(0)] is reserved: SWDDebugEnabled
 dont_use_io iocell 1 0
@@ -20,6 +20,7 @@ set_io "\LCD:LCDPort(3)\" iocell 2 3
 set_io "\LCD:LCDPort(4)\" iocell 2 4
 set_io "\LCD:LCDPort(5)\" iocell 2 5
 set_io "\LCD:LCDPort(6)\" iocell 2 6
+set_io "MotorSwitchPin(0)" iocell 15 3
 set_location "Net_9" 0 0 1 1
 set_location "\UART_1:BUART:counter_load_not\" 0 0 0 1
 set_location "\UART_1:BUART:tx_status_0\" 0 3 1 3

@@ -81,8 +81,11 @@
   <block name="Clock_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="Clock_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="isr_print" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="isr_gradient" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="cy_boot" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="Em_EEPROM_Dynamic" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="MotorSwitchPin" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="Clock_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="PWM_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
     <block name="vmIRQ" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
     <block name="vmCompare" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
@@ -157,9 +160,6 @@
       </field>
     </register>
   </block>
-  <block name="isr_gradient" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="Clock_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="Debouncer_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="isr_uart_rx" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="ADC_SAR_1" BASE="0x0" SIZE="0x0" desc="SAR ADC" visible="true" hidden="false">
     <block name="ZeroTerminal_8" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
@@ -226,9 +226,10 @@
     </register>
   </block>
   <block name="Rx_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="isr_toggle" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="not_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="Pin_led" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="Pin_ADC_in" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="not_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="Debouncer_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="isr_toggle" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="Pin_sw" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="Pin_led" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
 </blockRegMap>

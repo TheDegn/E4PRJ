@@ -37,6 +37,8 @@
 #include "isr_gradient.h"
 #include "Clock_3.h"
 #include "PWM_2.h"
+#include "MotorSwitchPin_aliases.h"
+#include "MotorSwitchPin.h"
 #include "UART_1_IntClock.h"
 #include "ADC_SAR_1_IRQ.h"
 #include "ADC_SAR_1_theACLK.h"
