@@ -97,6 +97,8 @@ void handleByteReceived(uint8_t byteReceived)
 }
 
 /*
+variabler kan implementeres som *extern*
+setpoint kan opdateres i PIDUpdate
 scanf virker kun i terminal ikke UART
 switch case i handle byte received med forskelle prædifineret cases
 Setpoint change og startup ikke indskevet i main
