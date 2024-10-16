@@ -1,0 +1,1607 @@
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccrvDAvP.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"cymetadata.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.global	cy_metadata
+  20              		.global	cy_meta_flashprotect
+  21              		.global	cy_meta_wonvl
+  22              		.global	cy_meta_custnvl
+  23              		.global	cy_meta_configecc
+  24              		.section	.cyconfigecc,"a",%progbits
+  25              		.align	2
+  26              		.type	cy_meta_configecc, %object
+  27              		.size	cy_meta_configecc, 1064
+  28              	cy_meta_configecc:
+  29 0000 02       		.byte	2
+  30 0001 52       		.byte	82
+  31 0002 00       		.byte	0
+  32 0003 40       		.byte	64
+  33 0004 01       		.byte	1
+  34 0005 64       		.byte	100
+  35 0006 00       		.byte	0
+  36 0007 40       		.byte	64
+  37 0008 03       		.byte	3
+  38 0009 65       		.byte	101
+  39 000a 00       		.byte	0
+  40 000b 40       		.byte	64
+  41 000c 47       		.byte	71
+  42 000d 02       		.byte	2
+  43 000e 01       		.byte	1
+  44 000f 40       		.byte	64
+  45 0010 28       		.byte	40
+  46 0011 03       		.byte	3
+  47 0012 01       		.byte	1
+  48 0013 40       		.byte	64
+  49 0014 01       		.byte	1
+  50 0015 05       		.byte	5
+  51 0016 01       		.byte	1
+  52 0017 40       		.byte	64
+  53 0018 01       		.byte	1
+  54 0019 15       		.byte	21
+  55 001a 01       		.byte	1
+  56 001b 40       		.byte	64
+  57 001c 61       		.byte	97
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccrvDAvP.s 			page 2
+
+
+  58 001d 18       		.byte	24
+  59 001e 01       		.byte	1
+  60 001f 40       		.byte	64
+  61 0020 32       		.byte	50
+  62 0021 19       		.byte	25
+  63 0022 01       		.byte	1
+  64 0023 40       		.byte	64
+  65 0024 29       		.byte	41
+  66 0025 1A       		.byte	26
+  67 0026 01       		.byte	1
+  68 0027 40       		.byte	64
+  69 0028 48       		.byte	72
+  70 0029 1B       		.byte	27
+  71 002a 01       		.byte	1
+  72 002b 40       		.byte	64
+  73 002c 02       		.byte	2
+  74 002d 40       		.byte	64
+  75 002e 01       		.byte	1
+  76 002f 40       		.byte	64
+  77 0030 07       		.byte	7
+  78 0031 41       		.byte	65
+  79 0032 01       		.byte	1
+  80 0033 40       		.byte	64
+  81 0034 03       		.byte	3
+  82 0035 42       		.byte	66
+  83 0036 01       		.byte	1
+  84 0037 40       		.byte	64
+  85 0038 01       		.byte	1
+  86 0039 43       		.byte	67
+  87 003a 01       		.byte	1
+  88 003b 40       		.byte	64
+  89 003c 01       		.byte	1
+  90 003d 48       		.byte	72
+  91 003e 01       		.byte	1
+  92 003f 40       		.byte	64
+  93 0040 03       		.byte	3
+  94 0041 49       		.byte	73
+  95 0042 01       		.byte	1
+  96 0043 40       		.byte	64
+  97 0044 08       		.byte	8
+  98 0045 4D       		.byte	77
+  99 0046 01       		.byte	1
+ 100 0047 40       		.byte	64
+ 101 0048 04       		.byte	4
+ 102 0049 50       		.byte	80
+ 103 004a 01       		.byte	1
+ 104 004b 40       		.byte	64
+ 105 004c 01       		.byte	1
+ 106 004d 51       		.byte	81
+ 107 004e 01       		.byte	1
+ 108 004f 40       		.byte	64
+ 109 0050 00       		.byte	0
+ 110 0051 03       		.byte	3
+ 111 0052 01       		.byte	1
+ 112 0053 01       		.byte	1
+ 113 0054 83       		.byte	-125
+ 114 0055 0F       		.byte	15
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccrvDAvP.s 			page 3
+
+
+ 115 0056 89       		.byte	-119
+ 116 0057 72       		.byte	114
+ 117 0058 8A       		.byte	-118
+ 118 0059 38       		.byte	56
+ 119 005a 8B       		.byte	-117
+ 120 005b 0F       		.byte	15
+ 121 005c 07       		.byte	7
+ 122 005d 03       		.byte	3
+ 123 005e 0B       		.byte	11
+ 124 005f 02       		.byte	2
+ 125 0060 16       		.byte	22
+ 126 0061 01       		.byte	1
+ 127 0062 2E       		.byte	46
+ 128 0063 01       		.byte	1
+ 129 0064 33       		.byte	51
+ 130 0065 02       		.byte	2
+ 131 0066 34       		.byte	52
+ 132 0067 01       		.byte	1
+ 133 0068 37       		.byte	55
+ 134 0069 01       		.byte	1
+ 135 006a 40       		.byte	64
+ 136 006b 60       		.byte	96
+ 137 006c 41       		.byte	65
+ 138 006d 02       		.byte	2
+ 139 006e 49       		.byte	73
+ 140 006f FF       		.byte	-1
+ 141 0070 4A       		.byte	74
+ 142 0071 FF       		.byte	-1
+ 143 0072 4B       		.byte	75
+ 144 0073 FF       		.byte	-1
+ 145 0074 4D       		.byte	77
+ 146 0075 A0       		.byte	-96
+ 147 0076 4F       		.byte	79
+ 148 0077 04       		.byte	4
+ 149 0078 50       		.byte	80
+ 150 0079 18       		.byte	24
+ 151 007a 58       		.byte	88
+ 152 007b 04       		.byte	4
+ 153 007c 59       		.byte	89
+ 154 007d 04       		.byte	4
+ 155 007e 5A       		.byte	90
+ 156 007f 04       		.byte	4
+ 157 0080 5F       		.byte	95
+ 158 0081 01       		.byte	1
+ 159 0082 60       		.byte	96
+ 160 0083 40       		.byte	64
+ 161 0084 62       		.byte	98
+ 162 0085 C0       		.byte	-64
+ 163 0086 64       		.byte	100
+ 164 0087 40       		.byte	64
+ 165 0088 65       		.byte	101
+ 166 0089 40       		.byte	64
+ 167 008a 66       		.byte	102
+ 168 008b C0       		.byte	-64
+ 169 008c 68       		.byte	104
+ 170 008d C0       		.byte	-64
+ 171 008e 6A       		.byte	106
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccrvDAvP.s 			page 4
+
+
+ 172 008f C0       		.byte	-64
+ 173 0090 6C       		.byte	108
+ 174 0091 C0       		.byte	-64
+ 175 0092 6E       		.byte	110
+ 176 0093 C0       		.byte	-64
+ 177 0094 86       		.byte	-122
+ 178 0095 02       		.byte	2
+ 179 0096 87       		.byte	-121
+ 180 0097 01       		.byte	1
+ 181 0098 8F       		.byte	-113
+ 182 0099 02       		.byte	2
+ 183 009a 92       		.byte	-110
+ 184 009b 01       		.byte	1
+ 185 009c 9D       		.byte	-99
+ 186 009d 01       		.byte	1
+ 187 009e A1       		.byte	-95
+ 188 009f 02       		.byte	2
+ 189 00a0 A2       		.byte	-94
+ 190 00a1 04       		.byte	4
+ 191 00a2 AA       		.byte	-86
+ 192 00a3 02       		.byte	2
+ 193 00a4 B0       		.byte	-80
+ 194 00a5 04       		.byte	4
+ 195 00a6 B2       		.byte	-78
+ 196 00a7 02       		.byte	2
+ 197 00a8 B4       		.byte	-76
+ 198 00a9 01       		.byte	1
+ 199 00aa B5       		.byte	-75
+ 200 00ab 02       		.byte	2
+ 201 00ac B7       		.byte	-73
+ 202 00ad 01       		.byte	1
+ 203 00ae BE       		.byte	-66
+ 204 00af 04       		.byte	4
+ 205 00b0 C0       		.byte	-64
+ 206 00b1 20       		.byte	32
+ 207 00b2 C1       		.byte	-63
+ 208 00b3 06       		.byte	6
+ 209 00b4 C5       		.byte	-59
+ 210 00b5 D1       		.byte	-47
+ 211 00b6 C6       		.byte	-58
+ 212 00b7 05       		.byte	5
+ 213 00b8 C7       		.byte	-57
+ 214 00b9 02       		.byte	2
+ 215 00ba C8       		.byte	-56
+ 216 00bb 17       		.byte	23
+ 217 00bc C9       		.byte	-55
+ 218 00bd FF       		.byte	-1
+ 219 00be CA       		.byte	-54
+ 220 00bf FF       		.byte	-1
+ 221 00c0 CB       		.byte	-53
+ 222 00c1 FF       		.byte	-1
+ 223 00c2 CD       		.byte	-51
+ 224 00c3 AF       		.byte	-81
+ 225 00c4 CE       		.byte	-50
+ 226 00c5 0F       		.byte	15
+ 227 00c6 CF       		.byte	-49
+ 228 00c7 04       		.byte	4
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccrvDAvP.s 			page 5
+
+
+ 229 00c8 D0       		.byte	-48
+ 230 00c9 18       		.byte	24
+ 231 00ca D2       		.byte	-46
+ 232 00cb 80       		.byte	-128
+ 233 00cc D4       		.byte	-44
+ 234 00cd 07       		.byte	7
+ 235 00ce D8       		.byte	-40
+ 236 00cf 04       		.byte	4
+ 237 00d0 D9       		.byte	-39
+ 238 00d1 04       		.byte	4
+ 239 00d2 DA       		.byte	-38
+ 240 00d3 04       		.byte	4
+ 241 00d4 DB       		.byte	-37
+ 242 00d5 04       		.byte	4
+ 243 00d6 DF       		.byte	-33
+ 244 00d7 01       		.byte	1
+ 245 00d8 E0       		.byte	-32
+ 246 00d9 40       		.byte	64
+ 247 00da E2       		.byte	-30
+ 248 00db C0       		.byte	-64
+ 249 00dc E4       		.byte	-28
+ 250 00dd 40       		.byte	64
+ 251 00de E5       		.byte	-27
+ 252 00df 40       		.byte	64
+ 253 00e0 E6       		.byte	-26
+ 254 00e1 C0       		.byte	-64
+ 255 00e2 E8       		.byte	-24
+ 256 00e3 C0       		.byte	-64
+ 257 00e4 EA       		.byte	-22
+ 258 00e5 C0       		.byte	-64
+ 259 00e6 EC       		.byte	-20
+ 260 00e7 C0       		.byte	-64
+ 261 00e8 EE       		.byte	-18
+ 262 00e9 C0       		.byte	-64
+ 263 00ea 00       		.byte	0
+ 264 00eb 04       		.byte	4
+ 265 00ec 09       		.byte	9
+ 266 00ed 02       		.byte	2
+ 267 00ee 0F       		.byte	15
+ 268 00ef 20       		.byte	32
+ 269 00f0 10       		.byte	16
+ 270 00f1 80       		.byte	-128
+ 271 00f2 12       		.byte	18
+ 272 00f3 04       		.byte	4
+ 273 00f4 15       		.byte	21
+ 274 00f5 80       		.byte	-128
+ 275 00f6 18       		.byte	24
+ 276 00f7 04       		.byte	4
+ 277 00f8 19       		.byte	25
+ 278 00f9 06       		.byte	6
+ 279 00fa 1B       		.byte	27
+ 280 00fb 10       		.byte	16
+ 281 00fc 1F       		.byte	31
+ 282 00fd 20       		.byte	32
+ 283 00fe 22       		.byte	34
+ 284 00ff 50       		.byte	80
+ 285 0100 25       		.byte	37
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccrvDAvP.s 			page 6
+
+
+ 286 0101 80       		.byte	-128
+ 287 0102 27       		.byte	39
+ 288 0103 20       		.byte	32
+ 289 0104 29       		.byte	41
+ 290 0105 02       		.byte	2
+ 291 0106 31       		.byte	49
+ 292 0107 80       		.byte	-128
+ 293 0108 39       		.byte	57
+ 294 0109 80       		.byte	-128
+ 295 010a 3B       		.byte	59
+ 296 010b 04       		.byte	4
+ 297 010c 3F       		.byte	63
+ 298 010d 24       		.byte	36
+ 299 010e 40       		.byte	64
+ 300 010f 04       		.byte	4
+ 301 0110 46       		.byte	70
+ 302 0111 04       		.byte	4
+ 303 0112 48       		.byte	72
+ 304 0113 08       		.byte	8
+ 305 0114 49       		.byte	73
+ 306 0115 01       		.byte	1
+ 307 0116 4B       		.byte	75
+ 308 0117 04       		.byte	4
+ 309 0118 4F       		.byte	79
+ 310 0119 20       		.byte	32
+ 311 011a 50       		.byte	80
+ 312 011b 88       		.byte	-120
+ 313 011c 51       		.byte	81
+ 314 011d 40       		.byte	64
+ 315 011e 52       		.byte	82
+ 316 011f 04       		.byte	4
+ 317 0120 59       		.byte	89
+ 318 0121 05       		.byte	5
+ 319 0122 5A       		.byte	90
+ 320 0123 A0       		.byte	-96
+ 321 0124 71       		.byte	113
+ 322 0125 02       		.byte	2
+ 323 0126 83       		.byte	-125
+ 324 0127 20       		.byte	32
+ 325 0128 C0       		.byte	-64
+ 326 0129 04       		.byte	4
+ 327 012a C2       		.byte	-62
+ 328 012b 28       		.byte	40
+ 329 012c C4       		.byte	-60
+ 330 012d 8A       		.byte	-118
+ 331 012e CA       		.byte	-54
+ 332 012f 01       		.byte	1
+ 333 0130 CC       		.byte	-52
+ 334 0131 08       		.byte	8
+ 335 0132 CE       		.byte	-50
+ 336 0133 6A       		.byte	106
+ 337 0134 D0       		.byte	-48
+ 338 0135 24       		.byte	36
+ 339 0136 D2       		.byte	-46
+ 340 0137 24       		.byte	36
+ 341 0138 D6       		.byte	-42
+ 342 0139 0F       		.byte	15
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccrvDAvP.s 			page 7
+
+
+ 343 013a AB       		.byte	-85
+ 344 013b 20       		.byte	32
+ 345 013c E6       		.byte	-26
+ 346 013d 02       		.byte	2
+ 347 013e 00       		.byte	0
+ 348 013f 14       		.byte	20
+ 349 0140 03       		.byte	3
+ 350 0141 08       		.byte	8
+ 351 0142 04       		.byte	4
+ 352 0143 10       		.byte	16
+ 353 0144 06       		.byte	6
+ 354 0145 AC       		.byte	-84
+ 355 0146 08       		.byte	8
+ 356 0147 09       		.byte	9
+ 357 0148 09       		.byte	9
+ 358 0149 80       		.byte	-128
+ 359 014a 0A       		.byte	10
+ 360 014b D0       		.byte	-48
+ 361 014c 0B       		.byte	11
+ 362 014d 13       		.byte	19
+ 363 014e 0C       		.byte	12
+ 364 014f DC       		.byte	-36
+ 365 0150 0E       		.byte	14
+ 366 0151 22       		.byte	34
+ 367 0152 11       		.byte	17
+ 368 0153 2C       		.byte	44
+ 369 0154 13       		.byte	19
+ 370 0155 43       		.byte	67
+ 371 0156 16       		.byte	22
+ 372 0157 20       		.byte	32
+ 373 0158 17       		.byte	23
+ 374 0159 0C       		.byte	12
+ 375 015a 1E       		.byte	30
+ 376 015b 03       		.byte	3
+ 377 015c 20       		.byte	32
+ 378 015d 10       		.byte	16
+ 379 015e 22       		.byte	34
+ 380 015f 40       		.byte	64
+ 381 0160 25       		.byte	37
+ 382 0161 71       		.byte	113
+ 383 0162 27       		.byte	39
+ 384 0163 0E       		.byte	14
+ 385 0164 28       		.byte	40
+ 386 0165 0C       		.byte	12
+ 387 0166 29       		.byte	41
+ 388 0167 71       		.byte	113
+ 389 0168 2A       		.byte	42
+ 390 0169 71       		.byte	113
+ 391 016a 2B       		.byte	43
+ 392 016b 06       		.byte	6
+ 393 016c 33       		.byte	51
+ 394 016d 30       		.byte	48
+ 395 016e 34       		.byte	52
+ 396 016f E0       		.byte	-32
+ 397 0170 35       		.byte	53
+ 398 0171 C0       		.byte	-64
+ 399 0172 36       		.byte	54
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccrvDAvP.s 			page 8
+
+
+ 400 0173 1F       		.byte	31
+ 401 0174 37       		.byte	55
+ 402 0175 0F       		.byte	15
+ 403 0176 39       		.byte	57
+ 404 0177 28       		.byte	40
+ 405 0178 3A       		.byte	58
+ 406 0179 20       		.byte	32
+ 407 017a 3B       		.byte	59
+ 408 017b 80       		.byte	-128
+ 409 017c 3F       		.byte	63
+ 410 017d 04       		.byte	4
+ 411 017e 40       		.byte	64
+ 412 017f 02       		.byte	2
+ 413 0180 45       		.byte	69
+ 414 0181 40       		.byte	64
+ 415 0182 49       		.byte	73
+ 416 0183 FF       		.byte	-1
+ 417 0184 4A       		.byte	74
+ 418 0185 07       		.byte	7
+ 419 0186 4B       		.byte	75
+ 420 0187 FF       		.byte	-1
+ 421 0188 4C       		.byte	76
+ 422 0189 40       		.byte	64
+ 423 018a 4D       		.byte	77
+ 424 018b 20       		.byte	32
+ 425 018c 4E       		.byte	78
+ 426 018d F0       		.byte	-16
+ 427 018e 4F       		.byte	79
+ 428 018f 05       		.byte	5
+ 429 0190 50       		.byte	80
+ 430 0191 08       		.byte	8
+ 431 0192 58       		.byte	88
+ 432 0193 04       		.byte	4
+ 433 0194 59       		.byte	89
+ 434 0195 04       		.byte	4
+ 435 0196 5A       		.byte	90
+ 436 0197 04       		.byte	4
+ 437 0198 5C       		.byte	92
+ 438 0199 11       		.byte	17
+ 439 019a 5D       		.byte	93
+ 440 019b 01       		.byte	1
+ 441 019c 5F       		.byte	95
+ 442 019d 01       		.byte	1
+ 443 019e 60       		.byte	96
+ 444 019f 40       		.byte	64
+ 445 01a0 61       		.byte	97
+ 446 01a1 A8       		.byte	-88
+ 447 01a2 62       		.byte	98
+ 448 01a3 40       		.byte	64
+ 449 01a4 63       		.byte	99
+ 450 01a5 20       		.byte	32
+ 451 01a6 81       		.byte	-127
+ 452 01a7 10       		.byte	16
+ 453 01a8 84       		.byte	-124
+ 454 01a9 03       		.byte	3
+ 455 01aa 85       		.byte	-123
+ 456 01ab 18       		.byte	24
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccrvDAvP.s 			page 9
+
+
+ 457 01ac 89       		.byte	-119
+ 458 01ad 08       		.byte	8
+ 459 01ae 8A       		.byte	-118
+ 460 01af 23       		.byte	35
+ 461 01b0 8C       		.byte	-116
+ 462 01b1 3F       		.byte	63
+ 463 01b2 8D       		.byte	-115
+ 464 01b3 7F       		.byte	127
+ 465 01b4 90       		.byte	-112
+ 466 01b5 33       		.byte	51
+ 467 01b6 91       		.byte	-111
+ 468 01b7 3C       		.byte	60
+ 469 01b8 92       		.byte	-110
+ 470 01b9 0C       		.byte	12
+ 471 01ba 93       		.byte	-109
+ 472 01bb 42       		.byte	66
+ 473 01bc 94       		.byte	-108
+ 474 01bd 01       		.byte	1
+ 475 01be 97       		.byte	-105
+ 476 01bf 23       		.byte	35
+ 477 01c0 98       		.byte	-104
+ 478 01c1 02       		.byte	2
+ 479 01c2 99       		.byte	-103
+ 480 01c3 04       		.byte	4
+ 481 01c4 9C       		.byte	-100
+ 482 01c5 1F       		.byte	31
+ 483 01c6 9E       		.byte	-98
+ 484 01c7 20       		.byte	32
+ 485 01c8 9F       		.byte	-97
+ 486 01c9 04       		.byte	4
+ 487 01ca A0       		.byte	-96
+ 488 01cb 08       		.byte	8
+ 489 01cc A1       		.byte	-95
+ 490 01cd 1C       		.byte	28
+ 491 01ce A3       		.byte	-93
+ 492 01cf 61       		.byte	97
+ 493 01d0 A4       		.byte	-92
+ 494 01d1 04       		.byte	4
+ 495 01d2 A8       		.byte	-88
+ 496 01d3 0C       		.byte	12
+ 497 01d4 A9       		.byte	-87
+ 498 01d5 67       		.byte	103
+ 499 01d6 AB       		.byte	-85
+ 500 01d7 18       		.byte	24
+ 501 01d8 AC       		.byte	-84
+ 502 01d9 1C       		.byte	28
+ 503 01da AE       		.byte	-82
+ 504 01db 23       		.byte	35
+ 505 01dc B1       		.byte	-79
+ 506 01dd 1F       		.byte	31
+ 507 01de B2       		.byte	-78
+ 508 01df 10       		.byte	16
+ 509 01e0 B3       		.byte	-77
+ 510 01e1 40       		.byte	64
+ 511 01e2 B4       		.byte	-76
+ 512 01e3 0F       		.byte	15
+ 513 01e4 B5       		.byte	-75
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccrvDAvP.s 			page 10
+
+
+ 514 01e5 38       		.byte	56
+ 515 01e6 B6       		.byte	-74
+ 516 01e7 2C       		.byte	44
+ 517 01e8 B9       		.byte	-71
+ 518 01e9 08       		.byte	8
+ 519 01ea BA       		.byte	-70
+ 520 01eb A2       		.byte	-94
+ 521 01ec BB       		.byte	-69
+ 522 01ed 02       		.byte	2
+ 523 01ee BE       		.byte	-66
+ 524 01ef 04       		.byte	4
+ 525 01f0 D6       		.byte	-42
+ 526 01f1 02       		.byte	2
+ 527 01f2 D7       		.byte	-41
+ 528 01f3 11       		.byte	17
+ 529 01f4 D8       		.byte	-40
+ 530 01f5 04       		.byte	4
+ 531 01f6 D9       		.byte	-39
+ 532 01f7 04       		.byte	4
+ 533 01f8 DB       		.byte	-37
+ 534 01f9 04       		.byte	4
+ 535 01fa DC       		.byte	-36
+ 536 01fb 11       		.byte	17
+ 537 01fc DD       		.byte	-35
+ 538 01fd 10       		.byte	16
+ 539 01fe DF       		.byte	-33
+ 540 01ff 01       		.byte	1
+ 541 0200 00       		.byte	0
+ 542 0201 40       		.byte	64
+ 543 0202 03       		.byte	3
+ 544 0203 28       		.byte	40
+ 545 0204 05       		.byte	5
+ 546 0205 04       		.byte	4
+ 547 0206 06       		.byte	6
+ 548 0207 80       		.byte	-128
+ 549 0208 07       		.byte	7
+ 550 0209 06       		.byte	6
+ 551 020a 08       		.byte	8
+ 552 020b 40       		.byte	64
+ 553 020c 09       		.byte	9
+ 554 020d 01       		.byte	1
+ 555 020e 0A       		.byte	10
+ 556 020f 29       		.byte	41
+ 557 0210 0E       		.byte	14
+ 558 0211 02       		.byte	2
+ 559 0212 0F       		.byte	15
+ 560 0213 20       		.byte	32
+ 561 0214 10       		.byte	16
+ 562 0215 80       		.byte	-128
+ 563 0216 12       		.byte	18
+ 564 0217 03       		.byte	3
+ 565 0218 13       		.byte	19
+ 566 0219 18       		.byte	24
+ 567 021a 15       		.byte	21
+ 568 021b 01       		.byte	1
+ 569 021c 16       		.byte	22
+ 570 021d 08       		.byte	8
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccrvDAvP.s 			page 11
+
+
+ 571 021e 18       		.byte	24
+ 572 021f 44       		.byte	68
+ 573 0220 19       		.byte	25
+ 574 0221 A0       		.byte	-96
+ 575 0222 1A       		.byte	26
+ 576 0223 11       		.byte	17
+ 577 0224 1E       		.byte	30
+ 578 0225 02       		.byte	2
+ 579 0226 1F       		.byte	31
+ 580 0227 10       		.byte	16
+ 581 0228 20       		.byte	32
+ 582 0229 08       		.byte	8
+ 583 022a 22       		.byte	34
+ 584 022b 0A       		.byte	10
+ 585 022c 27       		.byte	39
+ 586 022d 26       		.byte	38
+ 587 022e 28       		.byte	40
+ 588 022f 40       		.byte	64
+ 589 0230 29       		.byte	41
+ 590 0231 20       		.byte	32
+ 591 0232 2E       		.byte	46
+ 592 0233 08       		.byte	8
+ 593 0234 2F       		.byte	47
+ 594 0235 14       		.byte	20
+ 595 0236 32       		.byte	50
+ 596 0237 12       		.byte	18
+ 597 0238 33       		.byte	51
+ 598 0239 88       		.byte	-120
+ 599 023a 37       		.byte	55
+ 600 023b 06       		.byte	6
+ 601 023c 38       		.byte	56
+ 602 023d 68       		.byte	104
+ 603 023e 3A       		.byte	58
+ 604 023f 02       		.byte	2
+ 605 0240 3D       		.byte	61
+ 606 0241 01       		.byte	1
+ 607 0242 3F       		.byte	63
+ 608 0243 20       		.byte	32
+ 609 0244 47       		.byte	71
+ 610 0245 20       		.byte	32
+ 611 0246 4D       		.byte	77
+ 612 0247 01       		.byte	1
+ 613 0248 57       		.byte	87
+ 614 0249 10       		.byte	16
+ 615 024a 5A       		.byte	90
+ 616 024b 10       		.byte	16
+ 617 024c 69       		.byte	105
+ 618 024d 54       		.byte	84
+ 619 024e 70       		.byte	112
+ 620 024f 94       		.byte	-108
+ 621 0250 72       		.byte	114
+ 622 0251 02       		.byte	2
+ 623 0252 73       		.byte	115
+ 624 0253 18       		.byte	24
+ 625 0254 C0       		.byte	-64
+ 626 0255 F7       		.byte	-9
+ 627 0256 C2       		.byte	-62
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccrvDAvP.s 			page 12
+
+
+ 628 0257 AF       		.byte	-81
+ 629 0258 C4       		.byte	-60
+ 630 0259 5F       		.byte	95
+ 631 025a CA       		.byte	-54
+ 632 025b 65       		.byte	101
+ 633 025c CC       		.byte	-52
+ 634 025d CF       		.byte	-49
+ 635 025e CE       		.byte	-50
+ 636 025f AF       		.byte	-81
+ 637 0260 D0       		.byte	-48
+ 638 0261 20       		.byte	32
+ 639 0262 D6       		.byte	-42
+ 640 0263 04       		.byte	4
+ 641 0264 84       		.byte	-124
+ 642 0265 13       		.byte	19
+ 643 0266 86       		.byte	-122
+ 644 0267 0C       		.byte	12
+ 645 0268 88       		.byte	-120
+ 646 0269 13       		.byte	19
+ 647 026a 8A       		.byte	-118
+ 648 026b 04       		.byte	4
+ 649 026c 8C       		.byte	-116
+ 650 026d 03       		.byte	3
+ 651 026e 8E       		.byte	-114
+ 652 026f 14       		.byte	20
+ 653 0270 91       		.byte	-111
+ 654 0271 01       		.byte	1
+ 655 0272 96       		.byte	-106
+ 656 0273 15       		.byte	21
+ 657 0274 A0       		.byte	-96
+ 658 0275 0A       		.byte	10
+ 659 0276 A2       		.byte	-94
+ 660 0277 14       		.byte	20
+ 661 0278 A6       		.byte	-90
+ 662 0279 08       		.byte	8
+ 663 027a A8       		.byte	-88
+ 664 027b 20       		.byte	32
+ 665 027c B0       		.byte	-80
+ 666 027d 10       		.byte	16
+ 667 027e B1       		.byte	-79
+ 668 027f 01       		.byte	1
+ 669 0280 B2       		.byte	-78
+ 670 0281 0F       		.byte	15
+ 671 0282 B4       		.byte	-76
+ 672 0283 20       		.byte	32
+ 673 0284 BA       		.byte	-70
+ 674 0285 08       		.byte	8
+ 675 0286 BE       		.byte	-66
+ 676 0287 11       		.byte	17
+ 677 0288 BF       		.byte	-65
+ 678 0289 01       		.byte	1
+ 679 028a C0       		.byte	-64
+ 680 028b 36       		.byte	54
+ 681 028c C1       		.byte	-63
+ 682 028d 02       		.byte	2
+ 683 028e C6       		.byte	-58
+ 684 028f 0B       		.byte	11
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccrvDAvP.s 			page 13
+
+
+ 685 0290 C7       		.byte	-57
+ 686 0291 CE       		.byte	-50
+ 687 0292 C8       		.byte	-56
+ 688 0293 34       		.byte	52
+ 689 0294 C9       		.byte	-55
+ 690 0295 FF       		.byte	-1
+ 691 0296 CA       		.byte	-54
+ 692 0297 FF       		.byte	-1
+ 693 0298 CB       		.byte	-53
+ 694 0299 FF       		.byte	-1
+ 695 029a CE       		.byte	-50
+ 696 029b F0       		.byte	-16
+ 697 029c CF       		.byte	-49
+ 698 029d 44       		.byte	68
+ 699 029e D0       		.byte	-48
+ 700 029f 0C       		.byte	12
+ 701 02a0 D4       		.byte	-44
+ 702 02a1 01       		.byte	1
+ 703 02a2 D8       		.byte	-40
+ 704 02a3 04       		.byte	4
+ 705 02a4 D9       		.byte	-39
+ 706 02a5 04       		.byte	4
+ 707 02a6 DA       		.byte	-38
+ 708 02a7 04       		.byte	4
+ 709 02a8 DB       		.byte	-37
+ 710 02a9 04       		.byte	4
+ 711 02aa DC       		.byte	-36
+ 712 02ab 01       		.byte	1
+ 713 02ac DD       		.byte	-35
+ 714 02ad 11       		.byte	17
+ 715 02ae DF       		.byte	-33
+ 716 02af 01       		.byte	1
+ 717 02b0 E6       		.byte	-26
+ 718 02b1 C0       		.byte	-64
+ 719 02b2 EA       		.byte	-22
+ 720 02b3 40       		.byte	64
+ 721 02b4 EB       		.byte	-21
+ 722 02b5 02       		.byte	2
+ 723 02b6 00       		.byte	0
+ 724 02b7 08       		.byte	8
+ 725 02b8 01       		.byte	1
+ 726 02b9 60       		.byte	96
+ 727 02ba 05       		.byte	5
+ 728 02bb 04       		.byte	4
+ 729 02bc 06       		.byte	6
+ 730 02bd 0A       		.byte	10
+ 731 02be 09       		.byte	9
+ 732 02bf 02       		.byte	2
+ 733 02c0 0A       		.byte	10
+ 734 02c1 20       		.byte	32
+ 735 02c2 0F       		.byte	15
+ 736 02c3 20       		.byte	32
+ 737 02c4 10       		.byte	16
+ 738 02c5 80       		.byte	-128
+ 739 02c6 11       		.byte	17
+ 740 02c7 14       		.byte	20
+ 741 02c8 16       		.byte	22
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccrvDAvP.s 			page 14
+
+
+ 742 02c9 04       		.byte	4
+ 743 02ca 17       		.byte	23
+ 744 02cb 06       		.byte	6
+ 745 02cc 19       		.byte	25
+ 746 02cd 30       		.byte	48
+ 747 02ce 1B       		.byte	27
+ 748 02cf A9       		.byte	-87
+ 749 02d0 1D       		.byte	29
+ 750 02d1 0C       		.byte	12
+ 751 02d2 1E       		.byte	30
+ 752 02d3 48       		.byte	72
+ 753 02d4 1F       		.byte	31
+ 754 02d5 04       		.byte	4
+ 755 02d6 20       		.byte	32
+ 756 02d7 01       		.byte	1
+ 757 02d8 22       		.byte	34
+ 758 02d9 05       		.byte	5
+ 759 02da 23       		.byte	35
+ 760 02db 24       		.byte	36
+ 761 02dc 25       		.byte	37
+ 762 02dd 01       		.byte	1
+ 763 02de 28       		.byte	40
+ 764 02df 28       		.byte	40
+ 765 02e0 29       		.byte	41
+ 766 02e1 80       		.byte	-128
+ 767 02e2 2A       		.byte	42
+ 768 02e3 01       		.byte	1
+ 769 02e4 31       		.byte	49
+ 770 02e5 12       		.byte	18
+ 771 02e6 32       		.byte	50
+ 772 02e7 88       		.byte	-120
+ 773 02e8 36       		.byte	54
+ 774 02e9 01       		.byte	1
+ 775 02ea 38       		.byte	56
+ 776 02eb 42       		.byte	66
+ 777 02ec 39       		.byte	57
+ 778 02ed 14       		.byte	20
+ 779 02ee 40       		.byte	64
+ 780 02ef 6D       		.byte	109
+ 781 02f0 43       		.byte	67
+ 782 02f1 08       		.byte	8
+ 783 02f2 45       		.byte	69
+ 784 02f3 08       		.byte	8
+ 785 02f4 46       		.byte	70
+ 786 02f5 08       		.byte	8
+ 787 02f6 48       		.byte	72
+ 788 02f7 84       		.byte	-124
+ 789 02f8 4F       		.byte	79
+ 790 02f9 20       		.byte	32
+ 791 02fa 52       		.byte	82
+ 792 02fb 80       		.byte	-128
+ 793 02fc 56       		.byte	86
+ 794 02fd 86       		.byte	-122
+ 795 02fe 5A       		.byte	90
+ 796 02ff 02       		.byte	2
+ 797 0300 5E       		.byte	94
+ 798 0301 68       		.byte	104
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccrvDAvP.s 			page 15
+
+
+ 799 0302 5F       		.byte	95
+ 800 0303 01       		.byte	1
+ 801 0304 63       		.byte	99
+ 802 0305 46       		.byte	70
+ 803 0306 87       		.byte	-121
+ 804 0307 40       		.byte	64
+ 805 0308 89       		.byte	-119
+ 806 0309 02       		.byte	2
+ 807 030a 8A       		.byte	-118
+ 808 030b 12       		.byte	18
+ 809 030c 8B       		.byte	-117
+ 810 030d 20       		.byte	32
+ 811 030e 8C       		.byte	-116
+ 812 030f 01       		.byte	1
+ 813 0310 8D       		.byte	-115
+ 814 0311 01       		.byte	1
+ 815 0312 8E       		.byte	-114
+ 816 0313 14       		.byte	20
+ 817 0314 8F       		.byte	-113
+ 818 0315 01       		.byte	1
+ 819 0316 90       		.byte	-112
+ 820 0317 44       		.byte	68
+ 821 0318 91       		.byte	-111
+ 822 0319 54       		.byte	84
+ 823 031a 96       		.byte	-106
+ 824 031b 28       		.byte	40
+ 825 031c 97       		.byte	-105
+ 826 031d 08       		.byte	8
+ 827 031e 99       		.byte	-103
+ 828 031f 80       		.byte	-128
+ 829 0320 9A       		.byte	-102
+ 830 0321 09       		.byte	9
+ 831 0322 9B       		.byte	-101
+ 832 0323 06       		.byte	6
+ 833 0324 9D       		.byte	-99
+ 834 0325 04       		.byte	4
+ 835 0326 9E       		.byte	-98
+ 836 0327 80       		.byte	-128
+ 837 0328 A0       		.byte	-96
+ 838 0329 04       		.byte	4
+ 839 032a A2       		.byte	-94
+ 840 032b 09       		.byte	9
+ 841 032c A3       		.byte	-93
+ 842 032d 10       		.byte	16
+ 843 032e A7       		.byte	-89
+ 844 032f A8       		.byte	-88
+ 845 0330 B5       		.byte	-75
+ 846 0331 21       		.byte	33
+ 847 0332 C0       		.byte	-64
+ 848 0333 E7       		.byte	-25
+ 849 0334 C2       		.byte	-62
+ 850 0335 2C       		.byte	44
+ 851 0336 C4       		.byte	-60
+ 852 0337 7E       		.byte	126
+ 853 0338 CA       		.byte	-54
+ 854 0339 0F       		.byte	15
+ 855 033a CC       		.byte	-52
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccrvDAvP.s 			page 16
+
+
+ 856 033b 8F       		.byte	-113
+ 857 033c CE       		.byte	-50
+ 858 033d 0F       		.byte	15
+ 859 033e D0       		.byte	-48
+ 860 033f 6F       		.byte	111
+ 861 0340 D2       		.byte	-46
+ 862 0341 24       		.byte	36
+ 863 0342 D6       		.byte	-42
+ 864 0343 F1       		.byte	-15
+ 865 0344 D8       		.byte	-40
+ 866 0345 0D       		.byte	13
+ 867 0346 32       		.byte	50
+ 868 0347 20       		.byte	32
+ 869 0348 CC       		.byte	-52
+ 870 0349 10       		.byte	16
+ 871 034a 57       		.byte	87
+ 872 034b 80       		.byte	-128
+ 873 034c 5F       		.byte	95
+ 874 034d 80       		.byte	-128
+ 875 034e 83       		.byte	-125
+ 876 034f 80       		.byte	-128
+ 877 0350 A6       		.byte	-90
+ 878 0351 20       		.byte	32
+ 879 0352 D4       		.byte	-44
+ 880 0353 40       		.byte	64
+ 881 0354 D6       		.byte	-42
+ 882 0355 20       		.byte	32
+ 883 0356 E2       		.byte	-30
+ 884 0357 80       		.byte	-128
+ 885 0358 A6       		.byte	-90
+ 886 0359 20       		.byte	32
+ 887 035a AB       		.byte	-85
+ 888 035b 80       		.byte	-128
+ 889 035c EE       		.byte	-18
+ 890 035d 20       		.byte	32
+ 891 035e A6       		.byte	-90
+ 892 035f 20       		.byte	32
+ 893 0360 A6       		.byte	-90
+ 894 0361 20       		.byte	32
+ 895 0362 86       		.byte	-122
+ 896 0363 20       		.byte	32
+ 897 0364 A6       		.byte	-90
+ 898 0365 20       		.byte	32
+ 899 0366 E6       		.byte	-26
+ 900 0367 40       		.byte	64
+ 901 0368 12       		.byte	18
+ 902 0369 80       		.byte	-128
+ 903 036a 75       		.byte	117
+ 904 036b 04       		.byte	4
+ 905 036c 8D       		.byte	-115
+ 906 036d 04       		.byte	4
+ 907 036e 8E       		.byte	-114
+ 908 036f 80       		.byte	-128
+ 909 0370 C4       		.byte	-60
+ 910 0371 08       		.byte	8
+ 911 0372 DE       		.byte	-34
+ 912 0373 04       		.byte	4
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccrvDAvP.s 			page 17
+
+
+ 913 0374 E0       		.byte	-32
+ 914 0375 08       		.byte	8
+ 915 0376 E2       		.byte	-30
+ 916 0377 02       		.byte	2
+ 917 0378 00       		.byte	0
+ 918 0379 01       		.byte	1
+ 919 037a 08       		.byte	8
+ 920 037b 01       		.byte	1
+ 921 037c 10       		.byte	16
+ 922 037d 02       		.byte	2
+ 923 037e 1C       		.byte	28
+ 924 037f 02       		.byte	2
+ 925 0380 00       		.byte	0
+ 926 0381 03       		.byte	3
+ 927 0382 00       		.byte	0
+ 928 0383 00       		.byte	0
+ 929 0384 80       		.byte	-128
+ 930 0385 80       		.byte	-128
+ 931 0386 00       		.byte	0
+ 932 0387 00       		.byte	0
+ 933 0388 40       		.byte	64
+ 934 0389 00       		.byte	0
+ 935 038a 00       		.byte	0
+ 936 038b 00       		.byte	0
+ 937 038c 00       		.byte	0
+ 938 038d 11       		.byte	17
+ 939 038e 00       		.byte	0
+ 940 038f 28       		.byte	40
+ 941 0390 00       		.byte	0
+ 942 0391 30       		.byte	48
+ 943 0392 20       		.byte	32
+ 944 0393 00       		.byte	0
+ 945 0394 02       		.byte	2
+ 946 0395 30       		.byte	48
+ 947 0396 0C       		.byte	12
+ 948 0397 00       		.byte	0
+ 949 0398 01       		.byte	1
+ 950 0399 03       		.byte	3
+ 951 039a 00       		.byte	0
+ 952 039b 00       		.byte	0
+ 953 039c 08       		.byte	8
+ 954 039d 22       		.byte	34
+ 955 039e 02       		.byte	2
+ 956 039f 18       		.byte	24
+ 957 03a0 04       		.byte	4
+ 958 03a1 00       		.byte	0
+ 959 03a2 12       		.byte	18
+ 960 03a3 40       		.byte	64
+ 961 03a4 00       		.byte	0
+ 962 03a5 03       		.byte	3
+ 963 03a6 00       		.byte	0
+ 964 03a7 04       		.byte	4
+ 965 03a8 00       		.byte	0
+ 966 03a9 00       		.byte	0
+ 967 03aa 00       		.byte	0
+ 968 03ab 40       		.byte	64
+ 969 03ac 00       		.byte	0
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccrvDAvP.s 			page 18
+
+
+ 970 03ad 00       		.byte	0
+ 971 03ae 20       		.byte	32
+ 972 03af 03       		.byte	3
+ 973 03b0 0F       		.byte	15
+ 974 03b1 00       		.byte	0
+ 975 03b2 00       		.byte	0
+ 976 03b3 03       		.byte	3
+ 977 03b4 0F       		.byte	15
+ 978 03b5 03       		.byte	3
+ 979 03b6 00       		.byte	0
+ 980 03b7 00       		.byte	0
+ 981 03b8 00       		.byte	0
+ 982 03b9 00       		.byte	0
+ 983 03ba 00       		.byte	0
+ 984 03bb 03       		.byte	3
+ 985 03bc 20       		.byte	32
+ 986 03bd 03       		.byte	3
+ 987 03be 01       		.byte	1
+ 988 03bf 30       		.byte	48
+ 989 03c0 0E       		.byte	14
+ 990 03c1 40       		.byte	64
+ 991 03c2 10       		.byte	16
+ 992 03c3 0C       		.byte	12
+ 993 03c4 00       		.byte	0
+ 994 03c5 00       		.byte	0
+ 995 03c6 00       		.byte	0
+ 996 03c7 00       		.byte	0
+ 997 03c8 00       		.byte	0
+ 998 03c9 00       		.byte	0
+ 999 03ca 01       		.byte	1
+ 1000 03cb 50       		.byte	80
+ 1001 03cc 23       		.byte	35
+ 1002 03cd 04       		.byte	4
+ 1003 03ce 06       		.byte	6
+ 1004 03cf 00       		.byte	0
+ 1005 03d0 01       		.byte	1
+ 1006 03d1 C0       		.byte	-64
+ 1007 03d2 0E       		.byte	14
+ 1008 03d3 00       		.byte	0
+ 1009 03d4 06       		.byte	6
+ 1010 03d5 FF       		.byte	-1
+ 1011 03d6 FF       		.byte	-1
+ 1012 03d7 FF       		.byte	-1
+ 1013 03d8 62       		.byte	98
+ 1014 03d9 A0       		.byte	-96
+ 1015 03da F0       		.byte	-16
+ 1016 03db 41       		.byte	65
+ 1017 03dc 0C       		.byte	12
+ 1018 03dd 00       		.byte	0
+ 1019 03de 00       		.byte	0
+ 1020 03df 00       		.byte	0
+ 1021 03e0 18       		.byte	24
+ 1022 03e1 00       		.byte	0
+ 1023 03e2 04       		.byte	4
+ 1024 03e3 00       		.byte	0
+ 1025 03e4 04       		.byte	4
+ 1026 03e5 04       		.byte	4
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccrvDAvP.s 			page 19
+
+
+ 1027 03e6 04       		.byte	4
+ 1028 03e7 04       		.byte	4
+ 1029 03e8 11       		.byte	17
+ 1030 03e9 11       		.byte	17
+ 1031 03ea 00       		.byte	0
+ 1032 03eb 01       		.byte	1
+ 1033 03ec 00       		.byte	0
+ 1034 03ed 00       		.byte	0
+ 1035 03ee 00       		.byte	0
+ 1036 03ef 00       		.byte	0
+ 1037 03f0 00       		.byte	0
+ 1038 03f1 00       		.byte	0
+ 1039 03f2 40       		.byte	64
+ 1040 03f3 02       		.byte	2
+ 1041 03f4 00       		.byte	0
+ 1042 03f5 10       		.byte	16
+ 1043 03f6 30       		.byte	48
+ 1044 03f7 10       		.byte	16
+ 1045 03f8 00       		.byte	0
+ 1046 03f9 10       		.byte	16
+ 1047 03fa 10       		.byte	16
+ 1048 03fb 12       		.byte	18
+ 1049 03fc 00       		.byte	0
+ 1050 03fd 00       		.byte	0
+ 1051 03fe 00       		.byte	0
+ 1052 03ff 00       		.byte	0
+ 1053 0400 00       		.byte	0
+ 1054 0401 00       		.byte	0
+ 1055 0402 00       		.byte	0
+ 1056 0403 00       		.byte	0
+ 1057 0404 00       		.byte	0
+ 1058 0405 00       		.byte	0
+ 1059 0406 00       		.byte	0
+ 1060 0407 00       		.byte	0
+ 1061 0408 00       		.byte	0
+ 1062 0409 00       		.byte	0
+ 1063 040a 00       		.byte	0
+ 1064 040b 00       		.byte	0
+ 1065 040c 00       		.byte	0
+ 1066 040d 03       		.byte	3
+ 1067 040e 03       		.byte	3
+ 1068 040f 00       		.byte	0
+ 1069 0410 03       		.byte	3
+ 1070 0411 00       		.byte	0
+ 1071 0412 00       		.byte	0
+ 1072 0413 00       		.byte	0
+ 1073 0414 80       		.byte	-128
+ 1074 0415 00       		.byte	0
+ 1075 0416 40       		.byte	64
+ 1076 0417 80       		.byte	-128
+ 1077 0418 80       		.byte	-128
+ 1078 0419 00       		.byte	0
+ 1079 041a 80       		.byte	-128
+ 1080 041b 00       		.byte	0
+ 1081 041c 00       		.byte	0
+ 1082 041d 00       		.byte	0
+ 1083 041e 00       		.byte	0
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccrvDAvP.s 			page 20
+
+
+ 1084 041f 00       		.byte	0
+ 1085 0420 00       		.byte	0
+ 1086 0421 0B       		.byte	11
+ 1087 0422 0B       		.byte	11
+ 1088 0423 00       		.byte	0
+ 1089 0424 00       		.byte	0
+ 1090 0425 00       		.byte	0
+ 1091 0426 00       		.byte	0
+ 1092 0427 00       		.byte	0
+ 1093              		.section	.cywolatch,"a",%progbits
+ 1094              		.align	2
+ 1095              		.type	cy_meta_wonvl, %object
+ 1096              		.size	cy_meta_wonvl, 4
+ 1097              	cy_meta_wonvl:
+ 1098 0000 BC       		.byte	-68
+ 1099 0001 90       		.byte	-112
+ 1100 0002 AC       		.byte	-84
+ 1101 0003 AF       		.byte	-81
+ 1102              		.section	.cycustnvl,"a",%progbits
+ 1103              		.align	2
+ 1104              		.type	cy_meta_custnvl, %object
+ 1105              		.size	cy_meta_custnvl, 4
+ 1106              	cy_meta_custnvl:
+ 1107 0000 00       		.byte	0
+ 1108 0001 00       		.byte	0
+ 1109 0002 40       		.byte	64
+ 1110 0003 05       		.byte	5
+ 1111              		.section	.cymeta,"a",%progbits
+ 1112              		.align	2
+ 1113              		.type	cy_metadata, %object
+ 1114              		.size	cy_metadata, 12
+ 1115              	cy_metadata:
+ 1116 0000 00       		.byte	0
+ 1117 0001 01       		.byte	1
+ 1118 0002 2E       		.byte	46
+ 1119 0003 16       		.byte	22
+ 1120 0004 10       		.byte	16
+ 1121 0005 69       		.byte	105
+ 1122 0006 00       		.byte	0
+ 1123 0007 01       		.byte	1
+ 1124 0008 00       		.byte	0
+ 1125 0009 00       		.byte	0
+ 1126 000a 00       		.byte	0
+ 1127 000b 00       		.byte	0
+ 1128              		.section	.cyflashprotect,"a",%progbits
+ 1129              		.align	2
+ 1130              		.type	cy_meta_flashprotect, %object
+ 1131              		.size	cy_meta_flashprotect, 256
+ 1132              	cy_meta_flashprotect:
+ 1133 0000 00000000 		.space	256
+ 1133      00000000 
+ 1133      00000000 
+ 1133      00000000 
+ 1133      00000000 
+ 1134              		.text
+ 1135              	.Letext0:
+ 1136              		.file 1 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccrvDAvP.s 			page 21
+
+
+ 1137              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 1138              		.file 3 "Generated_Source\\PSoC5\\cymetadata.c"
+ 1139              		.section	.debug_info,"",%progbits
+ 1140              	.Ldebug_info0:
+ 1141 0000 31010000 		.4byte	0x131
+ 1142 0004 0400     		.2byte	0x4
+ 1143 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 1144 000a 04       		.byte	0x4
+ 1145 000b 01       		.uleb128 0x1
+ 1146 000c 24000000 		.4byte	.LASF17
+ 1147 0010 0C       		.byte	0xc
+ 1148 0011 C5010000 		.4byte	.LASF18
+ 1149 0015 D7000000 		.4byte	.LASF19
+ 1150 0019 00000000 		.4byte	.Ldebug_line0
+ 1151 001d 02       		.uleb128 0x2
+ 1152 001e 01       		.byte	0x1
+ 1153 001f 06       		.byte	0x6
+ 1154 0020 B9010000 		.4byte	.LASF0
+ 1155 0024 03       		.uleb128 0x3
+ 1156 0025 00000000 		.4byte	.LASF9
+ 1157 0029 01       		.byte	0x1
+ 1158 002a 1D       		.byte	0x1d
+ 1159 002b 2F000000 		.4byte	0x2f
+ 1160 002f 02       		.uleb128 0x2
+ 1161 0030 01       		.byte	0x1
+ 1162 0031 08       		.byte	0x8
+ 1163 0032 16000000 		.4byte	.LASF1
+ 1164 0036 02       		.uleb128 0x2
+ 1165 0037 02       		.byte	0x2
+ 1166 0038 05       		.byte	0x5
+ 1167 0039 A6010000 		.4byte	.LASF2
+ 1168 003d 02       		.uleb128 0x2
+ 1169 003e 02       		.byte	0x2
+ 1170 003f 07       		.byte	0x7
+ 1171 0040 C4000000 		.4byte	.LASF3
+ 1172 0044 02       		.uleb128 0x2
+ 1173 0045 04       		.byte	0x4
+ 1174 0046 05       		.byte	0x5
+ 1175 0047 B0010000 		.4byte	.LASF4
+ 1176 004b 02       		.uleb128 0x2
+ 1177 004c 04       		.byte	0x4
+ 1178 004d 07       		.byte	0x7
+ 1179 004e B2000000 		.4byte	.LASF5
+ 1180 0052 02       		.uleb128 0x2
+ 1181 0053 08       		.byte	0x8
+ 1182 0054 05       		.byte	0x5
+ 1183 0055 98010000 		.4byte	.LASF6
+ 1184 0059 02       		.uleb128 0x2
+ 1185 005a 08       		.byte	0x8
+ 1186 005b 07       		.byte	0x7
+ 1187 005c 4D010000 		.4byte	.LASF7
+ 1188 0060 04       		.uleb128 0x4
+ 1189 0061 04       		.byte	0x4
+ 1190 0062 05       		.byte	0x5
+ 1191 0063 696E7400 		.ascii	"int\000"
+ 1192 0067 02       		.uleb128 0x2
+ 1193 0068 04       		.byte	0x4
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccrvDAvP.s 			page 22
+
+
+ 1194 0069 07       		.byte	0x7
+ 1195 006a 40010000 		.4byte	.LASF8
+ 1196 006e 03       		.uleb128 0x3
+ 1197 006f 64010000 		.4byte	.LASF10
+ 1198 0073 02       		.byte	0x2
+ 1199 0074 18       		.byte	0x18
+ 1200 0075 24000000 		.4byte	0x24
+ 1201 0079 05       		.uleb128 0x5
+ 1202 007a 91000000 		.4byte	0x91
+ 1203 007e 8A000000 		.4byte	0x8a
+ 1204 0082 06       		.uleb128 0x6
+ 1205 0083 8A000000 		.4byte	0x8a
+ 1206 0087 2704     		.2byte	0x427
+ 1207 0089 00       		.byte	0
+ 1208 008a 02       		.uleb128 0x2
+ 1209 008b 04       		.byte	0x4
+ 1210 008c 07       		.byte	0x7
+ 1211 008d 8F010000 		.4byte	.LASF11
+ 1212 0091 07       		.uleb128 0x7
+ 1213 0092 6E000000 		.4byte	0x6e
+ 1214 0096 08       		.uleb128 0x8
+ 1215 0097 2E010000 		.4byte	.LASF12
+ 1216 009b 03       		.byte	0x3
+ 1217 009c 1F       		.byte	0x1f
+ 1218 009d A7000000 		.4byte	0xa7
+ 1219 00a1 05       		.uleb128 0x5
+ 1220 00a2 03       		.byte	0x3
+ 1221 00a3 00000000 		.4byte	cy_meta_configecc
+ 1222 00a7 07       		.uleb128 0x7
+ 1223 00a8 79000000 		.4byte	0x79
+ 1224 00ac 05       		.uleb128 0x5
+ 1225 00ad 91000000 		.4byte	0x91
+ 1226 00b1 BC000000 		.4byte	0xbc
+ 1227 00b5 09       		.uleb128 0x9
+ 1228 00b6 8A000000 		.4byte	0x8a
+ 1229 00ba 03       		.byte	0x3
+ 1230 00bb 00       		.byte	0
+ 1231 00bc 08       		.uleb128 0x8
+ 1232 00bd 1E010000 		.4byte	.LASF13
+ 1233 00c1 03       		.byte	0x3
+ 1234 00c2 B1       		.byte	0xb1
+ 1235 00c3 CD000000 		.4byte	0xcd
+ 1236 00c7 05       		.uleb128 0x5
+ 1237 00c8 03       		.byte	0x3
+ 1238 00c9 00000000 		.4byte	cy_meta_custnvl
+ 1239 00cd 07       		.uleb128 0x7
+ 1240 00ce AC000000 		.4byte	0xac
+ 1241 00d2 08       		.uleb128 0x8
+ 1242 00d3 81010000 		.4byte	.LASF14
+ 1243 00d7 03       		.byte	0x3
+ 1244 00d8 BF       		.byte	0xbf
+ 1245 00d9 E3000000 		.4byte	0xe3
+ 1246 00dd 05       		.uleb128 0x5
+ 1247 00de 03       		.byte	0x3
+ 1248 00df 00000000 		.4byte	cy_meta_wonvl
+ 1249 00e3 07       		.uleb128 0x7
+ 1250 00e4 AC000000 		.4byte	0xac
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccrvDAvP.s 			page 23
+
+
+ 1251 00e8 05       		.uleb128 0x5
+ 1252 00e9 91000000 		.4byte	0x91
+ 1253 00ed F8000000 		.4byte	0xf8
+ 1254 00f1 09       		.uleb128 0x9
+ 1255 00f2 8A000000 		.4byte	0x8a
+ 1256 00f6 FF       		.byte	0xff
+ 1257 00f7 00       		.byte	0
+ 1258 00f8 08       		.uleb128 0x8
+ 1259 00f9 6C010000 		.4byte	.LASF15
+ 1260 00fd 03       		.byte	0x3
+ 1261 00fe CD       		.byte	0xcd
+ 1262 00ff 09010000 		.4byte	0x109
+ 1263 0103 05       		.uleb128 0x5
+ 1264 0104 03       		.byte	0x3
+ 1265 0105 00000000 		.4byte	cy_meta_flashprotect
+ 1266 0109 07       		.uleb128 0x7
+ 1267 010a E8000000 		.4byte	0xe8
+ 1268 010e 05       		.uleb128 0x5
+ 1269 010f 91000000 		.4byte	0x91
+ 1270 0113 1E010000 		.4byte	0x11e
+ 1271 0117 09       		.uleb128 0x9
+ 1272 0118 8A000000 		.4byte	0x8a
+ 1273 011c 0B       		.byte	0xb
+ 1274 011d 00       		.byte	0
+ 1275 011e 08       		.uleb128 0x8
+ 1276 011f 0A000000 		.4byte	.LASF16
+ 1277 0123 03       		.byte	0x3
+ 1278 0124 FA       		.byte	0xfa
+ 1279 0125 2F010000 		.4byte	0x12f
+ 1280 0129 05       		.uleb128 0x5
+ 1281 012a 03       		.byte	0x3
+ 1282 012b 00000000 		.4byte	cy_metadata
+ 1283 012f 07       		.uleb128 0x7
+ 1284 0130 0E010000 		.4byte	0x10e
+ 1285 0134 00       		.byte	0
+ 1286              		.section	.debug_abbrev,"",%progbits
+ 1287              	.Ldebug_abbrev0:
+ 1288 0000 01       		.uleb128 0x1
+ 1289 0001 11       		.uleb128 0x11
+ 1290 0002 01       		.byte	0x1
+ 1291 0003 25       		.uleb128 0x25
+ 1292 0004 0E       		.uleb128 0xe
+ 1293 0005 13       		.uleb128 0x13
+ 1294 0006 0B       		.uleb128 0xb
+ 1295 0007 03       		.uleb128 0x3
+ 1296 0008 0E       		.uleb128 0xe
+ 1297 0009 1B       		.uleb128 0x1b
+ 1298 000a 0E       		.uleb128 0xe
+ 1299 000b 10       		.uleb128 0x10
+ 1300 000c 17       		.uleb128 0x17
+ 1301 000d 00       		.byte	0
+ 1302 000e 00       		.byte	0
+ 1303 000f 02       		.uleb128 0x2
+ 1304 0010 24       		.uleb128 0x24
+ 1305 0011 00       		.byte	0
+ 1306 0012 0B       		.uleb128 0xb
+ 1307 0013 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccrvDAvP.s 			page 24
+
+
+ 1308 0014 3E       		.uleb128 0x3e
+ 1309 0015 0B       		.uleb128 0xb
+ 1310 0016 03       		.uleb128 0x3
+ 1311 0017 0E       		.uleb128 0xe
+ 1312 0018 00       		.byte	0
+ 1313 0019 00       		.byte	0
+ 1314 001a 03       		.uleb128 0x3
+ 1315 001b 16       		.uleb128 0x16
+ 1316 001c 00       		.byte	0
+ 1317 001d 03       		.uleb128 0x3
+ 1318 001e 0E       		.uleb128 0xe
+ 1319 001f 3A       		.uleb128 0x3a
+ 1320 0020 0B       		.uleb128 0xb
+ 1321 0021 3B       		.uleb128 0x3b
+ 1322 0022 0B       		.uleb128 0xb
+ 1323 0023 49       		.uleb128 0x49
+ 1324 0024 13       		.uleb128 0x13
+ 1325 0025 00       		.byte	0
+ 1326 0026 00       		.byte	0
+ 1327 0027 04       		.uleb128 0x4
+ 1328 0028 24       		.uleb128 0x24
+ 1329 0029 00       		.byte	0
+ 1330 002a 0B       		.uleb128 0xb
+ 1331 002b 0B       		.uleb128 0xb
+ 1332 002c 3E       		.uleb128 0x3e
+ 1333 002d 0B       		.uleb128 0xb
+ 1334 002e 03       		.uleb128 0x3
+ 1335 002f 08       		.uleb128 0x8
+ 1336 0030 00       		.byte	0
+ 1337 0031 00       		.byte	0
+ 1338 0032 05       		.uleb128 0x5
+ 1339 0033 01       		.uleb128 0x1
+ 1340 0034 01       		.byte	0x1
+ 1341 0035 49       		.uleb128 0x49
+ 1342 0036 13       		.uleb128 0x13
+ 1343 0037 01       		.uleb128 0x1
+ 1344 0038 13       		.uleb128 0x13
+ 1345 0039 00       		.byte	0
+ 1346 003a 00       		.byte	0
+ 1347 003b 06       		.uleb128 0x6
+ 1348 003c 21       		.uleb128 0x21
+ 1349 003d 00       		.byte	0
+ 1350 003e 49       		.uleb128 0x49
+ 1351 003f 13       		.uleb128 0x13
+ 1352 0040 2F       		.uleb128 0x2f
+ 1353 0041 05       		.uleb128 0x5
+ 1354 0042 00       		.byte	0
+ 1355 0043 00       		.byte	0
+ 1356 0044 07       		.uleb128 0x7
+ 1357 0045 26       		.uleb128 0x26
+ 1358 0046 00       		.byte	0
+ 1359 0047 49       		.uleb128 0x49
+ 1360 0048 13       		.uleb128 0x13
+ 1361 0049 00       		.byte	0
+ 1362 004a 00       		.byte	0
+ 1363 004b 08       		.uleb128 0x8
+ 1364 004c 34       		.uleb128 0x34
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccrvDAvP.s 			page 25
+
+
+ 1365 004d 00       		.byte	0
+ 1366 004e 03       		.uleb128 0x3
+ 1367 004f 0E       		.uleb128 0xe
+ 1368 0050 3A       		.uleb128 0x3a
+ 1369 0051 0B       		.uleb128 0xb
+ 1370 0052 3B       		.uleb128 0x3b
+ 1371 0053 0B       		.uleb128 0xb
+ 1372 0054 49       		.uleb128 0x49
+ 1373 0055 13       		.uleb128 0x13
+ 1374 0056 3F       		.uleb128 0x3f
+ 1375 0057 19       		.uleb128 0x19
+ 1376 0058 02       		.uleb128 0x2
+ 1377 0059 18       		.uleb128 0x18
+ 1378 005a 00       		.byte	0
+ 1379 005b 00       		.byte	0
+ 1380 005c 09       		.uleb128 0x9
+ 1381 005d 21       		.uleb128 0x21
+ 1382 005e 00       		.byte	0
+ 1383 005f 49       		.uleb128 0x49
+ 1384 0060 13       		.uleb128 0x13
+ 1385 0061 2F       		.uleb128 0x2f
+ 1386 0062 0B       		.uleb128 0xb
+ 1387 0063 00       		.byte	0
+ 1388 0064 00       		.byte	0
+ 1389 0065 00       		.byte	0
+ 1390              		.section	.debug_aranges,"",%progbits
+ 1391 0000 14000000 		.4byte	0x14
+ 1392 0004 0200     		.2byte	0x2
+ 1393 0006 00000000 		.4byte	.Ldebug_info0
+ 1394 000a 04       		.byte	0x4
+ 1395 000b 00       		.byte	0
+ 1396 000c 0000     		.2byte	0
+ 1397 000e 0000     		.2byte	0
+ 1398 0010 00000000 		.4byte	0
+ 1399 0014 00000000 		.4byte	0
+ 1400              		.section	.debug_line,"",%progbits
+ 1401              	.Ldebug_line0:
+ 1402 0000 3D010000 		.section	.debug_str,"MS",%progbits,1
+ 1402      02003701 
+ 1402      00000201 
+ 1402      FB0E0D00 
+ 1402      01010101 
+ 1403              	.LASF9:
+ 1404 0000 5F5F7569 		.ascii	"__uint8_t\000"
+ 1404      6E74385F 
+ 1404      7400
+ 1405              	.LASF16:
+ 1406 000a 63795F6D 		.ascii	"cy_metadata\000"
+ 1406      65746164 
+ 1406      61746100 
+ 1407              	.LASF1:
+ 1408 0016 756E7369 		.ascii	"unsigned char\000"
+ 1408      676E6564 
+ 1408      20636861 
+ 1408      7200
+ 1409              	.LASF17:
+ 1410 0024 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccrvDAvP.s 			page 26
+
+
+ 1410      43313120 
+ 1410      352E342E 
+ 1410      31203230 
+ 1410      31363036 
+ 1411 0057 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 1411      20726576 
+ 1411      6973696F 
+ 1411      6E203233 
+ 1411      37373135 
+ 1412 008a 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 1412      66756E63 
+ 1412      74696F6E 
+ 1412      2D736563 
+ 1412      74696F6E 
+ 1413              	.LASF5:
+ 1414 00b2 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1414      20756E73 
+ 1414      69676E65 
+ 1414      6420696E 
+ 1414      7400
+ 1415              	.LASF3:
+ 1416 00c4 73686F72 		.ascii	"short unsigned int\000"
+ 1416      7420756E 
+ 1416      7369676E 
+ 1416      65642069 
+ 1416      6E7400
+ 1417              	.LASF19:
+ 1418 00d7 433A5C55 		.ascii	"C:\\Users\\Jacob\\OneDrive\\Dokumenter\\PSoC Creato"
+ 1418      73657273 
+ 1418      5C4A6163 
+ 1418      6F625C4F 
+ 1418      6E654472 
+ 1419 0105 725C4D4F 		.ascii	"r\\MOTOR\\MOTORMOTOR.cydsn\000"
+ 1419      544F525C 
+ 1419      4D4F544F 
+ 1419      524D4F54 
+ 1419      4F522E63 
+ 1420              	.LASF13:
+ 1421 011e 63795F6D 		.ascii	"cy_meta_custnvl\000"
+ 1421      6574615F 
+ 1421      63757374 
+ 1421      6E766C00 
+ 1422              	.LASF12:
+ 1423 012e 63795F6D 		.ascii	"cy_meta_configecc\000"
+ 1423      6574615F 
+ 1423      636F6E66 
+ 1423      69676563 
+ 1423      6300
+ 1424              	.LASF8:
+ 1425 0140 756E7369 		.ascii	"unsigned int\000"
+ 1425      676E6564 
+ 1425      20696E74 
+ 1425      00
+ 1426              	.LASF7:
+ 1427 014d 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1427      206C6F6E 
+ 1427      6720756E 
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccrvDAvP.s 			page 27
+
+
+ 1427      7369676E 
+ 1427      65642069 
+ 1428              	.LASF10:
+ 1429 0164 75696E74 		.ascii	"uint8_t\000"
+ 1429      385F7400 
+ 1430              	.LASF15:
+ 1431 016c 63795F6D 		.ascii	"cy_meta_flashprotect\000"
+ 1431      6574615F 
+ 1431      666C6173 
+ 1431      6870726F 
+ 1431      74656374 
+ 1432              	.LASF14:
+ 1433 0181 63795F6D 		.ascii	"cy_meta_wonvl\000"
+ 1433      6574615F 
+ 1433      776F6E76 
+ 1433      6C00
+ 1434              	.LASF11:
+ 1435 018f 73697A65 		.ascii	"sizetype\000"
+ 1435      74797065 
+ 1435      00
+ 1436              	.LASF6:
+ 1437 0198 6C6F6E67 		.ascii	"long long int\000"
+ 1437      206C6F6E 
+ 1437      6720696E 
+ 1437      7400
+ 1438              	.LASF2:
+ 1439 01a6 73686F72 		.ascii	"short int\000"
+ 1439      7420696E 
+ 1439      7400
+ 1440              	.LASF4:
+ 1441 01b0 6C6F6E67 		.ascii	"long int\000"
+ 1441      20696E74 
+ 1441      00
+ 1442              	.LASF0:
+ 1443 01b9 7369676E 		.ascii	"signed char\000"
+ 1443      65642063 
+ 1443      68617200 
+ 1444              	.LASF18:
+ 1445 01c5 47656E65 		.ascii	"Generated_Source\\PSoC5\\cymetadata.c\000"
+ 1445      72617465 
+ 1445      645F536F 
+ 1445      75726365 
+ 1445      5C50536F 
+ 1446              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

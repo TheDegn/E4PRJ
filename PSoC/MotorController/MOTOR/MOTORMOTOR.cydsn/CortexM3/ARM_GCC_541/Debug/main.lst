@@ -1,0 +1,1959 @@
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cckIj4wy.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"main.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.main,"ax",%progbits
+  20              		.align	2
+  21              		.global	main
+  22              		.thumb
+  23              		.thumb_func
+  24              		.type	main, %function
+  25              	main:
+  26              	.LFB63:
+  27              		.file 1 "main.c"
+   1:main.c        **** #include "project.h"
+   2:main.c        **** #include "Motor.h"
+   3:main.c        **** 
+   4:main.c        **** // Function prototypes
+   5:main.c        **** CY_ISR_PROTO(ISR_UART_rx_handler);
+   6:main.c        **** void handleByteReceived(uint8_t byteReceived);
+   7:main.c        **** 
+   8:main.c        **** void Motor_increaseSpeed(int Motor, int *Motor_speed);
+   9:main.c        **** void Motor_decreaseSpeed(int Motor, int *Motor_speed);
+  10:main.c        **** 
+  11:main.c        **** 
+  12:main.c        **** // Global variables for motor speeds
+  13:main.c        **** int Motor0_speed = 1000;
+  14:main.c        **** int Motor1_speed = 1000;
+  15:main.c        **** 
+  16:main.c        **** int main(void)
+  17:main.c        **** {
+  28              		.loc 1 17 0
+  29              		.cfi_startproc
+  30              		@ Volatile: function does not return.
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33 0000 08B5     		push	{r3, lr}
+  34              		.cfi_def_cfa_offset 8
+  35              		.cfi_offset 3, -8
+  36              		.cfi_offset 14, -4
+  18:main.c        ****     CyGlobalIntEnable; /* Enable global interrupts. */
+  37              		.loc 1 18 0
+  38              		.syntax unified
+  39              	@ 18 "main.c" 1
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cckIj4wy.s 			page 2
+
+
+  40 0002 62B6     		CPSIE   i
+  41              	@ 0 "" 2
+  19:main.c        ****     
+  20:main.c        ****     isr_uart_rx_StartEx(ISR_UART_rx_handler);
+  42              		.loc 1 20 0
+  43              		.thumb
+  44              		.syntax unified
+  45 0004 0348     		ldr	r0, .L4
+  46 0006 FFF7FEFF 		bl	isr_uart_rx_StartEx
+  47              	.LVL0:
+  21:main.c        ****     UART_1_Start();
+  48              		.loc 1 21 0
+  49 000a FFF7FEFF 		bl	UART_1_Start
+  50              	.LVL1:
+  22:main.c        ****     Motor_Init();
+  51              		.loc 1 22 0
+  52 000e FFF7FEFF 		bl	Motor_Init
+  53              	.LVL2:
+  54              	.L2:
+  55 0012 FEE7     		b	.L2
+  56              	.L5:
+  57              		.align	2
+  58              	.L4:
+  59 0014 00000000 		.word	ISR_UART_rx_handler
+  60              		.cfi_endproc
+  61              	.LFE63:
+  62              		.size	main, .-main
+  63              		.section	.text.Motor_increaseSpeed,"ax",%progbits
+  64              		.align	2
+  65              		.global	Motor_increaseSpeed
+  66              		.thumb
+  67              		.thumb_func
+  68              		.type	Motor_increaseSpeed, %function
+  69              	Motor_increaseSpeed:
+  70              	.LFB66:
+  23:main.c        ****     for (;;)
+  24:main.c        ****     {
+  25:main.c        ****     }
+  26:main.c        **** }
+  27:main.c        **** 
+  28:main.c        **** // UART interrupt service routine
+  29:main.c        **** CY_ISR(ISR_UART_rx_handler)
+  30:main.c        **** {
+  31:main.c        ****     uint8_t bytesToRead = UART_1_GetRxBufferSize(); // Get the number of bytes to read
+  32:main.c        ****     while (bytesToRead > 0)
+  33:main.c        ****     {
+  34:main.c        ****         uint8_t byteReceived = UART_1_ReadRxData(); // Read a byte from UART
+  35:main.c        ****         UART_1_WriteTxData(byteReceived);           // Echo back the received byte
+  36:main.c        **** 
+  37:main.c        ****         handleByteReceived(byteReceived); // Handle the received byte
+  38:main.c        **** 
+  39:main.c        ****         bytesToRead--; // Decrement the byte counter
+  40:main.c        ****     }
+  41:main.c        **** }
+  42:main.c        **** 
+  43:main.c        **** // Handle received byte and perform corresponding action
+  44:main.c        **** void handleByteReceived(uint8_t byteReceived)
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cckIj4wy.s 			page 3
+
+
+  45:main.c        **** {
+  46:main.c        ****     switch (byteReceived)
+  47:main.c        ****     {
+  48:main.c        ****     case 'q':
+  49:main.c        ****         Motor_decreaseSpeed(0, &Motor0_speed); // Decrease speed of motor 0
+  50:main.c        ****         break;
+  51:main.c        ****     case 'w':
+  52:main.c        ****         Motor_increaseSpeed(0, &Motor0_speed); // Increase speed of motor 0
+  53:main.c        ****         break;
+  54:main.c        ****     case '1':
+  55:main.c        ****         Motor_decreaseSpeed(1, &Motor1_speed); // Decrease speed of motor 1
+  56:main.c        ****         break;
+  57:main.c        ****     case '2':
+  58:main.c        ****         Motor_increaseSpeed(1, &Motor1_speed); // Increase speed of motor 1
+  59:main.c        ****         break;
+  60:main.c        ****     case '0':
+  61:main.c        ****         stop(); // Stop both motors
+  62:main.c        ****         break;
+  63:main.c        ****     case 'z':
+  64:main.c        ****         setspeed(0, 0);
+  65:main.c        ****         break;
+  66:main.c        ****     case 'x':
+  67:main.c        ****         setspeed(0, 1000);
+  68:main.c        ****         break;
+  69:main.c        ****     case 'c':
+  70:main.c        ****         setspeed(0, -1);
+  71:main.c        ****         break;
+  72:main.c        ****     case 'v':
+  73:main.c        ****         setspeed(0, 500);
+  74:main.c        ****         break;
+  75:main.c        ****     default:
+  76:main.c        ****         // Do nothing for unrecognized commands
+  77:main.c        ****         break;
+  78:main.c        ****     }
+  79:main.c        **** }
+  80:main.c        **** 
+  81:main.c        **** // Increase motor speed
+  82:main.c        **** void Motor_increaseSpeed(int Motor, int *Motor_speed)
+  83:main.c        **** {
+  71              		.loc 1 83 0
+  72              		.cfi_startproc
+  73              		@ args = 0, pretend = 0, frame = 0
+  74              		@ frame_needed = 0, uses_anonymous_args = 0
+  75              	.LVL3:
+  76 0000 10B5     		push	{r4, lr}
+  77              		.cfi_def_cfa_offset 8
+  78              		.cfi_offset 4, -8
+  79              		.cfi_offset 14, -4
+  80 0002 0C46     		mov	r4, r1
+  84:main.c        ****     if (*Motor_speed < 2000 && Motor == 0)
+  81              		.loc 1 84 0
+  82 0004 0B68     		ldr	r3, [r1]
+  83 0006 B3F5FA6F 		cmp	r3, #2000
+  84 000a 0ADA     		bge	.L7
+  85              		.loc 1 84 0 is_stmt 0 discriminator 1
+  86 000c 48B9     		cbnz	r0, .L7
+  85:main.c        ****     {
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cckIj4wy.s 			page 4
+
+
+  86:main.c        ****         UART_1_PutString("Increasing speed\r\n");
+  87              		.loc 1 86 0 is_stmt 1
+  88 000e 0E48     		ldr	r0, .L11
+  89              	.LVL4:
+  90 0010 FFF7FEFF 		bl	UART_1_PutString
+  91              	.LVL5:
+  87:main.c        ****         (*Motor_speed)++;
+  92              		.loc 1 87 0
+  93 0014 2068     		ldr	r0, [r4]
+  94 0016 0130     		adds	r0, r0, #1
+  95 0018 2060     		str	r0, [r4]
+  88:main.c        ****         PWM_1_WriteCompare1(*Motor_speed); // Update PWM compare value for motor 0
+  96              		.loc 1 88 0
+  97 001a 80B2     		uxth	r0, r0
+  98 001c FFF7FEFF 		bl	PWM_1_WriteCompare1
+  99              	.LVL6:
+ 100 0020 10BD     		pop	{r4, pc}
+ 101              	.LVL7:
+ 102              	.L7:
+  89:main.c        ****     }
+  90:main.c        ****     else if (*Motor_speed < 2000 && Motor == 1)
+ 103              		.loc 1 90 0
+ 104 0022 B3F5FA6F 		cmp	r3, #2000
+ 105 0026 0BDA     		bge	.L9
+ 106              		.loc 1 90 0 is_stmt 0 discriminator 1
+ 107 0028 0128     		cmp	r0, #1
+ 108 002a 09D1     		bne	.L9
+  91:main.c        ****     {
+  92:main.c        ****         UART_1_PutString("Increasing speed\r\n");
+ 109              		.loc 1 92 0 is_stmt 1
+ 110 002c 0648     		ldr	r0, .L11
+ 111              	.LVL8:
+ 112 002e FFF7FEFF 		bl	UART_1_PutString
+ 113              	.LVL9:
+  93:main.c        ****         (*Motor_speed)++;
+ 114              		.loc 1 93 0
+ 115 0032 2068     		ldr	r0, [r4]
+ 116 0034 0130     		adds	r0, r0, #1
+ 117 0036 2060     		str	r0, [r4]
+  94:main.c        ****         PWM_1_WriteCompare2(*Motor_speed); // Update PWM compare value for motor 1
+ 118              		.loc 1 94 0
+ 119 0038 80B2     		uxth	r0, r0
+ 120 003a FFF7FEFF 		bl	PWM_1_WriteCompare2
+ 121              	.LVL10:
+ 122 003e 10BD     		pop	{r4, pc}
+ 123              	.LVL11:
+ 124              	.L9:
+  95:main.c        ****     }
+  96:main.c        ****     else
+  97:main.c        ****     {
+  98:main.c        ****         UART_1_PutString("TOO FAST\r\n"); // Speed limit reached
+ 125              		.loc 1 98 0
+ 126 0040 0248     		ldr	r0, .L11+4
+ 127              	.LVL12:
+ 128 0042 FFF7FEFF 		bl	UART_1_PutString
+ 129              	.LVL13:
+ 130 0046 10BD     		pop	{r4, pc}
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cckIj4wy.s 			page 5
+
+
+ 131              	.LVL14:
+ 132              	.L12:
+ 133              		.align	2
+ 134              	.L11:
+ 135 0048 00000000 		.word	.LC0
+ 136 004c 14000000 		.word	.LC1
+ 137              		.cfi_endproc
+ 138              	.LFE66:
+ 139              		.size	Motor_increaseSpeed, .-Motor_increaseSpeed
+ 140              		.section	.text.Motor_decreaseSpeed,"ax",%progbits
+ 141              		.align	2
+ 142              		.global	Motor_decreaseSpeed
+ 143              		.thumb
+ 144              		.thumb_func
+ 145              		.type	Motor_decreaseSpeed, %function
+ 146              	Motor_decreaseSpeed:
+ 147              	.LFB67:
+  99:main.c        ****     }
+ 100:main.c        **** }
+ 101:main.c        **** 
+ 102:main.c        **** // Decrease motor speed
+ 103:main.c        **** void Motor_decreaseSpeed(int Motor, int *Motor_speed)
+ 104:main.c        **** {
+ 148              		.loc 1 104 0
+ 149              		.cfi_startproc
+ 150              		@ args = 0, pretend = 0, frame = 0
+ 151              		@ frame_needed = 0, uses_anonymous_args = 0
+ 152              	.LVL15:
+ 153 0000 10B5     		push	{r4, lr}
+ 154              		.cfi_def_cfa_offset 8
+ 155              		.cfi_offset 4, -8
+ 156              		.cfi_offset 14, -4
+ 157 0002 0C46     		mov	r4, r1
+ 105:main.c        ****     if (*Motor_speed > 1000 && Motor == 0)
+ 158              		.loc 1 105 0
+ 159 0004 0B68     		ldr	r3, [r1]
+ 160 0006 B3F57A7F 		cmp	r3, #1000
+ 161 000a 0ADD     		ble	.L14
+ 162              		.loc 1 105 0 is_stmt 0 discriminator 1
+ 163 000c 48B9     		cbnz	r0, .L14
+ 106:main.c        ****     {
+ 107:main.c        ****         UART_1_PutString("Decreasing speed\r\n");
+ 164              		.loc 1 107 0 is_stmt 1
+ 165 000e 0E48     		ldr	r0, .L18
+ 166              	.LVL16:
+ 167 0010 FFF7FEFF 		bl	UART_1_PutString
+ 168              	.LVL17:
+ 108:main.c        ****         (*Motor_speed)--;
+ 169              		.loc 1 108 0
+ 170 0014 2068     		ldr	r0, [r4]
+ 171 0016 0138     		subs	r0, r0, #1
+ 172 0018 2060     		str	r0, [r4]
+ 109:main.c        ****         PWM_1_WriteCompare1(*Motor_speed); // Update PWM compare value for motor 0
+ 173              		.loc 1 109 0
+ 174 001a 80B2     		uxth	r0, r0
+ 175 001c FFF7FEFF 		bl	PWM_1_WriteCompare1
+ 176              	.LVL18:
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cckIj4wy.s 			page 6
+
+
+ 177 0020 10BD     		pop	{r4, pc}
+ 178              	.LVL19:
+ 179              	.L14:
+ 110:main.c        ****     }
+ 111:main.c        ****     else if (*Motor_speed > 1000 && Motor == 1)
+ 180              		.loc 1 111 0
+ 181 0022 B3F57A7F 		cmp	r3, #1000
+ 182 0026 0BDD     		ble	.L16
+ 183              		.loc 1 111 0 is_stmt 0 discriminator 1
+ 184 0028 0128     		cmp	r0, #1
+ 185 002a 09D1     		bne	.L16
+ 112:main.c        ****     {
+ 113:main.c        ****         UART_1_PutString("Decreasing speed\r\n");
+ 186              		.loc 1 113 0 is_stmt 1
+ 187 002c 0648     		ldr	r0, .L18
+ 188              	.LVL20:
+ 189 002e FFF7FEFF 		bl	UART_1_PutString
+ 190              	.LVL21:
+ 114:main.c        ****         (*Motor_speed)--;
+ 191              		.loc 1 114 0
+ 192 0032 2068     		ldr	r0, [r4]
+ 193 0034 0138     		subs	r0, r0, #1
+ 194 0036 2060     		str	r0, [r4]
+ 115:main.c        ****         PWM_1_WriteCompare2(*Motor_speed); // Update PWM compare value for motor 1
+ 195              		.loc 1 115 0
+ 196 0038 80B2     		uxth	r0, r0
+ 197 003a FFF7FEFF 		bl	PWM_1_WriteCompare2
+ 198              	.LVL22:
+ 199 003e 10BD     		pop	{r4, pc}
+ 200              	.LVL23:
+ 201              	.L16:
+ 116:main.c        ****     }
+ 117:main.c        ****     else
+ 118:main.c        ****     {
+ 119:main.c        ****         UART_1_PutString("TOO SLOW\r\n"); // Speed limit reached
+ 202              		.loc 1 119 0
+ 203 0040 0248     		ldr	r0, .L18+4
+ 204              	.LVL24:
+ 205 0042 FFF7FEFF 		bl	UART_1_PutString
+ 206              	.LVL25:
+ 207 0046 10BD     		pop	{r4, pc}
+ 208              	.LVL26:
+ 209              	.L19:
+ 210              		.align	2
+ 211              	.L18:
+ 212 0048 20000000 		.word	.LC2
+ 213 004c 34000000 		.word	.LC3
+ 214              		.cfi_endproc
+ 215              	.LFE67:
+ 216              		.size	Motor_decreaseSpeed, .-Motor_decreaseSpeed
+ 217              		.section	.text.handleByteReceived,"ax",%progbits
+ 218              		.align	2
+ 219              		.global	handleByteReceived
+ 220              		.thumb
+ 221              		.thumb_func
+ 222              		.type	handleByteReceived, %function
+ 223              	handleByteReceived:
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cckIj4wy.s 			page 7
+
+
+ 224              	.LFB65:
+  45:main.c        ****     switch (byteReceived)
+ 225              		.loc 1 45 0
+ 226              		.cfi_startproc
+ 227              		@ args = 0, pretend = 0, frame = 0
+ 228              		@ frame_needed = 0, uses_anonymous_args = 0
+ 229              	.LVL27:
+ 230 0000 08B5     		push	{r3, lr}
+ 231              		.cfi_def_cfa_offset 8
+ 232              		.cfi_offset 3, -8
+ 233              		.cfi_offset 14, -4
+  46:main.c        ****     {
+ 234              		.loc 1 46 0
+ 235 0002 3038     		subs	r0, r0, #48
+ 236              	.LVL28:
+ 237 0004 4A28     		cmp	r0, #74
+ 238 0006 54D8     		bhi	.L20
+ 239 0008 DFE800F0 		tbb	[pc, r0]
+ 240              	.L23:
+ 241 000c 3A       		.byte	(.L22-.L23)/2
+ 242 000d 30       		.byte	(.L24-.L23)/2
+ 243 000e 35       		.byte	(.L25-.L23)/2
+ 244 000f 53       		.byte	(.L20-.L23)/2
+ 245 0010 53       		.byte	(.L20-.L23)/2
+ 246 0011 53       		.byte	(.L20-.L23)/2
+ 247 0012 53       		.byte	(.L20-.L23)/2
+ 248 0013 53       		.byte	(.L20-.L23)/2
+ 249 0014 53       		.byte	(.L20-.L23)/2
+ 250 0015 53       		.byte	(.L20-.L23)/2
+ 251 0016 53       		.byte	(.L20-.L23)/2
+ 252 0017 53       		.byte	(.L20-.L23)/2
+ 253 0018 53       		.byte	(.L20-.L23)/2
+ 254 0019 53       		.byte	(.L20-.L23)/2
+ 255 001a 53       		.byte	(.L20-.L23)/2
+ 256 001b 53       		.byte	(.L20-.L23)/2
+ 257 001c 53       		.byte	(.L20-.L23)/2
+ 258 001d 53       		.byte	(.L20-.L23)/2
+ 259 001e 53       		.byte	(.L20-.L23)/2
+ 260 001f 53       		.byte	(.L20-.L23)/2
+ 261 0020 53       		.byte	(.L20-.L23)/2
+ 262 0021 53       		.byte	(.L20-.L23)/2
+ 263 0022 53       		.byte	(.L20-.L23)/2
+ 264 0023 53       		.byte	(.L20-.L23)/2
+ 265 0024 53       		.byte	(.L20-.L23)/2
+ 266 0025 53       		.byte	(.L20-.L23)/2
+ 267 0026 53       		.byte	(.L20-.L23)/2
+ 268 0027 53       		.byte	(.L20-.L23)/2
+ 269 0028 53       		.byte	(.L20-.L23)/2
+ 270 0029 53       		.byte	(.L20-.L23)/2
+ 271 002a 53       		.byte	(.L20-.L23)/2
+ 272 002b 53       		.byte	(.L20-.L23)/2
+ 273 002c 53       		.byte	(.L20-.L23)/2
+ 274 002d 53       		.byte	(.L20-.L23)/2
+ 275 002e 53       		.byte	(.L20-.L23)/2
+ 276 002f 53       		.byte	(.L20-.L23)/2
+ 277 0030 53       		.byte	(.L20-.L23)/2
+ 278 0031 53       		.byte	(.L20-.L23)/2
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cckIj4wy.s 			page 8
+
+
+ 279 0032 53       		.byte	(.L20-.L23)/2
+ 280 0033 53       		.byte	(.L20-.L23)/2
+ 281 0034 53       		.byte	(.L20-.L23)/2
+ 282 0035 53       		.byte	(.L20-.L23)/2
+ 283 0036 53       		.byte	(.L20-.L23)/2
+ 284 0037 53       		.byte	(.L20-.L23)/2
+ 285 0038 53       		.byte	(.L20-.L23)/2
+ 286 0039 53       		.byte	(.L20-.L23)/2
+ 287 003a 53       		.byte	(.L20-.L23)/2
+ 288 003b 53       		.byte	(.L20-.L23)/2
+ 289 003c 53       		.byte	(.L20-.L23)/2
+ 290 003d 53       		.byte	(.L20-.L23)/2
+ 291 003e 53       		.byte	(.L20-.L23)/2
+ 292 003f 48       		.byte	(.L26-.L23)/2
+ 293 0040 53       		.byte	(.L20-.L23)/2
+ 294 0041 53       		.byte	(.L20-.L23)/2
+ 295 0042 53       		.byte	(.L20-.L23)/2
+ 296 0043 53       		.byte	(.L20-.L23)/2
+ 297 0044 53       		.byte	(.L20-.L23)/2
+ 298 0045 53       		.byte	(.L20-.L23)/2
+ 299 0046 53       		.byte	(.L20-.L23)/2
+ 300 0047 53       		.byte	(.L20-.L23)/2
+ 301 0048 53       		.byte	(.L20-.L23)/2
+ 302 0049 53       		.byte	(.L20-.L23)/2
+ 303 004a 53       		.byte	(.L20-.L23)/2
+ 304 004b 53       		.byte	(.L20-.L23)/2
+ 305 004c 53       		.byte	(.L20-.L23)/2
+ 306 004d 26       		.byte	(.L27-.L23)/2
+ 307 004e 53       		.byte	(.L20-.L23)/2
+ 308 004f 53       		.byte	(.L20-.L23)/2
+ 309 0050 53       		.byte	(.L20-.L23)/2
+ 310 0051 53       		.byte	(.L20-.L23)/2
+ 311 0052 4E       		.byte	(.L28-.L23)/2
+ 312 0053 2B       		.byte	(.L29-.L23)/2
+ 313 0054 42       		.byte	(.L30-.L23)/2
+ 314 0055 53       		.byte	(.L20-.L23)/2
+ 315 0056 3D       		.byte	(.L31-.L23)/2
+ 316 0057 00       		.p2align 1
+ 317              	.L27:
+  49:main.c        ****         break;
+ 318              		.loc 1 49 0
+ 319 0058 1649     		ldr	r1, .L33
+ 320 005a 0020     		movs	r0, #0
+ 321 005c FFF7FEFF 		bl	Motor_decreaseSpeed
+ 322              	.LVL29:
+  50:main.c        ****     case 'w':
+ 323              		.loc 1 50 0
+ 324 0060 08BD     		pop	{r3, pc}
+ 325              	.L29:
+  52:main.c        ****         break;
+ 326              		.loc 1 52 0
+ 327 0062 1449     		ldr	r1, .L33
+ 328 0064 0020     		movs	r0, #0
+ 329 0066 FFF7FEFF 		bl	Motor_increaseSpeed
+ 330              	.LVL30:
+  53:main.c        ****     case '1':
+ 331              		.loc 1 53 0
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cckIj4wy.s 			page 9
+
+
+ 332 006a 08BD     		pop	{r3, pc}
+ 333              	.L24:
+  55:main.c        ****         break;
+ 334              		.loc 1 55 0
+ 335 006c 1249     		ldr	r1, .L33+4
+ 336 006e 0120     		movs	r0, #1
+ 337 0070 FFF7FEFF 		bl	Motor_decreaseSpeed
+ 338              	.LVL31:
+  56:main.c        ****     case '2':
+ 339              		.loc 1 56 0
+ 340 0074 08BD     		pop	{r3, pc}
+ 341              	.L25:
+  58:main.c        ****         break;
+ 342              		.loc 1 58 0
+ 343 0076 1049     		ldr	r1, .L33+4
+ 344 0078 0120     		movs	r0, #1
+ 345 007a FFF7FEFF 		bl	Motor_increaseSpeed
+ 346              	.LVL32:
+  59:main.c        ****     case '0':
+ 347              		.loc 1 59 0
+ 348 007e 08BD     		pop	{r3, pc}
+ 349              	.L22:
+  61:main.c        ****         break;
+ 350              		.loc 1 61 0
+ 351 0080 FFF7FEFF 		bl	stop
+ 352              	.LVL33:
+  62:main.c        ****     case 'z':
+ 353              		.loc 1 62 0
+ 354 0084 08BD     		pop	{r3, pc}
+ 355              	.L31:
+  64:main.c        ****         break;
+ 356              		.loc 1 64 0
+ 357 0086 0021     		movs	r1, #0
+ 358 0088 0846     		mov	r0, r1
+ 359 008a FFF7FEFF 		bl	setspeed
+ 360              	.LVL34:
+  65:main.c        ****     case 'x':
+ 361              		.loc 1 65 0
+ 362 008e 08BD     		pop	{r3, pc}
+ 363              	.L30:
+  67:main.c        ****         break;
+ 364              		.loc 1 67 0
+ 365 0090 4FF47A71 		mov	r1, #1000
+ 366 0094 0020     		movs	r0, #0
+ 367 0096 FFF7FEFF 		bl	setspeed
+ 368              	.LVL35:
+  68:main.c        ****     case 'c':
+ 369              		.loc 1 68 0
+ 370 009a 08BD     		pop	{r3, pc}
+ 371              	.L26:
+  70:main.c        ****         break;
+ 372              		.loc 1 70 0
+ 373 009c 4FF0FF31 		mov	r1, #-1
+ 374 00a0 0020     		movs	r0, #0
+ 375 00a2 FFF7FEFF 		bl	setspeed
+ 376              	.LVL36:
+  71:main.c        ****     case 'v':
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cckIj4wy.s 			page 10
+
+
+ 377              		.loc 1 71 0
+ 378 00a6 08BD     		pop	{r3, pc}
+ 379              	.L28:
+  73:main.c        ****         break;
+ 380              		.loc 1 73 0
+ 381 00a8 4FF4FA71 		mov	r1, #500
+ 382 00ac 0020     		movs	r0, #0
+ 383 00ae FFF7FEFF 		bl	setspeed
+ 384              	.LVL37:
+ 385              	.L20:
+ 386 00b2 08BD     		pop	{r3, pc}
+ 387              	.L34:
+ 388              		.align	2
+ 389              	.L33:
+ 390 00b4 00000000 		.word	.LANCHOR0
+ 391 00b8 04000000 		.word	.LANCHOR0+4
+ 392              		.cfi_endproc
+ 393              	.LFE65:
+ 394              		.size	handleByteReceived, .-handleByteReceived
+ 395              		.section	.text.ISR_UART_rx_handler,"ax",%progbits
+ 396              		.align	2
+ 397              		.global	ISR_UART_rx_handler
+ 398              		.thumb
+ 399              		.thumb_func
+ 400              		.type	ISR_UART_rx_handler, %function
+ 401              	ISR_UART_rx_handler:
+ 402              	.LFB64:
+  30:main.c        ****     uint8_t bytesToRead = UART_1_GetRxBufferSize(); // Get the number of bytes to read
+ 403              		.loc 1 30 0
+ 404              		.cfi_startproc
+ 405              		@ args = 0, pretend = 0, frame = 0
+ 406              		@ frame_needed = 0, uses_anonymous_args = 0
+ 407 0000 38B5     		push	{r3, r4, r5, lr}
+ 408              		.cfi_def_cfa_offset 16
+ 409              		.cfi_offset 3, -16
+ 410              		.cfi_offset 4, -12
+ 411              		.cfi_offset 5, -8
+ 412              		.cfi_offset 14, -4
+  31:main.c        ****     while (bytesToRead > 0)
+ 413              		.loc 1 31 0
+ 414 0002 FFF7FEFF 		bl	UART_1_GetRxBufferSize
+ 415              	.LVL38:
+ 416 0006 0446     		mov	r4, r0
+ 417              	.LVL39:
+  32:main.c        ****     {
+ 418              		.loc 1 32 0
+ 419 0008 09E0     		b	.L36
+ 420              	.L37:
+ 421              	.LBB2:
+  34:main.c        ****         UART_1_WriteTxData(byteReceived);           // Echo back the received byte
+ 422              		.loc 1 34 0
+ 423 000a FFF7FEFF 		bl	UART_1_ReadRxData
+ 424              	.LVL40:
+ 425 000e 0546     		mov	r5, r0
+ 426              	.LVL41:
+  35:main.c        **** 
+ 427              		.loc 1 35 0
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cckIj4wy.s 			page 11
+
+
+ 428 0010 FFF7FEFF 		bl	UART_1_WriteTxData
+ 429              	.LVL42:
+  37:main.c        **** 
+ 430              		.loc 1 37 0
+ 431 0014 2846     		mov	r0, r5
+ 432 0016 FFF7FEFF 		bl	handleByteReceived
+ 433              	.LVL43:
+  39:main.c        ****     }
+ 434              		.loc 1 39 0
+ 435 001a 013C     		subs	r4, r4, #1
+ 436              	.LVL44:
+ 437 001c E4B2     		uxtb	r4, r4
+ 438              	.LVL45:
+ 439              	.L36:
+ 440              	.LBE2:
+  32:main.c        ****     {
+ 441              		.loc 1 32 0
+ 442 001e 002C     		cmp	r4, #0
+ 443 0020 F3D1     		bne	.L37
+  41:main.c        **** 
+ 444              		.loc 1 41 0
+ 445 0022 38BD     		pop	{r3, r4, r5, pc}
+ 446              		.cfi_endproc
+ 447              	.LFE64:
+ 448              		.size	ISR_UART_rx_handler, .-ISR_UART_rx_handler
+ 449              		.global	Motor1_speed
+ 450              		.global	Motor0_speed
+ 451              		.data
+ 452              		.align	2
+ 453              		.set	.LANCHOR0,. + 0
+ 454              		.type	Motor0_speed, %object
+ 455              		.size	Motor0_speed, 4
+ 456              	Motor0_speed:
+ 457 0000 E8030000 		.word	1000
+ 458              		.type	Motor1_speed, %object
+ 459              		.size	Motor1_speed, 4
+ 460              	Motor1_speed:
+ 461 0004 E8030000 		.word	1000
+ 462              		.section	.rodata.str1.4,"aMS",%progbits,1
+ 463              		.align	2
+ 464              	.LC0:
+ 465 0000 496E6372 		.ascii	"Increasing speed\015\012\000"
+ 465      65617369 
+ 465      6E672073 
+ 465      70656564 
+ 465      0D0A00
+ 466 0013 00       		.space	1
+ 467              	.LC1:
+ 468 0014 544F4F20 		.ascii	"TOO FAST\015\012\000"
+ 468      46415354 
+ 468      0D0A00
+ 469 001f 00       		.space	1
+ 470              	.LC2:
+ 471 0020 44656372 		.ascii	"Decreasing speed\015\012\000"
+ 471      65617369 
+ 471      6E672073 
+ 471      70656564 
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cckIj4wy.s 			page 12
+
+
+ 471      0D0A00
+ 472 0033 00       		.space	1
+ 473              	.LC3:
+ 474 0034 544F4F20 		.ascii	"TOO SLOW\015\012\000"
+ 474      534C4F57 
+ 474      0D0A00
+ 475              		.text
+ 476              	.Letext0:
+ 477              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 478              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 479              		.file 4 "Generated_Source\\PSoC5/core_cm3.h"
+ 480              		.file 5 "Generated_Source\\PSoC5/isr_uart_rx.h"
+ 481              		.file 6 "Generated_Source\\PSoC5/UART_1.h"
+ 482              		.file 7 "Motor.h"
+ 483              		.file 8 "Generated_Source\\PSoC5/PWM_1.h"
+ 484              		.section	.debug_info,"",%progbits
+ 485              	.Ldebug_info0:
+ 486 0000 31040000 		.4byte	0x431
+ 487 0004 0400     		.2byte	0x4
+ 488 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 489 000a 04       		.byte	0x4
+ 490 000b 01       		.uleb128 0x1
+ 491 000c AD000000 		.4byte	.LASF40
+ 492 0010 0C       		.byte	0xc
+ 493 0011 2D020000 		.4byte	.LASF41
+ 494 0015 8F020000 		.4byte	.LASF42
+ 495 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 496 001d 00000000 		.4byte	0
+ 497 0021 00000000 		.4byte	.Ldebug_line0
+ 498 0025 02       		.uleb128 0x2
+ 499 0026 01       		.byte	0x1
+ 500 0027 06       		.byte	0x6
+ 501 0028 83020000 		.4byte	.LASF0
+ 502 002c 03       		.uleb128 0x3
+ 503 002d 21000000 		.4byte	.LASF4
+ 504 0031 02       		.byte	0x2
+ 505 0032 1D       		.byte	0x1d
+ 506 0033 37000000 		.4byte	0x37
+ 507 0037 02       		.uleb128 0x2
+ 508 0038 01       		.byte	0x1
+ 509 0039 08       		.byte	0x8
+ 510 003a 9F000000 		.4byte	.LASF1
+ 511 003e 02       		.uleb128 0x2
+ 512 003f 02       		.byte	0x2
+ 513 0040 05       		.byte	0x5
+ 514 0041 51020000 		.4byte	.LASF2
+ 515 0045 02       		.uleb128 0x2
+ 516 0046 02       		.byte	0x2
+ 517 0047 07       		.byte	0x7
+ 518 0048 4F000000 		.4byte	.LASF3
+ 519 004c 03       		.uleb128 0x3
+ 520 004d 45000000 		.4byte	.LASF5
+ 521 0051 02       		.byte	0x2
+ 522 0052 3F       		.byte	0x3f
+ 523 0053 57000000 		.4byte	0x57
+ 524 0057 02       		.uleb128 0x2
+ 525 0058 04       		.byte	0x4
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cckIj4wy.s 			page 13
+
+
+ 526 0059 05       		.byte	0x5
+ 527 005a 5B020000 		.4byte	.LASF6
+ 528 005e 02       		.uleb128 0x2
+ 529 005f 04       		.byte	0x4
+ 530 0060 07       		.byte	0x7
+ 531 0061 4F010000 		.4byte	.LASF7
+ 532 0065 02       		.uleb128 0x2
+ 533 0066 08       		.byte	0x8
+ 534 0067 05       		.byte	0x5
+ 535 0068 1F020000 		.4byte	.LASF8
+ 536 006c 02       		.uleb128 0x2
+ 537 006d 08       		.byte	0x8
+ 538 006e 07       		.byte	0x7
+ 539 006f C4010000 		.4byte	.LASF9
+ 540 0073 04       		.uleb128 0x4
+ 541 0074 04       		.byte	0x4
+ 542 0075 05       		.byte	0x5
+ 543 0076 696E7400 		.ascii	"int\000"
+ 544 007a 02       		.uleb128 0x2
+ 545 007b 04       		.byte	0x4
+ 546 007c 07       		.byte	0x7
+ 547 007d B7010000 		.4byte	.LASF10
+ 548 0081 03       		.uleb128 0x3
+ 549 0082 DB010000 		.4byte	.LASF11
+ 550 0086 03       		.byte	0x3
+ 551 0087 18       		.byte	0x18
+ 552 0088 2C000000 		.4byte	0x2c
+ 553 008c 03       		.uleb128 0x3
+ 554 008d 0E020000 		.4byte	.LASF12
+ 555 0091 03       		.byte	0x3
+ 556 0092 2C       		.byte	0x2c
+ 557 0093 4C000000 		.4byte	0x4c
+ 558 0097 02       		.uleb128 0x2
+ 559 0098 04       		.byte	0x4
+ 560 0099 04       		.byte	0x4
+ 561 009a 3F000000 		.4byte	.LASF13
+ 562 009e 02       		.uleb128 0x2
+ 563 009f 08       		.byte	0x8
+ 564 00a0 04       		.byte	0x4
+ 565 00a1 AB010000 		.4byte	.LASF14
+ 566 00a5 02       		.uleb128 0x2
+ 567 00a6 01       		.byte	0x1
+ 568 00a7 08       		.byte	0x8
+ 569 00a8 34020000 		.4byte	.LASF15
+ 570 00ac 02       		.uleb128 0x2
+ 571 00ad 08       		.byte	0x8
+ 572 00ae 04       		.byte	0x4
+ 573 00af 71020000 		.4byte	.LASF16
+ 574 00b3 02       		.uleb128 0x2
+ 575 00b4 04       		.byte	0x4
+ 576 00b5 07       		.byte	0x7
+ 577 00b6 16020000 		.4byte	.LASF17
+ 578 00ba 05       		.uleb128 0x5
+ 579 00bb B2010000 		.4byte	.LASF43
+ 580 00bf 01       		.byte	0x1
+ 581 00c0 10       		.byte	0x10
+ 582 00c1 73000000 		.4byte	0x73
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cckIj4wy.s 			page 14
+
+
+ 583 00c5 00000000 		.4byte	.LFB63
+ 584 00c9 18000000 		.4byte	.LFE63-.LFB63
+ 585 00cd 01       		.uleb128 0x1
+ 586 00ce 9C       		.byte	0x9c
+ 587 00cf FD000000 		.4byte	0xfd
+ 588 00d3 06       		.uleb128 0x6
+ 589 00d4 0A000000 		.4byte	.LVL0
+ 590 00d8 BB030000 		.4byte	0x3bb
+ 591 00dc EA000000 		.4byte	0xea
+ 592 00e0 07       		.uleb128 0x7
+ 593 00e1 01       		.uleb128 0x1
+ 594 00e2 50       		.byte	0x50
+ 595 00e3 05       		.uleb128 0x5
+ 596 00e4 03       		.byte	0x3
+ 597 00e5 00000000 		.4byte	ISR_UART_rx_handler
+ 598 00e9 00       		.byte	0
+ 599 00ea 08       		.uleb128 0x8
+ 600 00eb 0E000000 		.4byte	.LVL1
+ 601 00ef C6030000 		.4byte	0x3c6
+ 602 00f3 08       		.uleb128 0x8
+ 603 00f4 12000000 		.4byte	.LVL2
+ 604 00f8 D1030000 		.4byte	0x3d1
+ 605 00fc 00       		.byte	0
+ 606 00fd 09       		.uleb128 0x9
+ 607 00fe 2B000000 		.4byte	.LASF20
+ 608 0102 01       		.byte	0x1
+ 609 0103 52       		.byte	0x52
+ 610 0104 00000000 		.4byte	.LFB66
+ 611 0108 50000000 		.4byte	.LFE66-.LFB66
+ 612 010c 01       		.uleb128 0x1
+ 613 010d 9C       		.byte	0x9c
+ 614 010e 84010000 		.4byte	0x184
+ 615 0112 0A       		.uleb128 0xa
+ 616 0113 7D020000 		.4byte	.LASF18
+ 617 0117 01       		.byte	0x1
+ 618 0118 52       		.byte	0x52
+ 619 0119 73000000 		.4byte	0x73
+ 620 011d 00000000 		.4byte	.LLST0
+ 621 0121 0A       		.uleb128 0xa
+ 622 0122 F4020000 		.4byte	.LASF19
+ 623 0126 01       		.byte	0x1
+ 624 0127 52       		.byte	0x52
+ 625 0128 84010000 		.4byte	0x184
+ 626 012c 53000000 		.4byte	.LLST1
+ 627 0130 06       		.uleb128 0x6
+ 628 0131 14000000 		.4byte	.LVL5
+ 629 0135 DC030000 		.4byte	0x3dc
+ 630 0139 47010000 		.4byte	0x147
+ 631 013d 07       		.uleb128 0x7
+ 632 013e 01       		.uleb128 0x1
+ 633 013f 50       		.byte	0x50
+ 634 0140 05       		.uleb128 0x5
+ 635 0141 03       		.byte	0x3
+ 636 0142 00000000 		.4byte	.LC0
+ 637 0146 00       		.byte	0
+ 638 0147 08       		.uleb128 0x8
+ 639 0148 20000000 		.4byte	.LVL6
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cckIj4wy.s 			page 15
+
+
+ 640 014c E7030000 		.4byte	0x3e7
+ 641 0150 06       		.uleb128 0x6
+ 642 0151 32000000 		.4byte	.LVL9
+ 643 0155 DC030000 		.4byte	0x3dc
+ 644 0159 67010000 		.4byte	0x167
+ 645 015d 07       		.uleb128 0x7
+ 646 015e 01       		.uleb128 0x1
+ 647 015f 50       		.byte	0x50
+ 648 0160 05       		.uleb128 0x5
+ 649 0161 03       		.byte	0x3
+ 650 0162 00000000 		.4byte	.LC0
+ 651 0166 00       		.byte	0
+ 652 0167 08       		.uleb128 0x8
+ 653 0168 3E000000 		.4byte	.LVL10
+ 654 016c F2030000 		.4byte	0x3f2
+ 655 0170 0B       		.uleb128 0xb
+ 656 0171 46000000 		.4byte	.LVL13
+ 657 0175 DC030000 		.4byte	0x3dc
+ 658 0179 07       		.uleb128 0x7
+ 659 017a 01       		.uleb128 0x1
+ 660 017b 50       		.byte	0x50
+ 661 017c 05       		.uleb128 0x5
+ 662 017d 03       		.byte	0x3
+ 663 017e 14000000 		.4byte	.LC1
+ 664 0182 00       		.byte	0
+ 665 0183 00       		.byte	0
+ 666 0184 0C       		.uleb128 0xc
+ 667 0185 04       		.byte	0x4
+ 668 0186 73000000 		.4byte	0x73
+ 669 018a 09       		.uleb128 0x9
+ 670 018b FA010000 		.4byte	.LASF21
+ 671 018f 01       		.byte	0x1
+ 672 0190 67       		.byte	0x67
+ 673 0191 00000000 		.4byte	.LFB67
+ 674 0195 50000000 		.4byte	.LFE67-.LFB67
+ 675 0199 01       		.uleb128 0x1
+ 676 019a 9C       		.byte	0x9c
+ 677 019b 11020000 		.4byte	0x211
+ 678 019f 0A       		.uleb128 0xa
+ 679 01a0 7D020000 		.4byte	.LASF18
+ 680 01a4 01       		.byte	0x1
+ 681 01a5 67       		.byte	0x67
+ 682 01a6 73000000 		.4byte	0x73
+ 683 01aa AB000000 		.4byte	.LLST2
+ 684 01ae 0A       		.uleb128 0xa
+ 685 01af F4020000 		.4byte	.LASF19
+ 686 01b3 01       		.byte	0x1
+ 687 01b4 67       		.byte	0x67
+ 688 01b5 84010000 		.4byte	0x184
+ 689 01b9 FE000000 		.4byte	.LLST3
+ 690 01bd 06       		.uleb128 0x6
+ 691 01be 14000000 		.4byte	.LVL17
+ 692 01c2 DC030000 		.4byte	0x3dc
+ 693 01c6 D4010000 		.4byte	0x1d4
+ 694 01ca 07       		.uleb128 0x7
+ 695 01cb 01       		.uleb128 0x1
+ 696 01cc 50       		.byte	0x50
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cckIj4wy.s 			page 16
+
+
+ 697 01cd 05       		.uleb128 0x5
+ 698 01ce 03       		.byte	0x3
+ 699 01cf 20000000 		.4byte	.LC2
+ 700 01d3 00       		.byte	0
+ 701 01d4 08       		.uleb128 0x8
+ 702 01d5 20000000 		.4byte	.LVL18
+ 703 01d9 E7030000 		.4byte	0x3e7
+ 704 01dd 06       		.uleb128 0x6
+ 705 01de 32000000 		.4byte	.LVL21
+ 706 01e2 DC030000 		.4byte	0x3dc
+ 707 01e6 F4010000 		.4byte	0x1f4
+ 708 01ea 07       		.uleb128 0x7
+ 709 01eb 01       		.uleb128 0x1
+ 710 01ec 50       		.byte	0x50
+ 711 01ed 05       		.uleb128 0x5
+ 712 01ee 03       		.byte	0x3
+ 713 01ef 20000000 		.4byte	.LC2
+ 714 01f3 00       		.byte	0
+ 715 01f4 08       		.uleb128 0x8
+ 716 01f5 3E000000 		.4byte	.LVL22
+ 717 01f9 F2030000 		.4byte	0x3f2
+ 718 01fd 0B       		.uleb128 0xb
+ 719 01fe 46000000 		.4byte	.LVL25
+ 720 0202 DC030000 		.4byte	0x3dc
+ 721 0206 07       		.uleb128 0x7
+ 722 0207 01       		.uleb128 0x1
+ 723 0208 50       		.byte	0x50
+ 724 0209 05       		.uleb128 0x5
+ 725 020a 03       		.byte	0x3
+ 726 020b 34000000 		.4byte	.LC3
+ 727 020f 00       		.byte	0
+ 728 0210 00       		.byte	0
+ 729 0211 09       		.uleb128 0x9
+ 730 0212 73010000 		.4byte	.LASF22
+ 731 0216 01       		.byte	0x1
+ 732 0217 2C       		.byte	0x2c
+ 733 0218 00000000 		.4byte	.LFB65
+ 734 021c BC000000 		.4byte	.LFE65-.LFB65
+ 735 0220 01       		.uleb128 0x1
+ 736 0221 9C       		.byte	0x9c
+ 737 0222 10030000 		.4byte	0x310
+ 738 0226 0A       		.uleb128 0xa
+ 739 0227 E7020000 		.4byte	.LASF23
+ 740 022b 01       		.byte	0x1
+ 741 022c 2C       		.byte	0x2c
+ 742 022d 81000000 		.4byte	0x81
+ 743 0231 56010000 		.4byte	.LLST4
+ 744 0235 06       		.uleb128 0x6
+ 745 0236 60000000 		.4byte	.LVL29
+ 746 023a 8A010000 		.4byte	0x18a
+ 747 023e 51020000 		.4byte	0x251
+ 748 0242 07       		.uleb128 0x7
+ 749 0243 01       		.uleb128 0x1
+ 750 0244 50       		.byte	0x50
+ 751 0245 01       		.uleb128 0x1
+ 752 0246 30       		.byte	0x30
+ 753 0247 07       		.uleb128 0x7
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cckIj4wy.s 			page 17
+
+
+ 754 0248 01       		.uleb128 0x1
+ 755 0249 51       		.byte	0x51
+ 756 024a 05       		.uleb128 0x5
+ 757 024b 03       		.byte	0x3
+ 758 024c 00000000 		.4byte	.LANCHOR0
+ 759 0250 00       		.byte	0
+ 760 0251 06       		.uleb128 0x6
+ 761 0252 6A000000 		.4byte	.LVL30
+ 762 0256 FD000000 		.4byte	0xfd
+ 763 025a 6D020000 		.4byte	0x26d
+ 764 025e 07       		.uleb128 0x7
+ 765 025f 01       		.uleb128 0x1
+ 766 0260 50       		.byte	0x50
+ 767 0261 01       		.uleb128 0x1
+ 768 0262 30       		.byte	0x30
+ 769 0263 07       		.uleb128 0x7
+ 770 0264 01       		.uleb128 0x1
+ 771 0265 51       		.byte	0x51
+ 772 0266 05       		.uleb128 0x5
+ 773 0267 03       		.byte	0x3
+ 774 0268 00000000 		.4byte	.LANCHOR0
+ 775 026c 00       		.byte	0
+ 776 026d 06       		.uleb128 0x6
+ 777 026e 74000000 		.4byte	.LVL31
+ 778 0272 8A010000 		.4byte	0x18a
+ 779 0276 89020000 		.4byte	0x289
+ 780 027a 07       		.uleb128 0x7
+ 781 027b 01       		.uleb128 0x1
+ 782 027c 50       		.byte	0x50
+ 783 027d 01       		.uleb128 0x1
+ 784 027e 31       		.byte	0x31
+ 785 027f 07       		.uleb128 0x7
+ 786 0280 01       		.uleb128 0x1
+ 787 0281 51       		.byte	0x51
+ 788 0282 05       		.uleb128 0x5
+ 789 0283 03       		.byte	0x3
+ 790 0284 04000000 		.4byte	.LANCHOR0+4
+ 791 0288 00       		.byte	0
+ 792 0289 06       		.uleb128 0x6
+ 793 028a 7E000000 		.4byte	.LVL32
+ 794 028e FD000000 		.4byte	0xfd
+ 795 0292 A5020000 		.4byte	0x2a5
+ 796 0296 07       		.uleb128 0x7
+ 797 0297 01       		.uleb128 0x1
+ 798 0298 50       		.byte	0x50
+ 799 0299 01       		.uleb128 0x1
+ 800 029a 31       		.byte	0x31
+ 801 029b 07       		.uleb128 0x7
+ 802 029c 01       		.uleb128 0x1
+ 803 029d 51       		.byte	0x51
+ 804 029e 05       		.uleb128 0x5
+ 805 029f 03       		.byte	0x3
+ 806 02a0 04000000 		.4byte	.LANCHOR0+4
+ 807 02a4 00       		.byte	0
+ 808 02a5 08       		.uleb128 0x8
+ 809 02a6 84000000 		.4byte	.LVL33
+ 810 02aa FD030000 		.4byte	0x3fd
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cckIj4wy.s 			page 18
+
+
+ 811 02ae 06       		.uleb128 0x6
+ 812 02af 8E000000 		.4byte	.LVL34
+ 813 02b3 08040000 		.4byte	0x408
+ 814 02b7 C6020000 		.4byte	0x2c6
+ 815 02bb 07       		.uleb128 0x7
+ 816 02bc 01       		.uleb128 0x1
+ 817 02bd 50       		.byte	0x50
+ 818 02be 01       		.uleb128 0x1
+ 819 02bf 30       		.byte	0x30
+ 820 02c0 07       		.uleb128 0x7
+ 821 02c1 01       		.uleb128 0x1
+ 822 02c2 51       		.byte	0x51
+ 823 02c3 01       		.uleb128 0x1
+ 824 02c4 30       		.byte	0x30
+ 825 02c5 00       		.byte	0
+ 826 02c6 06       		.uleb128 0x6
+ 827 02c7 9A000000 		.4byte	.LVL35
+ 828 02cb 08040000 		.4byte	0x408
+ 829 02cf E0020000 		.4byte	0x2e0
+ 830 02d3 07       		.uleb128 0x7
+ 831 02d4 01       		.uleb128 0x1
+ 832 02d5 50       		.byte	0x50
+ 833 02d6 01       		.uleb128 0x1
+ 834 02d7 30       		.byte	0x30
+ 835 02d8 07       		.uleb128 0x7
+ 836 02d9 01       		.uleb128 0x1
+ 837 02da 51       		.byte	0x51
+ 838 02db 03       		.uleb128 0x3
+ 839 02dc 0A       		.byte	0xa
+ 840 02dd E803     		.2byte	0x3e8
+ 841 02df 00       		.byte	0
+ 842 02e0 06       		.uleb128 0x6
+ 843 02e1 A6000000 		.4byte	.LVL36
+ 844 02e5 08040000 		.4byte	0x408
+ 845 02e9 F9020000 		.4byte	0x2f9
+ 846 02ed 07       		.uleb128 0x7
+ 847 02ee 01       		.uleb128 0x1
+ 848 02ef 50       		.byte	0x50
+ 849 02f0 01       		.uleb128 0x1
+ 850 02f1 30       		.byte	0x30
+ 851 02f2 07       		.uleb128 0x7
+ 852 02f3 01       		.uleb128 0x1
+ 853 02f4 51       		.byte	0x51
+ 854 02f5 02       		.uleb128 0x2
+ 855 02f6 09       		.byte	0x9
+ 856 02f7 FF       		.byte	0xff
+ 857 02f8 00       		.byte	0
+ 858 02f9 0B       		.uleb128 0xb
+ 859 02fa B2000000 		.4byte	.LVL37
+ 860 02fe 08040000 		.4byte	0x408
+ 861 0302 07       		.uleb128 0x7
+ 862 0303 01       		.uleb128 0x1
+ 863 0304 50       		.byte	0x50
+ 864 0305 01       		.uleb128 0x1
+ 865 0306 30       		.byte	0x30
+ 866 0307 07       		.uleb128 0x7
+ 867 0308 01       		.uleb128 0x1
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cckIj4wy.s 			page 19
+
+
+ 868 0309 51       		.byte	0x51
+ 869 030a 03       		.uleb128 0x3
+ 870 030b 0A       		.byte	0xa
+ 871 030c F401     		.2byte	0x1f4
+ 872 030e 00       		.byte	0
+ 873 030f 00       		.byte	0
+ 874 0310 09       		.uleb128 0x9
+ 875 0311 3B010000 		.4byte	.LASF24
+ 876 0315 01       		.byte	0x1
+ 877 0316 1D       		.byte	0x1d
+ 878 0317 00000000 		.4byte	.LFB64
+ 879 031b 24000000 		.4byte	.LFE64-.LFB64
+ 880 031f 01       		.uleb128 0x1
+ 881 0320 9C       		.byte	0x9c
+ 882 0321 88030000 		.4byte	0x388
+ 883 0325 0D       		.uleb128 0xd
+ 884 0326 8A000000 		.4byte	.LASF25
+ 885 032a 01       		.byte	0x1
+ 886 032b 1F       		.byte	0x1f
+ 887 032c 81000000 		.4byte	0x81
+ 888 0330 77010000 		.4byte	.LLST5
+ 889 0334 0E       		.uleb128 0xe
+ 890 0335 0A000000 		.4byte	.LBB2
+ 891 0339 14000000 		.4byte	.LBE2-.LBB2
+ 892 033d 7E030000 		.4byte	0x37e
+ 893 0341 0D       		.uleb128 0xd
+ 894 0342 E7020000 		.4byte	.LASF23
+ 895 0346 01       		.byte	0x1
+ 896 0347 22       		.byte	0x22
+ 897 0348 81000000 		.4byte	0x81
+ 898 034c 95010000 		.4byte	.LLST6
+ 899 0350 08       		.uleb128 0x8
+ 900 0351 0E000000 		.4byte	.LVL40
+ 901 0355 13040000 		.4byte	0x413
+ 902 0359 06       		.uleb128 0x6
+ 903 035a 14000000 		.4byte	.LVL42
+ 904 035e 1E040000 		.4byte	0x41e
+ 905 0362 6D030000 		.4byte	0x36d
+ 906 0366 07       		.uleb128 0x7
+ 907 0367 01       		.uleb128 0x1
+ 908 0368 50       		.byte	0x50
+ 909 0369 02       		.uleb128 0x2
+ 910 036a 75       		.byte	0x75
+ 911 036b 00       		.sleb128 0
+ 912 036c 00       		.byte	0
+ 913 036d 0B       		.uleb128 0xb
+ 914 036e 1A000000 		.4byte	.LVL43
+ 915 0372 11020000 		.4byte	0x211
+ 916 0376 07       		.uleb128 0x7
+ 917 0377 01       		.uleb128 0x1
+ 918 0378 50       		.byte	0x50
+ 919 0379 02       		.uleb128 0x2
+ 920 037a 75       		.byte	0x75
+ 921 037b 00       		.sleb128 0
+ 922 037c 00       		.byte	0
+ 923 037d 00       		.byte	0
+ 924 037e 08       		.uleb128 0x8
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cckIj4wy.s 			page 20
+
+
+ 925 037f 06000000 		.4byte	.LVL38
+ 926 0383 29040000 		.4byte	0x429
+ 927 0387 00       		.byte	0
+ 928 0388 0F       		.uleb128 0xf
+ 929 0389 8B010000 		.4byte	.LASF26
+ 930 038d 04       		.byte	0x4
+ 931 038e 1207     		.2byte	0x712
+ 932 0390 94030000 		.4byte	0x394
+ 933 0394 10       		.uleb128 0x10
+ 934 0395 8C000000 		.4byte	0x8c
+ 935 0399 11       		.uleb128 0x11
+ 936 039a 44020000 		.4byte	.LASF27
+ 937 039e 01       		.byte	0x1
+ 938 039f 0D       		.byte	0xd
+ 939 03a0 73000000 		.4byte	0x73
+ 940 03a4 05       		.uleb128 0x5
+ 941 03a5 03       		.byte	0x3
+ 942 03a6 00000000 		.4byte	Motor0_speed
+ 943 03aa 11       		.uleb128 0x11
+ 944 03ab 64020000 		.4byte	.LASF28
+ 945 03af 01       		.byte	0x1
+ 946 03b0 0E       		.byte	0xe
+ 947 03b1 73000000 		.4byte	0x73
+ 948 03b5 05       		.uleb128 0x5
+ 949 03b6 03       		.byte	0x3
+ 950 03b7 00000000 		.4byte	Motor1_speed
+ 951 03bb 12       		.uleb128 0x12
+ 952 03bc 00000000 		.4byte	.LASF29
+ 953 03c0 00000000 		.4byte	.LASF29
+ 954 03c4 05       		.byte	0x5
+ 955 03c5 18       		.byte	0x18
+ 956 03c6 12       		.uleb128 0x12
+ 957 03c7 14000000 		.4byte	.LASF30
+ 958 03cb 14000000 		.4byte	.LASF30
+ 959 03cf 06       		.byte	0x6
+ 960 03d0 54       		.byte	0x54
+ 961 03d1 12       		.uleb128 0x12
+ 962 03d2 39020000 		.4byte	.LASF31
+ 963 03d6 39020000 		.4byte	.LASF31
+ 964 03da 07       		.byte	0x7
+ 965 03db 01       		.byte	0x1
+ 966 03dc 12       		.uleb128 0x12
+ 967 03dd D6020000 		.4byte	.LASF32
+ 968 03e1 D6020000 		.4byte	.LASF32
+ 969 03e5 06       		.byte	0x6
+ 970 03e6 8B       		.byte	0x8b
+ 971 03e7 12       		.uleb128 0x12
+ 972 03e8 62000000 		.4byte	.LASF33
+ 973 03ec 62000000 		.4byte	.LASF33
+ 974 03f0 08       		.byte	0x8
+ 975 03f1 C7       		.byte	0xc7
+ 976 03f2 12       		.uleb128 0x12
+ 977 03f3 76000000 		.4byte	.LASF34
+ 978 03f7 76000000 		.4byte	.LASF34
+ 979 03fb 08       		.byte	0x8
+ 980 03fc CA       		.byte	0xca
+ 981 03fd 12       		.uleb128 0x12
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cckIj4wy.s 			page 21
+
+
+ 982 03fe 86010000 		.4byte	.LASF35
+ 983 0402 86010000 		.4byte	.LASF35
+ 984 0406 07       		.byte	0x7
+ 985 0407 02       		.byte	0x2
+ 986 0408 12       		.uleb128 0x12
+ 987 0409 96000000 		.4byte	.LASF36
+ 988 040d 96000000 		.4byte	.LASF36
+ 989 0411 07       		.byte	0x7
+ 990 0412 03       		.byte	0x3
+ 991 0413 12       		.uleb128 0x12
+ 992 0414 61010000 		.4byte	.LASF37
+ 993 0418 61010000 		.4byte	.LASF37
+ 994 041c 06       		.byte	0x6
+ 995 041d 6F       		.byte	0x6f
+ 996 041e 12       		.uleb128 0x12
+ 997 041f 98010000 		.4byte	.LASF38
+ 998 0423 98010000 		.4byte	.LASF38
+ 999 0427 06       		.byte	0x6
+ 1000 0428 88       		.byte	0x88
+ 1001 0429 12       		.uleb128 0x12
+ 1002 042a E3010000 		.4byte	.LASF39
+ 1003 042e E3010000 		.4byte	.LASF39
+ 1004 0432 06       		.byte	0x6
+ 1005 0433 73       		.byte	0x73
+ 1006 0434 00       		.byte	0
+ 1007              		.section	.debug_abbrev,"",%progbits
+ 1008              	.Ldebug_abbrev0:
+ 1009 0000 01       		.uleb128 0x1
+ 1010 0001 11       		.uleb128 0x11
+ 1011 0002 01       		.byte	0x1
+ 1012 0003 25       		.uleb128 0x25
+ 1013 0004 0E       		.uleb128 0xe
+ 1014 0005 13       		.uleb128 0x13
+ 1015 0006 0B       		.uleb128 0xb
+ 1016 0007 03       		.uleb128 0x3
+ 1017 0008 0E       		.uleb128 0xe
+ 1018 0009 1B       		.uleb128 0x1b
+ 1019 000a 0E       		.uleb128 0xe
+ 1020 000b 55       		.uleb128 0x55
+ 1021 000c 17       		.uleb128 0x17
+ 1022 000d 11       		.uleb128 0x11
+ 1023 000e 01       		.uleb128 0x1
+ 1024 000f 10       		.uleb128 0x10
+ 1025 0010 17       		.uleb128 0x17
+ 1026 0011 00       		.byte	0
+ 1027 0012 00       		.byte	0
+ 1028 0013 02       		.uleb128 0x2
+ 1029 0014 24       		.uleb128 0x24
+ 1030 0015 00       		.byte	0
+ 1031 0016 0B       		.uleb128 0xb
+ 1032 0017 0B       		.uleb128 0xb
+ 1033 0018 3E       		.uleb128 0x3e
+ 1034 0019 0B       		.uleb128 0xb
+ 1035 001a 03       		.uleb128 0x3
+ 1036 001b 0E       		.uleb128 0xe
+ 1037 001c 00       		.byte	0
+ 1038 001d 00       		.byte	0
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cckIj4wy.s 			page 22
+
+
+ 1039 001e 03       		.uleb128 0x3
+ 1040 001f 16       		.uleb128 0x16
+ 1041 0020 00       		.byte	0
+ 1042 0021 03       		.uleb128 0x3
+ 1043 0022 0E       		.uleb128 0xe
+ 1044 0023 3A       		.uleb128 0x3a
+ 1045 0024 0B       		.uleb128 0xb
+ 1046 0025 3B       		.uleb128 0x3b
+ 1047 0026 0B       		.uleb128 0xb
+ 1048 0027 49       		.uleb128 0x49
+ 1049 0028 13       		.uleb128 0x13
+ 1050 0029 00       		.byte	0
+ 1051 002a 00       		.byte	0
+ 1052 002b 04       		.uleb128 0x4
+ 1053 002c 24       		.uleb128 0x24
+ 1054 002d 00       		.byte	0
+ 1055 002e 0B       		.uleb128 0xb
+ 1056 002f 0B       		.uleb128 0xb
+ 1057 0030 3E       		.uleb128 0x3e
+ 1058 0031 0B       		.uleb128 0xb
+ 1059 0032 03       		.uleb128 0x3
+ 1060 0033 08       		.uleb128 0x8
+ 1061 0034 00       		.byte	0
+ 1062 0035 00       		.byte	0
+ 1063 0036 05       		.uleb128 0x5
+ 1064 0037 2E       		.uleb128 0x2e
+ 1065 0038 01       		.byte	0x1
+ 1066 0039 3F       		.uleb128 0x3f
+ 1067 003a 19       		.uleb128 0x19
+ 1068 003b 03       		.uleb128 0x3
+ 1069 003c 0E       		.uleb128 0xe
+ 1070 003d 3A       		.uleb128 0x3a
+ 1071 003e 0B       		.uleb128 0xb
+ 1072 003f 3B       		.uleb128 0x3b
+ 1073 0040 0B       		.uleb128 0xb
+ 1074 0041 27       		.uleb128 0x27
+ 1075 0042 19       		.uleb128 0x19
+ 1076 0043 49       		.uleb128 0x49
+ 1077 0044 13       		.uleb128 0x13
+ 1078 0045 8701     		.uleb128 0x87
+ 1079 0047 19       		.uleb128 0x19
+ 1080 0048 11       		.uleb128 0x11
+ 1081 0049 01       		.uleb128 0x1
+ 1082 004a 12       		.uleb128 0x12
+ 1083 004b 06       		.uleb128 0x6
+ 1084 004c 40       		.uleb128 0x40
+ 1085 004d 18       		.uleb128 0x18
+ 1086 004e 9742     		.uleb128 0x2117
+ 1087 0050 19       		.uleb128 0x19
+ 1088 0051 01       		.uleb128 0x1
+ 1089 0052 13       		.uleb128 0x13
+ 1090 0053 00       		.byte	0
+ 1091 0054 00       		.byte	0
+ 1092 0055 06       		.uleb128 0x6
+ 1093 0056 898201   		.uleb128 0x4109
+ 1094 0059 01       		.byte	0x1
+ 1095 005a 11       		.uleb128 0x11
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cckIj4wy.s 			page 23
+
+
+ 1096 005b 01       		.uleb128 0x1
+ 1097 005c 31       		.uleb128 0x31
+ 1098 005d 13       		.uleb128 0x13
+ 1099 005e 01       		.uleb128 0x1
+ 1100 005f 13       		.uleb128 0x13
+ 1101 0060 00       		.byte	0
+ 1102 0061 00       		.byte	0
+ 1103 0062 07       		.uleb128 0x7
+ 1104 0063 8A8201   		.uleb128 0x410a
+ 1105 0066 00       		.byte	0
+ 1106 0067 02       		.uleb128 0x2
+ 1107 0068 18       		.uleb128 0x18
+ 1108 0069 9142     		.uleb128 0x2111
+ 1109 006b 18       		.uleb128 0x18
+ 1110 006c 00       		.byte	0
+ 1111 006d 00       		.byte	0
+ 1112 006e 08       		.uleb128 0x8
+ 1113 006f 898201   		.uleb128 0x4109
+ 1114 0072 00       		.byte	0
+ 1115 0073 11       		.uleb128 0x11
+ 1116 0074 01       		.uleb128 0x1
+ 1117 0075 31       		.uleb128 0x31
+ 1118 0076 13       		.uleb128 0x13
+ 1119 0077 00       		.byte	0
+ 1120 0078 00       		.byte	0
+ 1121 0079 09       		.uleb128 0x9
+ 1122 007a 2E       		.uleb128 0x2e
+ 1123 007b 01       		.byte	0x1
+ 1124 007c 3F       		.uleb128 0x3f
+ 1125 007d 19       		.uleb128 0x19
+ 1126 007e 03       		.uleb128 0x3
+ 1127 007f 0E       		.uleb128 0xe
+ 1128 0080 3A       		.uleb128 0x3a
+ 1129 0081 0B       		.uleb128 0xb
+ 1130 0082 3B       		.uleb128 0x3b
+ 1131 0083 0B       		.uleb128 0xb
+ 1132 0084 27       		.uleb128 0x27
+ 1133 0085 19       		.uleb128 0x19
+ 1134 0086 11       		.uleb128 0x11
+ 1135 0087 01       		.uleb128 0x1
+ 1136 0088 12       		.uleb128 0x12
+ 1137 0089 06       		.uleb128 0x6
+ 1138 008a 40       		.uleb128 0x40
+ 1139 008b 18       		.uleb128 0x18
+ 1140 008c 9742     		.uleb128 0x2117
+ 1141 008e 19       		.uleb128 0x19
+ 1142 008f 01       		.uleb128 0x1
+ 1143 0090 13       		.uleb128 0x13
+ 1144 0091 00       		.byte	0
+ 1145 0092 00       		.byte	0
+ 1146 0093 0A       		.uleb128 0xa
+ 1147 0094 05       		.uleb128 0x5
+ 1148 0095 00       		.byte	0
+ 1149 0096 03       		.uleb128 0x3
+ 1150 0097 0E       		.uleb128 0xe
+ 1151 0098 3A       		.uleb128 0x3a
+ 1152 0099 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cckIj4wy.s 			page 24
+
+
+ 1153 009a 3B       		.uleb128 0x3b
+ 1154 009b 0B       		.uleb128 0xb
+ 1155 009c 49       		.uleb128 0x49
+ 1156 009d 13       		.uleb128 0x13
+ 1157 009e 02       		.uleb128 0x2
+ 1158 009f 17       		.uleb128 0x17
+ 1159 00a0 00       		.byte	0
+ 1160 00a1 00       		.byte	0
+ 1161 00a2 0B       		.uleb128 0xb
+ 1162 00a3 898201   		.uleb128 0x4109
+ 1163 00a6 01       		.byte	0x1
+ 1164 00a7 11       		.uleb128 0x11
+ 1165 00a8 01       		.uleb128 0x1
+ 1166 00a9 31       		.uleb128 0x31
+ 1167 00aa 13       		.uleb128 0x13
+ 1168 00ab 00       		.byte	0
+ 1169 00ac 00       		.byte	0
+ 1170 00ad 0C       		.uleb128 0xc
+ 1171 00ae 0F       		.uleb128 0xf
+ 1172 00af 00       		.byte	0
+ 1173 00b0 0B       		.uleb128 0xb
+ 1174 00b1 0B       		.uleb128 0xb
+ 1175 00b2 49       		.uleb128 0x49
+ 1176 00b3 13       		.uleb128 0x13
+ 1177 00b4 00       		.byte	0
+ 1178 00b5 00       		.byte	0
+ 1179 00b6 0D       		.uleb128 0xd
+ 1180 00b7 34       		.uleb128 0x34
+ 1181 00b8 00       		.byte	0
+ 1182 00b9 03       		.uleb128 0x3
+ 1183 00ba 0E       		.uleb128 0xe
+ 1184 00bb 3A       		.uleb128 0x3a
+ 1185 00bc 0B       		.uleb128 0xb
+ 1186 00bd 3B       		.uleb128 0x3b
+ 1187 00be 0B       		.uleb128 0xb
+ 1188 00bf 49       		.uleb128 0x49
+ 1189 00c0 13       		.uleb128 0x13
+ 1190 00c1 02       		.uleb128 0x2
+ 1191 00c2 17       		.uleb128 0x17
+ 1192 00c3 00       		.byte	0
+ 1193 00c4 00       		.byte	0
+ 1194 00c5 0E       		.uleb128 0xe
+ 1195 00c6 0B       		.uleb128 0xb
+ 1196 00c7 01       		.byte	0x1
+ 1197 00c8 11       		.uleb128 0x11
+ 1198 00c9 01       		.uleb128 0x1
+ 1199 00ca 12       		.uleb128 0x12
+ 1200 00cb 06       		.uleb128 0x6
+ 1201 00cc 01       		.uleb128 0x1
+ 1202 00cd 13       		.uleb128 0x13
+ 1203 00ce 00       		.byte	0
+ 1204 00cf 00       		.byte	0
+ 1205 00d0 0F       		.uleb128 0xf
+ 1206 00d1 34       		.uleb128 0x34
+ 1207 00d2 00       		.byte	0
+ 1208 00d3 03       		.uleb128 0x3
+ 1209 00d4 0E       		.uleb128 0xe
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cckIj4wy.s 			page 25
+
+
+ 1210 00d5 3A       		.uleb128 0x3a
+ 1211 00d6 0B       		.uleb128 0xb
+ 1212 00d7 3B       		.uleb128 0x3b
+ 1213 00d8 05       		.uleb128 0x5
+ 1214 00d9 49       		.uleb128 0x49
+ 1215 00da 13       		.uleb128 0x13
+ 1216 00db 3F       		.uleb128 0x3f
+ 1217 00dc 19       		.uleb128 0x19
+ 1218 00dd 3C       		.uleb128 0x3c
+ 1219 00de 19       		.uleb128 0x19
+ 1220 00df 00       		.byte	0
+ 1221 00e0 00       		.byte	0
+ 1222 00e1 10       		.uleb128 0x10
+ 1223 00e2 35       		.uleb128 0x35
+ 1224 00e3 00       		.byte	0
+ 1225 00e4 49       		.uleb128 0x49
+ 1226 00e5 13       		.uleb128 0x13
+ 1227 00e6 00       		.byte	0
+ 1228 00e7 00       		.byte	0
+ 1229 00e8 11       		.uleb128 0x11
+ 1230 00e9 34       		.uleb128 0x34
+ 1231 00ea 00       		.byte	0
+ 1232 00eb 03       		.uleb128 0x3
+ 1233 00ec 0E       		.uleb128 0xe
+ 1234 00ed 3A       		.uleb128 0x3a
+ 1235 00ee 0B       		.uleb128 0xb
+ 1236 00ef 3B       		.uleb128 0x3b
+ 1237 00f0 0B       		.uleb128 0xb
+ 1238 00f1 49       		.uleb128 0x49
+ 1239 00f2 13       		.uleb128 0x13
+ 1240 00f3 3F       		.uleb128 0x3f
+ 1241 00f4 19       		.uleb128 0x19
+ 1242 00f5 02       		.uleb128 0x2
+ 1243 00f6 18       		.uleb128 0x18
+ 1244 00f7 00       		.byte	0
+ 1245 00f8 00       		.byte	0
+ 1246 00f9 12       		.uleb128 0x12
+ 1247 00fa 2E       		.uleb128 0x2e
+ 1248 00fb 00       		.byte	0
+ 1249 00fc 3F       		.uleb128 0x3f
+ 1250 00fd 19       		.uleb128 0x19
+ 1251 00fe 3C       		.uleb128 0x3c
+ 1252 00ff 19       		.uleb128 0x19
+ 1253 0100 6E       		.uleb128 0x6e
+ 1254 0101 0E       		.uleb128 0xe
+ 1255 0102 03       		.uleb128 0x3
+ 1256 0103 0E       		.uleb128 0xe
+ 1257 0104 3A       		.uleb128 0x3a
+ 1258 0105 0B       		.uleb128 0xb
+ 1259 0106 3B       		.uleb128 0x3b
+ 1260 0107 0B       		.uleb128 0xb
+ 1261 0108 00       		.byte	0
+ 1262 0109 00       		.byte	0
+ 1263 010a 00       		.byte	0
+ 1264              		.section	.debug_loc,"",%progbits
+ 1265              	.Ldebug_loc0:
+ 1266              	.LLST0:
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cckIj4wy.s 			page 26
+
+
+ 1267 0000 00000000 		.4byte	.LVL3
+ 1268 0004 10000000 		.4byte	.LVL4
+ 1269 0008 0100     		.2byte	0x1
+ 1270 000a 50       		.byte	0x50
+ 1271 000b 10000000 		.4byte	.LVL4
+ 1272 000f 22000000 		.4byte	.LVL7
+ 1273 0013 0400     		.2byte	0x4
+ 1274 0015 F3       		.byte	0xf3
+ 1275 0016 01       		.uleb128 0x1
+ 1276 0017 50       		.byte	0x50
+ 1277 0018 9F       		.byte	0x9f
+ 1278 0019 22000000 		.4byte	.LVL7
+ 1279 001d 2E000000 		.4byte	.LVL8
+ 1280 0021 0100     		.2byte	0x1
+ 1281 0023 50       		.byte	0x50
+ 1282 0024 2E000000 		.4byte	.LVL8
+ 1283 0028 40000000 		.4byte	.LVL11
+ 1284 002c 0400     		.2byte	0x4
+ 1285 002e F3       		.byte	0xf3
+ 1286 002f 01       		.uleb128 0x1
+ 1287 0030 50       		.byte	0x50
+ 1288 0031 9F       		.byte	0x9f
+ 1289 0032 40000000 		.4byte	.LVL11
+ 1290 0036 42000000 		.4byte	.LVL12
+ 1291 003a 0100     		.2byte	0x1
+ 1292 003c 50       		.byte	0x50
+ 1293 003d 42000000 		.4byte	.LVL12
+ 1294 0041 50000000 		.4byte	.LFE66
+ 1295 0045 0400     		.2byte	0x4
+ 1296 0047 F3       		.byte	0xf3
+ 1297 0048 01       		.uleb128 0x1
+ 1298 0049 50       		.byte	0x50
+ 1299 004a 9F       		.byte	0x9f
+ 1300 004b 00000000 		.4byte	0
+ 1301 004f 00000000 		.4byte	0
+ 1302              	.LLST1:
+ 1303 0053 00000000 		.4byte	.LVL3
+ 1304 0057 13000000 		.4byte	.LVL5-1
+ 1305 005b 0100     		.2byte	0x1
+ 1306 005d 51       		.byte	0x51
+ 1307 005e 13000000 		.4byte	.LVL5-1
+ 1308 0062 22000000 		.4byte	.LVL7
+ 1309 0066 0100     		.2byte	0x1
+ 1310 0068 54       		.byte	0x54
+ 1311 0069 22000000 		.4byte	.LVL7
+ 1312 006d 31000000 		.4byte	.LVL9-1
+ 1313 0071 0100     		.2byte	0x1
+ 1314 0073 51       		.byte	0x51
+ 1315 0074 31000000 		.4byte	.LVL9-1
+ 1316 0078 40000000 		.4byte	.LVL11
+ 1317 007c 0100     		.2byte	0x1
+ 1318 007e 54       		.byte	0x54
+ 1319 007f 40000000 		.4byte	.LVL11
+ 1320 0083 45000000 		.4byte	.LVL13-1
+ 1321 0087 0100     		.2byte	0x1
+ 1322 0089 51       		.byte	0x51
+ 1323 008a 45000000 		.4byte	.LVL13-1
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cckIj4wy.s 			page 27
+
+
+ 1324 008e 48000000 		.4byte	.LVL14
+ 1325 0092 0100     		.2byte	0x1
+ 1326 0094 54       		.byte	0x54
+ 1327 0095 48000000 		.4byte	.LVL14
+ 1328 0099 50000000 		.4byte	.LFE66
+ 1329 009d 0400     		.2byte	0x4
+ 1330 009f F3       		.byte	0xf3
+ 1331 00a0 01       		.uleb128 0x1
+ 1332 00a1 51       		.byte	0x51
+ 1333 00a2 9F       		.byte	0x9f
+ 1334 00a3 00000000 		.4byte	0
+ 1335 00a7 00000000 		.4byte	0
+ 1336              	.LLST2:
+ 1337 00ab 00000000 		.4byte	.LVL15
+ 1338 00af 10000000 		.4byte	.LVL16
+ 1339 00b3 0100     		.2byte	0x1
+ 1340 00b5 50       		.byte	0x50
+ 1341 00b6 10000000 		.4byte	.LVL16
+ 1342 00ba 22000000 		.4byte	.LVL19
+ 1343 00be 0400     		.2byte	0x4
+ 1344 00c0 F3       		.byte	0xf3
+ 1345 00c1 01       		.uleb128 0x1
+ 1346 00c2 50       		.byte	0x50
+ 1347 00c3 9F       		.byte	0x9f
+ 1348 00c4 22000000 		.4byte	.LVL19
+ 1349 00c8 2E000000 		.4byte	.LVL20
+ 1350 00cc 0100     		.2byte	0x1
+ 1351 00ce 50       		.byte	0x50
+ 1352 00cf 2E000000 		.4byte	.LVL20
+ 1353 00d3 40000000 		.4byte	.LVL23
+ 1354 00d7 0400     		.2byte	0x4
+ 1355 00d9 F3       		.byte	0xf3
+ 1356 00da 01       		.uleb128 0x1
+ 1357 00db 50       		.byte	0x50
+ 1358 00dc 9F       		.byte	0x9f
+ 1359 00dd 40000000 		.4byte	.LVL23
+ 1360 00e1 42000000 		.4byte	.LVL24
+ 1361 00e5 0100     		.2byte	0x1
+ 1362 00e7 50       		.byte	0x50
+ 1363 00e8 42000000 		.4byte	.LVL24
+ 1364 00ec 50000000 		.4byte	.LFE67
+ 1365 00f0 0400     		.2byte	0x4
+ 1366 00f2 F3       		.byte	0xf3
+ 1367 00f3 01       		.uleb128 0x1
+ 1368 00f4 50       		.byte	0x50
+ 1369 00f5 9F       		.byte	0x9f
+ 1370 00f6 00000000 		.4byte	0
+ 1371 00fa 00000000 		.4byte	0
+ 1372              	.LLST3:
+ 1373 00fe 00000000 		.4byte	.LVL15
+ 1374 0102 13000000 		.4byte	.LVL17-1
+ 1375 0106 0100     		.2byte	0x1
+ 1376 0108 51       		.byte	0x51
+ 1377 0109 13000000 		.4byte	.LVL17-1
+ 1378 010d 22000000 		.4byte	.LVL19
+ 1379 0111 0100     		.2byte	0x1
+ 1380 0113 54       		.byte	0x54
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cckIj4wy.s 			page 28
+
+
+ 1381 0114 22000000 		.4byte	.LVL19
+ 1382 0118 31000000 		.4byte	.LVL21-1
+ 1383 011c 0100     		.2byte	0x1
+ 1384 011e 51       		.byte	0x51
+ 1385 011f 31000000 		.4byte	.LVL21-1
+ 1386 0123 40000000 		.4byte	.LVL23
+ 1387 0127 0100     		.2byte	0x1
+ 1388 0129 54       		.byte	0x54
+ 1389 012a 40000000 		.4byte	.LVL23
+ 1390 012e 45000000 		.4byte	.LVL25-1
+ 1391 0132 0100     		.2byte	0x1
+ 1392 0134 51       		.byte	0x51
+ 1393 0135 45000000 		.4byte	.LVL25-1
+ 1394 0139 48000000 		.4byte	.LVL26
+ 1395 013d 0100     		.2byte	0x1
+ 1396 013f 54       		.byte	0x54
+ 1397 0140 48000000 		.4byte	.LVL26
+ 1398 0144 50000000 		.4byte	.LFE67
+ 1399 0148 0400     		.2byte	0x4
+ 1400 014a F3       		.byte	0xf3
+ 1401 014b 01       		.uleb128 0x1
+ 1402 014c 51       		.byte	0x51
+ 1403 014d 9F       		.byte	0x9f
+ 1404 014e 00000000 		.4byte	0
+ 1405 0152 00000000 		.4byte	0
+ 1406              	.LLST4:
+ 1407 0156 00000000 		.4byte	.LVL27
+ 1408 015a 04000000 		.4byte	.LVL28
+ 1409 015e 0100     		.2byte	0x1
+ 1410 0160 50       		.byte	0x50
+ 1411 0161 04000000 		.4byte	.LVL28
+ 1412 0165 BC000000 		.4byte	.LFE65
+ 1413 0169 0400     		.2byte	0x4
+ 1414 016b F3       		.byte	0xf3
+ 1415 016c 01       		.uleb128 0x1
+ 1416 016d 50       		.byte	0x50
+ 1417 016e 9F       		.byte	0x9f
+ 1418 016f 00000000 		.4byte	0
+ 1419 0173 00000000 		.4byte	0
+ 1420              	.LLST5:
+ 1421 0177 08000000 		.4byte	.LVL39
+ 1422 017b 1C000000 		.4byte	.LVL44
+ 1423 017f 0100     		.2byte	0x1
+ 1424 0181 54       		.byte	0x54
+ 1425 0182 1E000000 		.4byte	.LVL45
+ 1426 0186 24000000 		.4byte	.LFE64
+ 1427 018a 0100     		.2byte	0x1
+ 1428 018c 54       		.byte	0x54
+ 1429 018d 00000000 		.4byte	0
+ 1430 0191 00000000 		.4byte	0
+ 1431              	.LLST6:
+ 1432 0195 10000000 		.4byte	.LVL41
+ 1433 0199 1E000000 		.4byte	.LVL45
+ 1434 019d 0100     		.2byte	0x1
+ 1435 019f 55       		.byte	0x55
+ 1436 01a0 00000000 		.4byte	0
+ 1437 01a4 00000000 		.4byte	0
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cckIj4wy.s 			page 29
+
+
+ 1438              		.section	.debug_aranges,"",%progbits
+ 1439 0000 3C000000 		.4byte	0x3c
+ 1440 0004 0200     		.2byte	0x2
+ 1441 0006 00000000 		.4byte	.Ldebug_info0
+ 1442 000a 04       		.byte	0x4
+ 1443 000b 00       		.byte	0
+ 1444 000c 0000     		.2byte	0
+ 1445 000e 0000     		.2byte	0
+ 1446 0010 00000000 		.4byte	.LFB63
+ 1447 0014 18000000 		.4byte	.LFE63-.LFB63
+ 1448 0018 00000000 		.4byte	.LFB66
+ 1449 001c 50000000 		.4byte	.LFE66-.LFB66
+ 1450 0020 00000000 		.4byte	.LFB67
+ 1451 0024 50000000 		.4byte	.LFE67-.LFB67
+ 1452 0028 00000000 		.4byte	.LFB65
+ 1453 002c BC000000 		.4byte	.LFE65-.LFB65
+ 1454 0030 00000000 		.4byte	.LFB64
+ 1455 0034 24000000 		.4byte	.LFE64-.LFB64
+ 1456 0038 00000000 		.4byte	0
+ 1457 003c 00000000 		.4byte	0
+ 1458              		.section	.debug_ranges,"",%progbits
+ 1459              	.Ldebug_ranges0:
+ 1460 0000 00000000 		.4byte	.LFB63
+ 1461 0004 18000000 		.4byte	.LFE63
+ 1462 0008 00000000 		.4byte	.LFB66
+ 1463 000c 50000000 		.4byte	.LFE66
+ 1464 0010 00000000 		.4byte	.LFB67
+ 1465 0014 50000000 		.4byte	.LFE67
+ 1466 0018 00000000 		.4byte	.LFB65
+ 1467 001c BC000000 		.4byte	.LFE65
+ 1468 0020 00000000 		.4byte	.LFB64
+ 1469 0024 24000000 		.4byte	.LFE64
+ 1470 0028 00000000 		.4byte	0
+ 1471 002c 00000000 		.4byte	0
+ 1472              		.section	.debug_line,"",%progbits
+ 1473              	.Ldebug_line0:
+ 1474 0000 17020000 		.section	.debug_str,"MS",%progbits,1
+ 1474      02007201 
+ 1474      00000201 
+ 1474      FB0E0D00 
+ 1474      01010101 
+ 1475              	.LASF29:
+ 1476 0000 6973725F 		.ascii	"isr_uart_rx_StartEx\000"
+ 1476      75617274 
+ 1476      5F72785F 
+ 1476      53746172 
+ 1476      74457800 
+ 1477              	.LASF30:
+ 1478 0014 55415254 		.ascii	"UART_1_Start\000"
+ 1478      5F315F53 
+ 1478      74617274 
+ 1478      00
+ 1479              	.LASF4:
+ 1480 0021 5F5F7569 		.ascii	"__uint8_t\000"
+ 1480      6E74385F 
+ 1480      7400
+ 1481              	.LASF20:
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cckIj4wy.s 			page 30
+
+
+ 1482 002b 4D6F746F 		.ascii	"Motor_increaseSpeed\000"
+ 1482      725F696E 
+ 1482      63726561 
+ 1482      73655370 
+ 1482      65656400 
+ 1483              	.LASF13:
+ 1484 003f 666C6F61 		.ascii	"float\000"
+ 1484      7400
+ 1485              	.LASF5:
+ 1486 0045 5F5F696E 		.ascii	"__int32_t\000"
+ 1486      7433325F 
+ 1486      7400
+ 1487              	.LASF3:
+ 1488 004f 73686F72 		.ascii	"short unsigned int\000"
+ 1488      7420756E 
+ 1488      7369676E 
+ 1488      65642069 
+ 1488      6E7400
+ 1489              	.LASF33:
+ 1490 0062 50574D5F 		.ascii	"PWM_1_WriteCompare1\000"
+ 1490      315F5772 
+ 1490      69746543 
+ 1490      6F6D7061 
+ 1490      72653100 
+ 1491              	.LASF34:
+ 1492 0076 50574D5F 		.ascii	"PWM_1_WriteCompare2\000"
+ 1492      315F5772 
+ 1492      69746543 
+ 1492      6F6D7061 
+ 1492      72653200 
+ 1493              	.LASF25:
+ 1494 008a 62797465 		.ascii	"bytesToRead\000"
+ 1494      73546F52 
+ 1494      65616400 
+ 1495              	.LASF36:
+ 1496 0096 73657473 		.ascii	"setspeed\000"
+ 1496      70656564 
+ 1496      00
+ 1497              	.LASF1:
+ 1498 009f 756E7369 		.ascii	"unsigned char\000"
+ 1498      676E6564 
+ 1498      20636861 
+ 1498      7200
+ 1499              	.LASF40:
+ 1500 00ad 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1500      43313120 
+ 1500      352E342E 
+ 1500      31203230 
+ 1500      31363036 
+ 1501 00e0 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 1501      20726576 
+ 1501      6973696F 
+ 1501      6E203233 
+ 1501      37373135 
+ 1502 0113 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 1502      66756E63 
+ 1502      74696F6E 
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cckIj4wy.s 			page 31
+
+
+ 1502      2D736563 
+ 1502      74696F6E 
+ 1503              	.LASF24:
+ 1504 013b 4953525F 		.ascii	"ISR_UART_rx_handler\000"
+ 1504      55415254 
+ 1504      5F72785F 
+ 1504      68616E64 
+ 1504      6C657200 
+ 1505              	.LASF7:
+ 1506 014f 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1506      20756E73 
+ 1506      69676E65 
+ 1506      6420696E 
+ 1506      7400
+ 1507              	.LASF37:
+ 1508 0161 55415254 		.ascii	"UART_1_ReadRxData\000"
+ 1508      5F315F52 
+ 1508      65616452 
+ 1508      78446174 
+ 1508      6100
+ 1509              	.LASF22:
+ 1510 0173 68616E64 		.ascii	"handleByteReceived\000"
+ 1510      6C654279 
+ 1510      74655265 
+ 1510      63656976 
+ 1510      656400
+ 1511              	.LASF35:
+ 1512 0186 73746F70 		.ascii	"stop\000"
+ 1512      00
+ 1513              	.LASF26:
+ 1514 018b 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 1514      52784275 
+ 1514      66666572 
+ 1514      00
+ 1515              	.LASF38:
+ 1516 0198 55415254 		.ascii	"UART_1_WriteTxData\000"
+ 1516      5F315F57 
+ 1516      72697465 
+ 1516      54784461 
+ 1516      746100
+ 1517              	.LASF14:
+ 1518 01ab 646F7562 		.ascii	"double\000"
+ 1518      6C6500
+ 1519              	.LASF43:
+ 1520 01b2 6D61696E 		.ascii	"main\000"
+ 1520      00
+ 1521              	.LASF10:
+ 1522 01b7 756E7369 		.ascii	"unsigned int\000"
+ 1522      676E6564 
+ 1522      20696E74 
+ 1522      00
+ 1523              	.LASF9:
+ 1524 01c4 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1524      206C6F6E 
+ 1524      6720756E 
+ 1524      7369676E 
+ 1524      65642069 
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cckIj4wy.s 			page 32
+
+
+ 1525              	.LASF11:
+ 1526 01db 75696E74 		.ascii	"uint8_t\000"
+ 1526      385F7400 
+ 1527              	.LASF39:
+ 1528 01e3 55415254 		.ascii	"UART_1_GetRxBufferSize\000"
+ 1528      5F315F47 
+ 1528      65745278 
+ 1528      42756666 
+ 1528      65725369 
+ 1529              	.LASF21:
+ 1530 01fa 4D6F746F 		.ascii	"Motor_decreaseSpeed\000"
+ 1530      725F6465 
+ 1530      63726561 
+ 1530      73655370 
+ 1530      65656400 
+ 1531              	.LASF12:
+ 1532 020e 696E7433 		.ascii	"int32_t\000"
+ 1532      325F7400 
+ 1533              	.LASF17:
+ 1534 0216 73697A65 		.ascii	"sizetype\000"
+ 1534      74797065 
+ 1534      00
+ 1535              	.LASF8:
+ 1536 021f 6C6F6E67 		.ascii	"long long int\000"
+ 1536      206C6F6E 
+ 1536      6720696E 
+ 1536      7400
+ 1537              	.LASF41:
+ 1538 022d 6D61696E 		.ascii	"main.c\000"
+ 1538      2E6300
+ 1539              	.LASF15:
+ 1540 0234 63686172 		.ascii	"char\000"
+ 1540      00
+ 1541              	.LASF31:
+ 1542 0239 4D6F746F 		.ascii	"Motor_Init\000"
+ 1542      725F496E 
+ 1542      697400
+ 1543              	.LASF27:
+ 1544 0244 4D6F746F 		.ascii	"Motor0_speed\000"
+ 1544      72305F73 
+ 1544      70656564 
+ 1544      00
+ 1545              	.LASF2:
+ 1546 0251 73686F72 		.ascii	"short int\000"
+ 1546      7420696E 
+ 1546      7400
+ 1547              	.LASF6:
+ 1548 025b 6C6F6E67 		.ascii	"long int\000"
+ 1548      20696E74 
+ 1548      00
+ 1549              	.LASF28:
+ 1550 0264 4D6F746F 		.ascii	"Motor1_speed\000"
+ 1550      72315F73 
+ 1550      70656564 
+ 1550      00
+ 1551              	.LASF16:
+ 1552 0271 6C6F6E67 		.ascii	"long double\000"
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cckIj4wy.s 			page 33
+
+
+ 1552      20646F75 
+ 1552      626C6500 
+ 1553              	.LASF18:
+ 1554 027d 4D6F746F 		.ascii	"Motor\000"
+ 1554      7200
+ 1555              	.LASF0:
+ 1556 0283 7369676E 		.ascii	"signed char\000"
+ 1556      65642063 
+ 1556      68617200 
+ 1557              	.LASF42:
+ 1558 028f 433A5C55 		.ascii	"C:\\Users\\Jacob\\OneDrive\\Dokumenter\\PSoC Creato"
+ 1558      73657273 
+ 1558      5C4A6163 
+ 1558      6F625C4F 
+ 1558      6E654472 
+ 1559 02bd 725C4D4F 		.ascii	"r\\MOTOR\\MOTORMOTOR.cydsn\000"
+ 1559      544F525C 
+ 1559      4D4F544F 
+ 1559      524D4F54 
+ 1559      4F522E63 
+ 1560              	.LASF32:
+ 1561 02d6 55415254 		.ascii	"UART_1_PutString\000"
+ 1561      5F315F50 
+ 1561      75745374 
+ 1561      72696E67 
+ 1561      00
+ 1562              	.LASF23:
+ 1563 02e7 62797465 		.ascii	"byteReceived\000"
+ 1563      52656365 
+ 1563      69766564 
+ 1563      00
+ 1564              	.LASF19:
+ 1565 02f4 4D6F746F 		.ascii	"Motor_speed\000"
+ 1565      725F7370 
+ 1565      65656400 
+ 1566              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
