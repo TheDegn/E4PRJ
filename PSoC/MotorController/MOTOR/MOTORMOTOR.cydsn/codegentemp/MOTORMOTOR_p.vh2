@@ -1,5 +1,5 @@
 -- Project:   MOTORMOTOR
--- Generated: 10/15/2024 16:19:06
+-- Generated: 10/22/2024 12:51:42
 -- PSoC Creator  4.4
 
 ENTITY MOTORMOTOR IS
@@ -125,9 +125,13 @@ ARCHITECTURE __DEFAULT__ OF MOTORMOTOR IS
     SIGNAL \PWM_1:PWMUDB:sP16:pwmdp:u0.cfbo__sig\ : bit;
     SIGNAL \PWM_1:PWMUDB:sP16:pwmdp:u1.sor__sig\ : bit;
     SIGNAL \PWM_1:PWMUDB:sP16:pwmdp:u1.cmsbo__sig\ : bit;
-    ATTRIBUTE lib_model OF Rx_1(0) : LABEL IS "iocell1";
+    ATTRIBUTE lib_model OF Motor_1(0) : LABEL IS "iocell1";
+    ATTRIBUTE Location OF Motor_1(0) : LABEL IS "P1[6]";
+    ATTRIBUTE lib_model OF Motor_2(0) : LABEL IS "iocell2";
+    ATTRIBUTE Location OF Motor_2(0) : LABEL IS "P1[7]";
+    ATTRIBUTE lib_model OF Rx_1(0) : LABEL IS "iocell3";
     ATTRIBUTE Location OF Rx_1(0) : LABEL IS "P12[6]";
-    ATTRIBUTE lib_model OF Tx_1(0) : LABEL IS "iocell2";
+    ATTRIBUTE lib_model OF Tx_1(0) : LABEL IS "iocell4";
     ATTRIBUTE Location OF Tx_1(0) : LABEL IS "P12[7]";
     ATTRIBUTE lib_model OF \PWM_1:PWMUDB:status_2\ : LABEL IS "macrocell1";
     ATTRIBUTE lib_model OF Net_42 : LABEL IS "macrocell2";

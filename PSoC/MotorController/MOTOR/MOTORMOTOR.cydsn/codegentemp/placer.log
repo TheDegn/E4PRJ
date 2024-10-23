@@ -6,7 +6,7 @@
 
 #Build Date:         Sep  9 2019 11:47:43
 
-#File Generated:     Oct 15 2024 16:19:06
+#File Generated:     Oct 22 2024 12:51:43
 
 #Purpose:            
 
@@ -81,12 +81,12 @@ analysis after routing.
 ======================================================================
 Number of clocks: 7
 Clock: Clock_1              | Frequency:  59.7 MHz | Target:   1.0 MHz
-Clock: CyBUS_CLK            | Frequency:  57.6 MHz | Target:  24.0 MHz
+Clock: CyBUS_CLK            | Frequency:  54.9 MHz | Target:  24.0 MHz
 Clock: CyILO                | Frequency: N/A       | Target:   0.0 MHz
 Clock: CyIMO                | Frequency: N/A       | Target:   3.0 MHz
 Clock: CyMASTER_CLK         | Frequency: N/A       | Target:  24.0 MHz
 Clock: CyPLL_OUT            | Frequency: N/A       | Target:  24.0 MHz
-Clock: UART_1_IntClock      | Frequency:  57.2 MHz | Target:   0.5 MHz
+Clock: UART_1_IntClock      | Frequency:  54.9 MHz | Target:   0.5 MHz
 
 ======================================================================
                      End of Clock Summary
@@ -100,104 +100,17 @@ Phase 7
 ======================================================================
 Number of clocks: 7
 Clock: Clock_1              | Frequency:  59.7 MHz | Target:   1.0 MHz
-Clock: CyBUS_CLK            | Frequency:   2.8 MHz | Target:  24.0 MHz
+Clock: CyBUS_CLK            | Frequency:   2.6 MHz | Target:  24.0 MHz
 Clock: CyILO                | Frequency: N/A       | Target:   0.0 MHz
 Clock: CyIMO                | Frequency: N/A       | Target:   3.0 MHz
 Clock: CyMASTER_CLK         | Frequency: N/A       | Target:  24.0 MHz
 Clock: CyPLL_OUT            | Frequency: N/A       | Target:  24.0 MHz
-Clock: UART_1_IntClock      | Frequency:   2.8 MHz | Target:   0.5 MHz
+Clock: UART_1_IntClock      | Frequency:   2.6 MHz | Target:   0.5 MHz
 
 ======================================================================
                      End of Clock Summary
 ######################################################################
-D2088: Phase 7, elapsed time : 0.1 (sec)
-
-Final Design Statistics
-    Number of Combinational MCs 	:	9
-    Number of Sequential MCs    	:	23
-    Number of DPs               	:	5
-    Number of Controls          	:	2
-    Number of Status            	:	3
-    Number of SyncCells         	:	0
-    Number of count7cells       	:	1
-    Number of IOs       	:	4
-
-Device Utilization Summary
-    Macrocells                  :	32/192
-    IOs                         :	4/72
-
-
-
-######################################################################
-Placement Timing Summary
-
-The timing summary is based on estimated routing delays after
-placement. For final timing report, please carry out the timing
-analysis after routing.
-======================================================================
-
-
-######################################################################
-                     Clock Summary 
-======================================================================
-Number of clocks: 7
-Clock: Clock_1              | Frequency:  59.7 MHz | Target:   1.0 MHz
-Clock: CyBUS_CLK            | Frequency:   2.8 MHz | Target:  24.0 MHz
-Clock: CyILO                | Frequency: N/A       | Target:   0.0 MHz
-Clock: CyIMO                | Frequency: N/A       | Target:   3.0 MHz
-Clock: CyMASTER_CLK         | Frequency: N/A       | Target:  24.0 MHz
-Clock: CyPLL_OUT            | Frequency: N/A       | Target:  24.0 MHz
-Clock: UART_1_IntClock      | Frequency:   2.8 MHz | Target:   0.5 MHz
-
-======================================================================
-                     End of Clock Summary
-######################################################################
-
-Phase 6
-
-######################################################################
-Placement Timing Summary
-
-The timing summary is based on estimated routing delays after
-placement. For final timing report, please carry out the timing
-analysis after routing.
-======================================================================
-
-######################################################################
-                     Clock Summary 
-======================================================================
-Number of clocks: 7
-Clock: Clock_1              | Frequency:  59.7 MHz | Target:   1.0 MHz
-Clock: CyBUS_CLK            | Frequency:   2.8 MHz | Target:  24.0 MHz
-Clock: CyILO                | Frequency: N/A       | Target:   0.0 MHz
-Clock: CyIMO                | Frequency: N/A       | Target:   3.0 MHz
-Clock: CyMASTER_CLK         | Frequency: N/A       | Target:  24.0 MHz
-Clock: CyPLL_OUT            | Frequency: N/A       | Target:  24.0 MHz
-Clock: UART_1_IntClock      | Frequency:   2.8 MHz | Target:   0.5 MHz
-
-======================================================================
-                     End of Clock Summary
-######################################################################
-
-D2088: Phase 6, elapsed time : 0.0 (sec)
-
-Phase 7
-######################################################################
-                     Clock Summary 
-======================================================================
-Number of clocks: 7
-Clock: Clock_1              | Frequency:  59.7 MHz | Target:   1.0 MHz
-Clock: CyBUS_CLK            | Frequency:   2.8 MHz | Target:  24.0 MHz
-Clock: CyILO                | Frequency: N/A       | Target:   0.0 MHz
-Clock: CyIMO                | Frequency: N/A       | Target:   3.0 MHz
-Clock: CyMASTER_CLK         | Frequency: N/A       | Target:  24.0 MHz
-Clock: CyPLL_OUT            | Frequency: N/A       | Target:  24.0 MHz
-Clock: UART_1_IntClock      | Frequency:   2.8 MHz | Target:   0.5 MHz
-
-======================================================================
-                     End of Clock Summary
-######################################################################
-D2088: Phase 7, elapsed time : 0.1 (sec)
+D2088: Phase 7, elapsed time : 0.3 (sec)
 
 Final Design Statistics
     Number of Combinational MCs 	:	9

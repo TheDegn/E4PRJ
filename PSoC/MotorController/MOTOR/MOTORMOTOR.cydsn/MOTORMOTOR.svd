@@ -19,7 +19,7 @@
         <register>
           <name>RX_UART_1_RX_ADDRESS1</name>
           <description>RX Address1 Register</description>
-          <addressOffset>0x4000652A</addressOffset>
+          <addressOffset>0x40006528</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -28,7 +28,7 @@
         <register>
           <name>RX_UART_1_RX_ADDRESS2</name>
           <description>RX Address2 Register</description>
-          <addressOffset>0x4000653A</addressOffset>
+          <addressOffset>0x40006538</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -37,7 +37,7 @@
         <register>
           <name>RX_UART_1_RX_DATA</name>
           <description>RX Data Register</description>
-          <addressOffset>0x4000654A</addressOffset>
+          <addressOffset>0x40006548</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -46,7 +46,7 @@
         <register>
           <name>TX_UART_1_TX_DATA</name>
           <description>TX Data Register</description>
-          <addressOffset>0x4000654B</addressOffset>
+          <addressOffset>0x40006549</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -55,7 +55,7 @@
         <register>
           <name>RX_UART_1_RX_STATUS</name>
           <description>RX status register</description>
-          <addressOffset>0x4000656A</addressOffset>
+          <addressOffset>0x40006568</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -115,7 +115,7 @@
         <register>
           <name>TX_UART_1_TX_STATUS</name>
           <description>TX status register</description>
-          <addressOffset>0x4000656B</addressOffset>
+          <addressOffset>0x4000656A</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -166,7 +166,7 @@
         <register>
           <name>PWM_1_COMPARE_1</name>
           <description>UDB.D0 - Assigned Compare1 Value</description>
-          <addressOffset>0x40006422</addressOffset>
+          <addressOffset>0x40006428</addressOffset>
           <size>16</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -175,7 +175,7 @@
         <register>
           <name>PWM_1_COMPARE_2</name>
           <description>UDB.D1 - Assigned Compare2 Value</description>
-          <addressOffset>0x40006432</addressOffset>
+          <addressOffset>0x40006438</addressOffset>
           <size>16</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -184,7 +184,7 @@
         <register>
           <name>PWM_1_Control_Reg</name>
           <description>UDB Control Register - Assigned Control Register Value</description>
-          <addressOffset>0x40006473</addressOffset>
+          <addressOffset>0x40006479</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -214,55 +214,9 @@
           </fields>
         </register>
         <register>
-          <name>PWM_1_STATUS_MASK</name>
-          <description>UDB Status bits Interrupt Mask Enable Register</description>
-          <addressOffset>0x40006483</addressOffset>
-          <size>8</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-          <fields>
-            <field>
-              <name>PWM_STS_CMP1</name>
-              <description>Enables the Interrupt on Compare 1</description>
-              <lsb>0</lsb>
-              <msb>0</msb>
-              <access>read-only</access>
-            </field>
-            <field>
-              <name>PWM_STS_CMP2</name>
-              <description>Enables the Interrupt on Compare 2</description>
-              <lsb>1</lsb>
-              <msb>1</msb>
-              <access>read-only</access>
-            </field>
-            <field>
-              <name>PWM_STS_TC</name>
-              <description>Enables the Interrupt on Terminal Count</description>
-              <lsb>2</lsb>
-              <msb>2</msb>
-              <access>read-only</access>
-            </field>
-            <field>
-              <name>PWM_STS_FIFO_FULL</name>
-              <description>FIFO Full Status Mask </description>
-              <lsb>3</lsb>
-              <msb>3</msb>
-              <access>read-only</access>
-            </field>
-            <field>
-              <name>PWM_STS_KILL</name>
-              <description>Enables the Interrupt on Kill</description>
-              <lsb>5</lsb>
-              <msb>5</msb>
-              <access>read-only</access>
-            </field>
-          </fields>
-        </register>
-        <register>
           <name>PWM_1_STATUS_AUX_CTRLDP0</name>
           <description>UDB Auxilliary Control Register</description>
-          <addressOffset>0x40006492</addressOffset>
+          <addressOffset>0x40006498</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -387,7 +341,7 @@
         <register>
           <name>PWM_1_STATUS_AUX_CTRLDP1</name>
           <description>UDB Auxilliary Control Register</description>
-          <addressOffset>0x40006493</addressOffset>
+          <addressOffset>0x40006499</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -506,6 +460,52 @@
                   <value>1</value>
                 </enumeratedValue>
               </enumeratedValues>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>PWM_1_STATUS_MASK</name>
+          <description>UDB Status bits Interrupt Mask Enable Register</description>
+          <addressOffset>0x40006589</addressOffset>
+          <size>8</size>
+          <access>read-write</access>
+          <resetValue>0</resetValue>
+          <resetMask>0</resetMask>
+          <fields>
+            <field>
+              <name>PWM_STS_CMP1</name>
+              <description>Enables the Interrupt on Compare 1</description>
+              <lsb>0</lsb>
+              <msb>0</msb>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>PWM_STS_CMP2</name>
+              <description>Enables the Interrupt on Compare 2</description>
+              <lsb>1</lsb>
+              <msb>1</msb>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>PWM_STS_TC</name>
+              <description>Enables the Interrupt on Terminal Count</description>
+              <lsb>2</lsb>
+              <msb>2</msb>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>PWM_STS_FIFO_FULL</name>
+              <description>FIFO Full Status Mask </description>
+              <lsb>3</lsb>
+              <msb>3</msb>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>PWM_STS_KILL</name>
+              <description>Enables the Interrupt on Kill</description>
+              <lsb>5</lsb>
+              <msb>5</msb>
+              <access>read-only</access>
             </field>
           </fields>
         </register>

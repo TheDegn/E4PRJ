@@ -46,28 +46,28 @@ void handleByteReceived(uint8_t byteReceived)
     switch (byteReceived)
     {
     case 'q':
-        Motor_decreaseSpeed(0, &Motor0_speed); // Decrease speed of motor 0
+        setspeed(1, 700);
         break;
     case 'w':
-        Motor_increaseSpeed(0, &Motor0_speed); // Increase speed of motor 0
+        setspeed(1, 2000);
         break;
     case '1':
-        Motor_decreaseSpeed(1, &Motor1_speed); // Decrease speed of motor 1
+        setspeed(1, -1);
         break;
     case '2':
-        Motor_increaseSpeed(1, &Motor1_speed); // Increase speed of motor 1
+        setspeed(1, 500);
         break;
     case '0':
         stop(); // Stop both motors
         break;
     case 'z':
-        setspeed(0, 0);
+        setspeed(0, 700);
         break;
     case 'x':
-        setspeed(0, 1000);
+        setspeed(0, 2000);
         break;
     case 'c':
-        setspeed(0, -1);
+        setspeed(0, -1000);
         break;
     case 'v':
         setspeed(0, 500);
