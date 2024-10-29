@@ -14,15 +14,15 @@
 int main(void)
 {
     CyGlobalIntEnable; /* Enable global interrupts. */
-    
+     
     
     
     for(;;)
     {
         PWM_1_Start();
-        CyDelay(100);
+        CyDelay(1000);
         PWM_1_Stop();
-        CyDelay(100);
+        CyDelay(1000);
     }
 }
 
