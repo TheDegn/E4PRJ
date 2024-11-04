@@ -25,10 +25,9 @@ int main(void)
         if (newCountFlag == 1)
         {
             time = calcTime(count);
-            sprintf(buff, "%.3f ms\r\n", time);
+            sprintf(buff, "%.3f us\r\n", time);
             UART_1_PutString(buff);
             newCountFlag = 0;
-            startCounter();
         }
     }
 }
