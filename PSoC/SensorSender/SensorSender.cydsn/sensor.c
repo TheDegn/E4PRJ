@@ -30,12 +30,18 @@ double calcTime(double count)
     return count / countFreq;
 }
 
+double calcAngle(long count)
+{
+    return ((count * 0.0057) - 64.7036);
+}
+
 CY_ISR(sensor_isr_handler)
 {
     count = Counter_Sensor_ReadCounter();
     Counter_Sensor_Stop();
+    stopBurst();
     newCountFlag = 1;
-    startCounter();
+    
 }
 
 /* could be

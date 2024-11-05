@@ -5,6 +5,9 @@
 extern int newCountFlag;
 extern long count;
 double time;
+double angle;
+//long avg = 0;
+//long average(long new_value);
 
 int main(void)
 {
@@ -15,19 +18,50 @@ int main(void)
     char buff[256];
     
     startCounter();
-    
+    startBurst();
     for(;;)
     {
+        
         /*startBurst();
         CyDelay(1000);
         stopBurst();
         CyDelay(1000);*/
         if (newCountFlag == 1)
         {
-            time = calcTime(count);
-            sprintf(buff, "%.3f us\r\n", time);
+            //time = calcTime(count);
+            //avg = average(count);
+            angle = calcAngle(count);
+            sprintf(buff, "%.2f grader   \r\n", angle);
             UART_1_PutString(buff);
             newCountFlag = 0;
+            CyDelay(100);
+            startCounter();
+            startBurst();
         }
     }
 }
+/*
+long average(long new_value) {
+    static long values[100] = {0};  // Array til at gemme de seneste 20 værdier
+    static int index = 0;          // Index for den aktuelle position i arrayet
+    static long sum = 0;           // Summen af de 20 værdier
+    static int count = 0;          // Antal værdier til at håndtere de første 20 kald
+
+    // Opdater summen ved at trække den gamle værdi fra og tilføje den nye
+    sum -= values[index];
+    sum += new_value;
+
+    // Opdater arrayet med den nye værdi
+    values[index] = new_value;
+
+    // Flyt til næste position i arrayet, og wrap rundt efter 20
+    index = (index + 1) % 100;
+
+    // Tæl op til 20 for at sikre korrekt gennemsnit på de første kald
+    if (count < 100) {
+        count++;
+    }
+
+    // Returner gennemsnittet som en long
+    return sum / count;
+}*/
