@@ -1,0 +1,2211 @@
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccSeu0at.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"Counter_Sensor.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.Counter_Sensor_Enable,"ax",%progbits
+  20              		.align	2
+  21              		.global	Counter_Sensor_Enable
+  22              		.thumb
+  23              		.thumb_func
+  24              		.type	Counter_Sensor_Enable, %function
+  25              	Counter_Sensor_Enable:
+  26              	.LFB1:
+  27              		.file 1 "Generated_Source\\PSoC5\\Counter_Sensor.c"
+   1:Generated_Source\PSoC5/Counter_Sensor.c **** /*******************************************************************************
+   2:Generated_Source\PSoC5/Counter_Sensor.c **** * File Name: Counter_Sensor.c  
+   3:Generated_Source\PSoC5/Counter_Sensor.c **** * Version 3.0
+   4:Generated_Source\PSoC5/Counter_Sensor.c **** *
+   5:Generated_Source\PSoC5/Counter_Sensor.c **** *  Description:
+   6:Generated_Source\PSoC5/Counter_Sensor.c **** *     The Counter component consists of a 8, 16, 24 or 32-bit counter with
+   7:Generated_Source\PSoC5/Counter_Sensor.c **** *     a selectable period between 2 and 2^Width - 1.  
+   8:Generated_Source\PSoC5/Counter_Sensor.c **** *
+   9:Generated_Source\PSoC5/Counter_Sensor.c **** *   Note:
+  10:Generated_Source\PSoC5/Counter_Sensor.c **** *     None
+  11:Generated_Source\PSoC5/Counter_Sensor.c **** *
+  12:Generated_Source\PSoC5/Counter_Sensor.c **** ********************************************************************************
+  13:Generated_Source\PSoC5/Counter_Sensor.c **** * Copyright 2008-2012, Cypress Semiconductor Corporation.  All rights reserved.
+  14:Generated_Source\PSoC5/Counter_Sensor.c **** * You may use this file only in accordance with the license, terms, conditions, 
+  15:Generated_Source\PSoC5/Counter_Sensor.c **** * disclaimers, and limitations in the end user license agreement accompanying 
+  16:Generated_Source\PSoC5/Counter_Sensor.c **** * the software package with which this file was provided.
+  17:Generated_Source\PSoC5/Counter_Sensor.c **** *******************************************************************************/
+  18:Generated_Source\PSoC5/Counter_Sensor.c **** 
+  19:Generated_Source\PSoC5/Counter_Sensor.c **** #include "Counter_Sensor.h"
+  20:Generated_Source\PSoC5/Counter_Sensor.c **** 
+  21:Generated_Source\PSoC5/Counter_Sensor.c **** uint8 Counter_Sensor_initVar = 0u;
+  22:Generated_Source\PSoC5/Counter_Sensor.c **** 
+  23:Generated_Source\PSoC5/Counter_Sensor.c **** 
+  24:Generated_Source\PSoC5/Counter_Sensor.c **** /*******************************************************************************
+  25:Generated_Source\PSoC5/Counter_Sensor.c **** * Function Name: Counter_Sensor_Init
+  26:Generated_Source\PSoC5/Counter_Sensor.c **** ********************************************************************************
+  27:Generated_Source\PSoC5/Counter_Sensor.c **** * Summary:
+  28:Generated_Source\PSoC5/Counter_Sensor.c **** *     Initialize to the schematic state
+  29:Generated_Source\PSoC5/Counter_Sensor.c **** * 
+  30:Generated_Source\PSoC5/Counter_Sensor.c **** * Parameters:  
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccSeu0at.s 			page 2
+
+
+  31:Generated_Source\PSoC5/Counter_Sensor.c **** *  void  
+  32:Generated_Source\PSoC5/Counter_Sensor.c **** *
+  33:Generated_Source\PSoC5/Counter_Sensor.c **** * Return: 
+  34:Generated_Source\PSoC5/Counter_Sensor.c **** *  void
+  35:Generated_Source\PSoC5/Counter_Sensor.c **** *
+  36:Generated_Source\PSoC5/Counter_Sensor.c **** *******************************************************************************/
+  37:Generated_Source\PSoC5/Counter_Sensor.c **** void Counter_Sensor_Init(void) 
+  38:Generated_Source\PSoC5/Counter_Sensor.c **** {
+  39:Generated_Source\PSoC5/Counter_Sensor.c ****         #if (!Counter_Sensor_UsingFixedFunction && !Counter_Sensor_ControlRegRemoved)
+  40:Generated_Source\PSoC5/Counter_Sensor.c ****             uint8 ctrl;
+  41:Generated_Source\PSoC5/Counter_Sensor.c ****         #endif /* (!Counter_Sensor_UsingFixedFunction && !Counter_Sensor_ControlRegRemoved) */
+  42:Generated_Source\PSoC5/Counter_Sensor.c ****         
+  43:Generated_Source\PSoC5/Counter_Sensor.c ****         #if(!Counter_Sensor_UsingFixedFunction) 
+  44:Generated_Source\PSoC5/Counter_Sensor.c ****             /* Interrupt State Backup for Critical Region*/
+  45:Generated_Source\PSoC5/Counter_Sensor.c ****             uint8 Counter_Sensor_interruptState;
+  46:Generated_Source\PSoC5/Counter_Sensor.c ****         #endif /* (!Counter_Sensor_UsingFixedFunction) */
+  47:Generated_Source\PSoC5/Counter_Sensor.c ****         
+  48:Generated_Source\PSoC5/Counter_Sensor.c ****         #if (Counter_Sensor_UsingFixedFunction)
+  49:Generated_Source\PSoC5/Counter_Sensor.c ****             /* Clear all bits but the enable bit (if it's already set for Timer operation */
+  50:Generated_Source\PSoC5/Counter_Sensor.c ****             Counter_Sensor_CONTROL &= Counter_Sensor_CTRL_ENABLE;
+  51:Generated_Source\PSoC5/Counter_Sensor.c ****             
+  52:Generated_Source\PSoC5/Counter_Sensor.c ****             /* Clear the mode bits for continuous run mode */
+  53:Generated_Source\PSoC5/Counter_Sensor.c ****             #if (CY_PSOC5A)
+  54:Generated_Source\PSoC5/Counter_Sensor.c ****                 Counter_Sensor_CONTROL2 &= ((uint8)(~Counter_Sensor_CTRL_MODE_MASK));
+  55:Generated_Source\PSoC5/Counter_Sensor.c ****             #endif /* (CY_PSOC5A) */
+  56:Generated_Source\PSoC5/Counter_Sensor.c ****             #if (CY_PSOC3 || CY_PSOC5LP)
+  57:Generated_Source\PSoC5/Counter_Sensor.c ****                 Counter_Sensor_CONTROL3 &= ((uint8)(~Counter_Sensor_CTRL_MODE_MASK));              
+  58:Generated_Source\PSoC5/Counter_Sensor.c ****             #endif /* (CY_PSOC3 || CY_PSOC5LP) */
+  59:Generated_Source\PSoC5/Counter_Sensor.c ****             /* Check if One Shot mode is enabled i.e. RunMode !=0*/
+  60:Generated_Source\PSoC5/Counter_Sensor.c ****             #if (Counter_Sensor_RunModeUsed != 0x0u)
+  61:Generated_Source\PSoC5/Counter_Sensor.c ****                 /* Set 3rd bit of Control register to enable one shot mode */
+  62:Generated_Source\PSoC5/Counter_Sensor.c ****                 Counter_Sensor_CONTROL |= Counter_Sensor_ONESHOT;
+  63:Generated_Source\PSoC5/Counter_Sensor.c ****             #endif /* (Counter_Sensor_RunModeUsed != 0x0u) */
+  64:Generated_Source\PSoC5/Counter_Sensor.c ****             
+  65:Generated_Source\PSoC5/Counter_Sensor.c ****             /* Set the IRQ to use the status register interrupts */
+  66:Generated_Source\PSoC5/Counter_Sensor.c ****             Counter_Sensor_CONTROL2 |= Counter_Sensor_CTRL2_IRQ_SEL;
+  67:Generated_Source\PSoC5/Counter_Sensor.c ****             
+  68:Generated_Source\PSoC5/Counter_Sensor.c ****             /* Clear and Set SYNCTC and SYNCCMP bits of RT1 register */
+  69:Generated_Source\PSoC5/Counter_Sensor.c ****             Counter_Sensor_RT1 &= ((uint8)(~Counter_Sensor_RT1_MASK));
+  70:Generated_Source\PSoC5/Counter_Sensor.c ****             Counter_Sensor_RT1 |= Counter_Sensor_SYNC;     
+  71:Generated_Source\PSoC5/Counter_Sensor.c ****                     
+  72:Generated_Source\PSoC5/Counter_Sensor.c ****             /*Enable DSI Sync all all inputs of the Timer*/
+  73:Generated_Source\PSoC5/Counter_Sensor.c ****             Counter_Sensor_RT1 &= ((uint8)(~Counter_Sensor_SYNCDSI_MASK));
+  74:Generated_Source\PSoC5/Counter_Sensor.c ****             Counter_Sensor_RT1 |= Counter_Sensor_SYNCDSI_EN;
+  75:Generated_Source\PSoC5/Counter_Sensor.c **** 
+  76:Generated_Source\PSoC5/Counter_Sensor.c ****         #else
+  77:Generated_Source\PSoC5/Counter_Sensor.c ****             #if(!Counter_Sensor_ControlRegRemoved)
+  78:Generated_Source\PSoC5/Counter_Sensor.c ****             /* Set the default compare mode defined in the parameter */
+  79:Generated_Source\PSoC5/Counter_Sensor.c ****             ctrl = Counter_Sensor_CONTROL & ((uint8)(~Counter_Sensor_CTRL_CMPMODE_MASK));
+  80:Generated_Source\PSoC5/Counter_Sensor.c ****             Counter_Sensor_CONTROL = ctrl | Counter_Sensor_DEFAULT_COMPARE_MODE;
+  81:Generated_Source\PSoC5/Counter_Sensor.c ****             
+  82:Generated_Source\PSoC5/Counter_Sensor.c ****             /* Set the default capture mode defined in the parameter */
+  83:Generated_Source\PSoC5/Counter_Sensor.c ****             ctrl = Counter_Sensor_CONTROL & ((uint8)(~Counter_Sensor_CTRL_CAPMODE_MASK));
+  84:Generated_Source\PSoC5/Counter_Sensor.c ****             
+  85:Generated_Source\PSoC5/Counter_Sensor.c ****             #if( 0 != Counter_Sensor_CAPTURE_MODE_CONF)
+  86:Generated_Source\PSoC5/Counter_Sensor.c ****                 Counter_Sensor_CONTROL = ctrl | Counter_Sensor_DEFAULT_CAPTURE_MODE;
+  87:Generated_Source\PSoC5/Counter_Sensor.c ****             #else
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccSeu0at.s 			page 3
+
+
+  88:Generated_Source\PSoC5/Counter_Sensor.c ****                 Counter_Sensor_CONTROL = ctrl;
+  89:Generated_Source\PSoC5/Counter_Sensor.c ****             #endif /* 0 != Counter_Sensor_CAPTURE_MODE */ 
+  90:Generated_Source\PSoC5/Counter_Sensor.c ****             
+  91:Generated_Source\PSoC5/Counter_Sensor.c ****             #endif /* (!Counter_Sensor_ControlRegRemoved) */
+  92:Generated_Source\PSoC5/Counter_Sensor.c ****         #endif /* (Counter_Sensor_UsingFixedFunction) */
+  93:Generated_Source\PSoC5/Counter_Sensor.c ****         
+  94:Generated_Source\PSoC5/Counter_Sensor.c ****         /* Clear all data in the FIFO's */
+  95:Generated_Source\PSoC5/Counter_Sensor.c ****         #if (!Counter_Sensor_UsingFixedFunction)
+  96:Generated_Source\PSoC5/Counter_Sensor.c ****             Counter_Sensor_ClearFIFO();
+  97:Generated_Source\PSoC5/Counter_Sensor.c ****         #endif /* (!Counter_Sensor_UsingFixedFunction) */
+  98:Generated_Source\PSoC5/Counter_Sensor.c ****         
+  99:Generated_Source\PSoC5/Counter_Sensor.c ****         /* Set Initial values from Configuration */
+ 100:Generated_Source\PSoC5/Counter_Sensor.c ****         Counter_Sensor_WritePeriod(Counter_Sensor_INIT_PERIOD_VALUE);
+ 101:Generated_Source\PSoC5/Counter_Sensor.c ****         #if (!(Counter_Sensor_UsingFixedFunction && (CY_PSOC5A)))
+ 102:Generated_Source\PSoC5/Counter_Sensor.c ****             Counter_Sensor_WriteCounter(Counter_Sensor_INIT_COUNTER_VALUE);
+ 103:Generated_Source\PSoC5/Counter_Sensor.c ****         #endif /* (!(Counter_Sensor_UsingFixedFunction && (CY_PSOC5A))) */
+ 104:Generated_Source\PSoC5/Counter_Sensor.c ****         Counter_Sensor_SetInterruptMode(Counter_Sensor_INIT_INTERRUPTS_MASK);
+ 105:Generated_Source\PSoC5/Counter_Sensor.c ****         
+ 106:Generated_Source\PSoC5/Counter_Sensor.c ****         #if (!Counter_Sensor_UsingFixedFunction)
+ 107:Generated_Source\PSoC5/Counter_Sensor.c ****             /* Read the status register to clear the unwanted interrupts */
+ 108:Generated_Source\PSoC5/Counter_Sensor.c ****             (void)Counter_Sensor_ReadStatusRegister();
+ 109:Generated_Source\PSoC5/Counter_Sensor.c ****             /* Set the compare value (only available to non-fixed function implementation */
+ 110:Generated_Source\PSoC5/Counter_Sensor.c ****             Counter_Sensor_WriteCompare(Counter_Sensor_INIT_COMPARE_VALUE);
+ 111:Generated_Source\PSoC5/Counter_Sensor.c ****             /* Use the interrupt output of the status register for IRQ output */
+ 112:Generated_Source\PSoC5/Counter_Sensor.c ****             
+ 113:Generated_Source\PSoC5/Counter_Sensor.c ****             /* CyEnterCriticalRegion and CyExitCriticalRegion are used to mark following region cri
+ 114:Generated_Source\PSoC5/Counter_Sensor.c ****             /* Enter Critical Region*/
+ 115:Generated_Source\PSoC5/Counter_Sensor.c ****             Counter_Sensor_interruptState = CyEnterCriticalSection();
+ 116:Generated_Source\PSoC5/Counter_Sensor.c ****             
+ 117:Generated_Source\PSoC5/Counter_Sensor.c ****             Counter_Sensor_STATUS_AUX_CTRL |= Counter_Sensor_STATUS_ACTL_INT_EN_MASK;
+ 118:Generated_Source\PSoC5/Counter_Sensor.c ****             
+ 119:Generated_Source\PSoC5/Counter_Sensor.c ****             /* Exit Critical Region*/
+ 120:Generated_Source\PSoC5/Counter_Sensor.c ****             CyExitCriticalSection(Counter_Sensor_interruptState);
+ 121:Generated_Source\PSoC5/Counter_Sensor.c ****             
+ 122:Generated_Source\PSoC5/Counter_Sensor.c ****         #endif /* (!Counter_Sensor_UsingFixedFunction) */
+ 123:Generated_Source\PSoC5/Counter_Sensor.c **** }
+ 124:Generated_Source\PSoC5/Counter_Sensor.c **** 
+ 125:Generated_Source\PSoC5/Counter_Sensor.c **** 
+ 126:Generated_Source\PSoC5/Counter_Sensor.c **** /*******************************************************************************
+ 127:Generated_Source\PSoC5/Counter_Sensor.c **** * Function Name: Counter_Sensor_Enable
+ 128:Generated_Source\PSoC5/Counter_Sensor.c **** ********************************************************************************
+ 129:Generated_Source\PSoC5/Counter_Sensor.c **** * Summary:
+ 130:Generated_Source\PSoC5/Counter_Sensor.c **** *     Enable the Counter
+ 131:Generated_Source\PSoC5/Counter_Sensor.c **** * 
+ 132:Generated_Source\PSoC5/Counter_Sensor.c **** * Parameters:  
+ 133:Generated_Source\PSoC5/Counter_Sensor.c **** *  void  
+ 134:Generated_Source\PSoC5/Counter_Sensor.c **** *
+ 135:Generated_Source\PSoC5/Counter_Sensor.c **** * Return: 
+ 136:Generated_Source\PSoC5/Counter_Sensor.c **** *  void
+ 137:Generated_Source\PSoC5/Counter_Sensor.c **** *
+ 138:Generated_Source\PSoC5/Counter_Sensor.c **** * Side Effects: 
+ 139:Generated_Source\PSoC5/Counter_Sensor.c **** *   If the Enable mode is set to Hardware only then this function has no effect 
+ 140:Generated_Source\PSoC5/Counter_Sensor.c **** *   on the operation of the counter.
+ 141:Generated_Source\PSoC5/Counter_Sensor.c **** *
+ 142:Generated_Source\PSoC5/Counter_Sensor.c **** *******************************************************************************/
+ 143:Generated_Source\PSoC5/Counter_Sensor.c **** void Counter_Sensor_Enable(void) 
+ 144:Generated_Source\PSoC5/Counter_Sensor.c **** {
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccSeu0at.s 			page 4
+
+
+  28              		.loc 1 144 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              		@ link register save eliminated.
+ 145:Generated_Source\PSoC5/Counter_Sensor.c ****     /* Globally Enable the Fixed Function Block chosen */
+ 146:Generated_Source\PSoC5/Counter_Sensor.c ****     #if (Counter_Sensor_UsingFixedFunction)
+ 147:Generated_Source\PSoC5/Counter_Sensor.c ****         Counter_Sensor_GLOBAL_ENABLE |= Counter_Sensor_BLOCK_EN_MASK;
+ 148:Generated_Source\PSoC5/Counter_Sensor.c ****         Counter_Sensor_GLOBAL_STBY_ENABLE |= Counter_Sensor_BLOCK_STBY_EN_MASK;
+ 149:Generated_Source\PSoC5/Counter_Sensor.c ****     #endif /* (Counter_Sensor_UsingFixedFunction) */  
+ 150:Generated_Source\PSoC5/Counter_Sensor.c ****         
+ 151:Generated_Source\PSoC5/Counter_Sensor.c ****     /* Enable the counter from the control register  */
+ 152:Generated_Source\PSoC5/Counter_Sensor.c ****     /* If Fixed Function then make sure Mode is set correctly */
+ 153:Generated_Source\PSoC5/Counter_Sensor.c ****     /* else make sure reset is clear */
+ 154:Generated_Source\PSoC5/Counter_Sensor.c ****     #if(!Counter_Sensor_ControlRegRemoved || Counter_Sensor_UsingFixedFunction)
+ 155:Generated_Source\PSoC5/Counter_Sensor.c ****         Counter_Sensor_CONTROL |= Counter_Sensor_CTRL_ENABLE;                
+  33              		.loc 1 155 0
+  34 0000 024A     		ldr	r2, .L2
+  35 0002 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+  36 0004 43F08003 		orr	r3, r3, #128
+  37 0008 1370     		strb	r3, [r2]
+  38 000a 7047     		bx	lr
+  39              	.L3:
+  40              		.align	2
+  41              	.L2:
+  42 000c 7C640040 		.word	1073767548
+  43              		.cfi_endproc
+  44              	.LFE1:
+  45              		.size	Counter_Sensor_Enable, .-Counter_Sensor_Enable
+  46              		.section	.text.Counter_Sensor_Stop,"ax",%progbits
+  47              		.align	2
+  48              		.global	Counter_Sensor_Stop
+  49              		.thumb
+  50              		.thumb_func
+  51              		.type	Counter_Sensor_Stop, %function
+  52              	Counter_Sensor_Stop:
+  53              	.LFB3:
+ 156:Generated_Source\PSoC5/Counter_Sensor.c ****     #endif /* (!Counter_Sensor_ControlRegRemoved || Counter_Sensor_UsingFixedFunction) */
+ 157:Generated_Source\PSoC5/Counter_Sensor.c ****     
+ 158:Generated_Source\PSoC5/Counter_Sensor.c **** }
+ 159:Generated_Source\PSoC5/Counter_Sensor.c **** 
+ 160:Generated_Source\PSoC5/Counter_Sensor.c **** 
+ 161:Generated_Source\PSoC5/Counter_Sensor.c **** /*******************************************************************************
+ 162:Generated_Source\PSoC5/Counter_Sensor.c **** * Function Name: Counter_Sensor_Start
+ 163:Generated_Source\PSoC5/Counter_Sensor.c **** ********************************************************************************
+ 164:Generated_Source\PSoC5/Counter_Sensor.c **** * Summary:
+ 165:Generated_Source\PSoC5/Counter_Sensor.c **** *  Enables the counter for operation 
+ 166:Generated_Source\PSoC5/Counter_Sensor.c **** *
+ 167:Generated_Source\PSoC5/Counter_Sensor.c **** * Parameters:  
+ 168:Generated_Source\PSoC5/Counter_Sensor.c **** *  void  
+ 169:Generated_Source\PSoC5/Counter_Sensor.c **** *
+ 170:Generated_Source\PSoC5/Counter_Sensor.c **** * Return: 
+ 171:Generated_Source\PSoC5/Counter_Sensor.c **** *  void
+ 172:Generated_Source\PSoC5/Counter_Sensor.c **** *
+ 173:Generated_Source\PSoC5/Counter_Sensor.c **** * Global variables:
+ 174:Generated_Source\PSoC5/Counter_Sensor.c **** *  Counter_Sensor_initVar: Is modified when this function is called for the  
+ 175:Generated_Source\PSoC5/Counter_Sensor.c **** *   first time. Is used to ensure that initialization happens only once.
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccSeu0at.s 			page 5
+
+
+ 176:Generated_Source\PSoC5/Counter_Sensor.c **** *
+ 177:Generated_Source\PSoC5/Counter_Sensor.c **** *******************************************************************************/
+ 178:Generated_Source\PSoC5/Counter_Sensor.c **** void Counter_Sensor_Start(void) 
+ 179:Generated_Source\PSoC5/Counter_Sensor.c **** {
+ 180:Generated_Source\PSoC5/Counter_Sensor.c ****     if(Counter_Sensor_initVar == 0u)
+ 181:Generated_Source\PSoC5/Counter_Sensor.c ****     {
+ 182:Generated_Source\PSoC5/Counter_Sensor.c ****         Counter_Sensor_Init();
+ 183:Generated_Source\PSoC5/Counter_Sensor.c ****         
+ 184:Generated_Source\PSoC5/Counter_Sensor.c ****         Counter_Sensor_initVar = 1u; /* Clear this bit for Initialization */        
+ 185:Generated_Source\PSoC5/Counter_Sensor.c ****     }
+ 186:Generated_Source\PSoC5/Counter_Sensor.c ****     
+ 187:Generated_Source\PSoC5/Counter_Sensor.c ****     /* Enable the Counter */
+ 188:Generated_Source\PSoC5/Counter_Sensor.c ****     Counter_Sensor_Enable();        
+ 189:Generated_Source\PSoC5/Counter_Sensor.c **** }
+ 190:Generated_Source\PSoC5/Counter_Sensor.c **** 
+ 191:Generated_Source\PSoC5/Counter_Sensor.c **** 
+ 192:Generated_Source\PSoC5/Counter_Sensor.c **** /*******************************************************************************
+ 193:Generated_Source\PSoC5/Counter_Sensor.c **** * Function Name: Counter_Sensor_Stop
+ 194:Generated_Source\PSoC5/Counter_Sensor.c **** ********************************************************************************
+ 195:Generated_Source\PSoC5/Counter_Sensor.c **** * Summary:
+ 196:Generated_Source\PSoC5/Counter_Sensor.c **** * Halts the counter, but does not change any modes or disable interrupts.
+ 197:Generated_Source\PSoC5/Counter_Sensor.c **** *
+ 198:Generated_Source\PSoC5/Counter_Sensor.c **** * Parameters:  
+ 199:Generated_Source\PSoC5/Counter_Sensor.c **** *  void  
+ 200:Generated_Source\PSoC5/Counter_Sensor.c **** *
+ 201:Generated_Source\PSoC5/Counter_Sensor.c **** * Return: 
+ 202:Generated_Source\PSoC5/Counter_Sensor.c **** *  void
+ 203:Generated_Source\PSoC5/Counter_Sensor.c **** *
+ 204:Generated_Source\PSoC5/Counter_Sensor.c **** * Side Effects: If the Enable mode is set to Hardware only then this function
+ 205:Generated_Source\PSoC5/Counter_Sensor.c **** *               has no effect on the operation of the counter.
+ 206:Generated_Source\PSoC5/Counter_Sensor.c **** *
+ 207:Generated_Source\PSoC5/Counter_Sensor.c **** *******************************************************************************/
+ 208:Generated_Source\PSoC5/Counter_Sensor.c **** void Counter_Sensor_Stop(void) 
+ 209:Generated_Source\PSoC5/Counter_Sensor.c **** {
+  54              		.loc 1 209 0
+  55              		.cfi_startproc
+  56              		@ args = 0, pretend = 0, frame = 0
+  57              		@ frame_needed = 0, uses_anonymous_args = 0
+  58              		@ link register save eliminated.
+ 210:Generated_Source\PSoC5/Counter_Sensor.c ****     /* Disable Counter */
+ 211:Generated_Source\PSoC5/Counter_Sensor.c ****     #if(!Counter_Sensor_ControlRegRemoved || Counter_Sensor_UsingFixedFunction)
+ 212:Generated_Source\PSoC5/Counter_Sensor.c ****         Counter_Sensor_CONTROL &= ((uint8)(~Counter_Sensor_CTRL_ENABLE));        
+  59              		.loc 1 212 0
+  60 0000 024A     		ldr	r2, .L5
+  61 0002 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+  62 0004 03F07F03 		and	r3, r3, #127
+  63 0008 1370     		strb	r3, [r2]
+  64 000a 7047     		bx	lr
+  65              	.L6:
+  66              		.align	2
+  67              	.L5:
+  68 000c 7C640040 		.word	1073767548
+  69              		.cfi_endproc
+  70              	.LFE3:
+  71              		.size	Counter_Sensor_Stop, .-Counter_Sensor_Stop
+  72              		.section	.text.Counter_Sensor_SetInterruptMode,"ax",%progbits
+  73              		.align	2
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccSeu0at.s 			page 6
+
+
+  74              		.global	Counter_Sensor_SetInterruptMode
+  75              		.thumb
+  76              		.thumb_func
+  77              		.type	Counter_Sensor_SetInterruptMode, %function
+  78              	Counter_Sensor_SetInterruptMode:
+  79              	.LFB4:
+ 213:Generated_Source\PSoC5/Counter_Sensor.c ****     #endif /* (!Counter_Sensor_ControlRegRemoved || Counter_Sensor_UsingFixedFunction) */
+ 214:Generated_Source\PSoC5/Counter_Sensor.c ****     
+ 215:Generated_Source\PSoC5/Counter_Sensor.c ****     /* Globally disable the Fixed Function Block chosen */
+ 216:Generated_Source\PSoC5/Counter_Sensor.c ****     #if (Counter_Sensor_UsingFixedFunction)
+ 217:Generated_Source\PSoC5/Counter_Sensor.c ****         Counter_Sensor_GLOBAL_ENABLE &= ((uint8)(~Counter_Sensor_BLOCK_EN_MASK));
+ 218:Generated_Source\PSoC5/Counter_Sensor.c ****         Counter_Sensor_GLOBAL_STBY_ENABLE &= ((uint8)(~Counter_Sensor_BLOCK_STBY_EN_MASK));
+ 219:Generated_Source\PSoC5/Counter_Sensor.c ****     #endif /* (Counter_Sensor_UsingFixedFunction) */
+ 220:Generated_Source\PSoC5/Counter_Sensor.c **** }
+ 221:Generated_Source\PSoC5/Counter_Sensor.c **** 
+ 222:Generated_Source\PSoC5/Counter_Sensor.c **** 
+ 223:Generated_Source\PSoC5/Counter_Sensor.c **** /*******************************************************************************
+ 224:Generated_Source\PSoC5/Counter_Sensor.c **** * Function Name: Counter_Sensor_SetInterruptMode
+ 225:Generated_Source\PSoC5/Counter_Sensor.c **** ********************************************************************************
+ 226:Generated_Source\PSoC5/Counter_Sensor.c **** * Summary:
+ 227:Generated_Source\PSoC5/Counter_Sensor.c **** * Configures which interrupt sources are enabled to generate the final interrupt
+ 228:Generated_Source\PSoC5/Counter_Sensor.c **** *
+ 229:Generated_Source\PSoC5/Counter_Sensor.c **** * Parameters:  
+ 230:Generated_Source\PSoC5/Counter_Sensor.c **** *  InterruptsMask: This parameter is an or'd collection of the status bits
+ 231:Generated_Source\PSoC5/Counter_Sensor.c **** *                   which will be allowed to generate the counters interrupt.   
+ 232:Generated_Source\PSoC5/Counter_Sensor.c **** *
+ 233:Generated_Source\PSoC5/Counter_Sensor.c **** * Return: 
+ 234:Generated_Source\PSoC5/Counter_Sensor.c **** *  void
+ 235:Generated_Source\PSoC5/Counter_Sensor.c **** *
+ 236:Generated_Source\PSoC5/Counter_Sensor.c **** *******************************************************************************/
+ 237:Generated_Source\PSoC5/Counter_Sensor.c **** void Counter_Sensor_SetInterruptMode(uint8 interruptsMask) 
+ 238:Generated_Source\PSoC5/Counter_Sensor.c **** {
+  80              		.loc 1 238 0
+  81              		.cfi_startproc
+  82              		@ args = 0, pretend = 0, frame = 0
+  83              		@ frame_needed = 0, uses_anonymous_args = 0
+  84              		@ link register save eliminated.
+  85              	.LVL0:
+ 239:Generated_Source\PSoC5/Counter_Sensor.c ****     Counter_Sensor_STATUS_MASK = interruptsMask;
+  86              		.loc 1 239 0
+  87 0000 014B     		ldr	r3, .L8
+  88 0002 1870     		strb	r0, [r3]
+  89 0004 7047     		bx	lr
+  90              	.L9:
+  91 0006 00BF     		.align	2
+  92              	.L8:
+  93 0008 8B640040 		.word	1073767563
+  94              		.cfi_endproc
+  95              	.LFE4:
+  96              		.size	Counter_Sensor_SetInterruptMode, .-Counter_Sensor_SetInterruptMode
+  97              		.section	.text.Counter_Sensor_ReadStatusRegister,"ax",%progbits
+  98              		.align	2
+  99              		.global	Counter_Sensor_ReadStatusRegister
+ 100              		.thumb
+ 101              		.thumb_func
+ 102              		.type	Counter_Sensor_ReadStatusRegister, %function
+ 103              	Counter_Sensor_ReadStatusRegister:
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccSeu0at.s 			page 7
+
+
+ 104              	.LFB5:
+ 240:Generated_Source\PSoC5/Counter_Sensor.c **** }
+ 241:Generated_Source\PSoC5/Counter_Sensor.c **** 
+ 242:Generated_Source\PSoC5/Counter_Sensor.c **** 
+ 243:Generated_Source\PSoC5/Counter_Sensor.c **** /*******************************************************************************
+ 244:Generated_Source\PSoC5/Counter_Sensor.c **** * Function Name: Counter_Sensor_ReadStatusRegister
+ 245:Generated_Source\PSoC5/Counter_Sensor.c **** ********************************************************************************
+ 246:Generated_Source\PSoC5/Counter_Sensor.c **** * Summary:
+ 247:Generated_Source\PSoC5/Counter_Sensor.c **** *   Reads the status register and returns it's state. This function should use
+ 248:Generated_Source\PSoC5/Counter_Sensor.c **** *       defined types for the bit-field information as the bits in this
+ 249:Generated_Source\PSoC5/Counter_Sensor.c **** *       register may be permuteable.
+ 250:Generated_Source\PSoC5/Counter_Sensor.c **** *
+ 251:Generated_Source\PSoC5/Counter_Sensor.c **** * Parameters:  
+ 252:Generated_Source\PSoC5/Counter_Sensor.c **** *  void
+ 253:Generated_Source\PSoC5/Counter_Sensor.c **** *
+ 254:Generated_Source\PSoC5/Counter_Sensor.c **** * Return: 
+ 255:Generated_Source\PSoC5/Counter_Sensor.c **** *  (uint8) The contents of the status register
+ 256:Generated_Source\PSoC5/Counter_Sensor.c **** *
+ 257:Generated_Source\PSoC5/Counter_Sensor.c **** * Side Effects:
+ 258:Generated_Source\PSoC5/Counter_Sensor.c **** *   Status register bits may be clear on read. 
+ 259:Generated_Source\PSoC5/Counter_Sensor.c **** *
+ 260:Generated_Source\PSoC5/Counter_Sensor.c **** *******************************************************************************/
+ 261:Generated_Source\PSoC5/Counter_Sensor.c **** uint8   Counter_Sensor_ReadStatusRegister(void) 
+ 262:Generated_Source\PSoC5/Counter_Sensor.c **** {
+ 105              		.loc 1 262 0
+ 106              		.cfi_startproc
+ 107              		@ args = 0, pretend = 0, frame = 0
+ 108              		@ frame_needed = 0, uses_anonymous_args = 0
+ 109              		@ link register save eliminated.
+ 263:Generated_Source\PSoC5/Counter_Sensor.c ****     return Counter_Sensor_STATUS;
+ 110              		.loc 1 263 0
+ 111 0000 014B     		ldr	r3, .L11
+ 112 0002 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
+ 264:Generated_Source\PSoC5/Counter_Sensor.c **** }
+ 113              		.loc 1 264 0
+ 114 0004 7047     		bx	lr
+ 115              	.L12:
+ 116 0006 00BF     		.align	2
+ 117              	.L11:
+ 118 0008 6B640040 		.word	1073767531
+ 119              		.cfi_endproc
+ 120              	.LFE5:
+ 121              		.size	Counter_Sensor_ReadStatusRegister, .-Counter_Sensor_ReadStatusRegister
+ 122              		.section	.text.Counter_Sensor_ReadControlRegister,"ax",%progbits
+ 123              		.align	2
+ 124              		.global	Counter_Sensor_ReadControlRegister
+ 125              		.thumb
+ 126              		.thumb_func
+ 127              		.type	Counter_Sensor_ReadControlRegister, %function
+ 128              	Counter_Sensor_ReadControlRegister:
+ 129              	.LFB6:
+ 265:Generated_Source\PSoC5/Counter_Sensor.c **** 
+ 266:Generated_Source\PSoC5/Counter_Sensor.c **** 
+ 267:Generated_Source\PSoC5/Counter_Sensor.c **** #if(!Counter_Sensor_ControlRegRemoved)
+ 268:Generated_Source\PSoC5/Counter_Sensor.c **** /*******************************************************************************
+ 269:Generated_Source\PSoC5/Counter_Sensor.c **** * Function Name: Counter_Sensor_ReadControlRegister
+ 270:Generated_Source\PSoC5/Counter_Sensor.c **** ********************************************************************************
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccSeu0at.s 			page 8
+
+
+ 271:Generated_Source\PSoC5/Counter_Sensor.c **** * Summary:
+ 272:Generated_Source\PSoC5/Counter_Sensor.c **** *   Reads the control register and returns it's state. This function should use
+ 273:Generated_Source\PSoC5/Counter_Sensor.c **** *       defined types for the bit-field information as the bits in this
+ 274:Generated_Source\PSoC5/Counter_Sensor.c **** *       register may be permuteable.
+ 275:Generated_Source\PSoC5/Counter_Sensor.c **** *
+ 276:Generated_Source\PSoC5/Counter_Sensor.c **** * Parameters:  
+ 277:Generated_Source\PSoC5/Counter_Sensor.c **** *  void
+ 278:Generated_Source\PSoC5/Counter_Sensor.c **** *
+ 279:Generated_Source\PSoC5/Counter_Sensor.c **** * Return: 
+ 280:Generated_Source\PSoC5/Counter_Sensor.c **** *  (uint8) The contents of the control register
+ 281:Generated_Source\PSoC5/Counter_Sensor.c **** *
+ 282:Generated_Source\PSoC5/Counter_Sensor.c **** *******************************************************************************/
+ 283:Generated_Source\PSoC5/Counter_Sensor.c **** uint8   Counter_Sensor_ReadControlRegister(void) 
+ 284:Generated_Source\PSoC5/Counter_Sensor.c **** {
+ 130              		.loc 1 284 0
+ 131              		.cfi_startproc
+ 132              		@ args = 0, pretend = 0, frame = 0
+ 133              		@ frame_needed = 0, uses_anonymous_args = 0
+ 134              		@ link register save eliminated.
+ 285:Generated_Source\PSoC5/Counter_Sensor.c ****     return Counter_Sensor_CONTROL;
+ 135              		.loc 1 285 0
+ 136 0000 014B     		ldr	r3, .L14
+ 137 0002 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
+ 286:Generated_Source\PSoC5/Counter_Sensor.c **** }
+ 138              		.loc 1 286 0
+ 139 0004 7047     		bx	lr
+ 140              	.L15:
+ 141 0006 00BF     		.align	2
+ 142              	.L14:
+ 143 0008 7C640040 		.word	1073767548
+ 144              		.cfi_endproc
+ 145              	.LFE6:
+ 146              		.size	Counter_Sensor_ReadControlRegister, .-Counter_Sensor_ReadControlRegister
+ 147              		.section	.text.Counter_Sensor_WriteControlRegister,"ax",%progbits
+ 148              		.align	2
+ 149              		.global	Counter_Sensor_WriteControlRegister
+ 150              		.thumb
+ 151              		.thumb_func
+ 152              		.type	Counter_Sensor_WriteControlRegister, %function
+ 153              	Counter_Sensor_WriteControlRegister:
+ 154              	.LFB7:
+ 287:Generated_Source\PSoC5/Counter_Sensor.c **** 
+ 288:Generated_Source\PSoC5/Counter_Sensor.c **** 
+ 289:Generated_Source\PSoC5/Counter_Sensor.c **** /*******************************************************************************
+ 290:Generated_Source\PSoC5/Counter_Sensor.c **** * Function Name: Counter_Sensor_WriteControlRegister
+ 291:Generated_Source\PSoC5/Counter_Sensor.c **** ********************************************************************************
+ 292:Generated_Source\PSoC5/Counter_Sensor.c **** * Summary:
+ 293:Generated_Source\PSoC5/Counter_Sensor.c **** *   Sets the bit-field of the control register.  This function should use
+ 294:Generated_Source\PSoC5/Counter_Sensor.c **** *       defined types for the bit-field information as the bits in this
+ 295:Generated_Source\PSoC5/Counter_Sensor.c **** *       register may be permuteable.
+ 296:Generated_Source\PSoC5/Counter_Sensor.c **** *
+ 297:Generated_Source\PSoC5/Counter_Sensor.c **** * Parameters:  
+ 298:Generated_Source\PSoC5/Counter_Sensor.c **** *  void
+ 299:Generated_Source\PSoC5/Counter_Sensor.c **** *
+ 300:Generated_Source\PSoC5/Counter_Sensor.c **** * Return: 
+ 301:Generated_Source\PSoC5/Counter_Sensor.c **** *  (uint8) The contents of the control register
+ 302:Generated_Source\PSoC5/Counter_Sensor.c **** *
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccSeu0at.s 			page 9
+
+
+ 303:Generated_Source\PSoC5/Counter_Sensor.c **** *******************************************************************************/
+ 304:Generated_Source\PSoC5/Counter_Sensor.c **** void    Counter_Sensor_WriteControlRegister(uint8 control) 
+ 305:Generated_Source\PSoC5/Counter_Sensor.c **** {
+ 155              		.loc 1 305 0
+ 156              		.cfi_startproc
+ 157              		@ args = 0, pretend = 0, frame = 0
+ 158              		@ frame_needed = 0, uses_anonymous_args = 0
+ 159              		@ link register save eliminated.
+ 160              	.LVL1:
+ 306:Generated_Source\PSoC5/Counter_Sensor.c ****     Counter_Sensor_CONTROL = control;
+ 161              		.loc 1 306 0
+ 162 0000 014B     		ldr	r3, .L17
+ 163 0002 1870     		strb	r0, [r3]
+ 164 0004 7047     		bx	lr
+ 165              	.L18:
+ 166 0006 00BF     		.align	2
+ 167              	.L17:
+ 168 0008 7C640040 		.word	1073767548
+ 169              		.cfi_endproc
+ 170              	.LFE7:
+ 171              		.size	Counter_Sensor_WriteControlRegister, .-Counter_Sensor_WriteControlRegister
+ 172              		.section	.text.Counter_Sensor_WriteCounter,"ax",%progbits
+ 173              		.align	2
+ 174              		.global	Counter_Sensor_WriteCounter
+ 175              		.thumb
+ 176              		.thumb_func
+ 177              		.type	Counter_Sensor_WriteCounter, %function
+ 178              	Counter_Sensor_WriteCounter:
+ 179              	.LFB8:
+ 307:Generated_Source\PSoC5/Counter_Sensor.c **** }
+ 308:Generated_Source\PSoC5/Counter_Sensor.c **** 
+ 309:Generated_Source\PSoC5/Counter_Sensor.c **** #endif  /* (!Counter_Sensor_ControlRegRemoved) */
+ 310:Generated_Source\PSoC5/Counter_Sensor.c **** 
+ 311:Generated_Source\PSoC5/Counter_Sensor.c **** 
+ 312:Generated_Source\PSoC5/Counter_Sensor.c **** #if (!(Counter_Sensor_UsingFixedFunction && (CY_PSOC5A)))
+ 313:Generated_Source\PSoC5/Counter_Sensor.c **** /*******************************************************************************
+ 314:Generated_Source\PSoC5/Counter_Sensor.c **** * Function Name: Counter_Sensor_WriteCounter
+ 315:Generated_Source\PSoC5/Counter_Sensor.c **** ********************************************************************************
+ 316:Generated_Source\PSoC5/Counter_Sensor.c **** * Summary:
+ 317:Generated_Source\PSoC5/Counter_Sensor.c **** *   This funtion is used to set the counter to a specific value
+ 318:Generated_Source\PSoC5/Counter_Sensor.c **** *
+ 319:Generated_Source\PSoC5/Counter_Sensor.c **** * Parameters:  
+ 320:Generated_Source\PSoC5/Counter_Sensor.c **** *  counter:  New counter value. 
+ 321:Generated_Source\PSoC5/Counter_Sensor.c **** *
+ 322:Generated_Source\PSoC5/Counter_Sensor.c **** * Return: 
+ 323:Generated_Source\PSoC5/Counter_Sensor.c **** *  void 
+ 324:Generated_Source\PSoC5/Counter_Sensor.c **** *
+ 325:Generated_Source\PSoC5/Counter_Sensor.c **** *******************************************************************************/
+ 326:Generated_Source\PSoC5/Counter_Sensor.c **** void Counter_Sensor_WriteCounter(uint32 counter) \
+ 327:Generated_Source\PSoC5/Counter_Sensor.c ****                                    
+ 328:Generated_Source\PSoC5/Counter_Sensor.c **** {
+ 180              		.loc 1 328 0
+ 181              		.cfi_startproc
+ 182              		@ args = 0, pretend = 0, frame = 0
+ 183              		@ frame_needed = 0, uses_anonymous_args = 0
+ 184              		@ link register save eliminated.
+ 185              	.LVL2:
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccSeu0at.s 			page 10
+
+
+ 329:Generated_Source\PSoC5/Counter_Sensor.c ****     #if(Counter_Sensor_UsingFixedFunction)
+ 330:Generated_Source\PSoC5/Counter_Sensor.c ****         /* assert if block is already enabled */
+ 331:Generated_Source\PSoC5/Counter_Sensor.c ****         CYASSERT (0u == (Counter_Sensor_GLOBAL_ENABLE & Counter_Sensor_BLOCK_EN_MASK));
+ 332:Generated_Source\PSoC5/Counter_Sensor.c ****         /* If block is disabled, enable it and then write the counter */
+ 333:Generated_Source\PSoC5/Counter_Sensor.c ****         Counter_Sensor_GLOBAL_ENABLE |= Counter_Sensor_BLOCK_EN_MASK;
+ 334:Generated_Source\PSoC5/Counter_Sensor.c ****         CY_SET_REG16(Counter_Sensor_COUNTER_LSB_PTR, (uint16)counter);
+ 335:Generated_Source\PSoC5/Counter_Sensor.c ****         Counter_Sensor_GLOBAL_ENABLE &= ((uint8)(~Counter_Sensor_BLOCK_EN_MASK));
+ 336:Generated_Source\PSoC5/Counter_Sensor.c ****     #else
+ 337:Generated_Source\PSoC5/Counter_Sensor.c ****         CY_SET_REG32(Counter_Sensor_COUNTER_LSB_PTR, counter);
+ 186              		.loc 1 337 0
+ 187 0000 014B     		ldr	r3, .L20
+ 188 0002 1860     		str	r0, [r3]
+ 189 0004 7047     		bx	lr
+ 190              	.L21:
+ 191 0006 00BF     		.align	2
+ 192              	.L20:
+ 193 0008 08640040 		.word	1073767432
+ 194              		.cfi_endproc
+ 195              	.LFE8:
+ 196              		.size	Counter_Sensor_WriteCounter, .-Counter_Sensor_WriteCounter
+ 197              		.section	.text.Counter_Sensor_ReadCounter,"ax",%progbits
+ 198              		.align	2
+ 199              		.global	Counter_Sensor_ReadCounter
+ 200              		.thumb
+ 201              		.thumb_func
+ 202              		.type	Counter_Sensor_ReadCounter, %function
+ 203              	Counter_Sensor_ReadCounter:
+ 204              	.LFB9:
+ 338:Generated_Source\PSoC5/Counter_Sensor.c ****     #endif /* (Counter_Sensor_UsingFixedFunction) */
+ 339:Generated_Source\PSoC5/Counter_Sensor.c **** }
+ 340:Generated_Source\PSoC5/Counter_Sensor.c **** #endif /* (!(Counter_Sensor_UsingFixedFunction && (CY_PSOC5A))) */
+ 341:Generated_Source\PSoC5/Counter_Sensor.c **** 
+ 342:Generated_Source\PSoC5/Counter_Sensor.c **** 
+ 343:Generated_Source\PSoC5/Counter_Sensor.c **** /*******************************************************************************
+ 344:Generated_Source\PSoC5/Counter_Sensor.c **** * Function Name: Counter_Sensor_ReadCounter
+ 345:Generated_Source\PSoC5/Counter_Sensor.c **** ********************************************************************************
+ 346:Generated_Source\PSoC5/Counter_Sensor.c **** * Summary:
+ 347:Generated_Source\PSoC5/Counter_Sensor.c **** * Returns the current value of the counter.  It doesn't matter
+ 348:Generated_Source\PSoC5/Counter_Sensor.c **** * if the counter is enabled or running.
+ 349:Generated_Source\PSoC5/Counter_Sensor.c **** *
+ 350:Generated_Source\PSoC5/Counter_Sensor.c **** * Parameters:  
+ 351:Generated_Source\PSoC5/Counter_Sensor.c **** *  void:  
+ 352:Generated_Source\PSoC5/Counter_Sensor.c **** *
+ 353:Generated_Source\PSoC5/Counter_Sensor.c **** * Return: 
+ 354:Generated_Source\PSoC5/Counter_Sensor.c **** *  (uint32) The present value of the counter.
+ 355:Generated_Source\PSoC5/Counter_Sensor.c **** *
+ 356:Generated_Source\PSoC5/Counter_Sensor.c **** *******************************************************************************/
+ 357:Generated_Source\PSoC5/Counter_Sensor.c **** uint32 Counter_Sensor_ReadCounter(void) 
+ 358:Generated_Source\PSoC5/Counter_Sensor.c **** {
+ 205              		.loc 1 358 0
+ 206              		.cfi_startproc
+ 207              		@ args = 0, pretend = 0, frame = 0
+ 208              		@ frame_needed = 0, uses_anonymous_args = 0
+ 209              		@ link register save eliminated.
+ 359:Generated_Source\PSoC5/Counter_Sensor.c ****     /* Force capture by reading Accumulator */
+ 360:Generated_Source\PSoC5/Counter_Sensor.c ****     /* Must first do a software capture to be able to read the counter */
+ 361:Generated_Source\PSoC5/Counter_Sensor.c ****     /* It is up to the user code to make sure there isn't already captured data in the FIFO */
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccSeu0at.s 			page 11
+
+
+ 362:Generated_Source\PSoC5/Counter_Sensor.c ****     #if(Counter_Sensor_UsingFixedFunction)
+ 363:Generated_Source\PSoC5/Counter_Sensor.c **** 		(void)CY_GET_REG16(Counter_Sensor_COUNTER_LSB_PTR);
+ 364:Generated_Source\PSoC5/Counter_Sensor.c **** 	#else
+ 365:Generated_Source\PSoC5/Counter_Sensor.c **** 		(void)CY_GET_REG8(Counter_Sensor_COUNTER_LSB_PTR_8BIT);
+ 210              		.loc 1 365 0
+ 211 0000 024B     		ldr	r3, .L23
+ 212 0002 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 366:Generated_Source\PSoC5/Counter_Sensor.c **** 	#endif/* (Counter_Sensor_UsingFixedFunction) */
+ 367:Generated_Source\PSoC5/Counter_Sensor.c ****     
+ 368:Generated_Source\PSoC5/Counter_Sensor.c ****     /* Read the data from the FIFO (or capture register for Fixed Function)*/
+ 369:Generated_Source\PSoC5/Counter_Sensor.c ****     #if(Counter_Sensor_UsingFixedFunction)
+ 370:Generated_Source\PSoC5/Counter_Sensor.c ****         return ((uint32)CY_GET_REG16(Counter_Sensor_STATICCOUNT_LSB_PTR));
+ 371:Generated_Source\PSoC5/Counter_Sensor.c ****     #else
+ 372:Generated_Source\PSoC5/Counter_Sensor.c ****         return (CY_GET_REG32(Counter_Sensor_STATICCOUNT_LSB_PTR));
+ 213              		.loc 1 372 0
+ 214 0004 024B     		ldr	r3, .L23+4
+ 215 0006 1868     		ldr	r0, [r3]
+ 373:Generated_Source\PSoC5/Counter_Sensor.c ****     #endif /* (Counter_Sensor_UsingFixedFunction) */
+ 374:Generated_Source\PSoC5/Counter_Sensor.c **** }
+ 216              		.loc 1 374 0
+ 217 0008 7047     		bx	lr
+ 218              	.L24:
+ 219 000a 00BF     		.align	2
+ 220              	.L23:
+ 221 000c 08640040 		.word	1073767432
+ 222 0010 48640040 		.word	1073767496
+ 223              		.cfi_endproc
+ 224              	.LFE9:
+ 225              		.size	Counter_Sensor_ReadCounter, .-Counter_Sensor_ReadCounter
+ 226              		.section	.text.Counter_Sensor_ReadCapture,"ax",%progbits
+ 227              		.align	2
+ 228              		.global	Counter_Sensor_ReadCapture
+ 229              		.thumb
+ 230              		.thumb_func
+ 231              		.type	Counter_Sensor_ReadCapture, %function
+ 232              	Counter_Sensor_ReadCapture:
+ 233              	.LFB10:
+ 375:Generated_Source\PSoC5/Counter_Sensor.c **** 
+ 376:Generated_Source\PSoC5/Counter_Sensor.c **** 
+ 377:Generated_Source\PSoC5/Counter_Sensor.c **** /*******************************************************************************
+ 378:Generated_Source\PSoC5/Counter_Sensor.c **** * Function Name: Counter_Sensor_ReadCapture
+ 379:Generated_Source\PSoC5/Counter_Sensor.c **** ********************************************************************************
+ 380:Generated_Source\PSoC5/Counter_Sensor.c **** * Summary:
+ 381:Generated_Source\PSoC5/Counter_Sensor.c **** *   This function returns the last value captured.
+ 382:Generated_Source\PSoC5/Counter_Sensor.c **** *
+ 383:Generated_Source\PSoC5/Counter_Sensor.c **** * Parameters:  
+ 384:Generated_Source\PSoC5/Counter_Sensor.c **** *  void
+ 385:Generated_Source\PSoC5/Counter_Sensor.c **** *
+ 386:Generated_Source\PSoC5/Counter_Sensor.c **** * Return: 
+ 387:Generated_Source\PSoC5/Counter_Sensor.c **** *  (uint32) Present Capture value.
+ 388:Generated_Source\PSoC5/Counter_Sensor.c **** *
+ 389:Generated_Source\PSoC5/Counter_Sensor.c **** *******************************************************************************/
+ 390:Generated_Source\PSoC5/Counter_Sensor.c **** uint32 Counter_Sensor_ReadCapture(void) 
+ 391:Generated_Source\PSoC5/Counter_Sensor.c **** {
+ 234              		.loc 1 391 0
+ 235              		.cfi_startproc
+ 236              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccSeu0at.s 			page 12
+
+
+ 237              		@ frame_needed = 0, uses_anonymous_args = 0
+ 238              		@ link register save eliminated.
+ 392:Generated_Source\PSoC5/Counter_Sensor.c ****     #if(Counter_Sensor_UsingFixedFunction)
+ 393:Generated_Source\PSoC5/Counter_Sensor.c ****         return ((uint32)CY_GET_REG16(Counter_Sensor_STATICCOUNT_LSB_PTR));
+ 394:Generated_Source\PSoC5/Counter_Sensor.c ****     #else
+ 395:Generated_Source\PSoC5/Counter_Sensor.c ****         return (CY_GET_REG32(Counter_Sensor_STATICCOUNT_LSB_PTR));
+ 239              		.loc 1 395 0
+ 240 0000 014B     		ldr	r3, .L26
+ 241 0002 1868     		ldr	r0, [r3]
+ 396:Generated_Source\PSoC5/Counter_Sensor.c ****     #endif /* (Counter_Sensor_UsingFixedFunction) */
+ 397:Generated_Source\PSoC5/Counter_Sensor.c **** }
+ 242              		.loc 1 397 0
+ 243 0004 7047     		bx	lr
+ 244              	.L27:
+ 245 0006 00BF     		.align	2
+ 246              	.L26:
+ 247 0008 48640040 		.word	1073767496
+ 248              		.cfi_endproc
+ 249              	.LFE10:
+ 250              		.size	Counter_Sensor_ReadCapture, .-Counter_Sensor_ReadCapture
+ 251              		.section	.text.Counter_Sensor_WritePeriod,"ax",%progbits
+ 252              		.align	2
+ 253              		.global	Counter_Sensor_WritePeriod
+ 254              		.thumb
+ 255              		.thumb_func
+ 256              		.type	Counter_Sensor_WritePeriod, %function
+ 257              	Counter_Sensor_WritePeriod:
+ 258              	.LFB11:
+ 398:Generated_Source\PSoC5/Counter_Sensor.c **** 
+ 399:Generated_Source\PSoC5/Counter_Sensor.c **** 
+ 400:Generated_Source\PSoC5/Counter_Sensor.c **** /*******************************************************************************
+ 401:Generated_Source\PSoC5/Counter_Sensor.c **** * Function Name: Counter_Sensor_WritePeriod
+ 402:Generated_Source\PSoC5/Counter_Sensor.c **** ********************************************************************************
+ 403:Generated_Source\PSoC5/Counter_Sensor.c **** * Summary:
+ 404:Generated_Source\PSoC5/Counter_Sensor.c **** * Changes the period of the counter.  The new period 
+ 405:Generated_Source\PSoC5/Counter_Sensor.c **** * will be loaded the next time terminal count is detected.
+ 406:Generated_Source\PSoC5/Counter_Sensor.c **** *
+ 407:Generated_Source\PSoC5/Counter_Sensor.c **** * Parameters:  
+ 408:Generated_Source\PSoC5/Counter_Sensor.c **** *  period: (uint32) A value of 0 will result in
+ 409:Generated_Source\PSoC5/Counter_Sensor.c **** *         the counter remaining at zero.  
+ 410:Generated_Source\PSoC5/Counter_Sensor.c **** *
+ 411:Generated_Source\PSoC5/Counter_Sensor.c **** * Return: 
+ 412:Generated_Source\PSoC5/Counter_Sensor.c **** *  void
+ 413:Generated_Source\PSoC5/Counter_Sensor.c **** *
+ 414:Generated_Source\PSoC5/Counter_Sensor.c **** *******************************************************************************/
+ 415:Generated_Source\PSoC5/Counter_Sensor.c **** void Counter_Sensor_WritePeriod(uint32 period) 
+ 416:Generated_Source\PSoC5/Counter_Sensor.c **** {
+ 259              		.loc 1 416 0
+ 260              		.cfi_startproc
+ 261              		@ args = 0, pretend = 0, frame = 0
+ 262              		@ frame_needed = 0, uses_anonymous_args = 0
+ 263              		@ link register save eliminated.
+ 264              	.LVL3:
+ 417:Generated_Source\PSoC5/Counter_Sensor.c ****     #if(Counter_Sensor_UsingFixedFunction)
+ 418:Generated_Source\PSoC5/Counter_Sensor.c ****         CY_SET_REG16(Counter_Sensor_PERIOD_LSB_PTR,(uint16)period);
+ 419:Generated_Source\PSoC5/Counter_Sensor.c ****     #else
+ 420:Generated_Source\PSoC5/Counter_Sensor.c ****         CY_SET_REG32(Counter_Sensor_PERIOD_LSB_PTR, period);
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccSeu0at.s 			page 13
+
+
+ 265              		.loc 1 420 0
+ 266 0000 014B     		ldr	r3, .L29
+ 267 0002 1860     		str	r0, [r3]
+ 268 0004 7047     		bx	lr
+ 269              	.L30:
+ 270 0006 00BF     		.align	2
+ 271              	.L29:
+ 272 0008 28640040 		.word	1073767464
+ 273              		.cfi_endproc
+ 274              	.LFE11:
+ 275              		.size	Counter_Sensor_WritePeriod, .-Counter_Sensor_WritePeriod
+ 276              		.section	.text.Counter_Sensor_ReadPeriod,"ax",%progbits
+ 277              		.align	2
+ 278              		.global	Counter_Sensor_ReadPeriod
+ 279              		.thumb
+ 280              		.thumb_func
+ 281              		.type	Counter_Sensor_ReadPeriod, %function
+ 282              	Counter_Sensor_ReadPeriod:
+ 283              	.LFB12:
+ 421:Generated_Source\PSoC5/Counter_Sensor.c ****     #endif /* (Counter_Sensor_UsingFixedFunction) */
+ 422:Generated_Source\PSoC5/Counter_Sensor.c **** }
+ 423:Generated_Source\PSoC5/Counter_Sensor.c **** 
+ 424:Generated_Source\PSoC5/Counter_Sensor.c **** 
+ 425:Generated_Source\PSoC5/Counter_Sensor.c **** /*******************************************************************************
+ 426:Generated_Source\PSoC5/Counter_Sensor.c **** * Function Name: Counter_Sensor_ReadPeriod
+ 427:Generated_Source\PSoC5/Counter_Sensor.c **** ********************************************************************************
+ 428:Generated_Source\PSoC5/Counter_Sensor.c **** * Summary:
+ 429:Generated_Source\PSoC5/Counter_Sensor.c **** * Reads the current period value without affecting counter operation.
+ 430:Generated_Source\PSoC5/Counter_Sensor.c **** *
+ 431:Generated_Source\PSoC5/Counter_Sensor.c **** * Parameters:  
+ 432:Generated_Source\PSoC5/Counter_Sensor.c **** *  void:  
+ 433:Generated_Source\PSoC5/Counter_Sensor.c **** *
+ 434:Generated_Source\PSoC5/Counter_Sensor.c **** * Return: 
+ 435:Generated_Source\PSoC5/Counter_Sensor.c **** *  (uint32) Present period value.
+ 436:Generated_Source\PSoC5/Counter_Sensor.c **** *
+ 437:Generated_Source\PSoC5/Counter_Sensor.c **** *******************************************************************************/
+ 438:Generated_Source\PSoC5/Counter_Sensor.c **** uint32 Counter_Sensor_ReadPeriod(void) 
+ 439:Generated_Source\PSoC5/Counter_Sensor.c **** {
+ 284              		.loc 1 439 0
+ 285              		.cfi_startproc
+ 286              		@ args = 0, pretend = 0, frame = 0
+ 287              		@ frame_needed = 0, uses_anonymous_args = 0
+ 288              		@ link register save eliminated.
+ 440:Generated_Source\PSoC5/Counter_Sensor.c ****     #if(Counter_Sensor_UsingFixedFunction)
+ 441:Generated_Source\PSoC5/Counter_Sensor.c ****         return ((uint32)CY_GET_REG16(Counter_Sensor_PERIOD_LSB_PTR));
+ 442:Generated_Source\PSoC5/Counter_Sensor.c ****     #else
+ 443:Generated_Source\PSoC5/Counter_Sensor.c ****         return (CY_GET_REG32(Counter_Sensor_PERIOD_LSB_PTR));
+ 289              		.loc 1 443 0
+ 290 0000 014B     		ldr	r3, .L32
+ 291 0002 1868     		ldr	r0, [r3]
+ 444:Generated_Source\PSoC5/Counter_Sensor.c ****     #endif /* (Counter_Sensor_UsingFixedFunction) */
+ 445:Generated_Source\PSoC5/Counter_Sensor.c **** }
+ 292              		.loc 1 445 0
+ 293 0004 7047     		bx	lr
+ 294              	.L33:
+ 295 0006 00BF     		.align	2
+ 296              	.L32:
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccSeu0at.s 			page 14
+
+
+ 297 0008 28640040 		.word	1073767464
+ 298              		.cfi_endproc
+ 299              	.LFE12:
+ 300              		.size	Counter_Sensor_ReadPeriod, .-Counter_Sensor_ReadPeriod
+ 301              		.section	.text.Counter_Sensor_WriteCompare,"ax",%progbits
+ 302              		.align	2
+ 303              		.global	Counter_Sensor_WriteCompare
+ 304              		.thumb
+ 305              		.thumb_func
+ 306              		.type	Counter_Sensor_WriteCompare, %function
+ 307              	Counter_Sensor_WriteCompare:
+ 308              	.LFB13:
+ 446:Generated_Source\PSoC5/Counter_Sensor.c **** 
+ 447:Generated_Source\PSoC5/Counter_Sensor.c **** 
+ 448:Generated_Source\PSoC5/Counter_Sensor.c **** #if (!Counter_Sensor_UsingFixedFunction)
+ 449:Generated_Source\PSoC5/Counter_Sensor.c **** /*******************************************************************************
+ 450:Generated_Source\PSoC5/Counter_Sensor.c **** * Function Name: Counter_Sensor_WriteCompare
+ 451:Generated_Source\PSoC5/Counter_Sensor.c **** ********************************************************************************
+ 452:Generated_Source\PSoC5/Counter_Sensor.c **** * Summary:
+ 453:Generated_Source\PSoC5/Counter_Sensor.c **** * Changes the compare value.  The compare output will 
+ 454:Generated_Source\PSoC5/Counter_Sensor.c **** * reflect the new value on the next UDB clock.  The compare output will be 
+ 455:Generated_Source\PSoC5/Counter_Sensor.c **** * driven high when the present counter value compares true based on the 
+ 456:Generated_Source\PSoC5/Counter_Sensor.c **** * configured compare mode setting. 
+ 457:Generated_Source\PSoC5/Counter_Sensor.c **** *
+ 458:Generated_Source\PSoC5/Counter_Sensor.c **** * Parameters:  
+ 459:Generated_Source\PSoC5/Counter_Sensor.c **** *  Compare:  New compare value. 
+ 460:Generated_Source\PSoC5/Counter_Sensor.c **** *
+ 461:Generated_Source\PSoC5/Counter_Sensor.c **** * Return: 
+ 462:Generated_Source\PSoC5/Counter_Sensor.c **** *  void
+ 463:Generated_Source\PSoC5/Counter_Sensor.c **** *
+ 464:Generated_Source\PSoC5/Counter_Sensor.c **** *******************************************************************************/
+ 465:Generated_Source\PSoC5/Counter_Sensor.c **** void Counter_Sensor_WriteCompare(uint32 compare) \
+ 466:Generated_Source\PSoC5/Counter_Sensor.c ****                                    
+ 467:Generated_Source\PSoC5/Counter_Sensor.c **** {
+ 309              		.loc 1 467 0
+ 310              		.cfi_startproc
+ 311              		@ args = 0, pretend = 0, frame = 0
+ 312              		@ frame_needed = 0, uses_anonymous_args = 0
+ 313              		@ link register save eliminated.
+ 314              	.LVL4:
+ 468:Generated_Source\PSoC5/Counter_Sensor.c ****     #if(Counter_Sensor_UsingFixedFunction)
+ 469:Generated_Source\PSoC5/Counter_Sensor.c ****         CY_SET_REG16(Counter_Sensor_COMPARE_LSB_PTR, (uint16)compare);
+ 470:Generated_Source\PSoC5/Counter_Sensor.c ****     #else
+ 471:Generated_Source\PSoC5/Counter_Sensor.c ****         CY_SET_REG32(Counter_Sensor_COMPARE_LSB_PTR, compare);
+ 315              		.loc 1 471 0
+ 316 0000 014B     		ldr	r3, .L35
+ 317 0002 1860     		str	r0, [r3]
+ 318 0004 7047     		bx	lr
+ 319              	.L36:
+ 320 0006 00BF     		.align	2
+ 321              	.L35:
+ 322 0008 38640040 		.word	1073767480
+ 323              		.cfi_endproc
+ 324              	.LFE13:
+ 325              		.size	Counter_Sensor_WriteCompare, .-Counter_Sensor_WriteCompare
+ 326              		.section	.text.Counter_Sensor_ReadCompare,"ax",%progbits
+ 327              		.align	2
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccSeu0at.s 			page 15
+
+
+ 328              		.global	Counter_Sensor_ReadCompare
+ 329              		.thumb
+ 330              		.thumb_func
+ 331              		.type	Counter_Sensor_ReadCompare, %function
+ 332              	Counter_Sensor_ReadCompare:
+ 333              	.LFB14:
+ 472:Generated_Source\PSoC5/Counter_Sensor.c ****     #endif /* (Counter_Sensor_UsingFixedFunction) */
+ 473:Generated_Source\PSoC5/Counter_Sensor.c **** }
+ 474:Generated_Source\PSoC5/Counter_Sensor.c **** 
+ 475:Generated_Source\PSoC5/Counter_Sensor.c **** 
+ 476:Generated_Source\PSoC5/Counter_Sensor.c **** /*******************************************************************************
+ 477:Generated_Source\PSoC5/Counter_Sensor.c **** * Function Name: Counter_Sensor_ReadCompare
+ 478:Generated_Source\PSoC5/Counter_Sensor.c **** ********************************************************************************
+ 479:Generated_Source\PSoC5/Counter_Sensor.c **** * Summary:
+ 480:Generated_Source\PSoC5/Counter_Sensor.c **** * Returns the compare value.
+ 481:Generated_Source\PSoC5/Counter_Sensor.c **** *
+ 482:Generated_Source\PSoC5/Counter_Sensor.c **** * Parameters:  
+ 483:Generated_Source\PSoC5/Counter_Sensor.c **** *  void:
+ 484:Generated_Source\PSoC5/Counter_Sensor.c **** *
+ 485:Generated_Source\PSoC5/Counter_Sensor.c **** * Return: 
+ 486:Generated_Source\PSoC5/Counter_Sensor.c **** *  (uint32) Present compare value.
+ 487:Generated_Source\PSoC5/Counter_Sensor.c **** *
+ 488:Generated_Source\PSoC5/Counter_Sensor.c **** *******************************************************************************/
+ 489:Generated_Source\PSoC5/Counter_Sensor.c **** uint32 Counter_Sensor_ReadCompare(void) 
+ 490:Generated_Source\PSoC5/Counter_Sensor.c **** {
+ 334              		.loc 1 490 0
+ 335              		.cfi_startproc
+ 336              		@ args = 0, pretend = 0, frame = 0
+ 337              		@ frame_needed = 0, uses_anonymous_args = 0
+ 338              		@ link register save eliminated.
+ 491:Generated_Source\PSoC5/Counter_Sensor.c ****     return (CY_GET_REG32(Counter_Sensor_COMPARE_LSB_PTR));
+ 339              		.loc 1 491 0
+ 340 0000 014B     		ldr	r3, .L38
+ 341 0002 1868     		ldr	r0, [r3]
+ 492:Generated_Source\PSoC5/Counter_Sensor.c **** }
+ 342              		.loc 1 492 0
+ 343 0004 7047     		bx	lr
+ 344              	.L39:
+ 345 0006 00BF     		.align	2
+ 346              	.L38:
+ 347 0008 38640040 		.word	1073767480
+ 348              		.cfi_endproc
+ 349              	.LFE14:
+ 350              		.size	Counter_Sensor_ReadCompare, .-Counter_Sensor_ReadCompare
+ 351              		.section	.text.Counter_Sensor_ClearFIFO,"ax",%progbits
+ 352              		.align	2
+ 353              		.global	Counter_Sensor_ClearFIFO
+ 354              		.thumb
+ 355              		.thumb_func
+ 356              		.type	Counter_Sensor_ClearFIFO, %function
+ 357              	Counter_Sensor_ClearFIFO:
+ 358              	.LFB15:
+ 493:Generated_Source\PSoC5/Counter_Sensor.c **** 
+ 494:Generated_Source\PSoC5/Counter_Sensor.c **** 
+ 495:Generated_Source\PSoC5/Counter_Sensor.c **** #if (Counter_Sensor_COMPARE_MODE_SOFTWARE)
+ 496:Generated_Source\PSoC5/Counter_Sensor.c **** /*******************************************************************************
+ 497:Generated_Source\PSoC5/Counter_Sensor.c **** * Function Name: Counter_Sensor_SetCompareMode
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccSeu0at.s 			page 16
+
+
+ 498:Generated_Source\PSoC5/Counter_Sensor.c **** ********************************************************************************
+ 499:Generated_Source\PSoC5/Counter_Sensor.c **** * Summary:
+ 500:Generated_Source\PSoC5/Counter_Sensor.c **** *  Sets the software controlled Compare Mode.
+ 501:Generated_Source\PSoC5/Counter_Sensor.c **** *
+ 502:Generated_Source\PSoC5/Counter_Sensor.c **** * Parameters:
+ 503:Generated_Source\PSoC5/Counter_Sensor.c **** *  compareMode:  Compare Mode Enumerated Type.
+ 504:Generated_Source\PSoC5/Counter_Sensor.c **** *
+ 505:Generated_Source\PSoC5/Counter_Sensor.c **** * Return:
+ 506:Generated_Source\PSoC5/Counter_Sensor.c **** *  void
+ 507:Generated_Source\PSoC5/Counter_Sensor.c **** *
+ 508:Generated_Source\PSoC5/Counter_Sensor.c **** *******************************************************************************/
+ 509:Generated_Source\PSoC5/Counter_Sensor.c **** void Counter_Sensor_SetCompareMode(uint8 compareMode) 
+ 510:Generated_Source\PSoC5/Counter_Sensor.c **** {
+ 511:Generated_Source\PSoC5/Counter_Sensor.c ****     /* Clear the compare mode bits in the control register */
+ 512:Generated_Source\PSoC5/Counter_Sensor.c ****     Counter_Sensor_CONTROL &= ((uint8)(~Counter_Sensor_CTRL_CMPMODE_MASK));
+ 513:Generated_Source\PSoC5/Counter_Sensor.c ****     
+ 514:Generated_Source\PSoC5/Counter_Sensor.c ****     /* Write the new setting */
+ 515:Generated_Source\PSoC5/Counter_Sensor.c ****     Counter_Sensor_CONTROL |= compareMode;
+ 516:Generated_Source\PSoC5/Counter_Sensor.c **** }
+ 517:Generated_Source\PSoC5/Counter_Sensor.c **** #endif  /* (Counter_Sensor_COMPARE_MODE_SOFTWARE) */
+ 518:Generated_Source\PSoC5/Counter_Sensor.c **** 
+ 519:Generated_Source\PSoC5/Counter_Sensor.c **** 
+ 520:Generated_Source\PSoC5/Counter_Sensor.c **** #if (Counter_Sensor_CAPTURE_MODE_SOFTWARE)
+ 521:Generated_Source\PSoC5/Counter_Sensor.c **** /*******************************************************************************
+ 522:Generated_Source\PSoC5/Counter_Sensor.c **** * Function Name: Counter_Sensor_SetCaptureMode
+ 523:Generated_Source\PSoC5/Counter_Sensor.c **** ********************************************************************************
+ 524:Generated_Source\PSoC5/Counter_Sensor.c **** * Summary:
+ 525:Generated_Source\PSoC5/Counter_Sensor.c **** *  Sets the software controlled Capture Mode.
+ 526:Generated_Source\PSoC5/Counter_Sensor.c **** *
+ 527:Generated_Source\PSoC5/Counter_Sensor.c **** * Parameters:
+ 528:Generated_Source\PSoC5/Counter_Sensor.c **** *  captureMode:  Capture Mode Enumerated Type.
+ 529:Generated_Source\PSoC5/Counter_Sensor.c **** *
+ 530:Generated_Source\PSoC5/Counter_Sensor.c **** * Return:
+ 531:Generated_Source\PSoC5/Counter_Sensor.c **** *  void
+ 532:Generated_Source\PSoC5/Counter_Sensor.c **** *
+ 533:Generated_Source\PSoC5/Counter_Sensor.c **** *******************************************************************************/
+ 534:Generated_Source\PSoC5/Counter_Sensor.c **** void Counter_Sensor_SetCaptureMode(uint8 captureMode) 
+ 535:Generated_Source\PSoC5/Counter_Sensor.c **** {
+ 536:Generated_Source\PSoC5/Counter_Sensor.c ****     /* Clear the capture mode bits in the control register */
+ 537:Generated_Source\PSoC5/Counter_Sensor.c ****     Counter_Sensor_CONTROL &= ((uint8)(~Counter_Sensor_CTRL_CAPMODE_MASK));
+ 538:Generated_Source\PSoC5/Counter_Sensor.c ****     
+ 539:Generated_Source\PSoC5/Counter_Sensor.c ****     /* Write the new setting */
+ 540:Generated_Source\PSoC5/Counter_Sensor.c ****     Counter_Sensor_CONTROL |= ((uint8)((uint8)captureMode << Counter_Sensor_CTRL_CAPMODE0_SHIFT));
+ 541:Generated_Source\PSoC5/Counter_Sensor.c **** }
+ 542:Generated_Source\PSoC5/Counter_Sensor.c **** #endif  /* (Counter_Sensor_CAPTURE_MODE_SOFTWARE) */
+ 543:Generated_Source\PSoC5/Counter_Sensor.c **** 
+ 544:Generated_Source\PSoC5/Counter_Sensor.c **** 
+ 545:Generated_Source\PSoC5/Counter_Sensor.c **** /*******************************************************************************
+ 546:Generated_Source\PSoC5/Counter_Sensor.c **** * Function Name: Counter_Sensor_ClearFIFO
+ 547:Generated_Source\PSoC5/Counter_Sensor.c **** ********************************************************************************
+ 548:Generated_Source\PSoC5/Counter_Sensor.c **** * Summary:
+ 549:Generated_Source\PSoC5/Counter_Sensor.c **** *   This function clears all capture data from the capture FIFO
+ 550:Generated_Source\PSoC5/Counter_Sensor.c **** *
+ 551:Generated_Source\PSoC5/Counter_Sensor.c **** * Parameters:  
+ 552:Generated_Source\PSoC5/Counter_Sensor.c **** *  void:
+ 553:Generated_Source\PSoC5/Counter_Sensor.c **** *
+ 554:Generated_Source\PSoC5/Counter_Sensor.c **** * Return: 
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccSeu0at.s 			page 17
+
+
+ 555:Generated_Source\PSoC5/Counter_Sensor.c **** *  None
+ 556:Generated_Source\PSoC5/Counter_Sensor.c **** *
+ 557:Generated_Source\PSoC5/Counter_Sensor.c **** *******************************************************************************/
+ 558:Generated_Source\PSoC5/Counter_Sensor.c **** void Counter_Sensor_ClearFIFO(void) 
+ 559:Generated_Source\PSoC5/Counter_Sensor.c **** {
+ 359              		.loc 1 559 0
+ 360              		.cfi_startproc
+ 361              		@ args = 0, pretend = 0, frame = 0
+ 362              		@ frame_needed = 0, uses_anonymous_args = 0
+ 363 0000 08B5     		push	{r3, lr}
+ 364              		.cfi_def_cfa_offset 8
+ 365              		.cfi_offset 3, -8
+ 366              		.cfi_offset 14, -4
+ 560:Generated_Source\PSoC5/Counter_Sensor.c **** 
+ 561:Generated_Source\PSoC5/Counter_Sensor.c ****     while(0u != (Counter_Sensor_ReadStatusRegister() & Counter_Sensor_STATUS_FIFONEMP))
+ 367              		.loc 1 561 0
+ 368 0002 01E0     		b	.L41
+ 369              	.L42:
+ 562:Generated_Source\PSoC5/Counter_Sensor.c ****     {
+ 563:Generated_Source\PSoC5/Counter_Sensor.c ****         (void)Counter_Sensor_ReadCapture();
+ 370              		.loc 1 563 0
+ 371 0004 FFF7FEFF 		bl	Counter_Sensor_ReadCapture
+ 372              	.LVL5:
+ 373              	.L41:
+ 561:Generated_Source\PSoC5/Counter_Sensor.c ****     {
+ 374              		.loc 1 561 0
+ 375 0008 FFF7FEFF 		bl	Counter_Sensor_ReadStatusRegister
+ 376              	.LVL6:
+ 377 000c 10F0400F 		tst	r0, #64
+ 378 0010 F8D1     		bne	.L42
+ 564:Generated_Source\PSoC5/Counter_Sensor.c ****     }
+ 565:Generated_Source\PSoC5/Counter_Sensor.c **** 
+ 566:Generated_Source\PSoC5/Counter_Sensor.c **** }
+ 379              		.loc 1 566 0
+ 380 0012 08BD     		pop	{r3, pc}
+ 381              		.cfi_endproc
+ 382              	.LFE15:
+ 383              		.size	Counter_Sensor_ClearFIFO, .-Counter_Sensor_ClearFIFO
+ 384              		.section	.text.Counter_Sensor_Init,"ax",%progbits
+ 385              		.align	2
+ 386              		.global	Counter_Sensor_Init
+ 387              		.thumb
+ 388              		.thumb_func
+ 389              		.type	Counter_Sensor_Init, %function
+ 390              	Counter_Sensor_Init:
+ 391              	.LFB0:
+  38:Generated_Source\PSoC5/Counter_Sensor.c ****         #if (!Counter_Sensor_UsingFixedFunction && !Counter_Sensor_ControlRegRemoved)
+ 392              		.loc 1 38 0
+ 393              		.cfi_startproc
+ 394              		@ args = 0, pretend = 0, frame = 0
+ 395              		@ frame_needed = 0, uses_anonymous_args = 0
+ 396 0000 08B5     		push	{r3, lr}
+ 397              		.cfi_def_cfa_offset 8
+ 398              		.cfi_offset 3, -8
+ 399              		.cfi_offset 14, -4
+  79:Generated_Source\PSoC5/Counter_Sensor.c ****             Counter_Sensor_CONTROL = ctrl | Counter_Sensor_DEFAULT_COMPARE_MODE;
+ 400              		.loc 1 79 0
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccSeu0at.s 			page 18
+
+
+ 401 0002 134A     		ldr	r2, .L46
+ 402 0004 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 403 0006 03F0F803 		and	r3, r3, #248
+ 404              	.LVL7:
+  80:Generated_Source\PSoC5/Counter_Sensor.c ****             
+ 405              		.loc 1 80 0
+ 406 000a 43F00103 		orr	r3, r3, #1
+ 407              	.LVL8:
+ 408 000e 1370     		strb	r3, [r2]
+  83:Generated_Source\PSoC5/Counter_Sensor.c ****             
+ 409              		.loc 1 83 0
+ 410 0010 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 411 0012 03F0FC03 		and	r3, r3, #252
+ 412              	.LVL9:
+  88:Generated_Source\PSoC5/Counter_Sensor.c ****             #endif /* 0 != Counter_Sensor_CAPTURE_MODE */ 
+ 413              		.loc 1 88 0
+ 414 0016 1370     		strb	r3, [r2]
+  96:Generated_Source\PSoC5/Counter_Sensor.c ****         #endif /* (!Counter_Sensor_UsingFixedFunction) */
+ 415              		.loc 1 96 0
+ 416 0018 FFF7FEFF 		bl	Counter_Sensor_ClearFIFO
+ 417              	.LVL10:
+ 100:Generated_Source\PSoC5/Counter_Sensor.c ****         #if (!(Counter_Sensor_UsingFixedFunction && (CY_PSOC5A)))
+ 418              		.loc 1 100 0
+ 419 001c 6FF00100 		mvn	r0, #1
+ 420 0020 FFF7FEFF 		bl	Counter_Sensor_WritePeriod
+ 421              	.LVL11:
+ 102:Generated_Source\PSoC5/Counter_Sensor.c ****         #endif /* (!(Counter_Sensor_UsingFixedFunction && (CY_PSOC5A))) */
+ 422              		.loc 1 102 0
+ 423 0024 0020     		movs	r0, #0
+ 424 0026 FFF7FEFF 		bl	Counter_Sensor_WriteCounter
+ 425              	.LVL12:
+ 104:Generated_Source\PSoC5/Counter_Sensor.c ****         
+ 426              		.loc 1 104 0
+ 427 002a 0020     		movs	r0, #0
+ 428 002c FFF7FEFF 		bl	Counter_Sensor_SetInterruptMode
+ 429              	.LVL13:
+ 108:Generated_Source\PSoC5/Counter_Sensor.c ****             /* Set the compare value (only available to non-fixed function implementation */
+ 430              		.loc 1 108 0
+ 431 0030 FFF7FEFF 		bl	Counter_Sensor_ReadStatusRegister
+ 432              	.LVL14:
+ 110:Generated_Source\PSoC5/Counter_Sensor.c ****             /* Use the interrupt output of the status register for IRQ output */
+ 433              		.loc 1 110 0
+ 434 0034 6FF00200 		mvn	r0, #2
+ 435 0038 FFF7FEFF 		bl	Counter_Sensor_WriteCompare
+ 436              	.LVL15:
+ 115:Generated_Source\PSoC5/Counter_Sensor.c ****             
+ 437              		.loc 1 115 0
+ 438 003c FFF7FEFF 		bl	CyEnterCriticalSection
+ 439              	.LVL16:
+ 117:Generated_Source\PSoC5/Counter_Sensor.c ****             
+ 440              		.loc 1 117 0
+ 441 0040 044A     		ldr	r2, .L46+4
+ 442 0042 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 443 0044 43F01003 		orr	r3, r3, #16
+ 444 0048 1370     		strb	r3, [r2]
+ 120:Generated_Source\PSoC5/Counter_Sensor.c ****             
+ 445              		.loc 1 120 0
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccSeu0at.s 			page 19
+
+
+ 446 004a FFF7FEFF 		bl	CyExitCriticalSection
+ 447              	.LVL17:
+ 448 004e 08BD     		pop	{r3, pc}
+ 449              	.L47:
+ 450              		.align	2
+ 451              	.L46:
+ 452 0050 7C640040 		.word	1073767548
+ 453 0054 9B640040 		.word	1073767579
+ 454              		.cfi_endproc
+ 455              	.LFE0:
+ 456              		.size	Counter_Sensor_Init, .-Counter_Sensor_Init
+ 457              		.section	.text.Counter_Sensor_Start,"ax",%progbits
+ 458              		.align	2
+ 459              		.global	Counter_Sensor_Start
+ 460              		.thumb
+ 461              		.thumb_func
+ 462              		.type	Counter_Sensor_Start, %function
+ 463              	Counter_Sensor_Start:
+ 464              	.LFB2:
+ 179:Generated_Source\PSoC5/Counter_Sensor.c ****     if(Counter_Sensor_initVar == 0u)
+ 465              		.loc 1 179 0
+ 466              		.cfi_startproc
+ 467              		@ args = 0, pretend = 0, frame = 0
+ 468              		@ frame_needed = 0, uses_anonymous_args = 0
+ 469 0000 08B5     		push	{r3, lr}
+ 470              		.cfi_def_cfa_offset 8
+ 471              		.cfi_offset 3, -8
+ 472              		.cfi_offset 14, -4
+ 180:Generated_Source\PSoC5/Counter_Sensor.c ****     {
+ 473              		.loc 1 180 0
+ 474 0002 054B     		ldr	r3, .L51
+ 475 0004 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 476 0006 23B9     		cbnz	r3, .L49
+ 182:Generated_Source\PSoC5/Counter_Sensor.c ****         
+ 477              		.loc 1 182 0
+ 478 0008 FFF7FEFF 		bl	Counter_Sensor_Init
+ 479              	.LVL18:
+ 184:Generated_Source\PSoC5/Counter_Sensor.c ****     }
+ 480              		.loc 1 184 0
+ 481 000c 0122     		movs	r2, #1
+ 482 000e 024B     		ldr	r3, .L51
+ 483 0010 1A70     		strb	r2, [r3]
+ 484              	.L49:
+ 188:Generated_Source\PSoC5/Counter_Sensor.c **** }
+ 485              		.loc 1 188 0
+ 486 0012 FFF7FEFF 		bl	Counter_Sensor_Enable
+ 487              	.LVL19:
+ 488 0016 08BD     		pop	{r3, pc}
+ 489              	.L52:
+ 490              		.align	2
+ 491              	.L51:
+ 492 0018 00000000 		.word	.LANCHOR0
+ 493              		.cfi_endproc
+ 494              	.LFE2:
+ 495              		.size	Counter_Sensor_Start, .-Counter_Sensor_Start
+ 496              		.global	Counter_Sensor_initVar
+ 497              		.bss
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccSeu0at.s 			page 20
+
+
+ 498              		.set	.LANCHOR0,. + 0
+ 499              		.type	Counter_Sensor_initVar, %object
+ 500              		.size	Counter_Sensor_initVar, 1
+ 501              	Counter_Sensor_initVar:
+ 502 0000 00       		.space	1
+ 503              		.text
+ 504              	.Letext0:
+ 505              		.file 2 "Generated_Source\\PSoC5\\cytypes.h"
+ 506              		.file 3 "Generated_Source\\PSoC5\\CyLib.h"
+ 507              		.section	.debug_info,"",%progbits
+ 508              	.Ldebug_info0:
+ 509 0000 40030000 		.4byte	0x340
+ 510 0004 0400     		.2byte	0x4
+ 511 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 512 000a 04       		.byte	0x4
+ 513 000b 01       		.uleb128 0x1
+ 514 000c DC000000 		.4byte	.LASF43
+ 515 0010 0C       		.byte	0xc
+ 516 0011 68020000 		.4byte	.LASF44
+ 517 0015 DC020000 		.4byte	.LASF45
+ 518 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 519 001d 00000000 		.4byte	0
+ 520 0021 00000000 		.4byte	.Ldebug_line0
+ 521 0025 02       		.uleb128 0x2
+ 522 0026 01       		.byte	0x1
+ 523 0027 06       		.byte	0x6
+ 524 0028 EA030000 		.4byte	.LASF0
+ 525 002c 02       		.uleb128 0x2
+ 526 002d 01       		.byte	0x1
+ 527 002e 08       		.byte	0x8
+ 528 002f CE000000 		.4byte	.LASF1
+ 529 0033 02       		.uleb128 0x2
+ 530 0034 02       		.byte	0x2
+ 531 0035 05       		.byte	0x5
+ 532 0036 80030000 		.4byte	.LASF2
+ 533 003a 02       		.uleb128 0x2
+ 534 003b 02       		.byte	0x2
+ 535 003c 07       		.byte	0x7
+ 536 003d 28000000 		.4byte	.LASF3
+ 537 0041 02       		.uleb128 0x2
+ 538 0042 04       		.byte	0x4
+ 539 0043 05       		.byte	0x5
+ 540 0044 B9030000 		.4byte	.LASF4
+ 541 0048 02       		.uleb128 0x2
+ 542 0049 04       		.byte	0x4
+ 543 004a 07       		.byte	0x7
+ 544 004b 6F010000 		.4byte	.LASF5
+ 545 004f 02       		.uleb128 0x2
+ 546 0050 08       		.byte	0x8
+ 547 0051 05       		.byte	0x5
+ 548 0052 CE020000 		.4byte	.LASF6
+ 549 0056 02       		.uleb128 0x2
+ 550 0057 08       		.byte	0x8
+ 551 0058 07       		.byte	0x7
+ 552 0059 97000000 		.4byte	.LASF7
+ 553 005d 03       		.uleb128 0x3
+ 554 005e 04       		.byte	0x4
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccSeu0at.s 			page 21
+
+
+ 555 005f 05       		.byte	0x5
+ 556 0060 696E7400 		.ascii	"int\000"
+ 557 0064 02       		.uleb128 0x2
+ 558 0065 04       		.byte	0x4
+ 559 0066 07       		.byte	0x7
+ 560 0067 23020000 		.4byte	.LASF8
+ 561 006b 04       		.uleb128 0x4
+ 562 006c 81010000 		.4byte	.LASF9
+ 563 0070 02       		.byte	0x2
+ 564 0071 E901     		.2byte	0x1e9
+ 565 0073 2C000000 		.4byte	0x2c
+ 566 0077 04       		.uleb128 0x4
+ 567 0078 05020000 		.4byte	.LASF10
+ 568 007c 02       		.byte	0x2
+ 569 007d EB01     		.2byte	0x1eb
+ 570 007f 48000000 		.4byte	0x48
+ 571 0083 02       		.uleb128 0x2
+ 572 0084 04       		.byte	0x4
+ 573 0085 04       		.byte	0x4
+ 574 0086 89000000 		.4byte	.LASF11
+ 575 008a 02       		.uleb128 0x2
+ 576 008b 08       		.byte	0x8
+ 577 008c 04       		.byte	0x4
+ 578 008d A3010000 		.4byte	.LASF12
+ 579 0091 02       		.uleb128 0x2
+ 580 0092 01       		.byte	0x1
+ 581 0093 08       		.byte	0x8
+ 582 0094 9E010000 		.4byte	.LASF13
+ 583 0098 04       		.uleb128 0x4
+ 584 0099 6A010000 		.4byte	.LASF14
+ 585 009d 02       		.byte	0x2
+ 586 009e 9302     		.2byte	0x293
+ 587 00a0 A4000000 		.4byte	0xa4
+ 588 00a4 05       		.uleb128 0x5
+ 589 00a5 6B000000 		.4byte	0x6b
+ 590 00a9 04       		.uleb128 0x4
+ 591 00aa 1B000000 		.4byte	.LASF15
+ 592 00ae 02       		.byte	0x2
+ 593 00af 9502     		.2byte	0x295
+ 594 00b1 B5000000 		.4byte	0xb5
+ 595 00b5 05       		.uleb128 0x5
+ 596 00b6 77000000 		.4byte	0x77
+ 597 00ba 02       		.uleb128 0x2
+ 598 00bb 08       		.byte	0x8
+ 599 00bc 04       		.byte	0x4
+ 600 00bd DE030000 		.4byte	.LASF16
+ 601 00c1 02       		.uleb128 0x2
+ 602 00c2 04       		.byte	0x4
+ 603 00c3 07       		.byte	0x7
+ 604 00c4 C5020000 		.4byte	.LASF17
+ 605 00c8 06       		.uleb128 0x6
+ 606 00c9 FE030000 		.4byte	.LASF18
+ 607 00cd 01       		.byte	0x1
+ 608 00ce 8F       		.byte	0x8f
+ 609 00cf 00000000 		.4byte	.LFB1
+ 610 00d3 10000000 		.4byte	.LFE1-.LFB1
+ 611 00d7 01       		.uleb128 0x1
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccSeu0at.s 			page 22
+
+
+ 612 00d8 9C       		.byte	0x9c
+ 613 00d9 06       		.uleb128 0x6
+ 614 00da 3B000000 		.4byte	.LASF19
+ 615 00de 01       		.byte	0x1
+ 616 00df D0       		.byte	0xd0
+ 617 00e0 00000000 		.4byte	.LFB3
+ 618 00e4 10000000 		.4byte	.LFE3-.LFB3
+ 619 00e8 01       		.uleb128 0x1
+ 620 00e9 9C       		.byte	0x9c
+ 621 00ea 07       		.uleb128 0x7
+ 622 00eb AE000000 		.4byte	.LASF22
+ 623 00ef 01       		.byte	0x1
+ 624 00f0 ED       		.byte	0xed
+ 625 00f1 00000000 		.4byte	.LFB4
+ 626 00f5 0C000000 		.4byte	.LFE4-.LFB4
+ 627 00f9 01       		.uleb128 0x1
+ 628 00fa 9C       		.byte	0x9c
+ 629 00fb 0D010000 		.4byte	0x10d
+ 630 00ff 08       		.uleb128 0x8
+ 631 0100 8F010000 		.4byte	.LASF24
+ 632 0104 01       		.byte	0x1
+ 633 0105 ED       		.byte	0xed
+ 634 0106 6B000000 		.4byte	0x6b
+ 635 010a 01       		.uleb128 0x1
+ 636 010b 50       		.byte	0x50
+ 637 010c 00       		.byte	0
+ 638 010d 09       		.uleb128 0x9
+ 639 010e 46020000 		.4byte	.LASF20
+ 640 0112 01       		.byte	0x1
+ 641 0113 0501     		.2byte	0x105
+ 642 0115 6B000000 		.4byte	0x6b
+ 643 0119 00000000 		.4byte	.LFB5
+ 644 011d 0C000000 		.4byte	.LFE5-.LFB5
+ 645 0121 01       		.uleb128 0x1
+ 646 0122 9C       		.byte	0x9c
+ 647 0123 09       		.uleb128 0x9
+ 648 0124 4F000000 		.4byte	.LASF21
+ 649 0128 01       		.byte	0x1
+ 650 0129 1B01     		.2byte	0x11b
+ 651 012b 6B000000 		.4byte	0x6b
+ 652 012f 00000000 		.4byte	.LFB6
+ 653 0133 0C000000 		.4byte	.LFE6-.LFB6
+ 654 0137 01       		.uleb128 0x1
+ 655 0138 9C       		.byte	0x9c
+ 656 0139 0A       		.uleb128 0xa
+ 657 013a AA010000 		.4byte	.LASF23
+ 658 013e 01       		.byte	0x1
+ 659 013f 3001     		.2byte	0x130
+ 660 0141 00000000 		.4byte	.LFB7
+ 661 0145 0C000000 		.4byte	.LFE7-.LFB7
+ 662 0149 01       		.uleb128 0x1
+ 663 014a 9C       		.byte	0x9c
+ 664 014b 5E010000 		.4byte	0x15e
+ 665 014f 0B       		.uleb128 0xb
+ 666 0150 87010000 		.4byte	.LASF25
+ 667 0154 01       		.byte	0x1
+ 668 0155 3001     		.2byte	0x130
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccSeu0at.s 			page 23
+
+
+ 669 0157 6B000000 		.4byte	0x6b
+ 670 015b 01       		.uleb128 0x1
+ 671 015c 50       		.byte	0x50
+ 672 015d 00       		.byte	0
+ 673 015e 0A       		.uleb128 0xa
+ 674 015f C2030000 		.4byte	.LASF26
+ 675 0163 01       		.byte	0x1
+ 676 0164 4601     		.2byte	0x146
+ 677 0166 00000000 		.4byte	.LFB8
+ 678 016a 0C000000 		.4byte	.LFE8-.LFB8
+ 679 016e 01       		.uleb128 0x1
+ 680 016f 9C       		.byte	0x9c
+ 681 0170 83010000 		.4byte	0x183
+ 682 0174 0B       		.uleb128 0xb
+ 683 0175 8F000000 		.4byte	.LASF27
+ 684 0179 01       		.byte	0x1
+ 685 017a 4601     		.2byte	0x146
+ 686 017c 77000000 		.4byte	0x77
+ 687 0180 01       		.uleb128 0x1
+ 688 0181 50       		.byte	0x50
+ 689 0182 00       		.byte	0
+ 690 0183 09       		.uleb128 0x9
+ 691 0184 8A030000 		.4byte	.LASF28
+ 692 0188 01       		.byte	0x1
+ 693 0189 6501     		.2byte	0x165
+ 694 018b 77000000 		.4byte	0x77
+ 695 018f 00000000 		.4byte	.LFB9
+ 696 0193 14000000 		.4byte	.LFE9-.LFB9
+ 697 0197 01       		.uleb128 0x1
+ 698 0198 9C       		.byte	0x9c
+ 699 0199 09       		.uleb128 0x9
+ 700 019a CE010000 		.4byte	.LASF29
+ 701 019e 01       		.byte	0x1
+ 702 019f 8601     		.2byte	0x186
+ 703 01a1 77000000 		.4byte	0x77
+ 704 01a5 00000000 		.4byte	.LFB10
+ 705 01a9 0C000000 		.4byte	.LFE10-.LFB10
+ 706 01ad 01       		.uleb128 0x1
+ 707 01ae 9C       		.byte	0x9c
+ 708 01af 0A       		.uleb128 0xa
+ 709 01b0 00000000 		.4byte	.LASF30
+ 710 01b4 01       		.byte	0x1
+ 711 01b5 9F01     		.2byte	0x19f
+ 712 01b7 00000000 		.4byte	.LFB11
+ 713 01bb 0C000000 		.4byte	.LFE11-.LFB11
+ 714 01bf 01       		.uleb128 0x1
+ 715 01c0 9C       		.byte	0x9c
+ 716 01c1 D4010000 		.4byte	0x1d4
+ 717 01c5 0B       		.uleb128 0xb
+ 718 01c6 21000000 		.4byte	.LASF31
+ 719 01ca 01       		.byte	0x1
+ 720 01cb 9F01     		.2byte	0x19f
+ 721 01cd 77000000 		.4byte	0x77
+ 722 01d1 01       		.uleb128 0x1
+ 723 01d2 50       		.byte	0x50
+ 724 01d3 00       		.byte	0
+ 725 01d4 09       		.uleb128 0x9
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccSeu0at.s 			page 24
+
+
+ 726 01d5 66030000 		.4byte	.LASF32
+ 727 01d9 01       		.byte	0x1
+ 728 01da B601     		.2byte	0x1b6
+ 729 01dc 77000000 		.4byte	0x77
+ 730 01e0 00000000 		.4byte	.LFB12
+ 731 01e4 0C000000 		.4byte	.LFE12-.LFB12
+ 732 01e8 01       		.uleb128 0x1
+ 733 01e9 9C       		.byte	0x9c
+ 734 01ea 0A       		.uleb128 0xa
+ 735 01eb E9010000 		.4byte	.LASF33
+ 736 01ef 01       		.byte	0x1
+ 737 01f0 D101     		.2byte	0x1d1
+ 738 01f2 00000000 		.4byte	.LFB13
+ 739 01f6 0C000000 		.4byte	.LFE13-.LFB13
+ 740 01fa 01       		.uleb128 0x1
+ 741 01fb 9C       		.byte	0x9c
+ 742 01fc 0F020000 		.4byte	0x20f
+ 743 0200 0B       		.uleb128 0xb
+ 744 0201 F6030000 		.4byte	.LASF34
+ 745 0205 01       		.byte	0x1
+ 746 0206 D101     		.2byte	0x1d1
+ 747 0208 77000000 		.4byte	0x77
+ 748 020c 01       		.uleb128 0x1
+ 749 020d 50       		.byte	0x50
+ 750 020e 00       		.byte	0
+ 751 020f 09       		.uleb128 0x9
+ 752 0210 90020000 		.4byte	.LASF35
+ 753 0214 01       		.byte	0x1
+ 754 0215 E901     		.2byte	0x1e9
+ 755 0217 77000000 		.4byte	0x77
+ 756 021b 00000000 		.4byte	.LFB14
+ 757 021f 0C000000 		.4byte	.LFE14-.LFB14
+ 758 0223 01       		.uleb128 0x1
+ 759 0224 9C       		.byte	0x9c
+ 760 0225 0A       		.uleb128 0xa
+ 761 0226 4D030000 		.4byte	.LASF36
+ 762 022a 01       		.byte	0x1
+ 763 022b 2E02     		.2byte	0x22e
+ 764 022d 00000000 		.4byte	.LFB15
+ 765 0231 14000000 		.4byte	.LFE15-.LFB15
+ 766 0235 01       		.uleb128 0x1
+ 767 0236 9C       		.byte	0x9c
+ 768 0237 4E020000 		.4byte	0x24e
+ 769 023b 0C       		.uleb128 0xc
+ 770 023c 08000000 		.4byte	.LVL5
+ 771 0240 99010000 		.4byte	0x199
+ 772 0244 0C       		.uleb128 0xc
+ 773 0245 0C000000 		.4byte	.LVL6
+ 774 0249 0D010000 		.4byte	0x10d
+ 775 024d 00       		.byte	0
+ 776 024e 07       		.uleb128 0x7
+ 777 024f A5030000 		.4byte	.LASF37
+ 778 0253 01       		.byte	0x1
+ 779 0254 25       		.byte	0x25
+ 780 0255 00000000 		.4byte	.LFB0
+ 781 0259 58000000 		.4byte	.LFE0-.LFB0
+ 782 025d 01       		.uleb128 0x1
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccSeu0at.s 			page 25
+
+
+ 783 025e 9C       		.byte	0x9c
+ 784 025f F4020000 		.4byte	0x2f4
+ 785 0263 0D       		.uleb128 0xd
+ 786 0264 C0020000 		.4byte	.LASF38
+ 787 0268 01       		.byte	0x1
+ 788 0269 28       		.byte	0x28
+ 789 026a 6B000000 		.4byte	0x6b
+ 790 026e 00000000 		.4byte	.LLST0
+ 791 0272 0D       		.uleb128 0xd
+ 792 0273 14040000 		.4byte	.LASF39
+ 793 0277 01       		.byte	0x1
+ 794 0278 2D       		.byte	0x2d
+ 795 0279 6B000000 		.4byte	0x6b
+ 796 027d 1E000000 		.4byte	.LLST1
+ 797 0281 0C       		.uleb128 0xc
+ 798 0282 1C000000 		.4byte	.LVL10
+ 799 0286 25020000 		.4byte	0x225
+ 800 028a 0E       		.uleb128 0xe
+ 801 028b 24000000 		.4byte	.LVL11
+ 802 028f AF010000 		.4byte	0x1af
+ 803 0293 9E020000 		.4byte	0x29e
+ 804 0297 0F       		.uleb128 0xf
+ 805 0298 01       		.uleb128 0x1
+ 806 0299 50       		.byte	0x50
+ 807 029a 02       		.uleb128 0x2
+ 808 029b 09       		.byte	0x9
+ 809 029c FE       		.byte	0xfe
+ 810 029d 00       		.byte	0
+ 811 029e 0E       		.uleb128 0xe
+ 812 029f 2A000000 		.4byte	.LVL12
+ 813 02a3 5E010000 		.4byte	0x15e
+ 814 02a7 B1020000 		.4byte	0x2b1
+ 815 02ab 0F       		.uleb128 0xf
+ 816 02ac 01       		.uleb128 0x1
+ 817 02ad 50       		.byte	0x50
+ 818 02ae 01       		.uleb128 0x1
+ 819 02af 30       		.byte	0x30
+ 820 02b0 00       		.byte	0
+ 821 02b1 0E       		.uleb128 0xe
+ 822 02b2 30000000 		.4byte	.LVL13
+ 823 02b6 EA000000 		.4byte	0xea
+ 824 02ba C4020000 		.4byte	0x2c4
+ 825 02be 0F       		.uleb128 0xf
+ 826 02bf 01       		.uleb128 0x1
+ 827 02c0 50       		.byte	0x50
+ 828 02c1 01       		.uleb128 0x1
+ 829 02c2 30       		.byte	0x30
+ 830 02c3 00       		.byte	0
+ 831 02c4 0C       		.uleb128 0xc
+ 832 02c5 34000000 		.4byte	.LVL14
+ 833 02c9 0D010000 		.4byte	0x10d
+ 834 02cd 0E       		.uleb128 0xe
+ 835 02ce 3C000000 		.4byte	.LVL15
+ 836 02d2 EA010000 		.4byte	0x1ea
+ 837 02d6 E1020000 		.4byte	0x2e1
+ 838 02da 0F       		.uleb128 0xf
+ 839 02db 01       		.uleb128 0x1
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccSeu0at.s 			page 26
+
+
+ 840 02dc 50       		.byte	0x50
+ 841 02dd 02       		.uleb128 0x2
+ 842 02de 09       		.byte	0x9
+ 843 02df FD       		.byte	0xfd
+ 844 02e0 00       		.byte	0
+ 845 02e1 0C       		.uleb128 0xc
+ 846 02e2 40000000 		.4byte	.LVL16
+ 847 02e6 2D030000 		.4byte	0x32d
+ 848 02ea 0C       		.uleb128 0xc
+ 849 02eb 4E000000 		.4byte	.LVL17
+ 850 02ef 38030000 		.4byte	0x338
+ 851 02f3 00       		.byte	0
+ 852 02f4 07       		.uleb128 0x7
+ 853 02f5 AB020000 		.4byte	.LASF40
+ 854 02f9 01       		.byte	0x1
+ 855 02fa B2       		.byte	0xb2
+ 856 02fb 00000000 		.4byte	.LFB2
+ 857 02ff 1C000000 		.4byte	.LFE2-.LFB2
+ 858 0303 01       		.uleb128 0x1
+ 859 0304 9C       		.byte	0x9c
+ 860 0305 1C030000 		.4byte	0x31c
+ 861 0309 0C       		.uleb128 0xc
+ 862 030a 0C000000 		.4byte	.LVL18
+ 863 030e 4E020000 		.4byte	0x24e
+ 864 0312 0C       		.uleb128 0xc
+ 865 0313 16000000 		.4byte	.LVL19
+ 866 0317 C8000000 		.4byte	0xc8
+ 867 031b 00       		.byte	0
+ 868 031c 10       		.uleb128 0x10
+ 869 031d 72000000 		.4byte	.LASF46
+ 870 0321 01       		.byte	0x1
+ 871 0322 15       		.byte	0x15
+ 872 0323 6B000000 		.4byte	0x6b
+ 873 0327 05       		.uleb128 0x5
+ 874 0328 03       		.byte	0x3
+ 875 0329 00000000 		.4byte	Counter_Sensor_initVar
+ 876 032d 11       		.uleb128 0x11
+ 877 032e 0C020000 		.4byte	.LASF41
+ 878 0332 0C020000 		.4byte	.LASF41
+ 879 0336 03       		.byte	0x3
+ 880 0337 7D       		.byte	0x7d
+ 881 0338 11       		.uleb128 0x11
+ 882 0339 30020000 		.4byte	.LASF42
+ 883 033d 30020000 		.4byte	.LASF42
+ 884 0341 03       		.byte	0x3
+ 885 0342 7E       		.byte	0x7e
+ 886 0343 00       		.byte	0
+ 887              		.section	.debug_abbrev,"",%progbits
+ 888              	.Ldebug_abbrev0:
+ 889 0000 01       		.uleb128 0x1
+ 890 0001 11       		.uleb128 0x11
+ 891 0002 01       		.byte	0x1
+ 892 0003 25       		.uleb128 0x25
+ 893 0004 0E       		.uleb128 0xe
+ 894 0005 13       		.uleb128 0x13
+ 895 0006 0B       		.uleb128 0xb
+ 896 0007 03       		.uleb128 0x3
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccSeu0at.s 			page 27
+
+
+ 897 0008 0E       		.uleb128 0xe
+ 898 0009 1B       		.uleb128 0x1b
+ 899 000a 0E       		.uleb128 0xe
+ 900 000b 55       		.uleb128 0x55
+ 901 000c 17       		.uleb128 0x17
+ 902 000d 11       		.uleb128 0x11
+ 903 000e 01       		.uleb128 0x1
+ 904 000f 10       		.uleb128 0x10
+ 905 0010 17       		.uleb128 0x17
+ 906 0011 00       		.byte	0
+ 907 0012 00       		.byte	0
+ 908 0013 02       		.uleb128 0x2
+ 909 0014 24       		.uleb128 0x24
+ 910 0015 00       		.byte	0
+ 911 0016 0B       		.uleb128 0xb
+ 912 0017 0B       		.uleb128 0xb
+ 913 0018 3E       		.uleb128 0x3e
+ 914 0019 0B       		.uleb128 0xb
+ 915 001a 03       		.uleb128 0x3
+ 916 001b 0E       		.uleb128 0xe
+ 917 001c 00       		.byte	0
+ 918 001d 00       		.byte	0
+ 919 001e 03       		.uleb128 0x3
+ 920 001f 24       		.uleb128 0x24
+ 921 0020 00       		.byte	0
+ 922 0021 0B       		.uleb128 0xb
+ 923 0022 0B       		.uleb128 0xb
+ 924 0023 3E       		.uleb128 0x3e
+ 925 0024 0B       		.uleb128 0xb
+ 926 0025 03       		.uleb128 0x3
+ 927 0026 08       		.uleb128 0x8
+ 928 0027 00       		.byte	0
+ 929 0028 00       		.byte	0
+ 930 0029 04       		.uleb128 0x4
+ 931 002a 16       		.uleb128 0x16
+ 932 002b 00       		.byte	0
+ 933 002c 03       		.uleb128 0x3
+ 934 002d 0E       		.uleb128 0xe
+ 935 002e 3A       		.uleb128 0x3a
+ 936 002f 0B       		.uleb128 0xb
+ 937 0030 3B       		.uleb128 0x3b
+ 938 0031 05       		.uleb128 0x5
+ 939 0032 49       		.uleb128 0x49
+ 940 0033 13       		.uleb128 0x13
+ 941 0034 00       		.byte	0
+ 942 0035 00       		.byte	0
+ 943 0036 05       		.uleb128 0x5
+ 944 0037 35       		.uleb128 0x35
+ 945 0038 00       		.byte	0
+ 946 0039 49       		.uleb128 0x49
+ 947 003a 13       		.uleb128 0x13
+ 948 003b 00       		.byte	0
+ 949 003c 00       		.byte	0
+ 950 003d 06       		.uleb128 0x6
+ 951 003e 2E       		.uleb128 0x2e
+ 952 003f 00       		.byte	0
+ 953 0040 3F       		.uleb128 0x3f
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccSeu0at.s 			page 28
+
+
+ 954 0041 19       		.uleb128 0x19
+ 955 0042 03       		.uleb128 0x3
+ 956 0043 0E       		.uleb128 0xe
+ 957 0044 3A       		.uleb128 0x3a
+ 958 0045 0B       		.uleb128 0xb
+ 959 0046 3B       		.uleb128 0x3b
+ 960 0047 0B       		.uleb128 0xb
+ 961 0048 27       		.uleb128 0x27
+ 962 0049 19       		.uleb128 0x19
+ 963 004a 11       		.uleb128 0x11
+ 964 004b 01       		.uleb128 0x1
+ 965 004c 12       		.uleb128 0x12
+ 966 004d 06       		.uleb128 0x6
+ 967 004e 40       		.uleb128 0x40
+ 968 004f 18       		.uleb128 0x18
+ 969 0050 9742     		.uleb128 0x2117
+ 970 0052 19       		.uleb128 0x19
+ 971 0053 00       		.byte	0
+ 972 0054 00       		.byte	0
+ 973 0055 07       		.uleb128 0x7
+ 974 0056 2E       		.uleb128 0x2e
+ 975 0057 01       		.byte	0x1
+ 976 0058 3F       		.uleb128 0x3f
+ 977 0059 19       		.uleb128 0x19
+ 978 005a 03       		.uleb128 0x3
+ 979 005b 0E       		.uleb128 0xe
+ 980 005c 3A       		.uleb128 0x3a
+ 981 005d 0B       		.uleb128 0xb
+ 982 005e 3B       		.uleb128 0x3b
+ 983 005f 0B       		.uleb128 0xb
+ 984 0060 27       		.uleb128 0x27
+ 985 0061 19       		.uleb128 0x19
+ 986 0062 11       		.uleb128 0x11
+ 987 0063 01       		.uleb128 0x1
+ 988 0064 12       		.uleb128 0x12
+ 989 0065 06       		.uleb128 0x6
+ 990 0066 40       		.uleb128 0x40
+ 991 0067 18       		.uleb128 0x18
+ 992 0068 9742     		.uleb128 0x2117
+ 993 006a 19       		.uleb128 0x19
+ 994 006b 01       		.uleb128 0x1
+ 995 006c 13       		.uleb128 0x13
+ 996 006d 00       		.byte	0
+ 997 006e 00       		.byte	0
+ 998 006f 08       		.uleb128 0x8
+ 999 0070 05       		.uleb128 0x5
+ 1000 0071 00       		.byte	0
+ 1001 0072 03       		.uleb128 0x3
+ 1002 0073 0E       		.uleb128 0xe
+ 1003 0074 3A       		.uleb128 0x3a
+ 1004 0075 0B       		.uleb128 0xb
+ 1005 0076 3B       		.uleb128 0x3b
+ 1006 0077 0B       		.uleb128 0xb
+ 1007 0078 49       		.uleb128 0x49
+ 1008 0079 13       		.uleb128 0x13
+ 1009 007a 02       		.uleb128 0x2
+ 1010 007b 18       		.uleb128 0x18
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccSeu0at.s 			page 29
+
+
+ 1011 007c 00       		.byte	0
+ 1012 007d 00       		.byte	0
+ 1013 007e 09       		.uleb128 0x9
+ 1014 007f 2E       		.uleb128 0x2e
+ 1015 0080 00       		.byte	0
+ 1016 0081 3F       		.uleb128 0x3f
+ 1017 0082 19       		.uleb128 0x19
+ 1018 0083 03       		.uleb128 0x3
+ 1019 0084 0E       		.uleb128 0xe
+ 1020 0085 3A       		.uleb128 0x3a
+ 1021 0086 0B       		.uleb128 0xb
+ 1022 0087 3B       		.uleb128 0x3b
+ 1023 0088 05       		.uleb128 0x5
+ 1024 0089 27       		.uleb128 0x27
+ 1025 008a 19       		.uleb128 0x19
+ 1026 008b 49       		.uleb128 0x49
+ 1027 008c 13       		.uleb128 0x13
+ 1028 008d 11       		.uleb128 0x11
+ 1029 008e 01       		.uleb128 0x1
+ 1030 008f 12       		.uleb128 0x12
+ 1031 0090 06       		.uleb128 0x6
+ 1032 0091 40       		.uleb128 0x40
+ 1033 0092 18       		.uleb128 0x18
+ 1034 0093 9742     		.uleb128 0x2117
+ 1035 0095 19       		.uleb128 0x19
+ 1036 0096 00       		.byte	0
+ 1037 0097 00       		.byte	0
+ 1038 0098 0A       		.uleb128 0xa
+ 1039 0099 2E       		.uleb128 0x2e
+ 1040 009a 01       		.byte	0x1
+ 1041 009b 3F       		.uleb128 0x3f
+ 1042 009c 19       		.uleb128 0x19
+ 1043 009d 03       		.uleb128 0x3
+ 1044 009e 0E       		.uleb128 0xe
+ 1045 009f 3A       		.uleb128 0x3a
+ 1046 00a0 0B       		.uleb128 0xb
+ 1047 00a1 3B       		.uleb128 0x3b
+ 1048 00a2 05       		.uleb128 0x5
+ 1049 00a3 27       		.uleb128 0x27
+ 1050 00a4 19       		.uleb128 0x19
+ 1051 00a5 11       		.uleb128 0x11
+ 1052 00a6 01       		.uleb128 0x1
+ 1053 00a7 12       		.uleb128 0x12
+ 1054 00a8 06       		.uleb128 0x6
+ 1055 00a9 40       		.uleb128 0x40
+ 1056 00aa 18       		.uleb128 0x18
+ 1057 00ab 9742     		.uleb128 0x2117
+ 1058 00ad 19       		.uleb128 0x19
+ 1059 00ae 01       		.uleb128 0x1
+ 1060 00af 13       		.uleb128 0x13
+ 1061 00b0 00       		.byte	0
+ 1062 00b1 00       		.byte	0
+ 1063 00b2 0B       		.uleb128 0xb
+ 1064 00b3 05       		.uleb128 0x5
+ 1065 00b4 00       		.byte	0
+ 1066 00b5 03       		.uleb128 0x3
+ 1067 00b6 0E       		.uleb128 0xe
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccSeu0at.s 			page 30
+
+
+ 1068 00b7 3A       		.uleb128 0x3a
+ 1069 00b8 0B       		.uleb128 0xb
+ 1070 00b9 3B       		.uleb128 0x3b
+ 1071 00ba 05       		.uleb128 0x5
+ 1072 00bb 49       		.uleb128 0x49
+ 1073 00bc 13       		.uleb128 0x13
+ 1074 00bd 02       		.uleb128 0x2
+ 1075 00be 18       		.uleb128 0x18
+ 1076 00bf 00       		.byte	0
+ 1077 00c0 00       		.byte	0
+ 1078 00c1 0C       		.uleb128 0xc
+ 1079 00c2 898201   		.uleb128 0x4109
+ 1080 00c5 00       		.byte	0
+ 1081 00c6 11       		.uleb128 0x11
+ 1082 00c7 01       		.uleb128 0x1
+ 1083 00c8 31       		.uleb128 0x31
+ 1084 00c9 13       		.uleb128 0x13
+ 1085 00ca 00       		.byte	0
+ 1086 00cb 00       		.byte	0
+ 1087 00cc 0D       		.uleb128 0xd
+ 1088 00cd 34       		.uleb128 0x34
+ 1089 00ce 00       		.byte	0
+ 1090 00cf 03       		.uleb128 0x3
+ 1091 00d0 0E       		.uleb128 0xe
+ 1092 00d1 3A       		.uleb128 0x3a
+ 1093 00d2 0B       		.uleb128 0xb
+ 1094 00d3 3B       		.uleb128 0x3b
+ 1095 00d4 0B       		.uleb128 0xb
+ 1096 00d5 49       		.uleb128 0x49
+ 1097 00d6 13       		.uleb128 0x13
+ 1098 00d7 02       		.uleb128 0x2
+ 1099 00d8 17       		.uleb128 0x17
+ 1100 00d9 00       		.byte	0
+ 1101 00da 00       		.byte	0
+ 1102 00db 0E       		.uleb128 0xe
+ 1103 00dc 898201   		.uleb128 0x4109
+ 1104 00df 01       		.byte	0x1
+ 1105 00e0 11       		.uleb128 0x11
+ 1106 00e1 01       		.uleb128 0x1
+ 1107 00e2 31       		.uleb128 0x31
+ 1108 00e3 13       		.uleb128 0x13
+ 1109 00e4 01       		.uleb128 0x1
+ 1110 00e5 13       		.uleb128 0x13
+ 1111 00e6 00       		.byte	0
+ 1112 00e7 00       		.byte	0
+ 1113 00e8 0F       		.uleb128 0xf
+ 1114 00e9 8A8201   		.uleb128 0x410a
+ 1115 00ec 00       		.byte	0
+ 1116 00ed 02       		.uleb128 0x2
+ 1117 00ee 18       		.uleb128 0x18
+ 1118 00ef 9142     		.uleb128 0x2111
+ 1119 00f1 18       		.uleb128 0x18
+ 1120 00f2 00       		.byte	0
+ 1121 00f3 00       		.byte	0
+ 1122 00f4 10       		.uleb128 0x10
+ 1123 00f5 34       		.uleb128 0x34
+ 1124 00f6 00       		.byte	0
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccSeu0at.s 			page 31
+
+
+ 1125 00f7 03       		.uleb128 0x3
+ 1126 00f8 0E       		.uleb128 0xe
+ 1127 00f9 3A       		.uleb128 0x3a
+ 1128 00fa 0B       		.uleb128 0xb
+ 1129 00fb 3B       		.uleb128 0x3b
+ 1130 00fc 0B       		.uleb128 0xb
+ 1131 00fd 49       		.uleb128 0x49
+ 1132 00fe 13       		.uleb128 0x13
+ 1133 00ff 3F       		.uleb128 0x3f
+ 1134 0100 19       		.uleb128 0x19
+ 1135 0101 02       		.uleb128 0x2
+ 1136 0102 18       		.uleb128 0x18
+ 1137 0103 00       		.byte	0
+ 1138 0104 00       		.byte	0
+ 1139 0105 11       		.uleb128 0x11
+ 1140 0106 2E       		.uleb128 0x2e
+ 1141 0107 00       		.byte	0
+ 1142 0108 3F       		.uleb128 0x3f
+ 1143 0109 19       		.uleb128 0x19
+ 1144 010a 3C       		.uleb128 0x3c
+ 1145 010b 19       		.uleb128 0x19
+ 1146 010c 6E       		.uleb128 0x6e
+ 1147 010d 0E       		.uleb128 0xe
+ 1148 010e 03       		.uleb128 0x3
+ 1149 010f 0E       		.uleb128 0xe
+ 1150 0110 3A       		.uleb128 0x3a
+ 1151 0111 0B       		.uleb128 0xb
+ 1152 0112 3B       		.uleb128 0x3b
+ 1153 0113 0B       		.uleb128 0xb
+ 1154 0114 00       		.byte	0
+ 1155 0115 00       		.byte	0
+ 1156 0116 00       		.byte	0
+ 1157              		.section	.debug_loc,"",%progbits
+ 1158              	.Ldebug_loc0:
+ 1159              	.LLST0:
+ 1160 0000 0A000000 		.4byte	.LVL7
+ 1161 0004 0E000000 		.4byte	.LVL8
+ 1162 0008 0100     		.2byte	0x1
+ 1163 000a 53       		.byte	0x53
+ 1164 000b 16000000 		.4byte	.LVL9
+ 1165 000f 1B000000 		.4byte	.LVL10-1
+ 1166 0013 0100     		.2byte	0x1
+ 1167 0015 53       		.byte	0x53
+ 1168 0016 00000000 		.4byte	0
+ 1169 001a 00000000 		.4byte	0
+ 1170              	.LLST1:
+ 1171 001e 40000000 		.4byte	.LVL16
+ 1172 0022 4D000000 		.4byte	.LVL17-1
+ 1173 0026 0100     		.2byte	0x1
+ 1174 0028 50       		.byte	0x50
+ 1175 0029 00000000 		.4byte	0
+ 1176 002d 00000000 		.4byte	0
+ 1177              		.section	.debug_aranges,"",%progbits
+ 1178 0000 94000000 		.4byte	0x94
+ 1179 0004 0200     		.2byte	0x2
+ 1180 0006 00000000 		.4byte	.Ldebug_info0
+ 1181 000a 04       		.byte	0x4
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccSeu0at.s 			page 32
+
+
+ 1182 000b 00       		.byte	0
+ 1183 000c 0000     		.2byte	0
+ 1184 000e 0000     		.2byte	0
+ 1185 0010 00000000 		.4byte	.LFB1
+ 1186 0014 10000000 		.4byte	.LFE1-.LFB1
+ 1187 0018 00000000 		.4byte	.LFB3
+ 1188 001c 10000000 		.4byte	.LFE3-.LFB3
+ 1189 0020 00000000 		.4byte	.LFB4
+ 1190 0024 0C000000 		.4byte	.LFE4-.LFB4
+ 1191 0028 00000000 		.4byte	.LFB5
+ 1192 002c 0C000000 		.4byte	.LFE5-.LFB5
+ 1193 0030 00000000 		.4byte	.LFB6
+ 1194 0034 0C000000 		.4byte	.LFE6-.LFB6
+ 1195 0038 00000000 		.4byte	.LFB7
+ 1196 003c 0C000000 		.4byte	.LFE7-.LFB7
+ 1197 0040 00000000 		.4byte	.LFB8
+ 1198 0044 0C000000 		.4byte	.LFE8-.LFB8
+ 1199 0048 00000000 		.4byte	.LFB9
+ 1200 004c 14000000 		.4byte	.LFE9-.LFB9
+ 1201 0050 00000000 		.4byte	.LFB10
+ 1202 0054 0C000000 		.4byte	.LFE10-.LFB10
+ 1203 0058 00000000 		.4byte	.LFB11
+ 1204 005c 0C000000 		.4byte	.LFE11-.LFB11
+ 1205 0060 00000000 		.4byte	.LFB12
+ 1206 0064 0C000000 		.4byte	.LFE12-.LFB12
+ 1207 0068 00000000 		.4byte	.LFB13
+ 1208 006c 0C000000 		.4byte	.LFE13-.LFB13
+ 1209 0070 00000000 		.4byte	.LFB14
+ 1210 0074 0C000000 		.4byte	.LFE14-.LFB14
+ 1211 0078 00000000 		.4byte	.LFB15
+ 1212 007c 14000000 		.4byte	.LFE15-.LFB15
+ 1213 0080 00000000 		.4byte	.LFB0
+ 1214 0084 58000000 		.4byte	.LFE0-.LFB0
+ 1215 0088 00000000 		.4byte	.LFB2
+ 1216 008c 1C000000 		.4byte	.LFE2-.LFB2
+ 1217 0090 00000000 		.4byte	0
+ 1218 0094 00000000 		.4byte	0
+ 1219              		.section	.debug_ranges,"",%progbits
+ 1220              	.Ldebug_ranges0:
+ 1221 0000 00000000 		.4byte	.LFB1
+ 1222 0004 10000000 		.4byte	.LFE1
+ 1223 0008 00000000 		.4byte	.LFB3
+ 1224 000c 10000000 		.4byte	.LFE3
+ 1225 0010 00000000 		.4byte	.LFB4
+ 1226 0014 0C000000 		.4byte	.LFE4
+ 1227 0018 00000000 		.4byte	.LFB5
+ 1228 001c 0C000000 		.4byte	.LFE5
+ 1229 0020 00000000 		.4byte	.LFB6
+ 1230 0024 0C000000 		.4byte	.LFE6
+ 1231 0028 00000000 		.4byte	.LFB7
+ 1232 002c 0C000000 		.4byte	.LFE7
+ 1233 0030 00000000 		.4byte	.LFB8
+ 1234 0034 0C000000 		.4byte	.LFE8
+ 1235 0038 00000000 		.4byte	.LFB9
+ 1236 003c 14000000 		.4byte	.LFE9
+ 1237 0040 00000000 		.4byte	.LFB10
+ 1238 0044 0C000000 		.4byte	.LFE10
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccSeu0at.s 			page 33
+
+
+ 1239 0048 00000000 		.4byte	.LFB11
+ 1240 004c 0C000000 		.4byte	.LFE11
+ 1241 0050 00000000 		.4byte	.LFB12
+ 1242 0054 0C000000 		.4byte	.LFE12
+ 1243 0058 00000000 		.4byte	.LFB13
+ 1244 005c 0C000000 		.4byte	.LFE13
+ 1245 0060 00000000 		.4byte	.LFB14
+ 1246 0064 0C000000 		.4byte	.LFE14
+ 1247 0068 00000000 		.4byte	.LFB15
+ 1248 006c 14000000 		.4byte	.LFE15
+ 1249 0070 00000000 		.4byte	.LFB0
+ 1250 0074 58000000 		.4byte	.LFE0
+ 1251 0078 00000000 		.4byte	.LFB2
+ 1252 007c 1C000000 		.4byte	.LFE2
+ 1253 0080 00000000 		.4byte	0
+ 1254 0084 00000000 		.4byte	0
+ 1255              		.section	.debug_line,"",%progbits
+ 1256              	.Ldebug_line0:
+ 1257 0000 8A010000 		.section	.debug_str,"MS",%progbits,1
+ 1257      02005600 
+ 1257      00000201 
+ 1257      FB0E0D00 
+ 1257      01010101 
+ 1258              	.LASF30:
+ 1259 0000 436F756E 		.ascii	"Counter_Sensor_WritePeriod\000"
+ 1259      7465725F 
+ 1259      53656E73 
+ 1259      6F725F57 
+ 1259      72697465 
+ 1260              	.LASF15:
+ 1261 001b 72656733 		.ascii	"reg32\000"
+ 1261      3200
+ 1262              	.LASF31:
+ 1263 0021 70657269 		.ascii	"period\000"
+ 1263      6F6400
+ 1264              	.LASF3:
+ 1265 0028 73686F72 		.ascii	"short unsigned int\000"
+ 1265      7420756E 
+ 1265      7369676E 
+ 1265      65642069 
+ 1265      6E7400
+ 1266              	.LASF19:
+ 1267 003b 436F756E 		.ascii	"Counter_Sensor_Stop\000"
+ 1267      7465725F 
+ 1267      53656E73 
+ 1267      6F725F53 
+ 1267      746F7000 
+ 1268              	.LASF21:
+ 1269 004f 436F756E 		.ascii	"Counter_Sensor_ReadControlRegister\000"
+ 1269      7465725F 
+ 1269      53656E73 
+ 1269      6F725F52 
+ 1269      65616443 
+ 1270              	.LASF46:
+ 1271 0072 436F756E 		.ascii	"Counter_Sensor_initVar\000"
+ 1271      7465725F 
+ 1271      53656E73 
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccSeu0at.s 			page 34
+
+
+ 1271      6F725F69 
+ 1271      6E697456 
+ 1272              	.LASF11:
+ 1273 0089 666C6F61 		.ascii	"float\000"
+ 1273      7400
+ 1274              	.LASF27:
+ 1275 008f 636F756E 		.ascii	"counter\000"
+ 1275      74657200 
+ 1276              	.LASF7:
+ 1277 0097 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1277      206C6F6E 
+ 1277      6720756E 
+ 1277      7369676E 
+ 1277      65642069 
+ 1278              	.LASF22:
+ 1279 00ae 436F756E 		.ascii	"Counter_Sensor_SetInterruptMode\000"
+ 1279      7465725F 
+ 1279      53656E73 
+ 1279      6F725F53 
+ 1279      6574496E 
+ 1280              	.LASF1:
+ 1281 00ce 756E7369 		.ascii	"unsigned char\000"
+ 1281      676E6564 
+ 1281      20636861 
+ 1281      7200
+ 1282              	.LASF43:
+ 1283 00dc 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1283      43313120 
+ 1283      352E342E 
+ 1283      31203230 
+ 1283      31363036 
+ 1284 010f 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 1284      20726576 
+ 1284      6973696F 
+ 1284      6E203233 
+ 1284      37373135 
+ 1285 0142 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 1285      66756E63 
+ 1285      74696F6E 
+ 1285      2D736563 
+ 1285      74696F6E 
+ 1286              	.LASF14:
+ 1287 016a 72656738 		.ascii	"reg8\000"
+ 1287      00
+ 1288              	.LASF5:
+ 1289 016f 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1289      20756E73 
+ 1289      69676E65 
+ 1289      6420696E 
+ 1289      7400
+ 1290              	.LASF9:
+ 1291 0181 75696E74 		.ascii	"uint8\000"
+ 1291      3800
+ 1292              	.LASF25:
+ 1293 0187 636F6E74 		.ascii	"control\000"
+ 1293      726F6C00 
+ 1294              	.LASF24:
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccSeu0at.s 			page 35
+
+
+ 1295 018f 696E7465 		.ascii	"interruptsMask\000"
+ 1295      72727570 
+ 1295      74734D61 
+ 1295      736B00
+ 1296              	.LASF13:
+ 1297 019e 63686172 		.ascii	"char\000"
+ 1297      00
+ 1298              	.LASF12:
+ 1299 01a3 646F7562 		.ascii	"double\000"
+ 1299      6C6500
+ 1300              	.LASF23:
+ 1301 01aa 436F756E 		.ascii	"Counter_Sensor_WriteControlRegister\000"
+ 1301      7465725F 
+ 1301      53656E73 
+ 1301      6F725F57 
+ 1301      72697465 
+ 1302              	.LASF29:
+ 1303 01ce 436F756E 		.ascii	"Counter_Sensor_ReadCapture\000"
+ 1303      7465725F 
+ 1303      53656E73 
+ 1303      6F725F52 
+ 1303      65616443 
+ 1304              	.LASF33:
+ 1305 01e9 436F756E 		.ascii	"Counter_Sensor_WriteCompare\000"
+ 1305      7465725F 
+ 1305      53656E73 
+ 1305      6F725F57 
+ 1305      72697465 
+ 1306              	.LASF10:
+ 1307 0205 75696E74 		.ascii	"uint32\000"
+ 1307      333200
+ 1308              	.LASF41:
+ 1309 020c 4379456E 		.ascii	"CyEnterCriticalSection\000"
+ 1309      74657243 
+ 1309      72697469 
+ 1309      63616C53 
+ 1309      65637469 
+ 1310              	.LASF8:
+ 1311 0223 756E7369 		.ascii	"unsigned int\000"
+ 1311      676E6564 
+ 1311      20696E74 
+ 1311      00
+ 1312              	.LASF42:
+ 1313 0230 43794578 		.ascii	"CyExitCriticalSection\000"
+ 1313      69744372 
+ 1313      69746963 
+ 1313      616C5365 
+ 1313      6374696F 
+ 1314              	.LASF20:
+ 1315 0246 436F756E 		.ascii	"Counter_Sensor_ReadStatusRegister\000"
+ 1315      7465725F 
+ 1315      53656E73 
+ 1315      6F725F52 
+ 1315      65616453 
+ 1316              	.LASF44:
+ 1317 0268 47656E65 		.ascii	"Generated_Source\\PSoC5\\Counter_Sensor.c\000"
+ 1317      72617465 
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccSeu0at.s 			page 36
+
+
+ 1317      645F536F 
+ 1317      75726365 
+ 1317      5C50536F 
+ 1318              	.LASF35:
+ 1319 0290 436F756E 		.ascii	"Counter_Sensor_ReadCompare\000"
+ 1319      7465725F 
+ 1319      53656E73 
+ 1319      6F725F52 
+ 1319      65616443 
+ 1320              	.LASF40:
+ 1321 02ab 436F756E 		.ascii	"Counter_Sensor_Start\000"
+ 1321      7465725F 
+ 1321      53656E73 
+ 1321      6F725F53 
+ 1321      74617274 
+ 1322              	.LASF38:
+ 1323 02c0 6374726C 		.ascii	"ctrl\000"
+ 1323      00
+ 1324              	.LASF17:
+ 1325 02c5 73697A65 		.ascii	"sizetype\000"
+ 1325      74797065 
+ 1325      00
+ 1326              	.LASF6:
+ 1327 02ce 6C6F6E67 		.ascii	"long long int\000"
+ 1327      206C6F6E 
+ 1327      6720696E 
+ 1327      7400
+ 1328              	.LASF45:
+ 1329 02dc 433A5C55 		.ascii	"C:\\Users\\degn\\OneDrive - Aarhus universitet\\Skr"
+ 1329      73657273 
+ 1329      5C646567 
+ 1329      6E5C4F6E 
+ 1329      65447269 
+ 1330 030b 69766562 		.ascii	"ivebord\\AU\\E4\\PRJ4\\Git\\E4PRJ\\PSoC\\SensorSend"
+ 1330      6F72645C 
+ 1330      41555C45 
+ 1330      345C5052 
+ 1330      4A345C47 
+ 1331 0337 65725C53 		.ascii	"er\\SensorSender.cydsn\000"
+ 1331      656E736F 
+ 1331      7253656E 
+ 1331      6465722E 
+ 1331      63796473 
+ 1332              	.LASF36:
+ 1333 034d 436F756E 		.ascii	"Counter_Sensor_ClearFIFO\000"
+ 1333      7465725F 
+ 1333      53656E73 
+ 1333      6F725F43 
+ 1333      6C656172 
+ 1334              	.LASF32:
+ 1335 0366 436F756E 		.ascii	"Counter_Sensor_ReadPeriod\000"
+ 1335      7465725F 
+ 1335      53656E73 
+ 1335      6F725F52 
+ 1335      65616450 
+ 1336              	.LASF2:
+ 1337 0380 73686F72 		.ascii	"short int\000"
+ARM GAS  C:\Users\degn\AppData\Local\Temp\ccSeu0at.s 			page 37
+
+
+ 1337      7420696E 
+ 1337      7400
+ 1338              	.LASF28:
+ 1339 038a 436F756E 		.ascii	"Counter_Sensor_ReadCounter\000"
+ 1339      7465725F 
+ 1339      53656E73 
+ 1339      6F725F52 
+ 1339      65616443 
+ 1340              	.LASF37:
+ 1341 03a5 436F756E 		.ascii	"Counter_Sensor_Init\000"
+ 1341      7465725F 
+ 1341      53656E73 
+ 1341      6F725F49 
+ 1341      6E697400 
+ 1342              	.LASF4:
+ 1343 03b9 6C6F6E67 		.ascii	"long int\000"
+ 1343      20696E74 
+ 1343      00
+ 1344              	.LASF26:
+ 1345 03c2 436F756E 		.ascii	"Counter_Sensor_WriteCounter\000"
+ 1345      7465725F 
+ 1345      53656E73 
+ 1345      6F725F57 
+ 1345      72697465 
+ 1346              	.LASF16:
+ 1347 03de 6C6F6E67 		.ascii	"long double\000"
+ 1347      20646F75 
+ 1347      626C6500 
+ 1348              	.LASF0:
+ 1349 03ea 7369676E 		.ascii	"signed char\000"
+ 1349      65642063 
+ 1349      68617200 
+ 1350              	.LASF34:
+ 1351 03f6 636F6D70 		.ascii	"compare\000"
+ 1351      61726500 
+ 1352              	.LASF18:
+ 1353 03fe 436F756E 		.ascii	"Counter_Sensor_Enable\000"
+ 1353      7465725F 
+ 1353      53656E73 
+ 1353      6F725F45 
+ 1353      6E61626C 
+ 1354              	.LASF39:
+ 1355 0414 436F756E 		.ascii	"Counter_Sensor_interruptState\000"
+ 1355      7465725F 
+ 1355      53656E73 
+ 1355      6F725F69 
+ 1355      6E746572 
+ 1356              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
