@@ -26,8 +26,6 @@
 #include "Pin_ADC_in.h"
 #include "Pin_sw_aliases.h"
 #include "Pin_sw.h"
-#include "Pin_led_aliases.h"
-#include "Pin_led.h"
 #include "isr_toggle.h"
 #include "Clock_1.h"
 #include "isr_print.h"

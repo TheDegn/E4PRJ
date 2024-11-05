@@ -63,22 +63,25 @@ CY_ISR(ISR_toggle_handler)
 
 CY_ISR(ISR_print_handler)
 {
-
-    if (1 == toggle)
+    if (motorSwitch())
     {
-        sprintf(LCDbuffer, "%i             ", convertedResult);
-        writeLCD("mode 1", unlock, LCDbuffer, degree);
+        if (1 == toggle)
+        {
+            sprintf(LCDbuffer, "%i             ", convertedResult);
+            writeLCD("mode 1", unlock, LCDbuffer, degree);
+        }
+        else if (2 == toggle)
+        {
+            sprintf(LCDbuffer, "%i             ", convertedResult);
+            writeLCD("mode 2", lock, LCDbuffer, degree);
+        }
+        else
+        {
+            sprintf(LCDbuffer, "%i             ", gradientCount);
+            writeLCD("mode 3", lock, LCDbuffer, degree);
+        }  
     }
-    else if (2 == toggle)
-    {
-        sprintf(LCDbuffer, "%i             ", convertedResult);
-        writeLCD("mode 2", lock, LCDbuffer, degree);
-    }
-    else
-    {
-        sprintf(LCDbuffer, "%i             ", gradientCount);
-        writeLCD("mode 3", lock, LCDbuffer, degree);
-    }
+    
 }
 
 void init_interface()

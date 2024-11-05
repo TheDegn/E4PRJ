@@ -71,10 +71,8 @@ set_location "isr_gradient" interrupt -1 -1 1
 set_location "\ADC_SAR_1:ADC_SAR\" sarcell -1 -1 0
 # Note: port 12 is the logical name for port 7
 set_io "Tx_1(0)" iocell 12 7
-set_io "Pin_led(0)" iocell 1 6
 set_location "isr_uart_rx" interrupt -1 -1 4
-# Note: port 15 is the logical name for port 8
-set_io "Pin_ADC_in(0)" iocell 15 5
+set_io "Pin_ADC_in(0)" iocell 0 0
 set_io "\LCD:LCDPort(0)\" iocell 2 0
 set_io "\LCD:LCDPort(2)\" iocell 2 2
 set_io "\LCD:LCDPort(1)\" iocell 2 1
