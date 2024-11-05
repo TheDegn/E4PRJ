@@ -1,5 +1,5 @@
 -- Project:   SensorSender
--- Generated: 10/29/2024 14:10:18
+-- Generated: 11/05/2024 10:31:53
 -- PSoC Creator  4.4
 
 ENTITY SensorSender IS
@@ -64,9 +64,9 @@ ARCHITECTURE __DEFAULT__ OF SensorSender IS
     SIGNAL zero : bit;
     ATTRIBUTE GROUND OF zero : SIGNAL IS true;
     ATTRIBUTE lib_model OF Pin_2(0) : LABEL IS "iocell1";
-    ATTRIBUTE Location OF Pin_2(0) : LABEL IS "P1[6]";
+    ATTRIBUTE Location OF Pin_2(0) : LABEL IS "P1[7]";
     ATTRIBUTE lib_model OF Pin_1(0) : LABEL IS "iocell2";
-    ATTRIBUTE Location OF Pin_1(0) : LABEL IS "P1[7]";
+    ATTRIBUTE Location OF Pin_1(0) : LABEL IS "P1[6]";
     ATTRIBUTE lib_model OF \PWM_1:PWMUDB:status_2\ : LABEL IS "macrocell1";
     ATTRIBUTE lib_model OF \PWM_1:PWMUDB:genblk1:ctrlreg\ : LABEL IS "controlcell1";
     ATTRIBUTE lib_model OF \PWM_1:PWMUDB:genblk8:stsreg\ : LABEL IS "statusicell1";

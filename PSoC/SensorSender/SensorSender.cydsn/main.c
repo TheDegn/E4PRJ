@@ -20,9 +20,9 @@ int main(void)
     for(;;)
     {
         PWM_1_Start();
-        CyDelay(1000);
+        CyDelay(10000);
         PWM_1_Stop();
-        CyDelay(1000);
+        CyDelay(10000);
     }
 }
 

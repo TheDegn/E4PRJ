@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\andre\AppData\Local\Temp\ccKqNDqu.s 			page 1
+ARM GAS  C:\Users\andre\AppData\Local\Temp\cc3DCcAI.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\andre\AppData\Local\Temp\ccKqNDqu.s 			page 1
   39              	@ 16 "main.c" 1
   40 0002 62B6     		CPSIE   i
   41              	@ 0 "" 2
-ARM GAS  C:\Users\andre\AppData\Local\Temp\ccKqNDqu.s 			page 2
+ARM GAS  C:\Users\andre\AppData\Local\Temp\cc3DCcAI.s 			page 2
 
 
   42              		.thumb
@@ -73,18 +73,18 @@ ARM GAS  C:\Users\andre\AppData\Local\Temp\ccKqNDqu.s 			page 1
   45              		.loc 1 22 0 discriminator 1
   46 0004 FFF7FEFF 		bl	PWM_1_Start
   47              	.LVL0:
-  23:main.c        ****         CyDelay(1000);
+  23:main.c        ****         CyDelay(10000);
   48              		.loc 1 23 0 discriminator 1
-  49 0008 4FF47A70 		mov	r0, #1000
+  49 0008 42F21070 		movw	r0, #10000
   50 000c FFF7FEFF 		bl	CyDelay
   51              	.LVL1:
   24:main.c        ****         PWM_1_Stop();
   52              		.loc 1 24 0 discriminator 1
   53 0010 FFF7FEFF 		bl	PWM_1_Stop
   54              	.LVL2:
-  25:main.c        ****         CyDelay(1000);
+  25:main.c        ****         CyDelay(10000);
   55              		.loc 1 25 0 discriminator 1
-  56 0014 4FF47A70 		mov	r0, #1000
+  56 0014 42F21070 		movw	r0, #10000
   57 0018 FFF7FEFF 		bl	CyDelay
   58              	.LVL3:
   59 001c F2E7     		b	.L2
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\andre\AppData\Local\Temp\ccKqNDqu.s 			page 1
   87 0028 B7010000 		.4byte	.LASF0
   88 002c 02       		.uleb128 0x2
   89 002d 01       		.byte	0x1
-ARM GAS  C:\Users\andre\AppData\Local\Temp\ccKqNDqu.s 			page 3
+ARM GAS  C:\Users\andre\AppData\Local\Temp\cc3DCcAI.s 			page 3
 
 
   90 002e 08       		.byte	0x8
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\andre\AppData\Local\Temp\ccKqNDqu.s 			page 1
  144 0091 08       		.byte	0x8
  145 0092 95010000 		.4byte	.LASF13
  146 0096 02       		.uleb128 0x2
-ARM GAS  C:\Users\andre\AppData\Local\Temp\ccKqNDqu.s 			page 4
+ARM GAS  C:\Users\andre\AppData\Local\Temp\cc3DCcAI.s 			page 4
 
 
  147 0097 08       		.byte	0x8
@@ -210,7 +210,7 @@ ARM GAS  C:\Users\andre\AppData\Local\Temp\ccKqNDqu.s 			page 1
  173 00d5 50       		.byte	0x50
  174 00d6 03       		.uleb128 0x3
  175 00d7 0A       		.byte	0xa
- 176 00d8 E803     		.2byte	0x3e8
+ 176 00d8 1027     		.2byte	0x2710
  177 00da 00       		.byte	0
  178 00db 06       		.uleb128 0x6
  179 00dc 14000000 		.4byte	.LVL2
@@ -223,7 +223,7 @@ ARM GAS  C:\Users\andre\AppData\Local\Temp\ccKqNDqu.s 			page 1
  186 00ef 50       		.byte	0x50
  187 00f0 03       		.uleb128 0x3
  188 00f1 0A       		.byte	0xa
- 189 00f2 E803     		.2byte	0x3e8
+ 189 00f2 1027     		.2byte	0x2710
  190 00f4 00       		.byte	0
  191 00f5 00       		.byte	0
  192 00f6 0A       		.uleb128 0xa
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\andre\AppData\Local\Temp\ccKqNDqu.s 			page 1
  201 010c BC000000 		.4byte	.LASF16
  202 0110 04       		.byte	0x4
  203 0111 92       		.byte	0x92
-ARM GAS  C:\Users\andre\AppData\Local\Temp\ccKqNDqu.s 			page 5
+ARM GAS  C:\Users\andre\AppData\Local\Temp\cc3DCcAI.s 			page 5
 
 
  204 0112 0C       		.uleb128 0xc
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\andre\AppData\Local\Temp\ccKqNDqu.s 			page 1
  258 0029 00       		.byte	0
  259 002a 00       		.byte	0
  260 002b 04       		.uleb128 0x4
-ARM GAS  C:\Users\andre\AppData\Local\Temp\ccKqNDqu.s 			page 6
+ARM GAS  C:\Users\andre\AppData\Local\Temp\cc3DCcAI.s 			page 6
 
 
  261 002c 24       		.uleb128 0x24
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\andre\AppData\Local\Temp\ccKqNDqu.s 			page 1
  315 0068 13       		.uleb128 0x13
  316 0069 01       		.uleb128 0x1
  317 006a 13       		.uleb128 0x13
-ARM GAS  C:\Users\andre\AppData\Local\Temp\ccKqNDqu.s 			page 7
+ARM GAS  C:\Users\andre\AppData\Local\Temp\cc3DCcAI.s 			page 7
 
 
  318 006b 00       		.byte	0
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\andre\AppData\Local\Temp\ccKqNDqu.s 			page 1
  372 00a6 0E       		.uleb128 0xe
  373 00a7 3A       		.uleb128 0x3a
  374 00a8 0B       		.uleb128 0xb
-ARM GAS  C:\Users\andre\AppData\Local\Temp\ccKqNDqu.s 			page 8
+ARM GAS  C:\Users\andre\AppData\Local\Temp\cc3DCcAI.s 			page 8
 
 
  375 00a9 3B       		.uleb128 0x3b
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\andre\AppData\Local\Temp\ccKqNDqu.s 			page 1
  410      72655C47 
  410      6F6F676C 
  411 0067 73746572 		.ascii	"ster\\PRJ4 - Semesterprojekt 4\\E4PRJ\\PSoC\\Sensor"
-ARM GAS  C:\Users\andre\AppData\Local\Temp\ccKqNDqu.s 			page 9
+ARM GAS  C:\Users\andre\AppData\Local\Temp\cc3DCcAI.s 			page 9
 
 
  411      5C50524A 
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\andre\AppData\Local\Temp\ccKqNDqu.s 			page 1
  430      7200
  431              	.LASF13:
  432 0195 63686172 		.ascii	"char\000"
-ARM GAS  C:\Users\andre\AppData\Local\Temp\ccKqNDqu.s 			page 10
+ARM GAS  C:\Users\andre\AppData\Local\Temp\cc3DCcAI.s 			page 10
 
 
  432      00
