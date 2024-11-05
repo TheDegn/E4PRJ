@@ -1,29 +1,33 @@
-/* ========================================
- *
- * Copyright YOUR COMPANY, THE YEAR
- * All Rights Reserved
- * UNPUBLISHED, LICENSED SOFTWARE.
- *
- * CONFIDENTIAL AND PROPRIETARY INFORMATION
- * WHICH IS THE PROPERTY OF your company.
- *
- * ========================================
-*/
 #include "project.h"
+#include "sensor.h"
+#include <stdio.h>
+
+extern int newCountFlag;
+extern long count;
+double time;
 
 int main(void)
 {
     CyGlobalIntEnable; /* Enable global interrupts. */
-     
+    UART_1_Start();
+    UART_1_PutString("Started!\r\n");
+    initSensor();
+    char buff[256];
     
+    startCounter();
     
     for(;;)
     {
-        PWM_1_Start();
-        CyDelay(10000);
-        PWM_1_Stop();
-        CyDelay(10000);
+        /*startBurst();
+        CyDelay(1000);
+        stopBurst();
+        CyDelay(1000);*/
+        if (newCountFlag == 1)
+        {
+            time = calcTime(count);
+            sprintf(buff, "%.3f us\r\n", time);
+            UART_1_PutString(buff);
+            newCountFlag = 0;
+        }
     }
 }
-
-/* [] END OF FILE */

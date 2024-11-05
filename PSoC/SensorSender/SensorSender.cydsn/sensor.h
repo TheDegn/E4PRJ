@@ -1,4 +1,3 @@
-
 void initSensor();
 void startBurst();
 void stopBurst();
