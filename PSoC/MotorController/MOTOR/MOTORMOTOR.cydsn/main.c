@@ -1,5 +1,6 @@
 #include "project.h"
 #include "Motor.h"
+#include "tfInput.h"
 
 // Function prototypes
 CY_ISR_PROTO(ISR_UART_rx_handler);
@@ -12,6 +13,8 @@ void Motor_decreaseSpeed(int Motor, int *Motor_speed);
 // Global variables for motor speeds
 int Motor0_speed = 1000;
 int Motor1_speed = 1000;
+int offset = 5;
+int speed;
 
 int main(void)
 {
@@ -120,3 +123,4 @@ void Motor_decreaseSpeed(int Motor, int *Motor_speed)
     }
 }
 
+void tfTest(speed,offset);
