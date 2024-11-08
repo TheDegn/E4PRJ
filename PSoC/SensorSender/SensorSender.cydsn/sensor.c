@@ -32,7 +32,7 @@ double calcTime(double count)
 
 double calcAngle(long count)
 {
-    return ((count * 0.0057) - 64.7036);
+    return ((count * 0.00574795) - 64.70355264);
 }
 
 CY_ISR(sensor_isr_handler)
@@ -41,7 +41,8 @@ CY_ISR(sensor_isr_handler)
     Counter_Sensor_Stop();
     stopBurst();
     newCountFlag = 1;
-    
+    startCounter();
+    startBurst();
 }
 
 /* could be

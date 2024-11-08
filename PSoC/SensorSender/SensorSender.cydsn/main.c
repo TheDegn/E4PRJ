@@ -23,9 +23,9 @@ int main(void)
     {
         
         /*startBurst();
-        CyDelay(1000);
+        CyDelay(100);
         stopBurst();
-        CyDelay(1000);*/
+        CyDelay(100);*/
         if (newCountFlag == 1)
         {
             //time = calcTime(count);
@@ -34,9 +34,6 @@ int main(void)
             sprintf(buff, "%.2f grader   \r\n", angle);
             UART_1_PutString(buff);
             newCountFlag = 0;
-            CyDelay(100);
-            startCounter();
-            startBurst();
         }
     }
 }
