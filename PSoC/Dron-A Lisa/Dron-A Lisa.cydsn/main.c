@@ -31,14 +31,18 @@ int main(void)
     Motor_Init();
     isr_pid_StartEx(PID_HANDLER);
     
+    
+    
     for(;;)
     {
         /* Place your application code here. */
     }
 }
-
+ float counter = 0;
 CY_ISR(PID_HANDLER)
 {
-    output = PIDUpdate(setpoint, measurement, &proportional, &integral, &derivative);
+   
+    tfTest(sinFunc(1,counter++),180,125);
+    // output = PIDUpdate(setpoint, measurement, &proportional, &integral, &derivative);
     //to motor somehow
 }

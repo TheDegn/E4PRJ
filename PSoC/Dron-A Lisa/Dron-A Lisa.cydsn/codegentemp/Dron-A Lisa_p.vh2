@@ -1,5 +1,5 @@
 -- Project:   Dron-A Lisa
--- Generated: 11/08/2024 11:33:49
+-- Generated: 11/11/2024 10:38:49
 -- PSoC Creator  4.4
 
 ENTITY \Dron-A Lisa\ IS
@@ -128,7 +128,14 @@ ARCHITECTURE __DEFAULT__ OF \Dron-A Lisa\ IS
     SIGNAL \PWM_1:PWMUDB:sP16:pwmdp:u0.cfbo__sig\ : bit;
     SIGNAL \PWM_1:PWMUDB:sP16:pwmdp:u1.sor__sig\ : bit;
     SIGNAL \PWM_1:PWMUDB:sP16:pwmdp:u1.cmsbo__sig\ : bit;
-    ATTRIBUTE lib_model OF Rx_1(0) : LABEL IS "iocell_ireg";
+    ATTRIBUTE lib_model OF Motor_1(0) : LABEL IS "iocell1";
+    ATTRIBUTE Location OF Motor_1(0) : LABEL IS "P1[7]";
+    ATTRIBUTE lib_model OF Motor_2(0) : LABEL IS "iocell2";
+    ATTRIBUTE Location OF Motor_2(0) : LABEL IS "P1[6]";
+    ATTRIBUTE lib_model OF Rx_1(0) : LABEL IS "iocell3";
+    ATTRIBUTE Location OF Rx_1(0) : LABEL IS "P12[6]";
+    ATTRIBUTE lib_model OF Tx_1(0) : LABEL IS "iocell4";
+    ATTRIBUTE Location OF Tx_1(0) : LABEL IS "P12[7]";
     ATTRIBUTE lib_model OF \PWM_1:PWMUDB:status_2\ : LABEL IS "macrocell1";
     ATTRIBUTE lib_model OF Net_24 : LABEL IS "macrocell2";
     ATTRIBUTE lib_model OF \UART_1:BUART:counter_load_not\ : LABEL IS "macrocell3";

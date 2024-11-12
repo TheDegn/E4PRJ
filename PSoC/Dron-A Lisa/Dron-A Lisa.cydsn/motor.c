@@ -6,15 +6,8 @@ void Motor_Init()
 {
     Clock_1_Start(); // Start the clock
     PWM_1_Start();   // Start the PWM
-    PWM_1_WriteCompare1(1000);
-    PWM_1_WriteCompare2(1000);
-    // Send initialization messages via UART
-    // UART_1_PutString("Motor control Application started\r\n");
-    // UART_1_PutString("0: Stop\r\n");
-    // UART_1_PutString("1: Decrease speed motor 0\r\n");
-    // UART_1_PutString("2: Increase speed motor 0\r\n");
-    // UART_1_PutString("q: Decrease speed motor 1\r\n");
-    // UART_1_PutString("w: Increase speed motor 1\r\n");
+    setspeed(1,0);
+    setspeed(0,0);
 }
 
 
