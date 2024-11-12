@@ -12,12 +12,12 @@ void initSensor()
 
 void startBurst()
 {
-    PWM_1_Start();
+    Sensor_Out_Start();
 }
 
 void stopBurst()
 {
-    PWM_1_Stop();
+    Sensor_Out_Stop();
 }
 
 void startCounter()
@@ -25,6 +25,7 @@ void startCounter()
     Counter_Sensor_WriteCounter(0);
     Counter_Sensor_Start();
 }
+
 double calcTime(double count)
 {
     return count / countFreq;

@@ -1,5 +1,5 @@
 # Dron-A Lisa
-# 2024-11-12 07:59:36Z
+# 2024-11-12 09:29:19Z
 
 # IO_0@[IOP=(1)][IoId=(0)] is reserved: SWDDebugEnabled
 dont_use_io iocell 1 0
@@ -11,3 +11,6 @@ set_io "Motor_1(0)" iocell 1 7
 set_io "Motor_2(0)" iocell 1 6
 set_io "Rx_1(0)" iocell 12 6
 set_io "Tx_1(0)" iocell 12 7
+set_io "Sensor_Input(0)" iocell 3 0
+set_io "Sensor_Out_Pin_1(0)" iocell 1 5
+set_io "Sensor_Out_Pin_2(0)" iocell 1 4

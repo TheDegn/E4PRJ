@@ -251,8 +251,11 @@
   <Data key="DataVersionKey" value="2" />
   <Group key="DWRInstGuidMapping">
     <Group key="Pin">
+      <Data key="8d318d8b-cf7b-4b6b-b02c-ab1c5c49d0ba" value="Sensor_Input" />
       <Data key="1425177d-0d0e-4468-8bcc-e638e5509a9b" value="Rx_1" />
+      <Data key="60180979-456a-4a04-9438-315125a07780" value="Sensor_Out_Pin_1" />
       <Data key="abd05c42-0b94-4e65-b14f-476150cca55b" value="Motor_2" />
+      <Data key="debd0e57-351b-404c-a3e5-693f14a23238" value="Sensor_Out_Pin_2" />
       <Data key="e851a3b9-efb8-48be-bbb8-b303b216c393" value="Motor_1" />
       <Data key="ed092b9b-d398-4703-be89-cebf998501f6" value="Tx_1" />
     </Group>
@@ -3341,14 +3344,29 @@
     </Group>
   </Group>
   <Group key="Pin2">
+    <Group key="8d318d8b-cf7b-4b6b-b02c-ab1c5c49d0ba">
+      <Group key="0">
+        <Data key="Port Format" value="3,0" />
+      </Group>
+    </Group>
     <Group key="1425177d-0d0e-4468-8bcc-e638e5509a9b">
       <Group key="0">
         <Data key="Port Format" value="12,6" />
       </Group>
     </Group>
+    <Group key="60180979-456a-4a04-9438-315125a07780">
+      <Group key="0">
+        <Data key="Port Format" value="1,5" />
+      </Group>
+    </Group>
     <Group key="abd05c42-0b94-4e65-b14f-476150cca55b">
       <Group key="0">
         <Data key="Port Format" value="1,6" />
+      </Group>
+    </Group>
+    <Group key="debd0e57-351b-404c-a3e5-693f14a23238">
+      <Group key="0">
+        <Data key="Port Format" value="1,4" />
       </Group>
     </Group>
     <Group key="e851a3b9-efb8-48be-bbb8-b303b216c393">
