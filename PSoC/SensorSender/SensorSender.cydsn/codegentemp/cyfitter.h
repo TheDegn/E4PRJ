@@ -139,11 +139,11 @@
 #define PWM_1_PWMUDB_sP8_pwmdp_u0__F1_REG CYREG_B0_UDB13_F1
 
 /* Pin_1 */
-#define Pin_1__0__INTTYPE CYREG_PICU1_INTTYPE6
-#define Pin_1__0__MASK 0x40u
-#define Pin_1__0__PC CYREG_PRT1_PC6
+#define Pin_1__0__INTTYPE CYREG_PICU1_INTTYPE7
+#define Pin_1__0__MASK 0x80u
+#define Pin_1__0__PC CYREG_PRT1_PC7
 #define Pin_1__0__PORT 1u
-#define Pin_1__0__SHIFT 6u
+#define Pin_1__0__SHIFT 7u
 #define Pin_1__AG CYREG_PRT1_AG
 #define Pin_1__AMUX CYREG_PRT1_AMUX
 #define Pin_1__BIE CYREG_PRT1_BIE
@@ -158,7 +158,7 @@
 #define Pin_1__INTTYPE_BASE CYDEV_PICU_INTTYPE_PICU1_BASE
 #define Pin_1__LCD_COM_SEG CYREG_PRT1_LCD_COM_SEG
 #define Pin_1__LCD_EN CYREG_PRT1_LCD_EN
-#define Pin_1__MASK 0x40u
+#define Pin_1__MASK 0x80u
 #define Pin_1__PORT 1u
 #define Pin_1__PRT CYREG_PRT1_PRT
 #define Pin_1__PRTDSI__CAPS_SEL CYREG_PRT1_CAPS_SEL
@@ -169,15 +169,15 @@
 #define Pin_1__PRTDSI__OUT_SEL1 CYREG_PRT1_OUT_SEL1
 #define Pin_1__PRTDSI__SYNC_OUT CYREG_PRT1_SYNC_OUT
 #define Pin_1__PS CYREG_PRT1_PS
-#define Pin_1__SHIFT 6u
+#define Pin_1__SHIFT 7u
 #define Pin_1__SLW CYREG_PRT1_SLW
 
 /* Pin_2 */
-#define Pin_2__0__INTTYPE CYREG_PICU1_INTTYPE7
-#define Pin_2__0__MASK 0x80u
-#define Pin_2__0__PC CYREG_PRT1_PC7
+#define Pin_2__0__INTTYPE CYREG_PICU1_INTTYPE6
+#define Pin_2__0__MASK 0x40u
+#define Pin_2__0__PC CYREG_PRT1_PC6
 #define Pin_2__0__PORT 1u
-#define Pin_2__0__SHIFT 7u
+#define Pin_2__0__SHIFT 6u
 #define Pin_2__AG CYREG_PRT1_AG
 #define Pin_2__AMUX CYREG_PRT1_AMUX
 #define Pin_2__BIE CYREG_PRT1_BIE
@@ -192,7 +192,7 @@
 #define Pin_2__INTTYPE_BASE CYDEV_PICU_INTTYPE_PICU1_BASE
 #define Pin_2__LCD_COM_SEG CYREG_PRT1_LCD_COM_SEG
 #define Pin_2__LCD_EN CYREG_PRT1_LCD_EN
-#define Pin_2__MASK 0x80u
+#define Pin_2__MASK 0x40u
 #define Pin_2__PORT 1u
 #define Pin_2__PRT CYREG_PRT1_PRT
 #define Pin_2__PRTDSI__CAPS_SEL CYREG_PRT1_CAPS_SEL
@@ -203,7 +203,7 @@
 #define Pin_2__PRTDSI__OUT_SEL1 CYREG_PRT1_OUT_SEL1
 #define Pin_2__PRTDSI__SYNC_OUT CYREG_PRT1_SYNC_OUT
 #define Pin_2__PS CYREG_PRT1_PS
-#define Pin_2__SHIFT 7u
+#define Pin_2__SHIFT 6u
 #define Pin_2__SLW CYREG_PRT1_SLW
 
 /* UART_1 */

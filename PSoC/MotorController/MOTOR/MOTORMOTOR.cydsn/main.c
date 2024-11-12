@@ -49,31 +49,31 @@ void handleByteReceived(uint8_t byteReceived)
     switch (byteReceived)
     {
     case 'q':
-        setspeed(1, 125);
+        setspeed(1, 230);
         break;
     case 'w':
-        setspeed(1, 126);
+        setspeed(1, 240);
         break;
     case '1':
-        setspeed(1, 127);
+        setspeed(1, 235);
         break;
     case '2':
-        setspeed(1, 128);
+        setspeed(1, 250);
         break;
     case '0':
         stop(); // Stop both motors
         break;
     case 'z':
-        setspeed(0, 0);
+        setspeed(0, 200);
         break;
     case 'x':
-        setspeed(0, 180);
+        setspeed(0, 210);
         break;
     case 'c':
-        setspeed(0, 1000);
+        setspeed(0, 220);
         break;
     case 'v':
-        setspeed(0, 150);
+        setspeed(0, 215);
         break;
     default:
         // Do nothing for unrecognized commands
@@ -123,4 +123,4 @@ void Motor_decreaseSpeed(int Motor, int *Motor_speed)
     }
 }
 
-void tfTest(speed,offset);
+

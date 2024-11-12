@@ -21,19 +21,23 @@ int main(void)
     startBurst();
     for(;;)
     {
-        
-        /*startBurst();
-        CyDelay(100);
-        stopBurst();
-        CyDelay(100);*/
+        //startBurst();
+        //CyDelay(100);
+        //stopBurst();
+        //CyDelay(100);
+
         if (newCountFlag == 1)
         {
             //time = calcTime(count);
             //avg = average(count);
-            angle = calcAngle(count);
-            sprintf(buff, "%.2f grader   \r\n", angle);
-            UART_1_PutString(buff);
+            
             newCountFlag = 0;
+            //angle = calcAngle(count);
+            
+            sprintf(buff, "%li    \r\n", count);
+            UART_1_PutString(buff);
+            startCounter();
+            startBurst();
         }
     }
 }

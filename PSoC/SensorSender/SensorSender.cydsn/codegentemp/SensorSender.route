@@ -1502,8 +1502,8 @@ net Net_24
 	switch ":dsiswitch_top@[DSI=(0,1)][side=top]:dsihc_top:96,74_f"
 	switch "IStub-:dsiswitch_top@[DSI=(0,1)][side=top]:dsihc_top:v92+:dsiswitch_top@[DSI=(0,1)][side=top]:dsihc_top:v94+:dsiswitch_top@[DSI=(0,1)][side=top]:dsihc_top:v96"
 	switch "Stub-:dsiswitch_top@[DSI=(0,1)][side=top]:dsihc_top:v92+:dsiswitch_top@[DSI=(0,1)][side=top]:dsihc_top:v94+:dsiswitch_top@[DSI=(0,1)][side=top]:dsihc_top:v96==>:ioport1:inputs2_mux.in_0"
-	switch ":ioport1:inputs2_mux.pin6__pin_input==>:ioport1:pin6.pin_input"
-	term   ":ioport1:pin6.pin_input"
+	switch ":ioport1:inputs2_mux.pin7__pin_input==>:ioport1:pin7.pin_input"
+	term   ":ioport1:pin7.pin_input"
 end Net_24
 net Net_25
 	term   ":udb@[UDB=(0,2)]:pld1:mc2.q"
@@ -1518,8 +1518,8 @@ net Net_25
 	switch ":dsiswitch_top@[DSI=(0,1)][side=top]:dsihc_top:99,40_f"
 	switch "IStub-:dsiswitch_top@[DSI=(0,1)][side=top]:dsihc_top:v101+:dsiswitch_top@[DSI=(0,1)][side=top]:dsihc_top:v103+:dsiswitch_top@[DSI=(0,1)][side=top]:dsihc_top:v99"
 	switch "Stub-:dsiswitch_top@[DSI=(0,1)][side=top]:dsihc_top:v101+:dsiswitch_top@[DSI=(0,1)][side=top]:dsihc_top:v103+:dsiswitch_top@[DSI=(0,1)][side=top]:dsihc_top:v99==>:ioport1:inputs2_mux.in_3"
-	switch ":ioport1:inputs2_mux.pin7__pin_input==>:ioport1:pin7.pin_input"
-	term   ":ioport1:pin7.pin_input"
+	switch ":ioport1:inputs2_mux.pin6__pin_input==>:ioport1:pin6.pin_input"
+	term   ":ioport1:pin6.pin_input"
 end Net_25
 net Net_49
 	term   ":ioport2:pin2.fb"

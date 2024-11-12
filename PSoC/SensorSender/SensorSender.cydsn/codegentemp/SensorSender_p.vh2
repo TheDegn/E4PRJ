@@ -1,5 +1,5 @@
 -- Project:   SensorSender
--- Generated: 11/06/2024 12:21:41
+-- Generated: 11/12/2024 15:07:59
 -- PSoC Creator  4.4
 
 ENTITY SensorSender IS
@@ -180,9 +180,9 @@ ARCHITECTURE __DEFAULT__ OF SensorSender IS
     SIGNAL \Counter_Sensor:CounterUDB:sC32:counterdp:u3.sor__sig\ : bit;
     SIGNAL \Counter_Sensor:CounterUDB:sC32:counterdp:u3.cmsbo__sig\ : bit;
     ATTRIBUTE lib_model OF Pin_2(0) : LABEL IS "iocell1";
-    ATTRIBUTE Location OF Pin_2(0) : LABEL IS "P1[7]";
+    ATTRIBUTE Location OF Pin_2(0) : LABEL IS "P1[6]";
     ATTRIBUTE lib_model OF Pin_1(0) : LABEL IS "iocell2";
-    ATTRIBUTE Location OF Pin_1(0) : LABEL IS "P1[6]";
+    ATTRIBUTE Location OF Pin_1(0) : LABEL IS "P1[7]";
     ATTRIBUTE lib_model OF Sensor_Input(0) : LABEL IS "iocell3";
     ATTRIBUTE Location OF Sensor_Input(0) : LABEL IS "P2[2]";
     ATTRIBUTE lib_model OF Rx_1(0) : LABEL IS "iocell4";

@@ -41,8 +41,6 @@ CY_ISR(sensor_isr_handler)
     Counter_Sensor_Stop();
     stopBurst();
     newCountFlag = 1;
-    startCounter();
-    startBurst();
 }
 
 /* could be

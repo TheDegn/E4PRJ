@@ -2,6 +2,7 @@
 #include "motor.h"
 #include "PIDcontroller.h"
 #include "tfTest.h"
+#include "sensor.h"
 #include <stdio.h>
 
 CY_ISR_PROTO(PID_HANDLER);
@@ -23,26 +24,50 @@ float derivative = 0;
 float error = 0;
 float setpoint = 0;
 
+extern int newCountFlag;
+extern long count;
+double angle;
+
 int main(void)
 {
     CyGlobalIntEnable; /* Enable global interrupts. */
 
     UART_1_Start();
     Motor_Init();
+    CyDelay(5000);
+    setspeed(0,210);
+    setspeed(1,240);
+    CyDelay(2000);
+    
     isr_pid_StartEx(PID_HANDLER);
     
+    //sensor
+   /* char buff[256];
     
+    startCounter();
+    startBurst();
+    initSensor();*/
     
     for(;;)
     {
-        /* Place your application code here. */
+        /*if (newCountFlag == 1)
+        {
+            //time = calcTime(count);
+            //avg = average(count);
+            angle = calcAngle(count);
+            sprintf(buff, "%.2f grader   \r\n", angle);
+            UART_1_PutString(buff);
+            newCountFlag = 0;
+        }*/
     }
 }
  float counter = 0;
 CY_ISR(PID_HANDLER)
 {
-   
-    tfTest(sinFunc(1,counter++),180,125);
+    
+    float test = sinFunc(0.001,counter++);
+    sprintf(outputBuffer, "%f \r\n", test);
+    tfTest(test,240,210);
     // output = PIDUpdate(setpoint, measurement, &proportional, &integral, &derivative);
     //to motor somehow
 }

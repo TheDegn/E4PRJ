@@ -1,5 +1,5 @@
--- Project:   C:\Users\degn\OneDrive - Aarhus universitet\Skrivebord\AU\E4\PRJ4\Git\E4PRJ\PSoC\SensorSender\SensorSender.cydsn\SensorSender.cyprj
--- Generated: 11/06/2024 12:21:45
+-- Project:   C:\Users\Jacob\OneDrive - Aarhus universitet\4. Semester\PRJ4\E4PRJ\PSoC\SensorSender\SensorSender.cydsn\SensorSender.cyprj
+-- Generated: 11/12/2024 15:08:03
 -- PSoC Creator  4.4
 
 ENTITY SensorSender IS
@@ -220,9 +220,9 @@ ARCHITECTURE __DEFAULT__ OF SensorSender IS
     SIGNAL \Counter_Sensor:CounterUDB:sC32:counterdp:u3.cmsbo__sig\ : bit;
     ATTRIBUTE Location OF ClockBlock : LABEL IS "F(Clock,0)";
     ATTRIBUTE lib_model OF Pin_2(0) : LABEL IS "iocell1";
-    ATTRIBUTE Location OF Pin_2(0) : LABEL IS "P1[7]";
+    ATTRIBUTE Location OF Pin_2(0) : LABEL IS "P1[6]";
     ATTRIBUTE lib_model OF Pin_1(0) : LABEL IS "iocell2";
-    ATTRIBUTE Location OF Pin_1(0) : LABEL IS "P1[6]";
+    ATTRIBUTE Location OF Pin_1(0) : LABEL IS "P1[7]";
     ATTRIBUTE lib_model OF Sensor_Input(0) : LABEL IS "iocell3";
     ATTRIBUTE Location OF Sensor_Input(0) : LABEL IS "P2[2]";
     ATTRIBUTE lib_model OF Rx_1(0) : LABEL IS "iocell4";
