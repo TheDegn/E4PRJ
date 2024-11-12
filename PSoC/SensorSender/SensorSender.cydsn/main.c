@@ -33,11 +33,8 @@ int main(void)
             
             newCountFlag = 0;
             //angle = calcAngle(count);
-            
             sprintf(buff, "%li    \r\n", count);
             UART_1_PutString(buff);
-            startCounter();
-            startBurst();
         }
     }
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
-* File Name: PWM_1.c
+* File Name: Motor_PWM.c
 * Version 3.30
 *
 * Description:
@@ -21,19 +21,19 @@
 * the software package with which this file was provided.
 ********************************************************************************/
 
-#include "PWM_1.h"
+#include "Motor_PWM.h"
 
 /* Error message for removed <resource> through optimization */
-#ifdef PWM_1_PWMUDB_genblk1_ctrlreg__REMOVED
+#ifdef Motor_PWM_PWMUDB_genblk1_ctrlreg__REMOVED
     #error PWM_v3_30 detected with a constant 0 for the enable or \
          constant 1 for reset. This will prevent the component from operating.
-#endif /* PWM_1_PWMUDB_genblk1_ctrlreg__REMOVED */
+#endif /* Motor_PWM_PWMUDB_genblk1_ctrlreg__REMOVED */
 
-uint8 PWM_1_initVar = 0u;
+uint8 Motor_PWM_initVar = 0u;
 
 
 /*******************************************************************************
-* Function Name: PWM_1_Start
+* Function Name: Motor_PWM_Start
 ********************************************************************************
 *
 * Summary:
@@ -48,31 +48,31 @@ uint8 PWM_1_initVar = 0u;
 *  None
 *
 * Global variables:
-*  PWM_1_initVar: Is modified when this function is called for the
+*  Motor_PWM_initVar: Is modified when this function is called for the
 *   first time. Is used to ensure that initialization happens only once.
 *
 *******************************************************************************/
-void PWM_1_Start(void) 
+void Motor_PWM_Start(void) 
 {
     /* If not Initialized then initialize all required hardware and software */
-    if(PWM_1_initVar == 0u)
+    if(Motor_PWM_initVar == 0u)
     {
-        PWM_1_Init();
-        PWM_1_initVar = 1u;
+        Motor_PWM_Init();
+        Motor_PWM_initVar = 1u;
     }
-    PWM_1_Enable();
+    Motor_PWM_Enable();
 
 }
 
 
 /*******************************************************************************
-* Function Name: PWM_1_Init
+* Function Name: Motor_PWM_Init
 ********************************************************************************
 *
 * Summary:
 *  Initialize component's parameters to the parameters set by user in the
 *  customizer of the component placed onto schematic. Usually called in
-*  PWM_1_Start().
+*  Motor_PWM_Start().
 *
 * Parameters:
 *  None
@@ -81,106 +81,106 @@ void PWM_1_Start(void)
 *  None
 *
 *******************************************************************************/
-void PWM_1_Init(void) 
+void Motor_PWM_Init(void) 
 {
-    #if (PWM_1_UsingFixedFunction || PWM_1_UseControl)
+    #if (Motor_PWM_UsingFixedFunction || Motor_PWM_UseControl)
         uint8 ctrl;
-    #endif /* (PWM_1_UsingFixedFunction || PWM_1_UseControl) */
+    #endif /* (Motor_PWM_UsingFixedFunction || Motor_PWM_UseControl) */
 
-    #if(!PWM_1_UsingFixedFunction)
-        #if(PWM_1_UseStatus)
+    #if(!Motor_PWM_UsingFixedFunction)
+        #if(Motor_PWM_UseStatus)
             /* Interrupt State Backup for Critical Region*/
-            uint8 PWM_1_interruptState;
-        #endif /* (PWM_1_UseStatus) */
-    #endif /* (!PWM_1_UsingFixedFunction) */
+            uint8 Motor_PWM_interruptState;
+        #endif /* (Motor_PWM_UseStatus) */
+    #endif /* (!Motor_PWM_UsingFixedFunction) */
 
-    #if (PWM_1_UsingFixedFunction)
+    #if (Motor_PWM_UsingFixedFunction)
         /* You are allowed to write the compare value (FF only) */
-        PWM_1_CONTROL |= PWM_1_CFG0_MODE;
-        #if (PWM_1_DeadBand2_4)
-            PWM_1_CONTROL |= PWM_1_CFG0_DB;
-        #endif /* (PWM_1_DeadBand2_4) */
+        Motor_PWM_CONTROL |= Motor_PWM_CFG0_MODE;
+        #if (Motor_PWM_DeadBand2_4)
+            Motor_PWM_CONTROL |= Motor_PWM_CFG0_DB;
+        #endif /* (Motor_PWM_DeadBand2_4) */
 
-        ctrl = PWM_1_CONTROL3 & ((uint8 )(~PWM_1_CTRL_CMPMODE1_MASK));
-        PWM_1_CONTROL3 = ctrl | PWM_1_DEFAULT_COMPARE1_MODE;
+        ctrl = Motor_PWM_CONTROL3 & ((uint8 )(~Motor_PWM_CTRL_CMPMODE1_MASK));
+        Motor_PWM_CONTROL3 = ctrl | Motor_PWM_DEFAULT_COMPARE1_MODE;
 
          /* Clear and Set SYNCTC and SYNCCMP bits of RT1 register */
-        PWM_1_RT1 &= ((uint8)(~PWM_1_RT1_MASK));
-        PWM_1_RT1 |= PWM_1_SYNC;
+        Motor_PWM_RT1 &= ((uint8)(~Motor_PWM_RT1_MASK));
+        Motor_PWM_RT1 |= Motor_PWM_SYNC;
 
         /*Enable DSI Sync all all inputs of the PWM*/
-        PWM_1_RT1 &= ((uint8)(~PWM_1_SYNCDSI_MASK));
-        PWM_1_RT1 |= PWM_1_SYNCDSI_EN;
+        Motor_PWM_RT1 &= ((uint8)(~Motor_PWM_SYNCDSI_MASK));
+        Motor_PWM_RT1 |= Motor_PWM_SYNCDSI_EN;
 
-    #elif (PWM_1_UseControl)
+    #elif (Motor_PWM_UseControl)
         /* Set the default compare mode defined in the parameter */
-        ctrl = PWM_1_CONTROL & ((uint8)(~PWM_1_CTRL_CMPMODE2_MASK)) &
-                ((uint8)(~PWM_1_CTRL_CMPMODE1_MASK));
-        PWM_1_CONTROL = ctrl | PWM_1_DEFAULT_COMPARE2_MODE |
-                                   PWM_1_DEFAULT_COMPARE1_MODE;
-    #endif /* (PWM_1_UsingFixedFunction) */
+        ctrl = Motor_PWM_CONTROL & ((uint8)(~Motor_PWM_CTRL_CMPMODE2_MASK)) &
+                ((uint8)(~Motor_PWM_CTRL_CMPMODE1_MASK));
+        Motor_PWM_CONTROL = ctrl | Motor_PWM_DEFAULT_COMPARE2_MODE |
+                                   Motor_PWM_DEFAULT_COMPARE1_MODE;
+    #endif /* (Motor_PWM_UsingFixedFunction) */
 
-    #if (!PWM_1_UsingFixedFunction)
-        #if (PWM_1_Resolution == 8)
+    #if (!Motor_PWM_UsingFixedFunction)
+        #if (Motor_PWM_Resolution == 8)
             /* Set FIFO 0 to 1 byte register for period*/
-            PWM_1_AUX_CONTROLDP0 |= (PWM_1_AUX_CTRL_FIFO0_CLR);
-        #else /* (PWM_1_Resolution == 16)*/
+            Motor_PWM_AUX_CONTROLDP0 |= (Motor_PWM_AUX_CTRL_FIFO0_CLR);
+        #else /* (Motor_PWM_Resolution == 16)*/
             /* Set FIFO 0 to 1 byte register for period */
-            PWM_1_AUX_CONTROLDP0 |= (PWM_1_AUX_CTRL_FIFO0_CLR);
-            PWM_1_AUX_CONTROLDP1 |= (PWM_1_AUX_CTRL_FIFO0_CLR);
-        #endif /* (PWM_1_Resolution == 8) */
+            Motor_PWM_AUX_CONTROLDP0 |= (Motor_PWM_AUX_CTRL_FIFO0_CLR);
+            Motor_PWM_AUX_CONTROLDP1 |= (Motor_PWM_AUX_CTRL_FIFO0_CLR);
+        #endif /* (Motor_PWM_Resolution == 8) */
 
-        PWM_1_WriteCounter(PWM_1_INIT_PERIOD_VALUE);
-    #endif /* (!PWM_1_UsingFixedFunction) */
+        Motor_PWM_WriteCounter(Motor_PWM_INIT_PERIOD_VALUE);
+    #endif /* (!Motor_PWM_UsingFixedFunction) */
 
-    PWM_1_WritePeriod(PWM_1_INIT_PERIOD_VALUE);
+    Motor_PWM_WritePeriod(Motor_PWM_INIT_PERIOD_VALUE);
 
-        #if (PWM_1_UseOneCompareMode)
-            PWM_1_WriteCompare(PWM_1_INIT_COMPARE_VALUE1);
+        #if (Motor_PWM_UseOneCompareMode)
+            Motor_PWM_WriteCompare(Motor_PWM_INIT_COMPARE_VALUE1);
         #else
-            PWM_1_WriteCompare1(PWM_1_INIT_COMPARE_VALUE1);
-            PWM_1_WriteCompare2(PWM_1_INIT_COMPARE_VALUE2);
-        #endif /* (PWM_1_UseOneCompareMode) */
+            Motor_PWM_WriteCompare1(Motor_PWM_INIT_COMPARE_VALUE1);
+            Motor_PWM_WriteCompare2(Motor_PWM_INIT_COMPARE_VALUE2);
+        #endif /* (Motor_PWM_UseOneCompareMode) */
 
-        #if (PWM_1_KillModeMinTime)
-            PWM_1_WriteKillTime(PWM_1_MinimumKillTime);
-        #endif /* (PWM_1_KillModeMinTime) */
+        #if (Motor_PWM_KillModeMinTime)
+            Motor_PWM_WriteKillTime(Motor_PWM_MinimumKillTime);
+        #endif /* (Motor_PWM_KillModeMinTime) */
 
-        #if (PWM_1_DeadBandUsed)
-            PWM_1_WriteDeadTime(PWM_1_INIT_DEAD_TIME);
-        #endif /* (PWM_1_DeadBandUsed) */
+        #if (Motor_PWM_DeadBandUsed)
+            Motor_PWM_WriteDeadTime(Motor_PWM_INIT_DEAD_TIME);
+        #endif /* (Motor_PWM_DeadBandUsed) */
 
-    #if (PWM_1_UseStatus || PWM_1_UsingFixedFunction)
-        PWM_1_SetInterruptMode(PWM_1_INIT_INTERRUPTS_MODE);
-    #endif /* (PWM_1_UseStatus || PWM_1_UsingFixedFunction) */
+    #if (Motor_PWM_UseStatus || Motor_PWM_UsingFixedFunction)
+        Motor_PWM_SetInterruptMode(Motor_PWM_INIT_INTERRUPTS_MODE);
+    #endif /* (Motor_PWM_UseStatus || Motor_PWM_UsingFixedFunction) */
 
-    #if (PWM_1_UsingFixedFunction)
+    #if (Motor_PWM_UsingFixedFunction)
         /* Globally Enable the Fixed Function Block chosen */
-        PWM_1_GLOBAL_ENABLE |= PWM_1_BLOCK_EN_MASK;
+        Motor_PWM_GLOBAL_ENABLE |= Motor_PWM_BLOCK_EN_MASK;
         /* Set the Interrupt source to come from the status register */
-        PWM_1_CONTROL2 |= PWM_1_CTRL2_IRQ_SEL;
+        Motor_PWM_CONTROL2 |= Motor_PWM_CTRL2_IRQ_SEL;
     #else
-        #if(PWM_1_UseStatus)
+        #if(Motor_PWM_UseStatus)
 
             /* CyEnterCriticalRegion and CyExitCriticalRegion are used to mark following region critical*/
             /* Enter Critical Region*/
-            PWM_1_interruptState = CyEnterCriticalSection();
+            Motor_PWM_interruptState = CyEnterCriticalSection();
             /* Use the interrupt output of the status register for IRQ output */
-            PWM_1_STATUS_AUX_CTRL |= PWM_1_STATUS_ACTL_INT_EN_MASK;
+            Motor_PWM_STATUS_AUX_CTRL |= Motor_PWM_STATUS_ACTL_INT_EN_MASK;
 
              /* Exit Critical Region*/
-            CyExitCriticalSection(PWM_1_interruptState);
+            CyExitCriticalSection(Motor_PWM_interruptState);
 
-            /* Clear the FIFO to enable the PWM_1_STATUS_FIFOFULL
+            /* Clear the FIFO to enable the Motor_PWM_STATUS_FIFOFULL
                    bit to be set on FIFO full. */
-            PWM_1_ClearFIFO();
-        #endif /* (PWM_1_UseStatus) */
-    #endif /* (PWM_1_UsingFixedFunction) */
+            Motor_PWM_ClearFIFO();
+        #endif /* (Motor_PWM_UseStatus) */
+    #endif /* (Motor_PWM_UsingFixedFunction) */
 }
 
 
 /*******************************************************************************
-* Function Name: PWM_1_Enable
+* Function Name: Motor_PWM_Enable
 ********************************************************************************
 *
 * Summary:
@@ -196,23 +196,23 @@ void PWM_1_Init(void)
 *  This works only if software enable mode is chosen
 *
 *******************************************************************************/
-void PWM_1_Enable(void) 
+void Motor_PWM_Enable(void) 
 {
     /* Globally Enable the Fixed Function Block chosen */
-    #if (PWM_1_UsingFixedFunction)
-        PWM_1_GLOBAL_ENABLE |= PWM_1_BLOCK_EN_MASK;
-        PWM_1_GLOBAL_STBY_ENABLE |= PWM_1_BLOCK_STBY_EN_MASK;
-    #endif /* (PWM_1_UsingFixedFunction) */
+    #if (Motor_PWM_UsingFixedFunction)
+        Motor_PWM_GLOBAL_ENABLE |= Motor_PWM_BLOCK_EN_MASK;
+        Motor_PWM_GLOBAL_STBY_ENABLE |= Motor_PWM_BLOCK_STBY_EN_MASK;
+    #endif /* (Motor_PWM_UsingFixedFunction) */
 
     /* Enable the PWM from the control register  */
-    #if (PWM_1_UseControl || PWM_1_UsingFixedFunction)
-        PWM_1_CONTROL |= PWM_1_CTRL_ENABLE;
-    #endif /* (PWM_1_UseControl || PWM_1_UsingFixedFunction) */
+    #if (Motor_PWM_UseControl || Motor_PWM_UsingFixedFunction)
+        Motor_PWM_CONTROL |= Motor_PWM_CTRL_ENABLE;
+    #endif /* (Motor_PWM_UseControl || Motor_PWM_UsingFixedFunction) */
 }
 
 
 /*******************************************************************************
-* Function Name: PWM_1_Stop
+* Function Name: Motor_PWM_Stop
 ********************************************************************************
 *
 * Summary:
@@ -230,25 +230,25 @@ void PWM_1_Enable(void)
 *  has no effect on the operation of the PWM
 *
 *******************************************************************************/
-void PWM_1_Stop(void) 
+void Motor_PWM_Stop(void) 
 {
-    #if (PWM_1_UseControl || PWM_1_UsingFixedFunction)
-        PWM_1_CONTROL &= ((uint8)(~PWM_1_CTRL_ENABLE));
-    #endif /* (PWM_1_UseControl || PWM_1_UsingFixedFunction) */
+    #if (Motor_PWM_UseControl || Motor_PWM_UsingFixedFunction)
+        Motor_PWM_CONTROL &= ((uint8)(~Motor_PWM_CTRL_ENABLE));
+    #endif /* (Motor_PWM_UseControl || Motor_PWM_UsingFixedFunction) */
 
     /* Globally disable the Fixed Function Block chosen */
-    #if (PWM_1_UsingFixedFunction)
-        PWM_1_GLOBAL_ENABLE &= ((uint8)(~PWM_1_BLOCK_EN_MASK));
-        PWM_1_GLOBAL_STBY_ENABLE &= ((uint8)(~PWM_1_BLOCK_STBY_EN_MASK));
-    #endif /* (PWM_1_UsingFixedFunction) */
+    #if (Motor_PWM_UsingFixedFunction)
+        Motor_PWM_GLOBAL_ENABLE &= ((uint8)(~Motor_PWM_BLOCK_EN_MASK));
+        Motor_PWM_GLOBAL_STBY_ENABLE &= ((uint8)(~Motor_PWM_BLOCK_STBY_EN_MASK));
+    #endif /* (Motor_PWM_UsingFixedFunction) */
 }
 
-#if (PWM_1_UseOneCompareMode)
-    #if (PWM_1_CompareMode1SW)
+#if (Motor_PWM_UseOneCompareMode)
+    #if (Motor_PWM_CompareMode1SW)
 
 
         /*******************************************************************************
-        * Function Name: PWM_1_SetCompareMode
+        * Function Name: Motor_PWM_SetCompareMode
         ********************************************************************************
         *
         * Summary:
@@ -263,53 +263,53 @@ void PWM_1_Stop(void)
         *  None
         *
         *******************************************************************************/
-        void PWM_1_SetCompareMode(uint8 comparemode) 
+        void Motor_PWM_SetCompareMode(uint8 comparemode) 
         {
-            #if(PWM_1_UsingFixedFunction)
+            #if(Motor_PWM_UsingFixedFunction)
 
-                #if(0 != PWM_1_CTRL_CMPMODE1_SHIFT)
-                    uint8 comparemodemasked = ((uint8)((uint8)comparemode << PWM_1_CTRL_CMPMODE1_SHIFT));
+                #if(0 != Motor_PWM_CTRL_CMPMODE1_SHIFT)
+                    uint8 comparemodemasked = ((uint8)((uint8)comparemode << Motor_PWM_CTRL_CMPMODE1_SHIFT));
                 #else
                     uint8 comparemodemasked = comparemode;
-                #endif /* (0 != PWM_1_CTRL_CMPMODE1_SHIFT) */
+                #endif /* (0 != Motor_PWM_CTRL_CMPMODE1_SHIFT) */
 
-                PWM_1_CONTROL3 &= ((uint8)(~PWM_1_CTRL_CMPMODE1_MASK)); /*Clear Existing Data */
-                PWM_1_CONTROL3 |= comparemodemasked;
+                Motor_PWM_CONTROL3 &= ((uint8)(~Motor_PWM_CTRL_CMPMODE1_MASK)); /*Clear Existing Data */
+                Motor_PWM_CONTROL3 |= comparemodemasked;
 
-            #elif (PWM_1_UseControl)
+            #elif (Motor_PWM_UseControl)
 
-                #if(0 != PWM_1_CTRL_CMPMODE1_SHIFT)
-                    uint8 comparemode1masked = ((uint8)((uint8)comparemode << PWM_1_CTRL_CMPMODE1_SHIFT)) &
-                                                PWM_1_CTRL_CMPMODE1_MASK;
+                #if(0 != Motor_PWM_CTRL_CMPMODE1_SHIFT)
+                    uint8 comparemode1masked = ((uint8)((uint8)comparemode << Motor_PWM_CTRL_CMPMODE1_SHIFT)) &
+                                                Motor_PWM_CTRL_CMPMODE1_MASK;
                 #else
-                    uint8 comparemode1masked = comparemode & PWM_1_CTRL_CMPMODE1_MASK;
-                #endif /* (0 != PWM_1_CTRL_CMPMODE1_SHIFT) */
+                    uint8 comparemode1masked = comparemode & Motor_PWM_CTRL_CMPMODE1_MASK;
+                #endif /* (0 != Motor_PWM_CTRL_CMPMODE1_SHIFT) */
 
-                #if(0 != PWM_1_CTRL_CMPMODE2_SHIFT)
-                    uint8 comparemode2masked = ((uint8)((uint8)comparemode << PWM_1_CTRL_CMPMODE2_SHIFT)) &
-                                               PWM_1_CTRL_CMPMODE2_MASK;
+                #if(0 != Motor_PWM_CTRL_CMPMODE2_SHIFT)
+                    uint8 comparemode2masked = ((uint8)((uint8)comparemode << Motor_PWM_CTRL_CMPMODE2_SHIFT)) &
+                                               Motor_PWM_CTRL_CMPMODE2_MASK;
                 #else
-                    uint8 comparemode2masked = comparemode & PWM_1_CTRL_CMPMODE2_MASK;
-                #endif /* (0 != PWM_1_CTRL_CMPMODE2_SHIFT) */
+                    uint8 comparemode2masked = comparemode & Motor_PWM_CTRL_CMPMODE2_MASK;
+                #endif /* (0 != Motor_PWM_CTRL_CMPMODE2_SHIFT) */
 
                 /*Clear existing mode */
-                PWM_1_CONTROL &= ((uint8)(~(PWM_1_CTRL_CMPMODE1_MASK |
-                                            PWM_1_CTRL_CMPMODE2_MASK)));
-                PWM_1_CONTROL |= (comparemode1masked | comparemode2masked);
+                Motor_PWM_CONTROL &= ((uint8)(~(Motor_PWM_CTRL_CMPMODE1_MASK |
+                                            Motor_PWM_CTRL_CMPMODE2_MASK)));
+                Motor_PWM_CONTROL |= (comparemode1masked | comparemode2masked);
 
             #else
                 uint8 temp = comparemode;
-            #endif /* (PWM_1_UsingFixedFunction) */
+            #endif /* (Motor_PWM_UsingFixedFunction) */
         }
-    #endif /* PWM_1_CompareMode1SW */
+    #endif /* Motor_PWM_CompareMode1SW */
 
 #else /* UseOneCompareMode */
 
-    #if (PWM_1_CompareMode1SW)
+    #if (Motor_PWM_CompareMode1SW)
 
 
         /*******************************************************************************
-        * Function Name: PWM_1_SetCompareMode1
+        * Function Name: Motor_PWM_SetCompareMode1
         ********************************************************************************
         *
         * Summary:
@@ -323,27 +323,27 @@ void PWM_1_Stop(void)
         *  None
         *
         *******************************************************************************/
-        void PWM_1_SetCompareMode1(uint8 comparemode) 
+        void Motor_PWM_SetCompareMode1(uint8 comparemode) 
         {
-            #if(0 != PWM_1_CTRL_CMPMODE1_SHIFT)
-                uint8 comparemodemasked = ((uint8)((uint8)comparemode << PWM_1_CTRL_CMPMODE1_SHIFT)) &
-                                           PWM_1_CTRL_CMPMODE1_MASK;
+            #if(0 != Motor_PWM_CTRL_CMPMODE1_SHIFT)
+                uint8 comparemodemasked = ((uint8)((uint8)comparemode << Motor_PWM_CTRL_CMPMODE1_SHIFT)) &
+                                           Motor_PWM_CTRL_CMPMODE1_MASK;
             #else
-                uint8 comparemodemasked = comparemode & PWM_1_CTRL_CMPMODE1_MASK;
-            #endif /* (0 != PWM_1_CTRL_CMPMODE1_SHIFT) */
+                uint8 comparemodemasked = comparemode & Motor_PWM_CTRL_CMPMODE1_MASK;
+            #endif /* (0 != Motor_PWM_CTRL_CMPMODE1_SHIFT) */
 
-            #if (PWM_1_UseControl)
-                PWM_1_CONTROL &= ((uint8)(~PWM_1_CTRL_CMPMODE1_MASK)); /*Clear existing mode */
-                PWM_1_CONTROL |= comparemodemasked;
-            #endif /* (PWM_1_UseControl) */
+            #if (Motor_PWM_UseControl)
+                Motor_PWM_CONTROL &= ((uint8)(~Motor_PWM_CTRL_CMPMODE1_MASK)); /*Clear existing mode */
+                Motor_PWM_CONTROL |= comparemodemasked;
+            #endif /* (Motor_PWM_UseControl) */
         }
-    #endif /* PWM_1_CompareMode1SW */
+    #endif /* Motor_PWM_CompareMode1SW */
 
-#if (PWM_1_CompareMode2SW)
+#if (Motor_PWM_CompareMode2SW)
 
 
     /*******************************************************************************
-    * Function Name: PWM_1_SetCompareMode2
+    * Function Name: Motor_PWM_SetCompareMode2
     ********************************************************************************
     *
     * Summary:
@@ -357,31 +357,31 @@ void PWM_1_Stop(void)
     *  None
     *
     *******************************************************************************/
-    void PWM_1_SetCompareMode2(uint8 comparemode) 
+    void Motor_PWM_SetCompareMode2(uint8 comparemode) 
     {
 
-        #if(0 != PWM_1_CTRL_CMPMODE2_SHIFT)
-            uint8 comparemodemasked = ((uint8)((uint8)comparemode << PWM_1_CTRL_CMPMODE2_SHIFT)) &
-                                                 PWM_1_CTRL_CMPMODE2_MASK;
+        #if(0 != Motor_PWM_CTRL_CMPMODE2_SHIFT)
+            uint8 comparemodemasked = ((uint8)((uint8)comparemode << Motor_PWM_CTRL_CMPMODE2_SHIFT)) &
+                                                 Motor_PWM_CTRL_CMPMODE2_MASK;
         #else
-            uint8 comparemodemasked = comparemode & PWM_1_CTRL_CMPMODE2_MASK;
-        #endif /* (0 != PWM_1_CTRL_CMPMODE2_SHIFT) */
+            uint8 comparemodemasked = comparemode & Motor_PWM_CTRL_CMPMODE2_MASK;
+        #endif /* (0 != Motor_PWM_CTRL_CMPMODE2_SHIFT) */
 
-        #if (PWM_1_UseControl)
-            PWM_1_CONTROL &= ((uint8)(~PWM_1_CTRL_CMPMODE2_MASK)); /*Clear existing mode */
-            PWM_1_CONTROL |= comparemodemasked;
-        #endif /* (PWM_1_UseControl) */
+        #if (Motor_PWM_UseControl)
+            Motor_PWM_CONTROL &= ((uint8)(~Motor_PWM_CTRL_CMPMODE2_MASK)); /*Clear existing mode */
+            Motor_PWM_CONTROL |= comparemodemasked;
+        #endif /* (Motor_PWM_UseControl) */
     }
-    #endif /*PWM_1_CompareMode2SW */
+    #endif /*Motor_PWM_CompareMode2SW */
 
 #endif /* UseOneCompareMode */
 
 
-#if (!PWM_1_UsingFixedFunction)
+#if (!Motor_PWM_UsingFixedFunction)
 
 
     /*******************************************************************************
-    * Function Name: PWM_1_WriteCounter
+    * Function Name: Motor_PWM_WriteCounter
     ********************************************************************************
     *
     * Summary:
@@ -400,15 +400,15 @@ void PWM_1_Stop(void)
     *  The PWM Period will be reloaded when a counter value will be a zero
     *
     *******************************************************************************/
-    void PWM_1_WriteCounter(uint16 counter) \
+    void Motor_PWM_WriteCounter(uint16 counter) \
                                        
     {
-        CY_SET_REG16(PWM_1_COUNTER_LSB_PTR, counter);
+        CY_SET_REG16(Motor_PWM_COUNTER_LSB_PTR, counter);
     }
 
 
     /*******************************************************************************
-    * Function Name: PWM_1_ReadCounter
+    * Function Name: Motor_PWM_ReadCounter
     ********************************************************************************
     *
     * Summary:
@@ -422,22 +422,22 @@ void PWM_1_Stop(void)
     *  The current value of the counter.
     *
     *******************************************************************************/
-    uint16 PWM_1_ReadCounter(void) 
+    uint16 Motor_PWM_ReadCounter(void) 
     {
         /* Force capture by reading Accumulator */
         /* Must first do a software capture to be able to read the counter */
         /* It is up to the user code to make sure there isn't already captured data in the FIFO */
-          (void)CY_GET_REG8(PWM_1_COUNTERCAP_LSB_PTR_8BIT);
+          (void)CY_GET_REG8(Motor_PWM_COUNTERCAP_LSB_PTR_8BIT);
 
         /* Read the data from the FIFO */
-        return (CY_GET_REG16(PWM_1_CAPTURE_LSB_PTR));
+        return (CY_GET_REG16(Motor_PWM_CAPTURE_LSB_PTR));
     }
 
-    #if (PWM_1_UseStatus)
+    #if (Motor_PWM_UseStatus)
 
 
         /*******************************************************************************
-        * Function Name: PWM_1_ClearFIFO
+        * Function Name: Motor_PWM_ClearFIFO
         ********************************************************************************
         *
         * Summary:
@@ -450,21 +450,21 @@ void PWM_1_Stop(void)
         *  None
         *
         *******************************************************************************/
-        void PWM_1_ClearFIFO(void) 
+        void Motor_PWM_ClearFIFO(void) 
         {
-            while(0u != (PWM_1_ReadStatusRegister() & PWM_1_STATUS_FIFONEMPTY))
+            while(0u != (Motor_PWM_ReadStatusRegister() & Motor_PWM_STATUS_FIFONEMPTY))
             {
-                (void)PWM_1_ReadCapture();
+                (void)Motor_PWM_ReadCapture();
             }
         }
 
-    #endif /* PWM_1_UseStatus */
+    #endif /* Motor_PWM_UseStatus */
 
-#endif /* !PWM_1_UsingFixedFunction */
+#endif /* !Motor_PWM_UsingFixedFunction */
 
 
 /*******************************************************************************
-* Function Name: PWM_1_WritePeriod
+* Function Name: Motor_PWM_WritePeriod
 ********************************************************************************
 *
 * Summary:
@@ -479,20 +479,20 @@ void PWM_1_Stop(void)
 *  None
 *
 *******************************************************************************/
-void PWM_1_WritePeriod(uint16 period) 
+void Motor_PWM_WritePeriod(uint16 period) 
 {
-    #if(PWM_1_UsingFixedFunction)
-        CY_SET_REG16(PWM_1_PERIOD_LSB_PTR, (uint16)period);
+    #if(Motor_PWM_UsingFixedFunction)
+        CY_SET_REG16(Motor_PWM_PERIOD_LSB_PTR, (uint16)period);
     #else
-        CY_SET_REG16(PWM_1_PERIOD_LSB_PTR, period);
-    #endif /* (PWM_1_UsingFixedFunction) */
+        CY_SET_REG16(Motor_PWM_PERIOD_LSB_PTR, period);
+    #endif /* (Motor_PWM_UsingFixedFunction) */
 }
 
-#if (PWM_1_UseOneCompareMode)
+#if (Motor_PWM_UseOneCompareMode)
 
 
     /*******************************************************************************
-    * Function Name: PWM_1_WriteCompare
+    * Function Name: Motor_PWM_WriteCompare
     ********************************************************************************
     *
     * Summary:
@@ -513,22 +513,22 @@ void PWM_1_WritePeriod(uint16 period)
     *  Dither Mode, Center Aligned Mode or One Output Mode
     *
     *******************************************************************************/
-    void PWM_1_WriteCompare(uint16 compare) \
+    void Motor_PWM_WriteCompare(uint16 compare) \
                                        
     {
-        #if(PWM_1_UsingFixedFunction)
-            CY_SET_REG16(PWM_1_COMPARE1_LSB_PTR, (uint16)compare);
+        #if(Motor_PWM_UsingFixedFunction)
+            CY_SET_REG16(Motor_PWM_COMPARE1_LSB_PTR, (uint16)compare);
         #else
-            CY_SET_REG16(PWM_1_COMPARE1_LSB_PTR, compare);
-        #endif /* (PWM_1_UsingFixedFunction) */
+            CY_SET_REG16(Motor_PWM_COMPARE1_LSB_PTR, compare);
+        #endif /* (Motor_PWM_UsingFixedFunction) */
 
-        #if (PWM_1_PWMMode == PWM_1__B_PWM__DITHER)
-            #if(PWM_1_UsingFixedFunction)
-                CY_SET_REG16(PWM_1_COMPARE2_LSB_PTR, (uint16)(compare + 1u));
+        #if (Motor_PWM_PWMMode == Motor_PWM__B_PWM__DITHER)
+            #if(Motor_PWM_UsingFixedFunction)
+                CY_SET_REG16(Motor_PWM_COMPARE2_LSB_PTR, (uint16)(compare + 1u));
             #else
-                CY_SET_REG16(PWM_1_COMPARE2_LSB_PTR, (compare + 1u));
-            #endif /* (PWM_1_UsingFixedFunction) */
-        #endif /* (PWM_1_PWMMode == PWM_1__B_PWM__DITHER) */
+                CY_SET_REG16(Motor_PWM_COMPARE2_LSB_PTR, (compare + 1u));
+            #endif /* (Motor_PWM_UsingFixedFunction) */
+        #endif /* (Motor_PWM_PWMMode == Motor_PWM__B_PWM__DITHER) */
     }
 
 
@@ -536,7 +536,7 @@ void PWM_1_WritePeriod(uint16 period)
 
 
     /*******************************************************************************
-    * Function Name: PWM_1_WriteCompare1
+    * Function Name: Motor_PWM_WriteCompare1
     ********************************************************************************
     *
     * Summary:
@@ -552,19 +552,19 @@ void PWM_1_WritePeriod(uint16 period)
     *  None
     *
     *******************************************************************************/
-    void PWM_1_WriteCompare1(uint16 compare) \
+    void Motor_PWM_WriteCompare1(uint16 compare) \
                                         
     {
-        #if(PWM_1_UsingFixedFunction)
-            CY_SET_REG16(PWM_1_COMPARE1_LSB_PTR, (uint16)compare);
+        #if(Motor_PWM_UsingFixedFunction)
+            CY_SET_REG16(Motor_PWM_COMPARE1_LSB_PTR, (uint16)compare);
         #else
-            CY_SET_REG16(PWM_1_COMPARE1_LSB_PTR, compare);
-        #endif /* (PWM_1_UsingFixedFunction) */
+            CY_SET_REG16(Motor_PWM_COMPARE1_LSB_PTR, compare);
+        #endif /* (Motor_PWM_UsingFixedFunction) */
     }
 
 
     /*******************************************************************************
-    * Function Name: PWM_1_WriteCompare2
+    * Function Name: Motor_PWM_WriteCompare2
     ********************************************************************************
     *
     * Summary:
@@ -581,22 +581,22 @@ void PWM_1_WritePeriod(uint16 period)
     *  None
     *
     *******************************************************************************/
-    void PWM_1_WriteCompare2(uint16 compare) \
+    void Motor_PWM_WriteCompare2(uint16 compare) \
                                         
     {
-        #if(PWM_1_UsingFixedFunction)
-            CY_SET_REG16(PWM_1_COMPARE2_LSB_PTR, compare);
+        #if(Motor_PWM_UsingFixedFunction)
+            CY_SET_REG16(Motor_PWM_COMPARE2_LSB_PTR, compare);
         #else
-            CY_SET_REG16(PWM_1_COMPARE2_LSB_PTR, compare);
-        #endif /* (PWM_1_UsingFixedFunction) */
+            CY_SET_REG16(Motor_PWM_COMPARE2_LSB_PTR, compare);
+        #endif /* (Motor_PWM_UsingFixedFunction) */
     }
 #endif /* UseOneCompareMode */
 
-#if (PWM_1_DeadBandUsed)
+#if (Motor_PWM_DeadBandUsed)
 
 
     /*******************************************************************************
-    * Function Name: PWM_1_WriteDeadTime
+    * Function Name: Motor_PWM_WriteDeadTime
     ********************************************************************************
     *
     * Summary:
@@ -609,30 +609,30 @@ void PWM_1_WritePeriod(uint16 period)
     *  None
     *
     *******************************************************************************/
-    void PWM_1_WriteDeadTime(uint8 deadtime) 
+    void Motor_PWM_WriteDeadTime(uint8 deadtime) 
     {
         /* If using the Dead Band 1-255 mode then just write the register */
-        #if(!PWM_1_DeadBand2_4)
-            CY_SET_REG8(PWM_1_DEADBAND_COUNT_PTR, deadtime);
+        #if(!Motor_PWM_DeadBand2_4)
+            CY_SET_REG8(Motor_PWM_DEADBAND_COUNT_PTR, deadtime);
         #else
             /* Otherwise the data has to be masked and offset */
             /* Clear existing data */
-            PWM_1_DEADBAND_COUNT &= ((uint8)(~PWM_1_DEADBAND_COUNT_MASK));
+            Motor_PWM_DEADBAND_COUNT &= ((uint8)(~Motor_PWM_DEADBAND_COUNT_MASK));
 
             /* Set new dead time */
-            #if(PWM_1_DEADBAND_COUNT_SHIFT)
-                PWM_1_DEADBAND_COUNT |= ((uint8)((uint8)deadtime << PWM_1_DEADBAND_COUNT_SHIFT)) &
-                                                    PWM_1_DEADBAND_COUNT_MASK;
+            #if(Motor_PWM_DEADBAND_COUNT_SHIFT)
+                Motor_PWM_DEADBAND_COUNT |= ((uint8)((uint8)deadtime << Motor_PWM_DEADBAND_COUNT_SHIFT)) &
+                                                    Motor_PWM_DEADBAND_COUNT_MASK;
             #else
-                PWM_1_DEADBAND_COUNT |= deadtime & PWM_1_DEADBAND_COUNT_MASK;
-            #endif /* (PWM_1_DEADBAND_COUNT_SHIFT) */
+                Motor_PWM_DEADBAND_COUNT |= deadtime & Motor_PWM_DEADBAND_COUNT_MASK;
+            #endif /* (Motor_PWM_DEADBAND_COUNT_SHIFT) */
 
-        #endif /* (!PWM_1_DeadBand2_4) */
+        #endif /* (!Motor_PWM_DeadBand2_4) */
     }
 
 
     /*******************************************************************************
-    * Function Name: PWM_1_ReadDeadTime
+    * Function Name: Motor_PWM_ReadDeadTime
     ********************************************************************************
     *
     * Summary:
@@ -645,29 +645,29 @@ void PWM_1_WritePeriod(uint16 period)
     *  Dead Band Counts
     *
     *******************************************************************************/
-    uint8 PWM_1_ReadDeadTime(void) 
+    uint8 Motor_PWM_ReadDeadTime(void) 
     {
         /* If using the Dead Band 1-255 mode then just read the register */
-        #if(!PWM_1_DeadBand2_4)
-            return (CY_GET_REG8(PWM_1_DEADBAND_COUNT_PTR));
+        #if(!Motor_PWM_DeadBand2_4)
+            return (CY_GET_REG8(Motor_PWM_DEADBAND_COUNT_PTR));
         #else
 
             /* Otherwise the data has to be masked and offset */
-            #if(PWM_1_DEADBAND_COUNT_SHIFT)
-                return ((uint8)(((uint8)(PWM_1_DEADBAND_COUNT & PWM_1_DEADBAND_COUNT_MASK)) >>
-                                                                           PWM_1_DEADBAND_COUNT_SHIFT));
+            #if(Motor_PWM_DEADBAND_COUNT_SHIFT)
+                return ((uint8)(((uint8)(Motor_PWM_DEADBAND_COUNT & Motor_PWM_DEADBAND_COUNT_MASK)) >>
+                                                                           Motor_PWM_DEADBAND_COUNT_SHIFT));
             #else
-                return (PWM_1_DEADBAND_COUNT & PWM_1_DEADBAND_COUNT_MASK);
-            #endif /* (PWM_1_DEADBAND_COUNT_SHIFT) */
-        #endif /* (!PWM_1_DeadBand2_4) */
+                return (Motor_PWM_DEADBAND_COUNT & Motor_PWM_DEADBAND_COUNT_MASK);
+            #endif /* (Motor_PWM_DEADBAND_COUNT_SHIFT) */
+        #endif /* (!Motor_PWM_DeadBand2_4) */
     }
 #endif /* DeadBandUsed */
 
-#if (PWM_1_UseStatus || PWM_1_UsingFixedFunction)
+#if (Motor_PWM_UseStatus || Motor_PWM_UsingFixedFunction)
 
 
     /*******************************************************************************
-    * Function Name: PWM_1_SetInterruptMode
+    * Function Name: Motor_PWM_SetInterruptMode
     ********************************************************************************
     *
     * Summary:
@@ -681,14 +681,14 @@ void PWM_1_WritePeriod(uint16 period)
     *  None
     *
     *******************************************************************************/
-    void PWM_1_SetInterruptMode(uint8 interruptMode) 
+    void Motor_PWM_SetInterruptMode(uint8 interruptMode) 
     {
-        CY_SET_REG8(PWM_1_STATUS_MASK_PTR, interruptMode);
+        CY_SET_REG8(Motor_PWM_STATUS_MASK_PTR, interruptMode);
     }
 
 
     /*******************************************************************************
-    * Function Name: PWM_1_ReadStatusRegister
+    * Function Name: Motor_PWM_ReadStatusRegister
     ********************************************************************************
     *
     * Summary:
@@ -708,19 +708,19 @@ void PWM_1_WritePeriod(uint16 period)
     *  [0]   : Compare output 1
     *
     *******************************************************************************/
-    uint8 PWM_1_ReadStatusRegister(void) 
+    uint8 Motor_PWM_ReadStatusRegister(void) 
     {
-        return (CY_GET_REG8(PWM_1_STATUS_PTR));
+        return (CY_GET_REG8(Motor_PWM_STATUS_PTR));
     }
 
-#endif /* (PWM_1_UseStatus || PWM_1_UsingFixedFunction) */
+#endif /* (Motor_PWM_UseStatus || Motor_PWM_UsingFixedFunction) */
 
 
-#if (PWM_1_UseControl)
+#if (Motor_PWM_UseControl)
 
 
     /*******************************************************************************
-    * Function Name: PWM_1_ReadControlRegister
+    * Function Name: Motor_PWM_ReadControlRegister
     ********************************************************************************
     *
     * Summary:
@@ -734,17 +734,17 @@ void PWM_1_WritePeriod(uint16 period)
     *  uint8 : Current control register value
     *
     *******************************************************************************/
-    uint8 PWM_1_ReadControlRegister(void) 
+    uint8 Motor_PWM_ReadControlRegister(void) 
     {
         uint8 result;
 
-        result = CY_GET_REG8(PWM_1_CONTROL_PTR);
+        result = CY_GET_REG8(Motor_PWM_CONTROL_PTR);
         return (result);
     }
 
 
     /*******************************************************************************
-    * Function Name: PWM_1_WriteControlRegister
+    * Function Name: Motor_PWM_WriteControlRegister
     ********************************************************************************
     *
     * Summary:
@@ -762,19 +762,19 @@ void PWM_1_WritePeriod(uint16 period)
     *  None
     *
     *******************************************************************************/
-    void PWM_1_WriteControlRegister(uint8 control) 
+    void Motor_PWM_WriteControlRegister(uint8 control) 
     {
-        CY_SET_REG8(PWM_1_CONTROL_PTR, control);
+        CY_SET_REG8(Motor_PWM_CONTROL_PTR, control);
     }
 
-#endif /* (PWM_1_UseControl) */
+#endif /* (Motor_PWM_UseControl) */
 
 
-#if (!PWM_1_UsingFixedFunction)
+#if (!Motor_PWM_UsingFixedFunction)
 
 
     /*******************************************************************************
-    * Function Name: PWM_1_ReadCapture
+    * Function Name: Motor_PWM_ReadCapture
     ********************************************************************************
     *
     * Summary:
@@ -787,19 +787,19 @@ void PWM_1_WritePeriod(uint16 period)
     *  uint8/uint16: The current capture value
     *
     *******************************************************************************/
-    uint16 PWM_1_ReadCapture(void) 
+    uint16 Motor_PWM_ReadCapture(void) 
     {
-        return (CY_GET_REG16(PWM_1_CAPTURE_LSB_PTR));
+        return (CY_GET_REG16(Motor_PWM_CAPTURE_LSB_PTR));
     }
 
-#endif /* (!PWM_1_UsingFixedFunction) */
+#endif /* (!Motor_PWM_UsingFixedFunction) */
 
 
-#if (PWM_1_UseOneCompareMode)
+#if (Motor_PWM_UseOneCompareMode)
 
 
     /*******************************************************************************
-    * Function Name: PWM_1_ReadCompare
+    * Function Name: Motor_PWM_ReadCompare
     ********************************************************************************
     *
     * Summary:
@@ -813,20 +813,20 @@ void PWM_1_WritePeriod(uint16 period)
     *  uint8/uint16: Current compare value
     *
     *******************************************************************************/
-    uint16 PWM_1_ReadCompare(void) 
+    uint16 Motor_PWM_ReadCompare(void) 
     {
-        #if(PWM_1_UsingFixedFunction)
-            return ((uint16)CY_GET_REG16(PWM_1_COMPARE1_LSB_PTR));
+        #if(Motor_PWM_UsingFixedFunction)
+            return ((uint16)CY_GET_REG16(Motor_PWM_COMPARE1_LSB_PTR));
         #else
-            return (CY_GET_REG16(PWM_1_COMPARE1_LSB_PTR));
-        #endif /* (PWM_1_UsingFixedFunction) */
+            return (CY_GET_REG16(Motor_PWM_COMPARE1_LSB_PTR));
+        #endif /* (Motor_PWM_UsingFixedFunction) */
     }
 
 #else
 
 
     /*******************************************************************************
-    * Function Name: PWM_1_ReadCompare1
+    * Function Name: Motor_PWM_ReadCompare1
     ********************************************************************************
     *
     * Summary:
@@ -839,14 +839,14 @@ void PWM_1_WritePeriod(uint16 period)
     *  uint8/uint16: Current compare value.
     *
     *******************************************************************************/
-    uint16 PWM_1_ReadCompare1(void) 
+    uint16 Motor_PWM_ReadCompare1(void) 
     {
-        return (CY_GET_REG16(PWM_1_COMPARE1_LSB_PTR));
+        return (CY_GET_REG16(Motor_PWM_COMPARE1_LSB_PTR));
     }
 
 
     /*******************************************************************************
-    * Function Name: PWM_1_ReadCompare2
+    * Function Name: Motor_PWM_ReadCompare2
     ********************************************************************************
     *
     * Summary:
@@ -859,16 +859,16 @@ void PWM_1_WritePeriod(uint16 period)
     *  uint8/uint16: Current compare value.
     *
     *******************************************************************************/
-    uint16 PWM_1_ReadCompare2(void) 
+    uint16 Motor_PWM_ReadCompare2(void) 
     {
-        return (CY_GET_REG16(PWM_1_COMPARE2_LSB_PTR));
+        return (CY_GET_REG16(Motor_PWM_COMPARE2_LSB_PTR));
     }
 
-#endif /* (PWM_1_UseOneCompareMode) */
+#endif /* (Motor_PWM_UseOneCompareMode) */
 
 
 /*******************************************************************************
-* Function Name: PWM_1_ReadPeriod
+* Function Name: Motor_PWM_ReadPeriod
 ********************************************************************************
 *
 * Summary:
@@ -881,20 +881,20 @@ void PWM_1_WritePeriod(uint16 period)
 *  uint8/16: Period value
 *
 *******************************************************************************/
-uint16 PWM_1_ReadPeriod(void) 
+uint16 Motor_PWM_ReadPeriod(void) 
 {
-    #if(PWM_1_UsingFixedFunction)
-        return ((uint16)CY_GET_REG16(PWM_1_PERIOD_LSB_PTR));
+    #if(Motor_PWM_UsingFixedFunction)
+        return ((uint16)CY_GET_REG16(Motor_PWM_PERIOD_LSB_PTR));
     #else
-        return (CY_GET_REG16(PWM_1_PERIOD_LSB_PTR));
-    #endif /* (PWM_1_UsingFixedFunction) */
+        return (CY_GET_REG16(Motor_PWM_PERIOD_LSB_PTR));
+    #endif /* (Motor_PWM_UsingFixedFunction) */
 }
 
-#if ( PWM_1_KillModeMinTime)
+#if ( Motor_PWM_KillModeMinTime)
 
 
     /*******************************************************************************
-    * Function Name: PWM_1_WriteKillTime
+    * Function Name: Motor_PWM_WriteKillTime
     ********************************************************************************
     *
     * Summary:
@@ -908,14 +908,14 @@ uint16 PWM_1_ReadPeriod(void)
     *  None
     *
     *******************************************************************************/
-    void PWM_1_WriteKillTime(uint8 killtime) 
+    void Motor_PWM_WriteKillTime(uint8 killtime) 
     {
-        CY_SET_REG8(PWM_1_KILLMODEMINTIME_PTR, killtime);
+        CY_SET_REG8(Motor_PWM_KILLMODEMINTIME_PTR, killtime);
     }
 
 
     /*******************************************************************************
-    * Function Name: PWM_1_ReadKillTime
+    * Function Name: Motor_PWM_ReadKillTime
     ********************************************************************************
     *
     * Summary:
@@ -929,11 +929,11 @@ uint16 PWM_1_ReadPeriod(void)
     *  uint8: The current Minimum Time kill counts
     *
     *******************************************************************************/
-    uint8 PWM_1_ReadKillTime(void) 
+    uint8 Motor_PWM_ReadKillTime(void) 
     {
-        return (CY_GET_REG8(PWM_1_KILLMODEMINTIME_PTR));
+        return (CY_GET_REG8(Motor_PWM_KILLMODEMINTIME_PTR));
     }
 
-#endif /* ( PWM_1_KillModeMinTime) */
+#endif /* ( Motor_PWM_KillModeMinTime) */
 
 /* [] END OF FILE */

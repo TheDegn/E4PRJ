@@ -496,7 +496,7 @@
       </registers>
     </peripheral>
     <peripheral>
-      <name>PWM_1</name>
+      <name>Motor_PWM</name>
       <description>No description available</description>
       <baseAddress>0x0</baseAddress>
       <addressBlock>
@@ -506,7 +506,7 @@
       </addressBlock>
       <registers>
         <register>
-          <name>PWM_1_COMPARE_1</name>
+          <name>Motor_PWM_COMPARE_1</name>
           <description>UDB.D0 - Assigned Compare1 Value</description>
           <addressOffset>0x4000642E</addressOffset>
           <size>16</size>
@@ -515,7 +515,7 @@
           <resetMask>0</resetMask>
         </register>
         <register>
-          <name>PWM_1_COMPARE_2</name>
+          <name>Motor_PWM_COMPARE_2</name>
           <description>UDB.D1 - Assigned Compare2 Value</description>
           <addressOffset>0x4000643E</addressOffset>
           <size>16</size>
@@ -524,7 +524,7 @@
           <resetMask>0</resetMask>
         </register>
         <register>
-          <name>PWM_1_Control_Reg</name>
+          <name>Motor_PWM_Control_Reg</name>
           <description>UDB Control Register - Assigned Control Register Value</description>
           <addressOffset>0x4000647E</addressOffset>
           <size>8</size>
@@ -556,7 +556,7 @@
           </fields>
         </register>
         <register>
-          <name>PWM_1_STATUS_MASK</name>
+          <name>Motor_PWM_STATUS_MASK</name>
           <description>UDB Status bits Interrupt Mask Enable Register</description>
           <addressOffset>0x4000648F</addressOffset>
           <size>8</size>
@@ -602,7 +602,7 @@
           </fields>
         </register>
         <register>
-          <name>PWM_1_STATUS_AUX_CTRLDP0</name>
+          <name>Motor_PWM_STATUS_AUX_CTRLDP0</name>
           <description>UDB Auxilliary Control Register</description>
           <addressOffset>0x4000649E</addressOffset>
           <size>8</size>
@@ -727,7 +727,7 @@
           </fields>
         </register>
         <register>
-          <name>PWM_1_STATUS_AUX_CTRLDP1</name>
+          <name>Motor_PWM_STATUS_AUX_CTRLDP1</name>
           <description>UDB Auxilliary Control Register</description>
           <addressOffset>0x4000649F</addressOffset>
           <size>8</size>

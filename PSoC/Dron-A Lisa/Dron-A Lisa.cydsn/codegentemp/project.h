@@ -19,7 +19,7 @@
 #include "cydevice_trm.h"
 #include "cyfitter.h"
 #include "cydisabledsheets.h"
-#include "PWM_1.h"
+#include "Motor_PWM.h"
 #include "Clock_1.h"
 #include "Motor_1_aliases.h"
 #include "Motor_1.h"
