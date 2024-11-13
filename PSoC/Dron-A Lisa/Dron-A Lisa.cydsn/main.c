@@ -34,24 +34,24 @@ int main(void)
     CyGlobalIntEnable; /* Enable global interrupts. */
 
     UART_1_Start();
-    /*Motor_Init();
+    Motor_Init();
     CyDelay(5000);
-    setspeed(1,210);
-    setspeed(2,240);
-    CyDelay(2000);*/
+    setspeed(1,200);
+    setspeed(2,170);
+    CyDelay(2000);
     
-    //isr_pid_StartEx(PID_HANDLER);
+    isr_pid_StartEx(PID_HANDLER);
     
     //sensor
-    char buff[256];
+    /*char buff[256];
     
     startCounter();
     startBurst();
     initSensor();
-    
+    */
     for(;;)
     {
-        if (newCountFlag == 1)
+        /*if (newCountFlag == 1)
         {
             //time = calcTime(count);
             //avg = average(count);
@@ -60,15 +60,16 @@ int main(void)
             UART_1_PutString(buff);
             newCountFlag = 0;
         }
+        */
     }
 }
  float counter = 0;
 CY_ISR(PID_HANDLER)
 {
     
-    float test = sinFunc(0.001,counter++);
+    float test = sinFunc(0.1,counter++);
     sprintf(outputBuffer, "%f \r\n", test);
-    tfTest(test,210,240);
+    tfTest(test,200,170);
     // output = PIDUpdate(setpoint, measurement, &proportional, &integral, &derivative);
     //to motor somehow
 }

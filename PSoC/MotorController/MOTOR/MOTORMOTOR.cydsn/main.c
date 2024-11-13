@@ -48,32 +48,44 @@ void handleByteReceived(uint8_t byteReceived)
 {
     switch (byteReceived)
     {
-    case 'q':
-        setspeed(1, 230);
-        break;
-    case 'w':
-        setspeed(1, 240);
-        break;
     case '1':
-        setspeed(1, 235);
+        setspeed(1, 170);
         break;
     case '2':
-        setspeed(1, 250);
+        setspeed(1, 180);
+        break;
+    case '3':
+        setspeed(1, 190);
+        break;
+    case '4':
+        setspeed(1, 200);
         break;
     case '0':
         stop(); // Stop both motors
         break;
     case 'z':
-        setspeed(0, 200);
+        setspeed(0, 170);
         break;
     case 'x':
-        setspeed(0, 210);
+        setspeed(0, 100);
         break;
     case 'c':
-        setspeed(0, 220);
+        setspeed(0, 500);
         break;
     case 'v':
-        setspeed(0, 215);
+        setspeed(0, 600);
+        break;
+    case 'b':
+        setspeed(0,700);
+        break;
+    case 'n':
+        setspeed(0,800);
+        break;
+    case 'm':
+        setspeed(0,900);
+        break;
+    case 'l':
+        setspeed(0,1000);
         break;
     default:
         // Do nothing for unrecognized commands
