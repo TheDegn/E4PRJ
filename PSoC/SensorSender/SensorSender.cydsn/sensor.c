@@ -38,11 +38,9 @@ double calcAngle(long count)
 CY_ISR(sensor_isr_handler)
 {
     count = Counter_Sensor_ReadCounter();
-    stopBurst();
+    //stopBurst();
     Counter_Sensor_Stop();
     newCountFlag = 1;
-    startCounter();
-    startBurst();
 }
 
 /* could be
