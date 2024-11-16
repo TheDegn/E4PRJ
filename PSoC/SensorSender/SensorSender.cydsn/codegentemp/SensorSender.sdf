@@ -1,6 +1,6 @@
 (DELAYFILE
  (SDFVERSION "IEEE 1497 4.0")
- (DATE "2024-11-13T15:05:19Z")
+ (DATE "2024-11-16T12:49:10Z")
  (DESIGN "SensorSender")
  (VENDOR "Cypress Semiconductor")
  (PROGRAM "PSoC Creator")
@@ -36,7 +36,7 @@
     (INTERCONNECT ClockBlock.dclk_glb_3 \\PWM_1\:PWMUDB\:status_1\\.clock_0 (0.000:0.000:0.000))
     (INTERCONNECT Net_24.q Pin_1\(0\).pin_input (6.536:6.536:6.536))
     (INTERCONNECT Net_25.q Pin_2\(0\).pin_input (6.649:6.649:6.649))
-    (INTERCONNECT Sensor_Input\(0\).fb sensor_input_isr.interrupt (7.594:7.594:7.594))
+    (INTERCONNECT Sensor_Input\(0\).fb sensor_input_isr.interrupt (5.597:5.597:5.597))
     (INTERCONNECT ClockBlock.dclk_glb_0 \\Counter_Sensor\:CounterUDB\:count_stored_i\\.clock_0 (0.000:0.000:0.000))
     (INTERCONNECT ClockBlock.dclk_glb_0 \\Counter_Sensor\:CounterUDB\:overflow_reg_i\\.clock_0 (0.000:0.000:0.000))
     (INTERCONNECT ClockBlock.dclk_glb_0 \\Counter_Sensor\:CounterUDB\:prevCompare\\.clock_0 (0.000:0.000:0.000))

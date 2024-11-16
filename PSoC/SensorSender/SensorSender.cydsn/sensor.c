@@ -3,7 +3,9 @@
 CY_ISR_PROTO(sensor_isr_handler);
 long count = 0;
 int newCountFlag = 0;
+
 #define countFreq 12.f //MHz count input
+
 
 void initSensor()
 {
@@ -25,12 +27,12 @@ void startCounter()
     Counter_Sensor_WriteCounter(0);
     Counter_Sensor_Start();
 }
-double calcTime(double count)
+float calcTime(long count)
 {
     return count / countFreq;
 }
 
-double calcAngle(long count)
+float calcAngle(long count)
 {
     return ((count * 0.00574795) - 64.70355264);
 }

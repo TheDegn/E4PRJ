@@ -7,8 +7,9 @@ extern long count;
 double time;
 double angle;
 //long avg = 0;
-float average(float new_value);
-#define WINDOW_SIZE 50    // Antallet af værdier i glidende gennemsnit
+float FIRMovingAverage(float new_value);
+float IIRFilter(float new_value);
+#define WINDOW_SIZE 5    // Antallet af værdier i glidende gennemsnit
 
 int main(void)
 {
@@ -18,28 +19,34 @@ int main(void)
     initSensor();
     char buff[256];
     
-    //startCounter();
-    //startBurst();
+    /*startCounter();
+    startBurst();*/
     for(;;)
     {
         startBurst();
-        CyDelay(100);
+        //startCounter();
+        CyDelay(50);
         stopBurst();
-        CyDelay(100);
+        //sprintf(buff, "%li    \r\n", count);
+        //UART_1_PutString(buff);
+        CyDelay(50);
     
 
         if (newCountFlag == 1)
         {
             //time = calcTime(count);
-            //avg = average(count);
             
             newCountFlag = 0;
-            //angle = calcAngle(count);
-            sprintf(buff, "%li    \r\n", count);
+            
+            //count = FIRMovingAverage(count);
+            count = IIRFilter(count);
+            angle = calcAngle(count);
+            sprintf(buff, "%.2f    \r\n", angle);
             UART_1_PutString(buff);
             startCounter();
             //startBurst();
         }
+        
         /*startCounter();
         startBurst();
         while (!Sensor_Input_Read())
@@ -61,7 +68,7 @@ int main(void)
     }
 }
 
-float average(float new_value) {
+float FIRMovingAverage(float new_value) {
     
     static float values[WINDOW_SIZE] = {0};  // Array til at gemme de seneste 20 værdier
     static int index = 0;                  // Index for den aktuelle position i arrayet
@@ -85,4 +92,17 @@ float average(float new_value) {
 
     // Returner gennemsnittet
     return sum / count;
+}
+
+float IIRFilter(float new_value) {
+    static float previous_output = 0;  // Gemmer det forrige output
+    const float alpha = 0.1;          // Justerbar vægtning, mellem 0 og 1
+
+    // Beregn det nye output baseret på nuværende input og tidligere output
+    float output = alpha * new_value + (1 - alpha) * previous_output;
+
+    // Opdater det forrige output
+    previous_output = output;
+
+    return output;
 }

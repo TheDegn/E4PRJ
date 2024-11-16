@@ -11662,38 +11662,38 @@ ARM GAS  Generated_Source\PSoC5\CyBootAsmGnu.s 			page 1
  347              	.set Clock_3__PM_STBY_MSK, 0x02
  348              	
  349              	/* Sensor_Input */
- 350              	.set Sensor_Input__0__INTTYPE, CYREG_PICU2_INTTYPE2
- 351              	.set Sensor_Input__0__MASK, 0x04
- 352              	.set Sensor_Input__0__PC, CYREG_PRT2_PC2
- 353              	.set Sensor_Input__0__PORT, 2
- 354              	.set Sensor_Input__0__SHIFT, 2
- 355              	.set Sensor_Input__AG, CYREG_PRT2_AG
- 356              	.set Sensor_Input__AMUX, CYREG_PRT2_AMUX
- 357              	.set Sensor_Input__BIE, CYREG_PRT2_BIE
- 358              	.set Sensor_Input__BIT_MASK, CYREG_PRT2_BIT_MASK
- 359              	.set Sensor_Input__BYP, CYREG_PRT2_BYP
- 360              	.set Sensor_Input__CTL, CYREG_PRT2_CTL
- 361              	.set Sensor_Input__DM0, CYREG_PRT2_DM0
- 362              	.set Sensor_Input__DM1, CYREG_PRT2_DM1
- 363              	.set Sensor_Input__DM2, CYREG_PRT2_DM2
- 364              	.set Sensor_Input__DR, CYREG_PRT2_DR
- 365              	.set Sensor_Input__INP_DIS, CYREG_PRT2_INP_DIS
- 366              	.set Sensor_Input__INTTYPE_BASE, CYDEV_PICU_INTTYPE_PICU2_BASE
- 367              	.set Sensor_Input__LCD_COM_SEG, CYREG_PRT2_LCD_COM_SEG
- 368              	.set Sensor_Input__LCD_EN, CYREG_PRT2_LCD_EN
- 369              	.set Sensor_Input__MASK, 0x04
- 370              	.set Sensor_Input__PORT, 2
- 371              	.set Sensor_Input__PRT, CYREG_PRT2_PRT
- 372              	.set Sensor_Input__PRTDSI__CAPS_SEL, CYREG_PRT2_CAPS_SEL
- 373              	.set Sensor_Input__PRTDSI__DBL_SYNC_IN, CYREG_PRT2_DBL_SYNC_IN
- 374              	.set Sensor_Input__PRTDSI__OE_SEL0, CYREG_PRT2_OE_SEL0
- 375              	.set Sensor_Input__PRTDSI__OE_SEL1, CYREG_PRT2_OE_SEL1
- 376              	.set Sensor_Input__PRTDSI__OUT_SEL0, CYREG_PRT2_OUT_SEL0
- 377              	.set Sensor_Input__PRTDSI__OUT_SEL1, CYREG_PRT2_OUT_SEL1
- 378              	.set Sensor_Input__PRTDSI__SYNC_OUT, CYREG_PRT2_SYNC_OUT
- 379              	.set Sensor_Input__PS, CYREG_PRT2_PS
- 380              	.set Sensor_Input__SHIFT, 2
- 381              	.set Sensor_Input__SLW, CYREG_PRT2_SLW
+ 350              	.set Sensor_Input__0__INTTYPE, CYREG_PICU3_INTTYPE0
+ 351              	.set Sensor_Input__0__MASK, 0x01
+ 352              	.set Sensor_Input__0__PC, CYREG_PRT3_PC0
+ 353              	.set Sensor_Input__0__PORT, 3
+ 354              	.set Sensor_Input__0__SHIFT, 0
+ 355              	.set Sensor_Input__AG, CYREG_PRT3_AG
+ 356              	.set Sensor_Input__AMUX, CYREG_PRT3_AMUX
+ 357              	.set Sensor_Input__BIE, CYREG_PRT3_BIE
+ 358              	.set Sensor_Input__BIT_MASK, CYREG_PRT3_BIT_MASK
+ 359              	.set Sensor_Input__BYP, CYREG_PRT3_BYP
+ 360              	.set Sensor_Input__CTL, CYREG_PRT3_CTL
+ 361              	.set Sensor_Input__DM0, CYREG_PRT3_DM0
+ 362              	.set Sensor_Input__DM1, CYREG_PRT3_DM1
+ 363              	.set Sensor_Input__DM2, CYREG_PRT3_DM2
+ 364              	.set Sensor_Input__DR, CYREG_PRT3_DR
+ 365              	.set Sensor_Input__INP_DIS, CYREG_PRT3_INP_DIS
+ 366              	.set Sensor_Input__INTTYPE_BASE, CYDEV_PICU_INTTYPE_PICU3_BASE
+ 367              	.set Sensor_Input__LCD_COM_SEG, CYREG_PRT3_LCD_COM_SEG
+ 368              	.set Sensor_Input__LCD_EN, CYREG_PRT3_LCD_EN
+ 369              	.set Sensor_Input__MASK, 0x01
+ 370              	.set Sensor_Input__PORT, 3
+ 371              	.set Sensor_Input__PRT, CYREG_PRT3_PRT
+ 372              	.set Sensor_Input__PRTDSI__CAPS_SEL, CYREG_PRT3_CAPS_SEL
+ 373              	.set Sensor_Input__PRTDSI__DBL_SYNC_IN, CYREG_PRT3_DBL_SYNC_IN
+ 374              	.set Sensor_Input__PRTDSI__OE_SEL0, CYREG_PRT3_OE_SEL0
+ 375              	.set Sensor_Input__PRTDSI__OE_SEL1, CYREG_PRT3_OE_SEL1
+ 376              	.set Sensor_Input__PRTDSI__OUT_SEL0, CYREG_PRT3_OUT_SEL0
+ 377              	.set Sensor_Input__PRTDSI__OUT_SEL1, CYREG_PRT3_OUT_SEL1
+ 378              	.set Sensor_Input__PRTDSI__SYNC_OUT, CYREG_PRT3_SYNC_OUT
+ 379              	.set Sensor_Input__PS, CYREG_PRT3_PS
+ 380              	.set Sensor_Input__SHIFT, 0
+ 381              	.set Sensor_Input__SLW, CYREG_PRT3_SLW
  382              	
  383              	/* Counter_Sensor */
  384              	.set Counter_Sensor_CounterUDB_sC32_counterdp_u0__16BIT_A0_REG, CYREG_B0_UDB08_09_A0
