@@ -43,31 +43,35 @@ int main(void)
     isr_pid_StartEx(PID_HANDLER);
     
     //sensor
-    /*char buff[256];
-    
-    startCounter();
-    startBurst();
+    char buff[256];
     initSensor();
-    */
+    
     for(;;)
     {
-        /*if (newCountFlag == 1)
+        startBurst();
+        CyDelay(50);
+        stopBurst();
+        CyDelay(50);
+        if (newCountFlag == 1)
         {
-            //time = calcTime(count);
-            //avg = average(count);
-            angle = calcAngle(count);
-            sprintf(buff, "%.2f grader   \r\n", angle);
-            UART_1_PutString(buff);
             newCountFlag = 0;
+            
+            count = IIRFilter(count);
+            angle = calcAngle(count);
+            
+            sprintf(buff, " %.2f  \r\n", angle);
+            UART_1_PutString(buff);
+            
+            startCounter();
         }
-        */
+        
     }
 }
  float counter = 0;
 CY_ISR(PID_HANDLER)
 {
     
-    float test = sinFunc(0.1,counter++);
+    float test = sinFunc(0.1,(counter++ * (1/333)));
     sprintf(outputBuffer, "%f \r\n", test);
     tfTest(test,200,170);
     // output = PIDUpdate(setpoint, measurement, &proportional, &integral, &derivative);
