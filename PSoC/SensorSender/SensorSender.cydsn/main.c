@@ -41,7 +41,7 @@ int main(void)
             //count = FIRMovingAverage(count);
             count = IIRFilter(count);
             angle = calcAngle(count);
-            sprintf(buff, "%.2f    \r\n", angle);
+            sprintf(buff, " %.2f  \r\n", angle);
             UART_1_PutString(buff);
             startCounter();
             //startBurst();
@@ -96,7 +96,7 @@ float FIRMovingAverage(float new_value) {
 
 float IIRFilter(float new_value) {
     static float previous_output = 0;  // Gemmer det forrige output
-    const float alpha = 0.1;          // Justerbar vægtning, mellem 0 og 1
+    const float alpha = 0.2;          // Justerbar vægtning, mellem 0 og 1
 
     // Beregn det nye output baseret på nuværende input og tidligere output
     float output = alpha * new_value + (1 - alpha) * previous_output;

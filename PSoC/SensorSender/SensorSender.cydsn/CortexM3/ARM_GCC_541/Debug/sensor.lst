@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\degn\AppData\Local\Temp\ccuksrgP.s 			page 1
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGorEGu.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\degn\AppData\Local\Temp\ccuksrgP.s 			page 1
   28:sensor.c      ****     Counter_Sensor_Start();
   29:sensor.c      **** }
   30:sensor.c      **** float calcTime(long count)
-ARM GAS  C:\Users\degn\AppData\Local\Temp\ccuksrgP.s 			page 2
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGorEGu.s 			page 2
 
 
   31:sensor.c      **** {
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\degn\AppData\Local\Temp\ccuksrgP.s 			page 1
   66              		@ frame_needed = 0, uses_anonymous_args = 0
   67 0000 08B5     		push	{r3, lr}
   68              		.cfi_def_cfa_offset 8
-ARM GAS  C:\Users\degn\AppData\Local\Temp\ccuksrgP.s 			page 3
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGorEGu.s 			page 3
 
 
   69              		.cfi_offset 3, -8
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\degn\AppData\Local\Temp\ccuksrgP.s 			page 1
  119              		.cfi_def_cfa_offset 8
  120              		.cfi_offset 3, -8
  121              		.cfi_offset 14, -4
-ARM GAS  C:\Users\degn\AppData\Local\Temp\ccuksrgP.s 			page 4
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGorEGu.s 			page 4
 
 
   22:sensor.c      **** }
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\degn\AppData\Local\Temp\ccuksrgP.s 			page 1
  171 0000 08B5     		push	{r3, lr}
  172              		.cfi_def_cfa_offset 8
  173              		.cfi_offset 3, -8
-ARM GAS  C:\Users\degn\AppData\Local\Temp\ccuksrgP.s 			page 5
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGorEGu.s 			page 5
 
 
  174              		.cfi_offset 14, -4
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\degn\AppData\Local\Temp\ccuksrgP.s 			page 1
   38:sensor.c      **** 
  224              		.loc 1 38 0
  225 001e 08BD     		pop	{r3, pc}
-ARM GAS  C:\Users\degn\AppData\Local\Temp\ccuksrgP.s 			page 6
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGorEGu.s 			page 6
 
 
  226              	.L22:
@@ -339,32 +339,32 @@ ARM GAS  C:\Users\degn\AppData\Local\Temp\ccuksrgP.s 			page 1
  261 0006 00000000 		.4byte	.Ldebug_abbrev0
  262 000a 04       		.byte	0x4
  263 000b 01       		.uleb128 0x1
- 264 000c B2000000 		.4byte	.LASF32
+ 264 000c 54000000 		.4byte	.LASF32
  265 0010 0C       		.byte	0xc
- 266 0011 DF010000 		.4byte	.LASF33
- 267 0015 0A000000 		.4byte	.LASF34
+ 266 0011 EA010000 		.4byte	.LASF33
+ 267 0015 81010000 		.4byte	.LASF34
  268 0019 00000000 		.4byte	.Ldebug_ranges0+0
  269 001d 00000000 		.4byte	0
  270 0021 00000000 		.4byte	.Ldebug_line0
  271 0025 02       		.uleb128 0x2
  272 0026 01       		.byte	0x1
  273 0027 06       		.byte	0x6
- 274 0028 93020000 		.4byte	.LASF0
+ 274 0028 9E020000 		.4byte	.LASF0
  275 002c 02       		.uleb128 0x2
  276 002d 01       		.byte	0x1
  277 002e 08       		.byte	0x8
- 278 002f 8F010000 		.4byte	.LASF1
+ 278 002f 31010000 		.4byte	.LASF1
  279 0033 02       		.uleb128 0x2
  280 0034 02       		.byte	0x2
  281 0035 05       		.byte	0x5
- 282 0036 27020000 		.4byte	.LASF2
-ARM GAS  C:\Users\degn\AppData\Local\Temp\ccuksrgP.s 			page 7
+ 282 0036 32020000 		.4byte	.LASF2
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGorEGu.s 			page 7
 
 
  283 003a 02       		.uleb128 0x2
  284 003b 02       		.byte	0x2
  285 003c 07       		.byte	0x7
- 286 003d 9F020000 		.4byte	.LASF3
+ 286 003d 0A000000 		.4byte	.LASF3
  287 0041 03       		.uleb128 0x3
  288 0042 00000000 		.4byte	.LASF9
  289 0046 02       		.byte	0x2
@@ -373,19 +373,19 @@ ARM GAS  C:\Users\degn\AppData\Local\Temp\ccuksrgP.s 			page 1
  292 004c 02       		.uleb128 0x2
  293 004d 04       		.byte	0x4
  294 004e 05       		.byte	0x5
- 295 004f 62020000 		.4byte	.LASF4
+ 295 004f 6D020000 		.4byte	.LASF4
  296 0053 02       		.uleb128 0x2
  297 0054 04       		.byte	0x4
  298 0055 07       		.byte	0x7
- 299 0056 40010000 		.4byte	.LASF5
+ 299 0056 E2000000 		.4byte	.LASF5
  300 005a 02       		.uleb128 0x2
  301 005b 08       		.byte	0x8
  302 005c 05       		.byte	0x5
- 303 005d 0E020000 		.4byte	.LASF6
+ 303 005d 19020000 		.4byte	.LASF6
  304 0061 02       		.uleb128 0x2
  305 0062 08       		.byte	0x8
  306 0063 07       		.byte	0x7
- 307 0064 BE010000 		.4byte	.LASF7
+ 307 0064 60010000 		.4byte	.LASF7
  308 0068 04       		.uleb128 0x4
  309 0069 04       		.byte	0x4
  310 006a 05       		.byte	0x5
@@ -393,37 +393,37 @@ ARM GAS  C:\Users\degn\AppData\Local\Temp\ccuksrgP.s 			page 1
  312 006f 02       		.uleb128 0x2
  313 0070 04       		.byte	0x4
  314 0071 07       		.byte	0x7
- 315 0072 B1010000 		.4byte	.LASF8
+ 315 0072 53010000 		.4byte	.LASF8
  316 0076 03       		.uleb128 0x3
- 317 0077 FD010000 		.4byte	.LASF10
+ 317 0077 08020000 		.4byte	.LASF10
  318 007b 03       		.byte	0x3
  319 007c 2C       		.byte	0x2c
  320 007d 41000000 		.4byte	0x41
  321 0081 02       		.uleb128 0x2
  322 0082 04       		.byte	0x4
  323 0083 04       		.byte	0x4
- 324 0084 99000000 		.4byte	.LASF11
+ 324 0084 3B000000 		.4byte	.LASF11
  325 0088 02       		.uleb128 0x2
  326 0089 08       		.byte	0x8
  327 008a 04       		.byte	0x4
- 328 008b 9D010000 		.4byte	.LASF12
+ 328 008b 3F010000 		.4byte	.LASF12
  329 008f 02       		.uleb128 0x2
  330 0090 01       		.byte	0x1
  331 0091 08       		.byte	0x8
- 332 0092 1C020000 		.4byte	.LASF13
+ 332 0092 27020000 		.4byte	.LASF13
  333 0096 02       		.uleb128 0x2
  334 0097 08       		.byte	0x8
  335 0098 04       		.byte	0x4
- 336 0099 87020000 		.4byte	.LASF14
+ 336 0099 92020000 		.4byte	.LASF14
  337 009d 02       		.uleb128 0x2
  338 009e 04       		.byte	0x4
  339 009f 07       		.byte	0x7
-ARM GAS  C:\Users\degn\AppData\Local\Temp\ccuksrgP.s 			page 8
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGorEGu.s 			page 8
 
 
- 340 00a0 05020000 		.4byte	.LASF15
+ 340 00a0 10020000 		.4byte	.LASF15
  341 00a4 05       		.uleb128 0x5
- 342 00a5 9F000000 		.4byte	.LASF35
+ 342 00a5 41000000 		.4byte	.LASF35
  343 00a9 01       		.byte	0x1
  344 00aa 28       		.byte	0x28
  345 00ab 00000000 		.4byte	.LFB69
@@ -439,7 +439,7 @@ ARM GAS  C:\Users\degn\AppData\Local\Temp\ccuksrgP.s 			page 1
  355 00c7 F5010000 		.4byte	0x1f5
  356 00cb 00       		.byte	0
  357 00cc 07       		.uleb128 0x7
- 358 00cd 84010000 		.4byte	.LASF16
+ 358 00cd 26010000 		.4byte	.LASF16
  359 00d1 01       		.byte	0x1
  360 00d2 0A       		.byte	0xa
  361 00d3 00000000 		.4byte	.LFB63
@@ -459,7 +459,7 @@ ARM GAS  C:\Users\degn\AppData\Local\Temp\ccuksrgP.s 			page 1
  375 00f3 00       		.byte	0
  376 00f4 00       		.byte	0
  377 00f5 07       		.uleb128 0x7
- 378 00f6 4C020000 		.4byte	.LASF17
+ 378 00f6 57020000 		.4byte	.LASF17
  379 00fa 01       		.byte	0x1
  380 00fb 0F       		.byte	0xf
  381 00fc 00000000 		.4byte	.LFB64
@@ -472,13 +472,13 @@ ARM GAS  C:\Users\degn\AppData\Local\Temp\ccuksrgP.s 			page 1
  388 010f 0B020000 		.4byte	0x20b
  389 0113 00       		.byte	0
  390 0114 07       		.uleb128 0x7
- 391 0115 D5010000 		.4byte	.LASF18
+ 391 0115 77010000 		.4byte	.LASF18
  392 0119 01       		.byte	0x1
  393 011a 14       		.byte	0x14
  394 011b 00000000 		.4byte	.LFB65
  395 011f 08000000 		.4byte	.LFE65-.LFB65
  396 0123 01       		.uleb128 0x1
-ARM GAS  C:\Users\degn\AppData\Local\Temp\ccuksrgP.s 			page 9
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGorEGu.s 			page 9
 
 
  397 0124 9C       		.byte	0x9c
@@ -488,7 +488,7 @@ ARM GAS  C:\Users\degn\AppData\Local\Temp\ccuksrgP.s 			page 1
  401 012e 16020000 		.4byte	0x216
  402 0132 00       		.byte	0
  403 0133 07       		.uleb128 0x7
- 404 0134 A4010000 		.4byte	.LASF19
+ 404 0134 46010000 		.4byte	.LASF19
  405 0138 01       		.byte	0x1
  406 0139 19       		.byte	0x19
  407 013a 00000000 		.4byte	.LFB66
@@ -511,7 +511,7 @@ ARM GAS  C:\Users\degn\AppData\Local\Temp\ccuksrgP.s 			page 1
  424 0160 2C020000 		.4byte	0x22c
  425 0164 00       		.byte	0
  426 0165 0B       		.uleb128 0xb
- 427 0166 BF020000 		.4byte	.LASF20
+ 427 0166 B7020000 		.4byte	.LASF20
  428 016a 01       		.byte	0x1
  429 016b 1E       		.byte	0x1e
  430 016c 81000000 		.4byte	0x81
@@ -521,14 +521,14 @@ ARM GAS  C:\Users\degn\AppData\Local\Temp\ccuksrgP.s 			page 1
  434 0179 9C       		.byte	0x9c
  435 017a 8E010000 		.4byte	0x18e
  436 017e 0C       		.uleb128 0xc
- 437 017f 21020000 		.4byte	.LASF22
+ 437 017f 2C020000 		.4byte	.LASF22
  438 0183 01       		.byte	0x1
  439 0184 1E       		.byte	0x1e
  440 0185 4C000000 		.4byte	0x4c
  441 0189 00000000 		.4byte	.LLST0
  442 018d 00       		.byte	0
  443 018e 0B       		.uleb128 0xb
- 444 018f 8F000000 		.4byte	.LASF21
+ 444 018f 31000000 		.4byte	.LASF21
  445 0193 01       		.byte	0x1
  446 0194 23       		.byte	0x23
  447 0195 81000000 		.4byte	0x81
@@ -538,24 +538,24 @@ ARM GAS  C:\Users\degn\AppData\Local\Temp\ccuksrgP.s 			page 1
  451 01a2 9C       		.byte	0x9c
  452 01a3 B7010000 		.4byte	0x1b7
  453 01a7 0C       		.uleb128 0xc
-ARM GAS  C:\Users\degn\AppData\Local\Temp\ccuksrgP.s 			page 10
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGorEGu.s 			page 10
 
 
- 454 01a8 21020000 		.4byte	.LASF22
+ 454 01a8 2C020000 		.4byte	.LASF22
  455 01ac 01       		.byte	0x1
  456 01ad 23       		.byte	0x23
  457 01ae 4C000000 		.4byte	0x4c
  458 01b2 21000000 		.4byte	.LLST1
  459 01b6 00       		.byte	0
  460 01b7 0D       		.uleb128 0xd
- 461 01b8 77010000 		.4byte	.LASF23
+ 461 01b8 19010000 		.4byte	.LASF23
  462 01bc 04       		.byte	0x4
  463 01bd 1207     		.2byte	0x712
  464 01bf C3010000 		.4byte	0x1c3
  465 01c3 0E       		.uleb128 0xe
  466 01c4 76000000 		.4byte	0x76
  467 01c8 0F       		.uleb128 0xf
- 468 01c9 21020000 		.4byte	.LASF22
+ 468 01c9 2C020000 		.4byte	.LASF22
  469 01cd 01       		.byte	0x1
  470 01ce 04       		.byte	0x4
  471 01cf 4C000000 		.4byte	0x4c
@@ -563,7 +563,7 @@ ARM GAS  C:\Users\degn\AppData\Local\Temp\ccuksrgP.s 			page 1
  473 01d4 03       		.byte	0x3
  474 01d5 00000000 		.4byte	count
  475 01d9 0F       		.uleb128 0xf
- 476 01da B2020000 		.4byte	.LASF24
+ 476 01da AA020000 		.4byte	.LASF24
  477 01de 01       		.byte	0x1
  478 01df 05       		.byte	0x5
  479 01e0 68000000 		.4byte	0x68
@@ -571,41 +571,41 @@ ARM GAS  C:\Users\degn\AppData\Local\Temp\ccuksrgP.s 			page 1
  481 01e5 03       		.byte	0x3
  482 01e6 00000000 		.4byte	newCountFlag
  483 01ea 10       		.uleb128 0x10
- 484 01eb 31020000 		.4byte	.LASF25
- 485 01ef 31020000 		.4byte	.LASF25
+ 484 01eb 3C020000 		.4byte	.LASF25
+ 485 01ef 3C020000 		.4byte	.LASF25
  486 01f3 05       		.byte	0x5
  487 01f4 5D       		.byte	0x5d
  488 01f5 10       		.uleb128 0x10
- 489 01f6 7B000000 		.4byte	.LASF26
- 490 01fa 7B000000 		.4byte	.LASF26
+ 489 01f6 1D000000 		.4byte	.LASF26
+ 490 01fa 1D000000 		.4byte	.LASF26
  491 01fe 05       		.byte	0x5
  492 01ff 50       		.byte	0x50
  493 0200 10       		.uleb128 0x10
- 494 0201 5E010000 		.4byte	.LASF27
- 495 0205 5E010000 		.4byte	.LASF27
+ 494 0201 00010000 		.4byte	.LASF27
+ 495 0205 00010000 		.4byte	.LASF27
  496 0209 06       		.byte	0x6
  497 020a 18       		.byte	0x18
  498 020b 10       		.uleb128 0x10
- 499 020c 52010000 		.4byte	.LASF28
- 500 0210 52010000 		.4byte	.LASF28
+ 499 020c F4000000 		.4byte	.LASF28
+ 500 0210 F4000000 		.4byte	.LASF28
  501 0214 07       		.byte	0x7
  502 0215 92       		.byte	0x92
  503 0216 10       		.uleb128 0x10
- 504 0217 57020000 		.4byte	.LASF29
- 505 021b 57020000 		.4byte	.LASF29
+ 504 0217 62020000 		.4byte	.LASF29
+ 505 021b 62020000 		.4byte	.LASF29
  506 021f 07       		.byte	0x7
  507 0220 93       		.byte	0x93
  508 0221 10       		.uleb128 0x10
- 509 0222 6B020000 		.4byte	.LASF30
- 510 0226 6B020000 		.4byte	.LASF30
-ARM GAS  C:\Users\degn\AppData\Local\Temp\ccuksrgP.s 			page 11
+ 509 0222 76020000 		.4byte	.LASF30
+ 510 0226 76020000 		.4byte	.LASF30
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGorEGu.s 			page 11
 
 
  511 022a 05       		.byte	0x5
  512 022b 5A       		.byte	0x5a
  513 022c 10       		.uleb128 0x10
- 514 022d E8010000 		.4byte	.LASF31
- 515 0231 E8010000 		.4byte	.LASF31
+ 514 022d F3010000 		.4byte	.LASF31
+ 515 0231 F3010000 		.4byte	.LASF31
  516 0235 05       		.byte	0x5
  517 0236 4F       		.byte	0x4f
  518 0237 00       		.byte	0
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\degn\AppData\Local\Temp\ccuksrgP.s 			page 1
  565 002c 24       		.uleb128 0x24
  566 002d 00       		.byte	0
  567 002e 0B       		.uleb128 0xb
-ARM GAS  C:\Users\degn\AppData\Local\Temp\ccuksrgP.s 			page 12
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGorEGu.s 			page 12
 
 
  568 002f 0B       		.uleb128 0xb
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\degn\AppData\Local\Temp\ccuksrgP.s 			page 1
  622 0068 12       		.uleb128 0x12
  623 0069 06       		.uleb128 0x6
  624 006a 40       		.uleb128 0x40
-ARM GAS  C:\Users\degn\AppData\Local\Temp\ccuksrgP.s 			page 13
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGorEGu.s 			page 13
 
 
  625 006b 18       		.uleb128 0x18
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\degn\AppData\Local\Temp\ccuksrgP.s 			page 1
  679 00a9 06       		.uleb128 0x6
  680 00aa 40       		.uleb128 0x40
  681 00ab 18       		.uleb128 0x18
-ARM GAS  C:\Users\degn\AppData\Local\Temp\ccuksrgP.s 			page 14
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGorEGu.s 			page 14
 
 
  682 00ac 9642     		.uleb128 0x2116
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\degn\AppData\Local\Temp\ccuksrgP.s 			page 1
  736 00e3 49       		.uleb128 0x49
  737 00e4 13       		.uleb128 0x13
  738 00e5 3F       		.uleb128 0x3f
-ARM GAS  C:\Users\degn\AppData\Local\Temp\ccuksrgP.s 			page 15
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGorEGu.s 			page 15
 
 
  739 00e6 19       		.uleb128 0x19
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\degn\AppData\Local\Temp\ccuksrgP.s 			page 1
  793 0000 4C000000 		.4byte	0x4c
  794 0004 0200     		.2byte	0x2
  795 0006 00000000 		.4byte	.Ldebug_info0
-ARM GAS  C:\Users\degn\AppData\Local\Temp\ccuksrgP.s 			page 16
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGorEGu.s 			page 16
 
 
  796 000a 04       		.byte	0x4
@@ -950,199 +950,197 @@ ARM GAS  C:\Users\degn\AppData\Local\Temp\ccuksrgP.s 			page 1
  838 0000 5F5F696E 		.ascii	"__int32_t\000"
  838      7433325F 
  838      7400
- 839              	.LASF34:
- 840 000a 433A5C55 		.ascii	"C:\\Users\\degn\\OneDrive - Aarhus universitet\\Skr"
- 840      73657273 
- 840      5C646567 
- 840      6E5C4F6E 
- 840      65447269 
- 841 0039 69766562 		.ascii	"ivebord\\AU\\E4\\PRJ4\\Git\\E4PRJ\\PSoC\\SensorSend"
- 841      6F72645C 
-ARM GAS  C:\Users\degn\AppData\Local\Temp\ccuksrgP.s 			page 17
+ 839              	.LASF3:
+ 840 000a 73686F72 		.ascii	"short unsigned int\000"
+ 840      7420756E 
+ 840      7369676E 
+ 840      65642069 
+ 840      6E7400
+ 841              	.LASF26:
+ 842 001d 436F756E 		.ascii	"Counter_Sensor_Stop\000"
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGorEGu.s 			page 17
 
 
- 841      41555C45 
- 841      345C5052 
- 841      4A345C47 
- 842 0065 65725C53 		.ascii	"er\\SensorSender.cydsn\000"
- 842      656E736F 
- 842      7253656E 
- 842      6465722E 
- 842      63796473 
- 843              	.LASF26:
- 844 007b 436F756E 		.ascii	"Counter_Sensor_Stop\000"
- 844      7465725F 
- 844      53656E73 
- 844      6F725F53 
- 844      746F7000 
- 845              	.LASF21:
- 846 008f 63616C63 		.ascii	"calcAngle\000"
- 846      416E676C 
- 846      6500
- 847              	.LASF11:
- 848 0099 666C6F61 		.ascii	"float\000"
- 848      7400
- 849              	.LASF35:
- 850 009f 73656E73 		.ascii	"sensor_isr_handler\000"
- 850      6F725F69 
- 850      73725F68 
- 850      616E646C 
- 850      657200
- 851              	.LASF32:
- 852 00b2 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
- 852      43313120 
- 852      352E342E 
- 852      31203230 
- 852      31363036 
- 853 00e5 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
- 853      20726576 
- 853      6973696F 
- 853      6E203233 
- 853      37373135 
- 854 0118 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
- 854      66756E63 
- 854      74696F6E 
- 854      2D736563 
- 854      74696F6E 
- 855              	.LASF5:
- 856 0140 6C6F6E67 		.ascii	"long unsigned int\000"
- 856      20756E73 
- 856      69676E65 
- 856      6420696E 
- 856      7400
- 857              	.LASF28:
- 858 0152 50574D5F 		.ascii	"PWM_1_Start\000"
- 858      315F5374 
- 858      61727400 
- 859              	.LASF27:
- 860 015e 73656E73 		.ascii	"sensor_input_isr_StartEx\000"
- 860      6F725F69 
- 860      6E707574 
-ARM GAS  C:\Users\degn\AppData\Local\Temp\ccuksrgP.s 			page 18
+ 842      7465725F 
+ 842      53656E73 
+ 842      6F725F53 
+ 842      746F7000 
+ 843              	.LASF21:
+ 844 0031 63616C63 		.ascii	"calcAngle\000"
+ 844      416E676C 
+ 844      6500
+ 845              	.LASF11:
+ 846 003b 666C6F61 		.ascii	"float\000"
+ 846      7400
+ 847              	.LASF35:
+ 848 0041 73656E73 		.ascii	"sensor_isr_handler\000"
+ 848      6F725F69 
+ 848      73725F68 
+ 848      616E646C 
+ 848      657200
+ 849              	.LASF32:
+ 850 0054 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 850      43313120 
+ 850      352E342E 
+ 850      31203230 
+ 850      31363036 
+ 851 0087 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 851      20726576 
+ 851      6973696F 
+ 851      6E203233 
+ 851      37373135 
+ 852 00ba 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 852      66756E63 
+ 852      74696F6E 
+ 852      2D736563 
+ 852      74696F6E 
+ 853              	.LASF5:
+ 854 00e2 6C6F6E67 		.ascii	"long unsigned int\000"
+ 854      20756E73 
+ 854      69676E65 
+ 854      6420696E 
+ 854      7400
+ 855              	.LASF28:
+ 856 00f4 50574D5F 		.ascii	"PWM_1_Start\000"
+ 856      315F5374 
+ 856      61727400 
+ 857              	.LASF27:
+ 858 0100 73656E73 		.ascii	"sensor_input_isr_StartEx\000"
+ 858      6F725F69 
+ 858      6E707574 
+ 858      5F697372 
+ 858      5F537461 
+ 859              	.LASF23:
+ 860 0119 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 860      52784275 
+ 860      66666572 
+ 860      00
+ 861              	.LASF16:
+ 862 0126 696E6974 		.ascii	"initSensor\000"
+ 862      53656E73 
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGorEGu.s 			page 18
 
 
- 860      5F697372 
- 860      5F537461 
- 861              	.LASF23:
- 862 0177 49544D5F 		.ascii	"ITM_RxBuffer\000"
- 862      52784275 
- 862      66666572 
- 862      00
- 863              	.LASF16:
- 864 0184 696E6974 		.ascii	"initSensor\000"
- 864      53656E73 
- 864      6F7200
- 865              	.LASF1:
- 866 018f 756E7369 		.ascii	"unsigned char\000"
- 866      676E6564 
- 866      20636861 
- 866      7200
- 867              	.LASF12:
- 868 019d 646F7562 		.ascii	"double\000"
- 868      6C6500
- 869              	.LASF19:
- 870 01a4 73746172 		.ascii	"startCounter\000"
- 870      74436F75 
- 870      6E746572 
+ 862      6F7200
+ 863              	.LASF1:
+ 864 0131 756E7369 		.ascii	"unsigned char\000"
+ 864      676E6564 
+ 864      20636861 
+ 864      7200
+ 865              	.LASF12:
+ 866 013f 646F7562 		.ascii	"double\000"
+ 866      6C6500
+ 867              	.LASF19:
+ 868 0146 73746172 		.ascii	"startCounter\000"
+ 868      74436F75 
+ 868      6E746572 
+ 868      00
+ 869              	.LASF8:
+ 870 0153 756E7369 		.ascii	"unsigned int\000"
+ 870      676E6564 
+ 870      20696E74 
  870      00
- 871              	.LASF8:
- 872 01b1 756E7369 		.ascii	"unsigned int\000"
- 872      676E6564 
- 872      20696E74 
- 872      00
- 873              	.LASF7:
- 874 01be 6C6F6E67 		.ascii	"long long unsigned int\000"
- 874      206C6F6E 
- 874      6720756E 
- 874      7369676E 
- 874      65642069 
- 875              	.LASF18:
- 876 01d5 73746F70 		.ascii	"stopBurst\000"
- 876      42757273 
- 876      7400
- 877              	.LASF33:
- 878 01df 73656E73 		.ascii	"sensor.c\000"
- 878      6F722E63 
- 878      00
- 879              	.LASF31:
- 880 01e8 436F756E 		.ascii	"Counter_Sensor_Start\000"
- 880      7465725F 
- 880      53656E73 
- 880      6F725F53 
- 880      74617274 
- 881              	.LASF10:
- 882 01fd 696E7433 		.ascii	"int32_t\000"
- 882      325F7400 
- 883              	.LASF15:
- 884 0205 73697A65 		.ascii	"sizetype\000"
- 884      74797065 
- 884      00
- 885              	.LASF6:
-ARM GAS  C:\Users\degn\AppData\Local\Temp\ccuksrgP.s 			page 19
+ 871              	.LASF7:
+ 872 0160 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 872      206C6F6E 
+ 872      6720756E 
+ 872      7369676E 
+ 872      65642069 
+ 873              	.LASF18:
+ 874 0177 73746F70 		.ascii	"stopBurst\000"
+ 874      42757273 
+ 874      7400
+ 875              	.LASF34:
+ 876 0181 433A5C55 		.ascii	"C:\\Users\\Jacob\\OneDrive - Aarhus universitet\\4."
+ 876      73657273 
+ 876      5C4A6163 
+ 876      6F625C4F 
+ 876      6E654472 
+ 877 01b0 2053656D 		.ascii	" Semester\\PRJ4\\E4PRJ\\PSoC\\SensorSender\\SensorS"
+ 877      65737465 
+ 877      725C5052 
+ 877      4A345C45 
+ 877      3450524A 
+ 878 01de 656E6465 		.ascii	"ender.cydsn\000"
+ 878      722E6379 
+ 878      64736E00 
+ 879              	.LASF33:
+ 880 01ea 73656E73 		.ascii	"sensor.c\000"
+ 880      6F722E63 
+ 880      00
+ 881              	.LASF31:
+ 882 01f3 436F756E 		.ascii	"Counter_Sensor_Start\000"
+ 882      7465725F 
+ 882      53656E73 
+ 882      6F725F53 
+ 882      74617274 
+ 883              	.LASF10:
+ 884 0208 696E7433 		.ascii	"int32_t\000"
+ 884      325F7400 
+ 885              	.LASF15:
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGorEGu.s 			page 19
 
 
- 886 020e 6C6F6E67 		.ascii	"long long int\000"
- 886      206C6F6E 
- 886      6720696E 
- 886      7400
- 887              	.LASF13:
- 888 021c 63686172 		.ascii	"char\000"
- 888      00
- 889              	.LASF22:
- 890 0221 636F756E 		.ascii	"count\000"
- 890      7400
- 891              	.LASF2:
- 892 0227 73686F72 		.ascii	"short int\000"
- 892      7420696E 
+ 886 0210 73697A65 		.ascii	"sizetype\000"
+ 886      74797065 
+ 886      00
+ 887              	.LASF6:
+ 888 0219 6C6F6E67 		.ascii	"long long int\000"
+ 888      206C6F6E 
+ 888      6720696E 
+ 888      7400
+ 889              	.LASF13:
+ 890 0227 63686172 		.ascii	"char\000"
+ 890      00
+ 891              	.LASF22:
+ 892 022c 636F756E 		.ascii	"count\000"
  892      7400
- 893              	.LASF25:
- 894 0231 436F756E 		.ascii	"Counter_Sensor_ReadCounter\000"
- 894      7465725F 
- 894      53656E73 
- 894      6F725F52 
- 894      65616443 
- 895              	.LASF17:
- 896 024c 73746172 		.ascii	"startBurst\000"
- 896      74427572 
- 896      737400
- 897              	.LASF29:
- 898 0257 50574D5F 		.ascii	"PWM_1_Stop\000"
- 898      315F5374 
- 898      6F7000
- 899              	.LASF4:
- 900 0262 6C6F6E67 		.ascii	"long int\000"
- 900      20696E74 
- 900      00
- 901              	.LASF30:
- 902 026b 436F756E 		.ascii	"Counter_Sensor_WriteCounter\000"
- 902      7465725F 
- 902      53656E73 
- 902      6F725F57 
- 902      72697465 
- 903              	.LASF14:
- 904 0287 6C6F6E67 		.ascii	"long double\000"
- 904      20646F75 
- 904      626C6500 
- 905              	.LASF0:
- 906 0293 7369676E 		.ascii	"signed char\000"
- 906      65642063 
- 906      68617200 
- 907              	.LASF3:
- 908 029f 73686F72 		.ascii	"short unsigned int\000"
- 908      7420756E 
- 908      7369676E 
- 908      65642069 
- 908      6E7400
+ 893              	.LASF2:
+ 894 0232 73686F72 		.ascii	"short int\000"
+ 894      7420696E 
+ 894      7400
+ 895              	.LASF25:
+ 896 023c 436F756E 		.ascii	"Counter_Sensor_ReadCounter\000"
+ 896      7465725F 
+ 896      53656E73 
+ 896      6F725F52 
+ 896      65616443 
+ 897              	.LASF17:
+ 898 0257 73746172 		.ascii	"startBurst\000"
+ 898      74427572 
+ 898      737400
+ 899              	.LASF29:
+ 900 0262 50574D5F 		.ascii	"PWM_1_Stop\000"
+ 900      315F5374 
+ 900      6F7000
+ 901              	.LASF4:
+ 902 026d 6C6F6E67 		.ascii	"long int\000"
+ 902      20696E74 
+ 902      00
+ 903              	.LASF30:
+ 904 0276 436F756E 		.ascii	"Counter_Sensor_WriteCounter\000"
+ 904      7465725F 
+ 904      53656E73 
+ 904      6F725F57 
+ 904      72697465 
+ 905              	.LASF14:
+ 906 0292 6C6F6E67 		.ascii	"long double\000"
+ 906      20646F75 
+ 906      626C6500 
+ 907              	.LASF0:
+ 908 029e 7369676E 		.ascii	"signed char\000"
+ 908      65642063 
+ 908      68617200 
  909              	.LASF24:
- 910 02b2 6E657743 		.ascii	"newCountFlag\000"
+ 910 02aa 6E657743 		.ascii	"newCountFlag\000"
  910      6F756E74 
  910      466C6167 
  910      00
-ARM GAS  C:\Users\degn\AppData\Local\Temp\ccuksrgP.s 			page 20
-
-
  911              	.LASF20:
- 912 02bf 63616C63 		.ascii	"calcTime\000"
+ 912 02b7 63616C63 		.ascii	"calcTime\000"
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGorEGu.s 			page 20
+
+
  912      54696D65 
  912      00
  913              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

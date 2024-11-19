@@ -1100,7 +1100,7 @@ END GROUP
  *(.rodata .rodata.* .gnu.linkonce.r.*)
  .rodata.str1.4
                 0x000037f0       0x18 .\CortexM3\ARM_GCC_541\Debug\main.o
-                                 0x17 (size before relaxing)
+                                 0x16 (size before relaxing)
  .rodata        0x00003808       0x42 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
  .rodata.str1.1
                 0x0000384a        0x2 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
@@ -1365,7 +1365,7 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x4bf0
+.debug_info     0x00000000     0x4be8
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x312 .\CortexM3\ARM_GCC_541\Debug\main.o
  .debug_info    0x00000312      0x238 .\CortexM3\ARM_GCC_541\Debug\sensor.o
@@ -1379,9 +1379,9 @@ END GROUP
  .debug_info    0x00003433      0x2d2 .\CortexM3\ARM_GCC_541\Debug\SensorSender.a(sensor_input_isr.o)
  .debug_info    0x00003705      0x60c .\CortexM3\ARM_GCC_541\Debug\SensorSender.a(UART_1.o)
  .debug_info    0x00003d11      0x283 .\CortexM3\ARM_GCC_541\Debug\SensorSender.a(UART_1_IntClock.o)
- .debug_info    0x00003f94       0xbf .\CortexM3\ARM_GCC_541\Debug\SensorSender.a(CyBootAsmGnu.o)
- .debug_info    0x00004053      0x64d .\CortexM3\ARM_GCC_541\Debug\SensorSender.a(CyFlash.o)
- .debug_info    0x000046a0      0x550 .\CortexM3\ARM_GCC_541\Debug\SensorSender.a(CySpc.o)
+ .debug_info    0x00003f94       0xb7 .\CortexM3\ARM_GCC_541\Debug\SensorSender.a(CyBootAsmGnu.o)
+ .debug_info    0x0000404b      0x64d .\CortexM3\ARM_GCC_541\Debug\SensorSender.a(CyFlash.o)
+ .debug_info    0x00004698      0x550 .\CortexM3\ARM_GCC_541\Debug\SensorSender.a(CySpc.o)
 
 .debug_abbrev   0x00000000     0x1458
  *(.debug_abbrev)
@@ -1459,36 +1459,36 @@ END GROUP
  .debug_frame   0x00001d90       0x5c c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-reent.o)
  .debug_frame   0x00001dec       0x20 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-msizer.o)
 
-.debug_str      0x00000000     0x1dba
+.debug_str      0x00000000     0x1db2
  *(.debug_str)
- .debug_str     0x00000000      0x25d .\CortexM3\ARM_GCC_541\Debug\main.o
-                                0x2ac (size before relaxing)
- .debug_str     0x0000025d       0xb5 .\CortexM3\ARM_GCC_541\Debug\sensor.o
-                                0x2c8 (size before relaxing)
- .debug_str     0x00000312      0x1b0 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
-                                0x373 (size before relaxing)
- .debug_str     0x000004c2       0x7f .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
-                                0x213 (size before relaxing)
- .debug_str     0x00000541      0x144 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
-                                0x339 (size before relaxing)
- .debug_str     0x00000685      0x1dd .\CortexM3\ARM_GCC_541\Debug\SensorSender.a(PWM_1.o)
-                                0x3a9 (size before relaxing)
- .debug_str     0x00000862      0x810 .\CortexM3\ARM_GCC_541\Debug\SensorSender.a(CyLib.o)
-                                0xa76 (size before relaxing)
- .debug_str     0x00001072      0x365 .\CortexM3\ARM_GCC_541\Debug\SensorSender.a(cyPm.o)
-                                0x762 (size before relaxing)
- .debug_str     0x000013d7      0x1bf .\CortexM3\ARM_GCC_541\Debug\SensorSender.a(Counter_Sensor.o)
-                                0x432 (size before relaxing)
- .debug_str     0x00001596      0x167 .\CortexM3\ARM_GCC_541\Debug\SensorSender.a(sensor_input_isr.o)
-                                0x36f (size before relaxing)
- .debug_str     0x000016fd      0x2bf .\CortexM3\ARM_GCC_541\Debug\SensorSender.a(UART_1.o)
-                                0x4e2 (size before relaxing)
- .debug_str     0x000019bc      0x197 .\CortexM3\ARM_GCC_541\Debug\SensorSender.a(UART_1_IntClock.o)
-                                0x37d (size before relaxing)
- .debug_str     0x00001b53      0x1bb .\CortexM3\ARM_GCC_541\Debug\SensorSender.a(CyFlash.o)
-                                0x3ef (size before relaxing)
- .debug_str     0x00001d0e       0xac .\CortexM3\ARM_GCC_541\Debug\SensorSender.a(CySpc.o)
+ .debug_str     0x00000000      0x255 .\CortexM3\ARM_GCC_541\Debug\main.o
+                                0x2a4 (size before relaxing)
+ .debug_str     0x00000255       0xb5 .\CortexM3\ARM_GCC_541\Debug\sensor.o
+                                0x2c0 (size before relaxing)
+ .debug_str     0x0000030a      0x1b0 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+                                0x36b (size before relaxing)
+ .debug_str     0x000004ba       0x7f .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
+                                0x20b (size before relaxing)
+ .debug_str     0x00000539      0x144 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+                                0x331 (size before relaxing)
+ .debug_str     0x0000067d      0x1dd .\CortexM3\ARM_GCC_541\Debug\SensorSender.a(PWM_1.o)
+                                0x3a1 (size before relaxing)
+ .debug_str     0x0000085a      0x810 .\CortexM3\ARM_GCC_541\Debug\SensorSender.a(CyLib.o)
+                                0xa6e (size before relaxing)
+ .debug_str     0x0000106a      0x365 .\CortexM3\ARM_GCC_541\Debug\SensorSender.a(cyPm.o)
+                                0x75a (size before relaxing)
+ .debug_str     0x000013cf      0x1bf .\CortexM3\ARM_GCC_541\Debug\SensorSender.a(Counter_Sensor.o)
+                                0x42a (size before relaxing)
+ .debug_str     0x0000158e      0x167 .\CortexM3\ARM_GCC_541\Debug\SensorSender.a(sensor_input_isr.o)
                                 0x367 (size before relaxing)
+ .debug_str     0x000016f5      0x2bf .\CortexM3\ARM_GCC_541\Debug\SensorSender.a(UART_1.o)
+                                0x4da (size before relaxing)
+ .debug_str     0x000019b4      0x197 .\CortexM3\ARM_GCC_541\Debug\SensorSender.a(UART_1_IntClock.o)
+                                0x375 (size before relaxing)
+ .debug_str     0x00001b4b      0x1bb .\CortexM3\ARM_GCC_541\Debug\SensorSender.a(CyFlash.o)
+                                0x3e7 (size before relaxing)
+ .debug_str     0x00001d06       0xac .\CortexM3\ARM_GCC_541\Debug\SensorSender.a(CySpc.o)
+                                0x35f (size before relaxing)
 
 .debug_loc      0x00000000     0x1f09
  *(.debug_loc)
@@ -1673,4 +1673,4 @@ END GROUP
 
 /DISCARD/
  *(.note.GNU-stack)
-OUTPUT(C:\Users\degn\OneDrive - Aarhus universitet\Skrivebord\AU\E4\PRJ4\Git\E4PRJ\PSoC\SensorSender\SensorSender.cydsn\CortexM3\ARM_GCC_541\Debug\SensorSender.elf elf32-littlearm)
+OUTPUT(C:\Users\Jacob\OneDrive - Aarhus universitet\4. Semester\PRJ4\E4PRJ\PSoC\SensorSender\SensorSender.cydsn\CortexM3\ARM_GCC_541\Debug\SensorSender.elf elf32-littlearm)
