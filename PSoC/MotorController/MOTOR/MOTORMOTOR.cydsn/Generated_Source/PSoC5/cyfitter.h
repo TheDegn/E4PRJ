@@ -285,11 +285,11 @@
 #define Clock_1__PM_STBY_MSK 0x01u
 
 /* Motor_1 */
-#define Motor_1__0__INTTYPE CYREG_PICU1_INTTYPE6
-#define Motor_1__0__MASK 0x40u
-#define Motor_1__0__PC CYREG_PRT1_PC6
+#define Motor_1__0__INTTYPE CYREG_PICU1_INTTYPE4
+#define Motor_1__0__MASK 0x10u
+#define Motor_1__0__PC CYREG_PRT1_PC4
 #define Motor_1__0__PORT 1u
-#define Motor_1__0__SHIFT 6u
+#define Motor_1__0__SHIFT 4u
 #define Motor_1__AG CYREG_PRT1_AG
 #define Motor_1__AMUX CYREG_PRT1_AMUX
 #define Motor_1__BIE CYREG_PRT1_BIE
@@ -304,7 +304,7 @@
 #define Motor_1__INTTYPE_BASE CYDEV_PICU_INTTYPE_PICU1_BASE
 #define Motor_1__LCD_COM_SEG CYREG_PRT1_LCD_COM_SEG
 #define Motor_1__LCD_EN CYREG_PRT1_LCD_EN
-#define Motor_1__MASK 0x40u
+#define Motor_1__MASK 0x10u
 #define Motor_1__PORT 1u
 #define Motor_1__PRT CYREG_PRT1_PRT
 #define Motor_1__PRTDSI__CAPS_SEL CYREG_PRT1_CAPS_SEL
@@ -315,15 +315,15 @@
 #define Motor_1__PRTDSI__OUT_SEL1 CYREG_PRT1_OUT_SEL1
 #define Motor_1__PRTDSI__SYNC_OUT CYREG_PRT1_SYNC_OUT
 #define Motor_1__PS CYREG_PRT1_PS
-#define Motor_1__SHIFT 6u
+#define Motor_1__SHIFT 4u
 #define Motor_1__SLW CYREG_PRT1_SLW
 
 /* Motor_2 */
-#define Motor_2__0__INTTYPE CYREG_PICU1_INTTYPE7
-#define Motor_2__0__MASK 0x80u
-#define Motor_2__0__PC CYREG_PRT1_PC7
+#define Motor_2__0__INTTYPE CYREG_PICU1_INTTYPE5
+#define Motor_2__0__MASK 0x20u
+#define Motor_2__0__PC CYREG_PRT1_PC5
 #define Motor_2__0__PORT 1u
-#define Motor_2__0__SHIFT 7u
+#define Motor_2__0__SHIFT 5u
 #define Motor_2__AG CYREG_PRT1_AG
 #define Motor_2__AMUX CYREG_PRT1_AMUX
 #define Motor_2__BIE CYREG_PRT1_BIE
@@ -338,7 +338,7 @@
 #define Motor_2__INTTYPE_BASE CYDEV_PICU_INTTYPE_PICU1_BASE
 #define Motor_2__LCD_COM_SEG CYREG_PRT1_LCD_COM_SEG
 #define Motor_2__LCD_EN CYREG_PRT1_LCD_EN
-#define Motor_2__MASK 0x80u
+#define Motor_2__MASK 0x20u
 #define Motor_2__PORT 1u
 #define Motor_2__PRT CYREG_PRT1_PRT
 #define Motor_2__PRTDSI__CAPS_SEL CYREG_PRT1_CAPS_SEL
@@ -349,7 +349,7 @@
 #define Motor_2__PRTDSI__OUT_SEL1 CYREG_PRT1_OUT_SEL1
 #define Motor_2__PRTDSI__SYNC_OUT CYREG_PRT1_SYNC_OUT
 #define Motor_2__PS CYREG_PRT1_PS
-#define Motor_2__SHIFT 7u
+#define Motor_2__SHIFT 5u
 #define Motor_2__SLW CYREG_PRT1_SLW
 
 /* isr_uart_rx */

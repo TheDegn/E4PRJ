@@ -2,7 +2,7 @@
 
 float kp_ = 100;
 float ki_ = 20;
-float kd_ = 362.59;
+float kd_ = 392.59;
 float iMin_ = -100;
 float iMax_ = 100;
 float dt_ = 20;

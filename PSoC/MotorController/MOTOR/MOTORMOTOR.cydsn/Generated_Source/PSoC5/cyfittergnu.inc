@@ -285,11 +285,11 @@
 .set Clock_1__PM_STBY_MSK, 0x01
 
 /* Motor_1 */
-.set Motor_1__0__INTTYPE, CYREG_PICU1_INTTYPE6
-.set Motor_1__0__MASK, 0x40
-.set Motor_1__0__PC, CYREG_PRT1_PC6
+.set Motor_1__0__INTTYPE, CYREG_PICU1_INTTYPE4
+.set Motor_1__0__MASK, 0x10
+.set Motor_1__0__PC, CYREG_PRT1_PC4
 .set Motor_1__0__PORT, 1
-.set Motor_1__0__SHIFT, 6
+.set Motor_1__0__SHIFT, 4
 .set Motor_1__AG, CYREG_PRT1_AG
 .set Motor_1__AMUX, CYREG_PRT1_AMUX
 .set Motor_1__BIE, CYREG_PRT1_BIE
@@ -304,7 +304,7 @@
 .set Motor_1__INTTYPE_BASE, CYDEV_PICU_INTTYPE_PICU1_BASE
 .set Motor_1__LCD_COM_SEG, CYREG_PRT1_LCD_COM_SEG
 .set Motor_1__LCD_EN, CYREG_PRT1_LCD_EN
-.set Motor_1__MASK, 0x40
+.set Motor_1__MASK, 0x10
 .set Motor_1__PORT, 1
 .set Motor_1__PRT, CYREG_PRT1_PRT
 .set Motor_1__PRTDSI__CAPS_SEL, CYREG_PRT1_CAPS_SEL
@@ -315,15 +315,15 @@
 .set Motor_1__PRTDSI__OUT_SEL1, CYREG_PRT1_OUT_SEL1
 .set Motor_1__PRTDSI__SYNC_OUT, CYREG_PRT1_SYNC_OUT
 .set Motor_1__PS, CYREG_PRT1_PS
-.set Motor_1__SHIFT, 6
+.set Motor_1__SHIFT, 4
 .set Motor_1__SLW, CYREG_PRT1_SLW
 
 /* Motor_2 */
-.set Motor_2__0__INTTYPE, CYREG_PICU1_INTTYPE7
-.set Motor_2__0__MASK, 0x80
-.set Motor_2__0__PC, CYREG_PRT1_PC7
+.set Motor_2__0__INTTYPE, CYREG_PICU1_INTTYPE5
+.set Motor_2__0__MASK, 0x20
+.set Motor_2__0__PC, CYREG_PRT1_PC5
 .set Motor_2__0__PORT, 1
-.set Motor_2__0__SHIFT, 7
+.set Motor_2__0__SHIFT, 5
 .set Motor_2__AG, CYREG_PRT1_AG
 .set Motor_2__AMUX, CYREG_PRT1_AMUX
 .set Motor_2__BIE, CYREG_PRT1_BIE
@@ -338,7 +338,7 @@
 .set Motor_2__INTTYPE_BASE, CYDEV_PICU_INTTYPE_PICU1_BASE
 .set Motor_2__LCD_COM_SEG, CYREG_PRT1_LCD_COM_SEG
 .set Motor_2__LCD_EN, CYREG_PRT1_LCD_EN
-.set Motor_2__MASK, 0x80
+.set Motor_2__MASK, 0x20
 .set Motor_2__PORT, 1
 .set Motor_2__PRT, CYREG_PRT1_PRT
 .set Motor_2__PRTDSI__CAPS_SEL, CYREG_PRT1_CAPS_SEL
@@ -349,7 +349,7 @@
 .set Motor_2__PRTDSI__OUT_SEL1, CYREG_PRT1_OUT_SEL1
 .set Motor_2__PRTDSI__SYNC_OUT, CYREG_PRT1_SYNC_OUT
 .set Motor_2__PS, CYREG_PRT1_PS
-.set Motor_2__SHIFT, 7
+.set Motor_2__SHIFT, 5
 .set Motor_2__SLW, CYREG_PRT1_SLW
 
 /* isr_uart_rx */

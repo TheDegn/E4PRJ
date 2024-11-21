@@ -1,5 +1,5 @@
 -- Project:   C:\Users\Jacob\OneDrive - Aarhus universitet\4. Semester\PRJ4\E4PRJ\PSoC\MotorController\MOTOR\MOTORMOTOR.cydsn\MOTORMOTOR.cyprj
--- Generated: 11/20/2024 15:17:29
+-- Generated: 11/21/2024 15:38:57
 -- PSoC Creator  4.4
 
 ENTITY MOTORMOTOR IS
@@ -159,9 +159,9 @@ ARCHITECTURE __DEFAULT__ OF MOTORMOTOR IS
     SIGNAL \PWM_1:PWMUDB:sP16:pwmdp:u1.cmsbo__sig\ : bit;
     ATTRIBUTE Location OF ClockBlock : LABEL IS "F(Clock,0)";
     ATTRIBUTE lib_model OF Motor_1(0) : LABEL IS "iocell1";
-    ATTRIBUTE Location OF Motor_1(0) : LABEL IS "P1[6]";
+    ATTRIBUTE Location OF Motor_1(0) : LABEL IS "P1[4]";
     ATTRIBUTE lib_model OF Motor_2(0) : LABEL IS "iocell2";
-    ATTRIBUTE Location OF Motor_2(0) : LABEL IS "P1[7]";
+    ATTRIBUTE Location OF Motor_2(0) : LABEL IS "P1[5]";
     ATTRIBUTE lib_model OF Rx_1(0) : LABEL IS "iocell3";
     ATTRIBUTE Location OF Rx_1(0) : LABEL IS "P12[6]";
     ATTRIBUTE lib_model OF Tx_1(0) : LABEL IS "iocell4";

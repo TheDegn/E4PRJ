@@ -49,5 +49,5 @@ set_location "\PWM_1:PWMUDB:genblk1:ctrlreg\" controlcell 0 2 6
 # Note: port 12 is the logical name for port 7
 set_io "Tx_1(0)" iocell 12 7
 set_location "isr_uart_rx" interrupt -1 -1 0
-set_io "Motor_1(0)" iocell 1 6
-set_io "Motor_2(0)" iocell 1 7
+set_io "Motor_1(0)" iocell 1 4
+set_io "Motor_2(0)" iocell 1 5

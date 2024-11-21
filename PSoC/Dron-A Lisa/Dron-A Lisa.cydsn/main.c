@@ -35,11 +35,17 @@ void handleByteReceived(uint8_t byteReceived)
     switch (byteReceived)
     {
     case '1':
-        {
-            step = 1;
-            setspeed(1, 270);
-        }
-    break;
+        setpoint = 10;
+        break;
+    case '2':
+        setpoint = 20;
+        break;
+    case '3':
+        setpoint = -10;
+        break;
+    case '4':
+        setpoint = -20;
+        break;
     default:
         // Do nothing for unrecognized commands
         break;
@@ -111,22 +117,22 @@ CY_ISR(PID_HANDLER)
     //float test = sinFunc(0.1,(counter++ * (1/333)));
     //sprintf(outputBuffer, "%f \r\n", test);
     //tfTest(test,200,170);
-    output = PIDUpdate(-10, angle, &proportional, &integral, &derivative);
+    output = PIDUpdate(setpoint, angle, &proportional, &integral, &derivative);
     //to motor somehow
     if(output<0)
     {
         setspeed(1,200-(output/50));
-        setspeed(2,178);
+        setspeed(2,170);
     }
     else if(output>0)
     {
-        setspeed(2,178+(output/50));
+        setspeed(2,170+(output/50));
         setspeed(1,200);
     }
     else
     {
         setspeed(1,200);
-        setspeed(2,178);
+        setspeed(2,170);
     }
     
 }
