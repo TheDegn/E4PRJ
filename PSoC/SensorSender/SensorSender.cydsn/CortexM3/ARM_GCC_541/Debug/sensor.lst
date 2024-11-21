@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGorEGu.s 			page 1
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cct9w0Vf.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGorEGu.s 			page 1
   28:sensor.c      ****     Counter_Sensor_Start();
   29:sensor.c      **** }
   30:sensor.c      **** float calcTime(long count)
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGorEGu.s 			page 2
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cct9w0Vf.s 			page 2
 
 
   31:sensor.c      **** {
@@ -67,7 +67,7 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGorEGu.s 			page 1
   34:sensor.c      **** 
   35:sensor.c      **** float calcAngle(long count)
   36:sensor.c      **** {
-  37:sensor.c      ****     return ((count * 0.00574795) - 64.70355264);
+  37:sensor.c      ****     return ((count * 0.00581473) - 69.19523235);
   38:sensor.c      **** }
   39:sensor.c      **** 
   40:sensor.c      **** CY_ISR(sensor_isr_handler)
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGorEGu.s 			page 1
   66              		@ frame_needed = 0, uses_anonymous_args = 0
   67 0000 08B5     		push	{r3, lr}
   68              		.cfi_def_cfa_offset 8
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGorEGu.s 			page 3
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cct9w0Vf.s 			page 3
 
 
   69              		.cfi_offset 3, -8
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGorEGu.s 			page 1
  119              		.cfi_def_cfa_offset 8
  120              		.cfi_offset 3, -8
  121              		.cfi_offset 14, -4
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGorEGu.s 			page 4
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cct9w0Vf.s 			page 4
 
 
   22:sensor.c      **** }
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGorEGu.s 			page 1
  171 0000 08B5     		push	{r3, lr}
  172              		.cfi_def_cfa_offset 8
  173              		.cfi_offset 3, -8
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGorEGu.s 			page 5
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cct9w0Vf.s 			page 5
 
 
  174              		.cfi_offset 14, -4
@@ -271,7 +271,7 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGorEGu.s 			page 1
  199              		.type	calcAngle, %function
  200              	calcAngle:
  201              	.LFB68:
-  36:sensor.c      ****     return ((count * 0.00574795) - 64.70355264);
+  36:sensor.c      ****     return ((count * 0.00581473) - 69.19523235);
  202              		.loc 1 36 0
  203              		.cfi_startproc
  204              		@ args = 0, pretend = 0, frame = 0
@@ -298,16 +298,16 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGorEGu.s 			page 1
   38:sensor.c      **** 
  224              		.loc 1 38 0
  225 001e 08BD     		pop	{r3, pc}
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGorEGu.s 			page 6
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cct9w0Vf.s 			page 6
 
 
  226              	.L22:
  227              		.align	3
  228              	.L21:
- 229 0020 3E004E94 		.word	-1806827458
- 230 0024 298B773F 		.word	1064799017
- 231 0028 20F4A601 		.word	27718688
- 232 002c 072D5040 		.word	1078996231
+ 229 0020 0B0CF6B2 		.word	-1292497909
+ 230 0024 2FD1773F 		.word	1064816943
+ 231 0028 C297D3AF 		.word	-1345087550
+ 232 002c 7E4C5140 		.word	1079069822
  233              		.cfi_endproc
  234              	.LFE68:
  235              		.size	calcAngle, .-calcAngle
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGorEGu.s 			page 1
  280 0034 02       		.byte	0x2
  281 0035 05       		.byte	0x5
  282 0036 32020000 		.4byte	.LASF2
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGorEGu.s 			page 7
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cct9w0Vf.s 			page 7
 
 
  283 003a 02       		.uleb128 0x2
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGorEGu.s 			page 1
  337 009d 02       		.uleb128 0x2
  338 009e 04       		.byte	0x4
  339 009f 07       		.byte	0x7
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGorEGu.s 			page 8
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cct9w0Vf.s 			page 8
 
 
  340 00a0 10020000 		.4byte	.LASF15
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGorEGu.s 			page 1
  394 011b 00000000 		.4byte	.LFB65
  395 011f 08000000 		.4byte	.LFE65-.LFB65
  396 0123 01       		.uleb128 0x1
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGorEGu.s 			page 9
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cct9w0Vf.s 			page 9
 
 
  397 0124 9C       		.byte	0x9c
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGorEGu.s 			page 1
  451 01a2 9C       		.byte	0x9c
  452 01a3 B7010000 		.4byte	0x1b7
  453 01a7 0C       		.uleb128 0xc
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGorEGu.s 			page 10
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cct9w0Vf.s 			page 10
 
 
  454 01a8 2C020000 		.4byte	.LASF22
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGorEGu.s 			page 1
  508 0221 10       		.uleb128 0x10
  509 0222 76020000 		.4byte	.LASF30
  510 0226 76020000 		.4byte	.LASF30
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGorEGu.s 			page 11
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cct9w0Vf.s 			page 11
 
 
  511 022a 05       		.byte	0x5
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGorEGu.s 			page 1
  565 002c 24       		.uleb128 0x24
  566 002d 00       		.byte	0
  567 002e 0B       		.uleb128 0xb
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGorEGu.s 			page 12
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cct9w0Vf.s 			page 12
 
 
  568 002f 0B       		.uleb128 0xb
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGorEGu.s 			page 1
  622 0068 12       		.uleb128 0x12
  623 0069 06       		.uleb128 0x6
  624 006a 40       		.uleb128 0x40
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGorEGu.s 			page 13
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cct9w0Vf.s 			page 13
 
 
  625 006b 18       		.uleb128 0x18
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGorEGu.s 			page 1
  679 00a9 06       		.uleb128 0x6
  680 00aa 40       		.uleb128 0x40
  681 00ab 18       		.uleb128 0x18
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGorEGu.s 			page 14
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cct9w0Vf.s 			page 14
 
 
  682 00ac 9642     		.uleb128 0x2116
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGorEGu.s 			page 1
  736 00e3 49       		.uleb128 0x49
  737 00e4 13       		.uleb128 0x13
  738 00e5 3F       		.uleb128 0x3f
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGorEGu.s 			page 15
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cct9w0Vf.s 			page 15
 
 
  739 00e6 19       		.uleb128 0x19
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGorEGu.s 			page 1
  793 0000 4C000000 		.4byte	0x4c
  794 0004 0200     		.2byte	0x2
  795 0006 00000000 		.4byte	.Ldebug_info0
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGorEGu.s 			page 16
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cct9w0Vf.s 			page 16
 
 
  796 000a 04       		.byte	0x4
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGorEGu.s 			page 1
  840      6E7400
  841              	.LASF26:
  842 001d 436F756E 		.ascii	"Counter_Sensor_Stop\000"
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGorEGu.s 			page 17
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cct9w0Vf.s 			page 17
 
 
  842      7465725F 
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGorEGu.s 			page 1
  861              	.LASF16:
  862 0126 696E6974 		.ascii	"initSensor\000"
  862      53656E73 
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGorEGu.s 			page 18
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cct9w0Vf.s 			page 18
 
 
  862      6F7200
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGorEGu.s 			page 1
  884 0208 696E7433 		.ascii	"int32_t\000"
  884      325F7400 
  885              	.LASF15:
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGorEGu.s 			page 19
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cct9w0Vf.s 			page 19
 
 
  886 0210 73697A65 		.ascii	"sizetype\000"
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGorEGu.s 			page 1
  910      00
  911              	.LASF20:
  912 02b7 63616C63 		.ascii	"calcTime\000"
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGorEGu.s 			page 20
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cct9w0Vf.s 			page 20
 
 
  912      54696D65 

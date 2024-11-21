@@ -25,11 +25,11 @@ int main(void)
     {
         startBurst();
         //startCounter();
-        CyDelay(50);
+        CyDelay(3);
         stopBurst();
         //sprintf(buff, "%li    \r\n", count);
         //UART_1_PutString(buff);
-        CyDelay(50);
+        CyDelay(3);
     
 
         if (newCountFlag == 1)

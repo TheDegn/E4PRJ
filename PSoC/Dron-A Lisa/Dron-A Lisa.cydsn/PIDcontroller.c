@@ -1,11 +1,11 @@
 #include "PIDcontroller.h"
 
-float kp_ = 0;
-float ki_ = 0;
-float kd_ = 0;
-float iMin_ = 0;
-float iMax_ = 0;
-float dt_ = 0;
+float kp_ = 100;
+float ki_ = 20;
+float kd_ = 362.59;
+float iMin_ = -100;
+float iMax_ = 100;
+float dt_ = 20;
 float setpoint_ = 0;
 float previousError_ = 0;
 float i_ = 0;

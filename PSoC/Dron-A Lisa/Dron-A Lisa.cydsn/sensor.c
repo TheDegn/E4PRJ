@@ -34,7 +34,8 @@ double calcTime(double count)
 
 double calcAngle(long count)
 {
-    return ((count * 0.00574795) - 64.70355264);
+    return ((count * 0.00581473) - 69.19523235);
+    
 }
 
 float FIRMovingAverage(float new_value) {
@@ -80,10 +81,7 @@ CY_ISR(sensor_isr_handler)
 {
     count = Counter_Sensor_ReadCounter();
     Counter_Sensor_Stop();
-    stopBurst();
     newCountFlag = 1;
-    startCounter();
-    startBurst();
 }
 
 /* could be

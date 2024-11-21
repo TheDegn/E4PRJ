@@ -1,6 +1,6 @@
 (DELAYFILE
  (SDFVERSION "IEEE 1497 4.0")
- (DATE "2024-11-13T11:56:46Z")
+ (DATE "2024-11-19T12:00:09Z")
  (DESIGN "Dron-A Lisa")
  (VENDOR "Cypress Semiconductor")
  (PROGRAM "PSoC Creator")
@@ -43,7 +43,7 @@
     (INTERCONNECT Rx_1\(0\).fb \\UART_1\:BUART\:rx_status_3\\.main_6 (5.796:5.796:5.796))
     (INTERCONNECT ClockBlock.dclk_5 isr_pid.interrupt (5.597:5.597:5.597))
     (INTERCONNECT Net_24.q Tx_1\(0\).pin_input (6.197:6.197:6.197))
-    (INTERCONNECT Sensor_Input\(0\).fb sensor_input_isr.interrupt (7.591:7.591:7.591))
+    (INTERCONNECT Sensor_Input\(0\).fb sensor_input_isr.interrupt (7.117:7.117:7.117))
     (INTERCONNECT Net_266.q Sensor_Out_Pin_1\(0\).pin_input (6.702:6.702:6.702))
     (INTERCONNECT Net_267.q Sensor_Out_Pin_2\(0\).pin_input (6.616:6.616:6.616))
     (INTERCONNECT ClockBlock.dclk_glb_4 Net_266.clock_0 (0.000:0.000:0.000))

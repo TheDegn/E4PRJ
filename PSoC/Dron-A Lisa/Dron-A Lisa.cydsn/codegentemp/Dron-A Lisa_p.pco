@@ -65,7 +65,7 @@ set_location "\Sensor_Out:PWMUDB:genblk8:stsreg\" statusicell 0 4 4
 set_location "\UART_1:BUART:rx_status_3\" macrocell 1 1 1 2
 set_location "\UART_1:BUART:rx_counter_load\" macrocell 1 2 1 1
 set_location "ClockBlock" clockblockcell -1 -1 0
-set_io "Sensor_Input(0)" iocell 2 2
+set_io "Sensor_Input(0)" iocell 3 0
 # Note: port 12 is the logical name for port 7
 set_io "Rx_1(0)" iocell 12 6
 set_location "isr_pid" interrupt -1 -1 0
@@ -73,10 +73,10 @@ set_location "\Motor_PWM:PWMUDB:genblk1:ctrlreg\" controlcell 0 5 6
 set_location "\Counter_Sensor:CounterUDB:sCTRLReg:ctrlreg\" controlcell 1 1 6 
 # Note: port 12 is the logical name for port 7
 set_io "Tx_1(0)" iocell 12 7
-set_io "Sensor_Out_Pin_2(0)" iocell 1 4
+set_io "Sensor_Out_Pin_2(0)" iocell 1 6
 set_location "isr_uart_rx" interrupt -1 -1 1
-set_io "Motor_1(0)" iocell 1 7
-set_io "Sensor_Out_Pin_1(0)" iocell 1 5
-set_io "Motor_2(0)" iocell 1 6
+set_io "Motor_1(0)" iocell 1 5
+set_io "Sensor_Out_Pin_1(0)" iocell 1 7
+set_io "Motor_2(0)" iocell 1 4
 set_location "\Sensor_Out:PWMUDB:genblk1:ctrlreg\" controlcell 0 3 6 
 set_location "sensor_input_isr" interrupt -1 -1 2
