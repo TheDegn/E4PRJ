@@ -2,7 +2,7 @@
 --	Conversion of PRJ4.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Tue Nov 05 12:09:36 2024
+--	Fri Nov 22 11:32:51 2024
 --
 
 USE cypress.cypress.all;
@@ -1292,10 +1292,11 @@ SIGNAL \PWM_2:Net_113\ : bit;
 SIGNAL \PWM_2:Net_107\ : bit;
 SIGNAL \PWM_2:Net_114\ : bit;
 SIGNAL tmpOE__MotorSwitchPin_net_0 : bit;
-SIGNAL tmpFB_0__MotorSwitchPin_net_0 : bit;
+SIGNAL Net_231 : bit;
 SIGNAL tmpIO_0__MotorSwitchPin_net_0 : bit;
 TERMINAL tmpSIOVREF__MotorSwitchPin_net_0 : bit;
 SIGNAL tmpINTERRUPT_0__MotorSwitchPin_net_0 : bit;
+SIGNAL Net_234 : bit;
 SIGNAL \UART_1:BUART:reset_reg\\D\ : bit;
 SIGNAL \UART_1:BUART:txn\\D\ : bit;
 SIGNAL \UART_1:BUART:tx_state_1\\D\ : bit;
@@ -1519,6 +1520,8 @@ Net_47D <= ((not \Debouncer_1:DEBOUNCER[0]:d_sync_1\ and Net_45)
 \PWM_2:PWMUDB:status_2\ <= ((\PWM_2:PWMUDB:runmode_enable\ and \PWM_2:PWMUDB:tc_i\));
 
 \PWM_2:PWMUDB:pwm_i\ <= ((\PWM_2:PWMUDB:runmode_enable\ and \PWM_2:PWMUDB:cmp1_less\));
+
+Net_234 <= (not Net_231);
 
 \UART_1:IntClock\:cy_clock_v1_0
 	GENERIC MAP(cy_registers=>"",
@@ -2765,7 +2768,7 @@ MotorSwitchPin:cy_psoc3_pins_v1_10
 		input_buffer_sel=>"00")
 	PORT MAP(oe=>(one),
 		y=>(zero),
-		fb=>(tmpFB_0__MotorSwitchPin_net_0),
+		fb=>Net_231,
 		analog=>(open),
 		io=>(tmpIO_0__MotorSwitchPin_net_0),
 		siovref=>(tmpSIOVREF__MotorSwitchPin_net_0),
@@ -2777,6 +2780,14 @@ MotorSwitchPin:cy_psoc3_pins_v1_10
 		out_clock_en=>one,
 		out_reset=>zero,
 		interrupt=>tmpINTERRUPT_0__MotorSwitchPin_net_0);
+isr_motorSwitch_On:cy_isr_v1_0
+	GENERIC MAP(int_type=>"10",
+		is_nmi=>'0')
+	PORT MAP(int_signal=>Net_231);
+isr_motorSwitch_Off:cy_isr_v1_0
+	GENERIC MAP(int_type=>"10",
+		is_nmi=>'0')
+	PORT MAP(int_signal=>Net_234);
 \UART_1:BUART:reset_reg\:cy_dff
 	PORT MAP(d=>zero,
 		clk=>\UART_1:BUART:clock_op\,

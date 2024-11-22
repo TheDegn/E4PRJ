@@ -1,6 +1,6 @@
 // ======================================================================
 // PRJ4.v generated from TopDesign.cysch
-// 11/05/2024 at 12:09
+// 11/22/2024 at 11:32
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -862,6 +862,8 @@ module top ;
           wire  Net_3;
           wire  Net_2;
           wire  Net_1;
+          wire  Net_234;
+          wire  Net_231;
           wire  Net_153;
           wire  Net_152;
           wire  Net_5;
@@ -1324,7 +1326,6 @@ module top ;
     defparam PWM_2.Resolution = 16;
 
 	wire [0:0] tmpOE__MotorSwitchPin_net;
-	wire [0:0] tmpFB_0__MotorSwitchPin_net;
 	wire [0:0] tmpIO_0__MotorSwitchPin_net;
 	wire [0:0] tmpINTERRUPT_0__MotorSwitchPin_net;
 	electrical [0:0] tmpSIOVREF__MotorSwitchPin_net;
@@ -1385,7 +1386,7 @@ module top ;
 		MotorSwitchPin
 		 (.oe(tmpOE__MotorSwitchPin_net),
 		  .y({1'b0}),
-		  .fb({tmpFB_0__MotorSwitchPin_net[0:0]}),
+		  .fb({Net_231}),
 		  .io({tmpIO_0__MotorSwitchPin_net[0:0]}),
 		  .siovref(tmpSIOVREF__MotorSwitchPin_net),
 		  .interrupt({tmpINTERRUPT_0__MotorSwitchPin_net[0:0]}),
@@ -1397,6 +1398,23 @@ module top ;
 		  .out_reset({1'b0}));
 
 	assign tmpOE__MotorSwitchPin_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
+
+
+	cy_isr_v1_0
+		#(.int_type(2'b10))
+		isr_motorSwitch_On
+		 (.int_signal(Net_231));
+
+
+
+    assign Net_234 = ~Net_231;
+
+
+	cy_isr_v1_0
+		#(.int_type(2'b10))
+		isr_motorSwitch_Off
+		 (.int_signal(Net_234));
+
 
 
 

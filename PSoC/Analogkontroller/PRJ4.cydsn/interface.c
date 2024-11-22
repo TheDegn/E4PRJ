@@ -13,6 +13,12 @@ int pass = 1;
 int gradientShift = 0;
 int gradientCount = 0;
 
+// Define constants
+#define adc_min 30   // ADC value corresponding to -41 degrees
+#define adc_max 4050 // ADC value corresponding to +41 degrees
+#define deg_min -35  // Minimum degrees
+#define deg_max 35   // Maximum degrees
+
 enum symbol
 {
     degree = 0,
@@ -81,15 +87,29 @@ CY_ISR(ISR_print_handler)
             writeLCD("mode 3", lock, LCDbuffer, degree);
         }  
     }
-    
+}
+
+CY_ISR(ISR_motorSwitch_On_handler)
+{
+    LCD_ClearDisplay();
+    LCD_Position(0, 0);
+    LCD_PrintString("On");
+}
+CY_ISR(ISR_motorSwitch_Off_handler)
+{
+    LCD_ClearDisplay();
+    LCD_Position(0, 0);
+    LCD_PrintString("Off");
 }
 
 void init_interface()
 {
     Init_LCD();
-    Init_ISR();
-    Init_PWM();
+    //Init_ISR();
+    //Init_PWM();
     Init_ADC();
+    isr_motorSwitch_On_StartEx(ISR_motorSwitch_On_handler);
+    isr_motorSwitch_Off_StartEx(ISR_motorSwitch_Off_handler);
 }
 
 void Init_LCD()
@@ -99,8 +119,7 @@ void Init_LCD()
     LCD_Position(0, 0);
     LCD_PrintString("Starting");
     LCD_Position(1, 0);
-    LCD_PrintString("Application");
-    CyDelay(1000);
+    LCD_PrintString("Dron-A Lisa");
 }
 
 void Init_ADC()
@@ -133,6 +152,50 @@ void writeLCD(char *top, int endTopChar, char *buttom, int endButtomChar)
     LCD_PrintString(buttom);
     LCD_Position(1, 15);
     LCD_PutChar(endButtomChar);
+}
+
+void writeLCD2(int setpoint, float sensor)
+{
+    char buff[16];
+    LCD_ClearDisplay();
+    sprintf(buff,"Setpoint: %i", setpoint);
+    LCD_Position(0, 0);
+    LCD_PrintString(buff);
+    sprintf(buff,"Sensor: %.2f", sensor);
+    LCD_Position(1, 0);
+    LCD_PrintString(buff);
+}
+#define WINDOW_SIZE 5    // Antallet af værdier i glidende gennemsnit
+static int values[WINDOW_SIZE] = {0};  // Array til at gemme de seneste 20 værdier
+static int i = 0;                  // Index for den aktuelle position i arrayet
+static float sum = 0;                  // Summen af de 20 værdier
+static int c = 0;                  // Antal værdier, der er blevet tilføjet
+
+int FIRMovingAverage(int new_value) 
+{
+    // Opdater summen ved at trække den gamle værdi fra og tilføje den nye
+    sum -= values[i];
+    sum += new_value;
+
+    // Opdater arrayet med den nye værdi
+    values[i] = new_value;
+
+    // Flyt til næste position i arrayet, og wrap rundt efter WINDOW_SIZE
+    i = (i + 1) % WINDOW_SIZE;
+
+    // Tæl op til WINDOW_SIZE for at sikre korrekt gennemsnit på de første kald
+    if (c < WINDOW_SIZE) {
+        c++;
+    }
+
+    // Returner gennemsnittet
+    return sum / c;
+}
+
+int setpoint()
+{
+    //return adcToDegrees( FIRMovingAverage( ADC_SAR_1_GetResult16() ) );
+    return adcToDegrees( ADC_SAR_1_GetResult16() );
 }
 
 int mode_1()
@@ -210,11 +273,6 @@ int motorSwitch()
 
 int adcToDegrees(int adc_value)
 {
-    // Define constants
-    const int adc_min = 30;   // ADC value corresponding to -41 degrees
-    const int adc_max = 4050; // ADC value corresponding to +41 degrees
-    const int deg_min = -41;  // Minimum degrees
-    const int deg_max = 41;   // Maximum degrees
 
     // Check if adc_value is out of bounds
     if (adc_value < adc_min)

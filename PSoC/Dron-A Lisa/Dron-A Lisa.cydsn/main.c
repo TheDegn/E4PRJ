@@ -3,6 +3,7 @@
 #include "PIDcontroller.h"
 #include "tfTest.h"
 #include "sensor.h"
+#include "interface.h"
 #include <stdio.h>
 
 CY_ISR_PROTO(PID_HANDLER);
@@ -72,22 +73,29 @@ int main(void)
 {
     CyGlobalIntEnable; /* Enable global interrupts. */
 
+    
+    //interface
+    init_interface();
+    
+    //UART
     UART_1_Start();
     isr_uart_rx_StartEx(ISR_UART_rx_handler);
     
+    //motor
     Motor_Init();
     CyDelay(5000);
     setspeed(1,200);
     setspeed(2,175);
     CyDelay(2000);
     
+    //PID
     isr_pid_StartEx(PID_HANDLER);
     
-    
     //sensor
-    //char buff[256];
     initSensor();
+    
     UART_1_PutString("started!");
+    
     for(;;)
     {
         startBurst();
@@ -105,6 +113,7 @@ int main(void)
             //UART_1_PutString(buff);
             sprintf(outputBuffer, "%.2f %.2f \r\n", output,angle);
             UART_1_PutString(outputBuffer);
+            writeLCD(interfaceSetpoint(), angle);
             startCounter();
         }
         

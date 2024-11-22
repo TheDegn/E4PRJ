@@ -1,5 +1,5 @@
 -- Project:   Dron-A Lisa
--- Generated: 11/19/2024 13:00:05
+-- Generated: 11/22/2024 11:43:19
 -- PSoC Creator  4.4
 
 ENTITY \Dron-A Lisa\ IS
@@ -10,7 +10,15 @@ ENTITY \Dron-A Lisa\ IS
         Tx_1(0)_PAD : OUT std_ulogic;
         Sensor_Input(0)_PAD : IN std_ulogic;
         Sensor_Out_Pin_1(0)_PAD : OUT std_ulogic;
-        Sensor_Out_Pin_2(0)_PAD : OUT std_ulogic);
+        Sensor_Out_Pin_2(0)_PAD : OUT std_ulogic;
+        \LCD:LCDPort(0)_PAD\ : OUT std_ulogic;
+        \LCD:LCDPort(1)_PAD\ : OUT std_ulogic;
+        \LCD:LCDPort(2)_PAD\ : OUT std_ulogic;
+        \LCD:LCDPort(3)_PAD\ : OUT std_ulogic;
+        \LCD:LCDPort(4)_PAD\ : OUT std_ulogic;
+        \LCD:LCDPort(5)_PAD\ : OUT std_ulogic;
+        \LCD:LCDPort(6)_PAD\ : OUT std_ulogic;
+        MotorSwitchPin(0)_PAD : IN std_ulogic);
     ATTRIBUTE voltage_VDDABUF OF __DEFAULT__ : ENTITY IS 5e0;
     ATTRIBUTE voltage_VDDA OF __DEFAULT__ : ENTITY IS 5e0;
     ATTRIBUTE voltage_VUSB OF __DEFAULT__ : ENTITY IS 5e0;
@@ -34,6 +42,7 @@ ARCHITECTURE __DEFAULT__ OF \Dron-A Lisa\ IS
     SIGNAL ClockBlock_PLL_OUT : bit;
     SIGNAL ClockBlock_XTAL : bit;
     SIGNAL ClockBlock_XTAL_32KHZ : bit;
+    SIGNAL MotorSwitchPin(0)__PA : bit;
     SIGNAL Motor_1(0)__PA : bit;
     SIGNAL Motor_2(0)__PA : bit;
     SIGNAL Net_10 : bit;
@@ -43,6 +52,7 @@ ARCHITECTURE __DEFAULT__ OF \Dron-A Lisa\ IS
     SIGNAL Net_225 : bit;
     ATTRIBUTE global_signal OF Net_225 : SIGNAL IS true;
     SIGNAL Net_225_local : bit;
+    SIGNAL Net_231 : bit;
     SIGNAL Net_24 : bit;
     SIGNAL Net_253 : bit;
     SIGNAL Net_266 : bit;
@@ -55,6 +65,9 @@ ARCHITECTURE __DEFAULT__ OF \Dron-A Lisa\ IS
     ATTRIBUTE udbclken_assigned OF Net_30 : SIGNAL IS "True";
     ATTRIBUTE global_signal OF Net_30 : SIGNAL IS true;
     SIGNAL Net_30_local : bit;
+    SIGNAL Net_428 : bit;
+    SIGNAL Net_432 : bit;
+    SIGNAL Net_433 : bit;
     SIGNAL Net_51 : bit;
     ATTRIBUTE udbclken_assigned OF Net_51 : SIGNAL IS "True";
     ATTRIBUTE global_signal OF Net_51 : SIGNAL IS true;
@@ -62,11 +75,30 @@ ARCHITECTURE __DEFAULT__ OF \Dron-A Lisa\ IS
     SIGNAL Net_65 : bit;
     ATTRIBUTE global_signal OF Net_65 : SIGNAL IS true;
     SIGNAL Net_65_local : bit;
+    SIGNAL Pin_ADC_in(0)__PA : bit;
     SIGNAL Rx_1(0)__PA : bit;
     SIGNAL Sensor_Input(0)__PA : bit;
     SIGNAL Sensor_Out_Pin_1(0)__PA : bit;
     SIGNAL Sensor_Out_Pin_2(0)__PA : bit;
     SIGNAL Tx_1(0)__PA : bit;
+    SIGNAL \ADC_SAR_1:Net_207_0\ : bit;
+    SIGNAL \ADC_SAR_1:Net_207_10\ : bit;
+    SIGNAL \ADC_SAR_1:Net_207_11\ : bit;
+    SIGNAL \ADC_SAR_1:Net_207_1\ : bit;
+    SIGNAL \ADC_SAR_1:Net_207_2\ : bit;
+    SIGNAL \ADC_SAR_1:Net_207_3\ : bit;
+    SIGNAL \ADC_SAR_1:Net_207_4\ : bit;
+    SIGNAL \ADC_SAR_1:Net_207_5\ : bit;
+    SIGNAL \ADC_SAR_1:Net_207_6\ : bit;
+    SIGNAL \ADC_SAR_1:Net_207_7\ : bit;
+    SIGNAL \ADC_SAR_1:Net_207_8\ : bit;
+    SIGNAL \ADC_SAR_1:Net_207_9\ : bit;
+    SIGNAL \ADC_SAR_1:Net_252\ : bit;
+    SIGNAL \ADC_SAR_1:Net_381\ : bit;
+    SIGNAL \ADC_SAR_1:Net_381_local\ : bit;
+    SIGNAL \ADC_SAR_1:Net_385\ : bit;
+    ATTRIBUTE global_signal OF \ADC_SAR_1:Net_385\ : SIGNAL IS true;
+    SIGNAL \ADC_SAR_1:Net_385_local\ : bit;
     SIGNAL \Counter_Sensor:CounterUDB:cmp_out_i\ : bit;
     SIGNAL \Counter_Sensor:CounterUDB:control_0\ : bit;
     SIGNAL \Counter_Sensor:CounterUDB:control_1\ : bit;
@@ -88,6 +120,13 @@ ARCHITECTURE __DEFAULT__ OF \Dron-A Lisa\ IS
     SIGNAL \Counter_Sensor:CounterUDB:status_2\ : bit;
     SIGNAL \Counter_Sensor:CounterUDB:status_5\ : bit;
     SIGNAL \Counter_Sensor:CounterUDB:status_6\ : bit;
+    SIGNAL \\\LCD:LCDPort(0)\\__PA\ : bit;
+    SIGNAL \\\LCD:LCDPort(1)\\__PA\ : bit;
+    SIGNAL \\\LCD:LCDPort(2)\\__PA\ : bit;
+    SIGNAL \\\LCD:LCDPort(3)\\__PA\ : bit;
+    SIGNAL \\\LCD:LCDPort(4)\\__PA\ : bit;
+    SIGNAL \\\LCD:LCDPort(5)\\__PA\ : bit;
+    SIGNAL \\\LCD:LCDPort(6)\\__PA\ : bit;
     SIGNAL \Motor_PWM:PWMUDB:cmp1_less\ : bit;
     SIGNAL \Motor_PWM:PWMUDB:cmp2_less\ : bit;
     SIGNAL \Motor_PWM:PWMUDB:control_0\ : bit;
@@ -175,6 +214,7 @@ ARCHITECTURE __DEFAULT__ OF \Dron-A Lisa\ IS
     ATTRIBUTE POWER OF one : SIGNAL IS true;
     SIGNAL zero : bit;
     ATTRIBUTE GROUND OF zero : SIGNAL IS true;
+    SIGNAL \ClockBlock.aclk_glb_ff_0__sig\ : bit;
     SIGNAL \Motor_PWM:PWMUDB:sP16:pwmdp:u0.ce0__sig\ : bit;
     SIGNAL \Motor_PWM:PWMUDB:sP16:pwmdp:u0.cl0__sig\ : bit;
     SIGNAL \Motor_PWM:PWMUDB:sP16:pwmdp:u0.z0__sig\ : bit;
@@ -238,6 +278,24 @@ ARCHITECTURE __DEFAULT__ OF \Dron-A Lisa\ IS
     ATTRIBUTE Location OF Sensor_Out_Pin_1(0) : LABEL IS "P1[7]";
     ATTRIBUTE lib_model OF Sensor_Out_Pin_2(0) : LABEL IS "iocell7";
     ATTRIBUTE Location OF Sensor_Out_Pin_2(0) : LABEL IS "P1[6]";
+    ATTRIBUTE lib_model OF \LCD:LCDPort(0)\ : LABEL IS "iocell8";
+    ATTRIBUTE Location OF \LCD:LCDPort(0)\ : LABEL IS "P2[0]";
+    ATTRIBUTE lib_model OF \LCD:LCDPort(1)\ : LABEL IS "iocell9";
+    ATTRIBUTE Location OF \LCD:LCDPort(1)\ : LABEL IS "P2[1]";
+    ATTRIBUTE lib_model OF \LCD:LCDPort(2)\ : LABEL IS "iocell10";
+    ATTRIBUTE Location OF \LCD:LCDPort(2)\ : LABEL IS "P2[2]";
+    ATTRIBUTE lib_model OF \LCD:LCDPort(3)\ : LABEL IS "iocell11";
+    ATTRIBUTE Location OF \LCD:LCDPort(3)\ : LABEL IS "P2[3]";
+    ATTRIBUTE lib_model OF \LCD:LCDPort(4)\ : LABEL IS "iocell12";
+    ATTRIBUTE Location OF \LCD:LCDPort(4)\ : LABEL IS "P2[4]";
+    ATTRIBUTE lib_model OF \LCD:LCDPort(5)\ : LABEL IS "iocell13";
+    ATTRIBUTE Location OF \LCD:LCDPort(5)\ : LABEL IS "P2[5]";
+    ATTRIBUTE lib_model OF \LCD:LCDPort(6)\ : LABEL IS "iocell14";
+    ATTRIBUTE Location OF \LCD:LCDPort(6)\ : LABEL IS "P2[6]";
+    ATTRIBUTE lib_model OF MotorSwitchPin(0) : LABEL IS "iocell15";
+    ATTRIBUTE Location OF MotorSwitchPin(0) : LABEL IS "P15[3]";
+    ATTRIBUTE lib_model OF Pin_ADC_in(0) : LABEL IS "iocell16";
+    ATTRIBUTE Location OF Pin_ADC_in(0) : LABEL IS "P0[0]";
     ATTRIBUTE lib_model OF \Motor_PWM:PWMUDB:status_2\ : LABEL IS "macrocell1";
     ATTRIBUTE lib_model OF Net_24 : LABEL IS "macrocell2";
     ATTRIBUTE lib_model OF \UART_1:BUART:counter_load_not\ : LABEL IS "macrocell3";
@@ -251,7 +309,8 @@ ARCHITECTURE __DEFAULT__ OF \Dron-A Lisa\ IS
     ATTRIBUTE lib_model OF \Counter_Sensor:CounterUDB:status_2\ : LABEL IS "macrocell11";
     ATTRIBUTE lib_model OF \Counter_Sensor:CounterUDB:count_enable\ : LABEL IS "macrocell12";
     ATTRIBUTE lib_model OF \Sensor_Out:PWMUDB:status_2\ : LABEL IS "macrocell13";
-    ATTRIBUTE lib_model OF __ONE__ : LABEL IS "macrocell14";
+    ATTRIBUTE lib_model OF Net_428 : LABEL IS "macrocell14";
+    ATTRIBUTE lib_model OF __ONE__ : LABEL IS "macrocell15";
     ATTRIBUTE lib_model OF \Motor_PWM:PWMUDB:genblk1:ctrlreg\ : LABEL IS "controlcell1";
     ATTRIBUTE lib_model OF \Motor_PWM:PWMUDB:genblk8:stsreg\ : LABEL IS "statusicell1";
     ATTRIBUTE lib_model OF \Motor_PWM:PWMUDB:sP16:pwmdp:u0\ : LABEL IS "datapathcell1";
@@ -270,39 +329,40 @@ ARCHITECTURE __DEFAULT__ OF \Dron-A Lisa\ IS
     ATTRIBUTE lib_model OF \Sensor_Out:PWMUDB:genblk1:ctrlreg\ : LABEL IS "controlcell3";
     ATTRIBUTE lib_model OF \Sensor_Out:PWMUDB:genblk8:stsreg\ : LABEL IS "statusicell5";
     ATTRIBUTE lib_model OF \Sensor_Out:PWMUDB:sP8:pwmdp:u0\ : LABEL IS "datapathcell10";
-    ATTRIBUTE lib_model OF \Motor_PWM:PWMUDB:runmode_enable\ : LABEL IS "macrocell15";
-    ATTRIBUTE lib_model OF \Motor_PWM:PWMUDB:prevCompare1\ : LABEL IS "macrocell16";
-    ATTRIBUTE lib_model OF \Motor_PWM:PWMUDB:prevCompare2\ : LABEL IS "macrocell17";
-    ATTRIBUTE lib_model OF \Motor_PWM:PWMUDB:status_0\ : LABEL IS "macrocell18";
-    ATTRIBUTE lib_model OF \Motor_PWM:PWMUDB:status_1\ : LABEL IS "macrocell19";
-    ATTRIBUTE lib_model OF Net_10 : LABEL IS "macrocell20";
-    ATTRIBUTE lib_model OF Net_11 : LABEL IS "macrocell21";
-    ATTRIBUTE lib_model OF \UART_1:BUART:txn\ : LABEL IS "macrocell22";
-    ATTRIBUTE lib_model OF \UART_1:BUART:tx_state_1\ : LABEL IS "macrocell23";
-    ATTRIBUTE lib_model OF \UART_1:BUART:tx_state_0\ : LABEL IS "macrocell24";
-    ATTRIBUTE lib_model OF \UART_1:BUART:tx_state_2\ : LABEL IS "macrocell25";
-    ATTRIBUTE lib_model OF \UART_1:BUART:tx_bitclk\ : LABEL IS "macrocell26";
-    ATTRIBUTE lib_model OF \UART_1:BUART:tx_ctrl_mark_last\ : LABEL IS "macrocell27";
-    ATTRIBUTE lib_model OF \UART_1:BUART:rx_state_0\ : LABEL IS "macrocell28";
-    ATTRIBUTE lib_model OF \UART_1:BUART:rx_load_fifo\ : LABEL IS "macrocell29";
-    ATTRIBUTE lib_model OF \UART_1:BUART:rx_state_3\ : LABEL IS "macrocell30";
-    ATTRIBUTE lib_model OF \UART_1:BUART:rx_state_2\ : LABEL IS "macrocell31";
-    ATTRIBUTE lib_model OF \UART_1:BUART:rx_bitclk_enable\ : LABEL IS "macrocell32";
-    ATTRIBUTE lib_model OF \UART_1:BUART:rx_state_stop1_reg\ : LABEL IS "macrocell33";
-    ATTRIBUTE lib_model OF \UART_1:BUART:pollcount_1\ : LABEL IS "macrocell34";
-    ATTRIBUTE lib_model OF \UART_1:BUART:pollcount_0\ : LABEL IS "macrocell35";
-    ATTRIBUTE lib_model OF \UART_1:BUART:rx_status_3\ : LABEL IS "macrocell36";
-    ATTRIBUTE lib_model OF \UART_1:BUART:rx_last\ : LABEL IS "macrocell37";
-    ATTRIBUTE lib_model OF \Counter_Sensor:CounterUDB:overflow_reg_i\ : LABEL IS "macrocell38";
-    ATTRIBUTE lib_model OF \Counter_Sensor:CounterUDB:prevCompare\ : LABEL IS "macrocell39";
-    ATTRIBUTE lib_model OF \Counter_Sensor:CounterUDB:count_stored_i\ : LABEL IS "macrocell40";
-    ATTRIBUTE lib_model OF \Sensor_Out:PWMUDB:runmode_enable\ : LABEL IS "macrocell41";
-    ATTRIBUTE lib_model OF \Sensor_Out:PWMUDB:prevCompare1\ : LABEL IS "macrocell42";
-    ATTRIBUTE lib_model OF \Sensor_Out:PWMUDB:prevCompare2\ : LABEL IS "macrocell43";
-    ATTRIBUTE lib_model OF \Sensor_Out:PWMUDB:status_0\ : LABEL IS "macrocell44";
-    ATTRIBUTE lib_model OF \Sensor_Out:PWMUDB:status_1\ : LABEL IS "macrocell45";
-    ATTRIBUTE lib_model OF Net_266 : LABEL IS "macrocell46";
-    ATTRIBUTE lib_model OF Net_267 : LABEL IS "macrocell47";
+    ATTRIBUTE Location OF \ADC_SAR_1:ADC_SAR\ : LABEL IS "F(SAR,0)";
+    ATTRIBUTE lib_model OF \Motor_PWM:PWMUDB:runmode_enable\ : LABEL IS "macrocell16";
+    ATTRIBUTE lib_model OF \Motor_PWM:PWMUDB:prevCompare1\ : LABEL IS "macrocell17";
+    ATTRIBUTE lib_model OF \Motor_PWM:PWMUDB:prevCompare2\ : LABEL IS "macrocell18";
+    ATTRIBUTE lib_model OF \Motor_PWM:PWMUDB:status_0\ : LABEL IS "macrocell19";
+    ATTRIBUTE lib_model OF \Motor_PWM:PWMUDB:status_1\ : LABEL IS "macrocell20";
+    ATTRIBUTE lib_model OF Net_10 : LABEL IS "macrocell21";
+    ATTRIBUTE lib_model OF Net_11 : LABEL IS "macrocell22";
+    ATTRIBUTE lib_model OF \UART_1:BUART:txn\ : LABEL IS "macrocell23";
+    ATTRIBUTE lib_model OF \UART_1:BUART:tx_state_1\ : LABEL IS "macrocell24";
+    ATTRIBUTE lib_model OF \UART_1:BUART:tx_state_0\ : LABEL IS "macrocell25";
+    ATTRIBUTE lib_model OF \UART_1:BUART:tx_state_2\ : LABEL IS "macrocell26";
+    ATTRIBUTE lib_model OF \UART_1:BUART:tx_bitclk\ : LABEL IS "macrocell27";
+    ATTRIBUTE lib_model OF \UART_1:BUART:tx_ctrl_mark_last\ : LABEL IS "macrocell28";
+    ATTRIBUTE lib_model OF \UART_1:BUART:rx_state_0\ : LABEL IS "macrocell29";
+    ATTRIBUTE lib_model OF \UART_1:BUART:rx_load_fifo\ : LABEL IS "macrocell30";
+    ATTRIBUTE lib_model OF \UART_1:BUART:rx_state_3\ : LABEL IS "macrocell31";
+    ATTRIBUTE lib_model OF \UART_1:BUART:rx_state_2\ : LABEL IS "macrocell32";
+    ATTRIBUTE lib_model OF \UART_1:BUART:rx_bitclk_enable\ : LABEL IS "macrocell33";
+    ATTRIBUTE lib_model OF \UART_1:BUART:rx_state_stop1_reg\ : LABEL IS "macrocell34";
+    ATTRIBUTE lib_model OF \UART_1:BUART:pollcount_1\ : LABEL IS "macrocell35";
+    ATTRIBUTE lib_model OF \UART_1:BUART:pollcount_0\ : LABEL IS "macrocell36";
+    ATTRIBUTE lib_model OF \UART_1:BUART:rx_status_3\ : LABEL IS "macrocell37";
+    ATTRIBUTE lib_model OF \UART_1:BUART:rx_last\ : LABEL IS "macrocell38";
+    ATTRIBUTE lib_model OF \Counter_Sensor:CounterUDB:overflow_reg_i\ : LABEL IS "macrocell39";
+    ATTRIBUTE lib_model OF \Counter_Sensor:CounterUDB:prevCompare\ : LABEL IS "macrocell40";
+    ATTRIBUTE lib_model OF \Counter_Sensor:CounterUDB:count_stored_i\ : LABEL IS "macrocell41";
+    ATTRIBUTE lib_model OF \Sensor_Out:PWMUDB:runmode_enable\ : LABEL IS "macrocell42";
+    ATTRIBUTE lib_model OF \Sensor_Out:PWMUDB:prevCompare1\ : LABEL IS "macrocell43";
+    ATTRIBUTE lib_model OF \Sensor_Out:PWMUDB:prevCompare2\ : LABEL IS "macrocell44";
+    ATTRIBUTE lib_model OF \Sensor_Out:PWMUDB:status_0\ : LABEL IS "macrocell45";
+    ATTRIBUTE lib_model OF \Sensor_Out:PWMUDB:status_1\ : LABEL IS "macrocell46";
+    ATTRIBUTE lib_model OF Net_266 : LABEL IS "macrocell47";
+    ATTRIBUTE lib_model OF Net_267 : LABEL IS "macrocell48";
     COMPONENT clockblockcell
         PORT (
             dclk_0 : OUT std_ulogic;
@@ -610,6 +670,36 @@ ARCHITECTURE __DEFAULT__ OF \Dron-A Lisa\ IS
     ATTRIBUTE udb_chain OF macrocell : COMPONENT IS "cin,cout";
     ATTRIBUTE chain_lsb OF macrocell : COMPONENT IS "cin";
     ATTRIBUTE chain_msb OF macrocell : COMPONENT IS "cout";
+    COMPONENT sarcell
+        PORT (
+            clock : IN std_ulogic;
+            pump_clock : IN std_ulogic;
+            clk_udb : IN std_ulogic;
+            sof_udb : IN std_ulogic;
+            vp_ctl_udb_0 : IN std_ulogic;
+            vp_ctl_udb_1 : IN std_ulogic;
+            vp_ctl_udb_2 : IN std_ulogic;
+            vp_ctl_udb_3 : IN std_ulogic;
+            vn_ctl_udb_0 : IN std_ulogic;
+            vn_ctl_udb_1 : IN std_ulogic;
+            vn_ctl_udb_2 : IN std_ulogic;
+            vn_ctl_udb_3 : IN std_ulogic;
+            data_out_udb_0 : OUT std_ulogic;
+            data_out_udb_1 : OUT std_ulogic;
+            data_out_udb_2 : OUT std_ulogic;
+            data_out_udb_3 : OUT std_ulogic;
+            data_out_udb_4 : OUT std_ulogic;
+            data_out_udb_5 : OUT std_ulogic;
+            data_out_udb_6 : OUT std_ulogic;
+            data_out_udb_7 : OUT std_ulogic;
+            data_out_udb_8 : OUT std_ulogic;
+            data_out_udb_9 : OUT std_ulogic;
+            data_out_udb_10 : OUT std_ulogic;
+            data_out_udb_11 : OUT std_ulogic;
+            eof_udb : OUT std_ulogic;
+            irq : OUT std_ulogic;
+            next : OUT std_ulogic);
+    END COMPONENT;
     COMPONENT statusicell
         PORT (
             status_0 : IN std_ulogic;
@@ -648,6 +738,10 @@ BEGIN
             dclk_0 => Net_51_local,
             dclk_glb_1 => Net_65,
             dclk_1 => Net_65_local,
+            aclk_glb_0 => \ADC_SAR_1:Net_385\,
+            aclk_0 => \ADC_SAR_1:Net_385_local\,
+            clk_a_dig_glb_0 => \ADC_SAR_1:Net_381\,
+            clk_a_dig_0 => \ADC_SAR_1:Net_381_local\,
             dclk_glb_2 => Net_30,
             dclk_2 => Net_30_local,
             dclk_glb_3 => \UART_1:Net_9\,
@@ -655,7 +749,8 @@ BEGIN
             dclk_glb_4 => Net_273,
             dclk_4 => Net_273_local,
             dclk_glb_5 => Net_225,
-            dclk_5 => Net_225_local);
+            dclk_5 => Net_225_local,
+            aclk_glb_ff_0 => \ClockBlock.aclk_glb_ff_0__sig\);
 
     Motor_1:logicalport
         GENERIC MAP(
@@ -1300,6 +1395,390 @@ BEGIN
             out_clock_en => '1',
             out_reset => '0');
 
+    \LCD:LCDPort\:logicalport
+        GENERIC MAP(
+            drive_mode => "110110110110110110110",
+            ibuf_enabled => "1111111",
+            id => "5883e6f6-cc90-42cc-88d1-e292eb25a3fb/ed092b9b-d398-4703-be89-cebf998501f6",
+            init_dr_st => "0000000",
+            input_buffer_sel => "00000000000000",
+            input_clk_en => 0,
+            input_sync => "1111111",
+            input_sync_mode => "0000000",
+            intr_mode => "00000000000000",
+            invert_in_clock => 0,
+            invert_in_clock_en => 0,
+            invert_in_reset => 0,
+            invert_out_clock => 0,
+            invert_out_clock_en => 0,
+            invert_out_reset => 0,
+            io_voltage => ",,,,,,",
+            layout_mode => "CONTIGUOUS",
+            oe_conn => "0000000",
+            oe_reset => 0,
+            oe_sync => "0000000",
+            output_clk_en => 0,
+            output_clock_mode => "0000000",
+            output_conn => "0000000",
+            output_mode => "0000000",
+            output_reset => 0,
+            output_sync => "0000000",
+            ovt_hyst_trim => "0000000",
+            ovt_needed => "0000000",
+            ovt_slew_control => "00000000000000",
+            pa_in_clock => -1,
+            pa_in_clock_en => -1,
+            pa_in_reset => -1,
+            pa_out_clock => -1,
+            pa_out_clock_en => -1,
+            pa_out_reset => -1,
+            pin_aliases => ",,,,,,",
+            pin_mode => "OOOOOOO",
+            por_state => 4,
+            port_alias_group => "",
+            port_alias_required => 0,
+            sio_group_cnt => 0,
+            sio_hifreq => "00000000",
+            sio_hyst => "1111111",
+            sio_ibuf => "00000000",
+            sio_info => "00000000000000",
+            sio_obuf => "00000000",
+            sio_refsel => "00000000",
+            sio_vohsel => "00000000",
+            sio_vtrip => "00000000",
+            slew_rate => "0000000",
+            spanning => 0,
+            sw_only => 0,
+            use_annotation => "0000000",
+            vtrip => "10101010101010",
+            width => 7,
+            in_clk_inv => 0,
+            in_clken_inv => 0,
+            in_clken_mode => 1,
+            in_rst_inv => 0,
+            out_clk_inv => 0,
+            out_clken_inv => 0,
+            out_clken_mode => 1,
+            out_rst_inv => 0)
+        PORT MAP(
+            in_clock_en => open,
+            in_reset => open,
+            out_clock_en => open,
+            out_reset => open);
+
+    \LCD:LCDPort(0)\:iocell
+        GENERIC MAP(
+            in_sync_mode => 0,
+            out_sync_mode => 0,
+            oe_sync_mode => 0,
+            logicalport => "\LCD:LCDPort\",
+            logicalport_pin_id => 0,
+            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000001")
+        PORT MAP(
+            pa_out => \\\LCD:LCDPort(0)\\__PA\,
+            oe => open,
+            pad_in => \LCD:LCDPort(0)_PAD\,
+            in_clock => open,
+            in_clock_en => '1',
+            in_reset => '0',
+            out_clock => open,
+            out_clock_en => '1',
+            out_reset => '0');
+
+    \LCD:LCDPort(1)\:iocell
+        GENERIC MAP(
+            in_sync_mode => 0,
+            out_sync_mode => 0,
+            oe_sync_mode => 0,
+            logicalport => "\LCD:LCDPort\",
+            logicalport_pin_id => 1,
+            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000001")
+        PORT MAP(
+            pa_out => \\\LCD:LCDPort(1)\\__PA\,
+            oe => open,
+            pad_in => \LCD:LCDPort(1)_PAD\,
+            in_clock => open,
+            in_clock_en => '1',
+            in_reset => '0',
+            out_clock => open,
+            out_clock_en => '1',
+            out_reset => '0');
+
+    \LCD:LCDPort(2)\:iocell
+        GENERIC MAP(
+            in_sync_mode => 0,
+            out_sync_mode => 0,
+            oe_sync_mode => 0,
+            logicalport => "\LCD:LCDPort\",
+            logicalport_pin_id => 2,
+            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000001")
+        PORT MAP(
+            pa_out => \\\LCD:LCDPort(2)\\__PA\,
+            oe => open,
+            pad_in => \LCD:LCDPort(2)_PAD\,
+            in_clock => open,
+            in_clock_en => '1',
+            in_reset => '0',
+            out_clock => open,
+            out_clock_en => '1',
+            out_reset => '0');
+
+    \LCD:LCDPort(3)\:iocell
+        GENERIC MAP(
+            in_sync_mode => 0,
+            out_sync_mode => 0,
+            oe_sync_mode => 0,
+            logicalport => "\LCD:LCDPort\",
+            logicalport_pin_id => 3,
+            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000001")
+        PORT MAP(
+            pa_out => \\\LCD:LCDPort(3)\\__PA\,
+            oe => open,
+            pad_in => \LCD:LCDPort(3)_PAD\,
+            in_clock => open,
+            in_clock_en => '1',
+            in_reset => '0',
+            out_clock => open,
+            out_clock_en => '1',
+            out_reset => '0');
+
+    \LCD:LCDPort(4)\:iocell
+        GENERIC MAP(
+            in_sync_mode => 0,
+            out_sync_mode => 0,
+            oe_sync_mode => 0,
+            logicalport => "\LCD:LCDPort\",
+            logicalport_pin_id => 4,
+            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000001")
+        PORT MAP(
+            pa_out => \\\LCD:LCDPort(4)\\__PA\,
+            oe => open,
+            pad_in => \LCD:LCDPort(4)_PAD\,
+            in_clock => open,
+            in_clock_en => '1',
+            in_reset => '0',
+            out_clock => open,
+            out_clock_en => '1',
+            out_reset => '0');
+
+    \LCD:LCDPort(5)\:iocell
+        GENERIC MAP(
+            in_sync_mode => 0,
+            out_sync_mode => 0,
+            oe_sync_mode => 0,
+            logicalport => "\LCD:LCDPort\",
+            logicalport_pin_id => 5,
+            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000001")
+        PORT MAP(
+            pa_out => \\\LCD:LCDPort(5)\\__PA\,
+            oe => open,
+            pad_in => \LCD:LCDPort(5)_PAD\,
+            in_clock => open,
+            in_clock_en => '1',
+            in_reset => '0',
+            out_clock => open,
+            out_clock_en => '1',
+            out_reset => '0');
+
+    \LCD:LCDPort(6)\:iocell
+        GENERIC MAP(
+            in_sync_mode => 0,
+            out_sync_mode => 0,
+            oe_sync_mode => 0,
+            logicalport => "\LCD:LCDPort\",
+            logicalport_pin_id => 6,
+            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000001")
+        PORT MAP(
+            pa_out => \\\LCD:LCDPort(6)\\__PA\,
+            oe => open,
+            pad_in => \LCD:LCDPort(6)_PAD\,
+            in_clock => open,
+            in_clock_en => '1',
+            in_reset => '0',
+            out_clock => open,
+            out_clock_en => '1',
+            out_reset => '0');
+
+    MotorSwitchPin:logicalport
+        GENERIC MAP(
+            drive_mode => "011",
+            ibuf_enabled => "1",
+            id => "bcddcbdf-ae6a-490d-87a4-68bfeb99dabd",
+            init_dr_st => "0",
+            input_buffer_sel => "00",
+            input_clk_en => 0,
+            input_sync => "0",
+            input_sync_mode => "0",
+            intr_mode => "00",
+            invert_in_clock => 0,
+            invert_in_clock_en => 0,
+            invert_in_reset => 0,
+            invert_out_clock => 0,
+            invert_out_clock_en => 0,
+            invert_out_reset => 0,
+            io_voltage => "",
+            layout_mode => "CONTIGUOUS",
+            oe_conn => "0",
+            oe_reset => 0,
+            oe_sync => "0",
+            output_clk_en => 0,
+            output_clock_mode => "0",
+            output_conn => "0",
+            output_mode => "0",
+            output_reset => 0,
+            output_sync => "0",
+            ovt_hyst_trim => "0",
+            ovt_needed => "0",
+            ovt_slew_control => "00",
+            pa_in_clock => -1,
+            pa_in_clock_en => -1,
+            pa_in_reset => -1,
+            pa_out_clock => -1,
+            pa_out_clock_en => -1,
+            pa_out_reset => -1,
+            pin_aliases => "",
+            pin_mode => "I",
+            por_state => 4,
+            port_alias_group => "",
+            port_alias_required => 0,
+            sio_group_cnt => 0,
+            sio_hifreq => "00000000",
+            sio_hyst => "1",
+            sio_ibuf => "00000000",
+            sio_info => "00",
+            sio_obuf => "00000000",
+            sio_refsel => "00000000",
+            sio_vohsel => "00000000",
+            sio_vtrip => "00000000",
+            slew_rate => "0",
+            spanning => 0,
+            sw_only => 0,
+            use_annotation => "0",
+            vtrip => "00",
+            width => 1,
+            in_clk_inv => 0,
+            in_clken_inv => 0,
+            in_clken_mode => 1,
+            in_rst_inv => 0,
+            out_clk_inv => 0,
+            out_clken_inv => 0,
+            out_clken_mode => 1,
+            out_rst_inv => 0)
+        PORT MAP(
+            in_clock_en => open,
+            in_reset => open,
+            out_clock_en => open,
+            out_reset => open);
+
+    MotorSwitchPin(0):iocell
+        GENERIC MAP(
+            in_sync_mode => 0,
+            out_sync_mode => 0,
+            oe_sync_mode => 0,
+            logicalport => "MotorSwitchPin",
+            logicalport_pin_id => 0,
+            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000101")
+        PORT MAP(
+            pa_out => MotorSwitchPin(0)__PA,
+            oe => open,
+            fb => Net_231,
+            pad_in => MotorSwitchPin(0)_PAD,
+            in_clock => open,
+            in_clock_en => '1',
+            in_reset => '0',
+            out_clock => open,
+            out_clock_en => '1',
+            out_reset => '0');
+
+    Pin_ADC_in:logicalport
+        GENERIC MAP(
+            drive_mode => "000",
+            ibuf_enabled => "0",
+            id => "77715107-f8d5-47e5-a629-0fb83101ac6b",
+            init_dr_st => "0",
+            input_buffer_sel => "00",
+            input_clk_en => 0,
+            input_sync => "1",
+            input_sync_mode => "0",
+            intr_mode => "00",
+            invert_in_clock => 0,
+            invert_in_clock_en => 0,
+            invert_in_reset => 0,
+            invert_out_clock => 0,
+            invert_out_clock_en => 0,
+            invert_out_reset => 0,
+            io_voltage => "",
+            layout_mode => "CONTIGUOUS",
+            oe_conn => "0",
+            oe_reset => 0,
+            oe_sync => "0",
+            output_clk_en => 0,
+            output_clock_mode => "0",
+            output_conn => "0",
+            output_mode => "0",
+            output_reset => 0,
+            output_sync => "0",
+            ovt_hyst_trim => "0",
+            ovt_needed => "0",
+            ovt_slew_control => "00",
+            pa_in_clock => -1,
+            pa_in_clock_en => -1,
+            pa_in_reset => -1,
+            pa_out_clock => -1,
+            pa_out_clock_en => -1,
+            pa_out_reset => -1,
+            pin_aliases => "",
+            pin_mode => "A",
+            por_state => 4,
+            port_alias_group => "",
+            port_alias_required => 0,
+            sio_group_cnt => 0,
+            sio_hifreq => "00000000",
+            sio_hyst => "1",
+            sio_ibuf => "00000000",
+            sio_info => "00",
+            sio_obuf => "00000000",
+            sio_refsel => "00000000",
+            sio_vohsel => "00000000",
+            sio_vtrip => "00000000",
+            slew_rate => "0",
+            spanning => 0,
+            sw_only => 0,
+            use_annotation => "0",
+            vtrip => "10",
+            width => 1,
+            in_clk_inv => 0,
+            in_clken_inv => 0,
+            in_clken_mode => 1,
+            in_rst_inv => 0,
+            out_clk_inv => 0,
+            out_clken_inv => 0,
+            out_clken_mode => 1,
+            out_rst_inv => 0)
+        PORT MAP(
+            in_clock_en => open,
+            in_reset => open,
+            out_clock_en => open,
+            out_reset => open);
+
+    Pin_ADC_in(0):iocell
+        GENERIC MAP(
+            in_sync_mode => 0,
+            out_sync_mode => 0,
+            oe_sync_mode => 0,
+            logicalport => "Pin_ADC_in",
+            logicalport_pin_id => 0,
+            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000010")
+        PORT MAP(
+            pa_out => Pin_ADC_in(0)__PA,
+            oe => open,
+            in_clock => open,
+            in_clock_en => '1',
+            in_reset => '0',
+            out_clock => open,
+            out_clock_en => '1',
+            out_reset => '0');
+
     \Motor_PWM:PWMUDB:status_2\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * main_1)",
@@ -1436,6 +1915,15 @@ BEGIN
             q => \Sensor_Out:PWMUDB:status_2\,
             main_0 => \Sensor_Out:PWMUDB:runmode_enable\,
             main_1 => \Sensor_Out:PWMUDB:tc_i\);
+
+    Net_428:macrocell
+        GENERIC MAP(
+            eqn_main => "(!main_0)",
+            regmode => 0,
+            clken_mode => 1)
+        PORT MAP(
+            q => Net_428,
+            main_0 => Net_231);
 
     __ONE__:macrocell
         GENERIC MAP(
@@ -2106,6 +2594,61 @@ BEGIN
             ce1_comb => \Sensor_Out:PWMUDB:cmp2_eq\,
             f1_blk_stat_comb => \Sensor_Out:PWMUDB:status_3\,
             busclk => ClockBlock_BUS_CLK);
+
+    isr_motorSwitch_On:interrupt
+        GENERIC MAP(
+            int_type => "10",
+            is_nmi => 0)
+        PORT MAP(
+            interrupt => Net_231,
+            clock => ClockBlock_BUS_CLK);
+
+    isr_motorSwitch_Off:interrupt
+        GENERIC MAP(
+            int_type => "10",
+            is_nmi => 0)
+        PORT MAP(
+            interrupt => Net_428,
+            clock => ClockBlock_BUS_CLK);
+
+    \ADC_SAR_1:IRQ\:interrupt
+        GENERIC MAP(
+            int_type => "10",
+            is_nmi => 0)
+        PORT MAP(
+            interrupt => Net_432,
+            clock => ClockBlock_BUS_CLK);
+
+    \ADC_SAR_1:ADC_SAR\:sarcell
+        GENERIC MAP(
+            cy_registers => "")
+        PORT MAP(
+            clock => \ClockBlock.aclk_glb_ff_0__sig\,
+            pump_clock => \ClockBlock.aclk_glb_ff_0__sig\,
+            sof_udb => open,
+            vp_ctl_udb_3 => open,
+            vp_ctl_udb_2 => open,
+            vp_ctl_udb_1 => open,
+            vp_ctl_udb_0 => open,
+            vn_ctl_udb_3 => open,
+            vn_ctl_udb_2 => open,
+            vn_ctl_udb_1 => open,
+            vn_ctl_udb_0 => open,
+            irq => \ADC_SAR_1:Net_252\,
+            next => Net_433,
+            data_out_udb_11 => \ADC_SAR_1:Net_207_11\,
+            data_out_udb_10 => \ADC_SAR_1:Net_207_10\,
+            data_out_udb_9 => \ADC_SAR_1:Net_207_9\,
+            data_out_udb_8 => \ADC_SAR_1:Net_207_8\,
+            data_out_udb_7 => \ADC_SAR_1:Net_207_7\,
+            data_out_udb_6 => \ADC_SAR_1:Net_207_6\,
+            data_out_udb_5 => \ADC_SAR_1:Net_207_5\,
+            data_out_udb_4 => \ADC_SAR_1:Net_207_4\,
+            data_out_udb_3 => \ADC_SAR_1:Net_207_3\,
+            data_out_udb_2 => \ADC_SAR_1:Net_207_2\,
+            data_out_udb_1 => \ADC_SAR_1:Net_207_1\,
+            data_out_udb_0 => \ADC_SAR_1:Net_207_0\,
+            eof_udb => Net_432);
 
     \Motor_PWM:PWMUDB:runmode_enable\:macrocell
         GENERIC MAP(

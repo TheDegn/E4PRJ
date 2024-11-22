@@ -38,36 +38,37 @@ double calcAngle(long count)
     
 }
 
-float FIRMovingAverage(float new_value) {
-    
-    static float values[WINDOW_SIZE] = {0};  // Array til at gemme de seneste 20 værdier
-    static int index = 0;                  // Index for den aktuelle position i arrayet
-    static float sum = 0;                  // Summen af de 20 værdier
-    static int count = 0;                  // Antal værdier, der er blevet tilføjet
+static float values[WINDOW_SIZE] = {0};  // Array til at gemme de seneste 20 værdier
+static int i = 0;                  // Index for den aktuelle position i arrayet
+static float sum = 0;                  // Summen af de 20 værdier
+static int c = 0;                  // Antal værdier, der er blevet tilføjet
 
+float FIRMovingAverage(float new_value) 
+{
     // Opdater summen ved at trække den gamle værdi fra og tilføje den nye
-    sum -= values[index];
+    sum -= values[i];
     sum += new_value;
 
     // Opdater arrayet med den nye værdi
-    values[index] = new_value;
+    values[i] = new_value;
 
     // Flyt til næste position i arrayet, og wrap rundt efter WINDOW_SIZE
-    index = (index + 1) % WINDOW_SIZE;
+    i = (i + 1) % WINDOW_SIZE;
 
     // Tæl op til WINDOW_SIZE for at sikre korrekt gennemsnit på de første kald
-    if (count < WINDOW_SIZE) {
-        count++;
+    if (c < WINDOW_SIZE) {
+        c++;
     }
 
     // Returner gennemsnittet
-    return sum / count;
+    return sum / c;
 }
 
-float IIRFilter(float new_value) {
-    static float previous_output = 0;  // Gemmer det forrige output
-    const float alpha = 0.2;          // Justerbar vægtning, mellem 0 og 1
+static float previous_output = 0;  // Gemmer det forrige output
+const float alpha = 0.2;          // Justerbar vægtning, mellem 0 og 1
 
+float IIRFilter(float new_value) 
+{
     // Beregn det nye output baseret på nuværende input og tidligere output
     float output = alpha * new_value + (1 - alpha) * previous_output;
 

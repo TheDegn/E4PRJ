@@ -11,12 +11,15 @@ void Init_LCD();
 void Init_ADC();
 void Init_PWM();
 void Init_ISR();
+int FIRMovingAverage(int new_value);
 
 //Functions
 void writeLCD(char *top, int endTopChar, char *buttom, int endButtomChar);
+void writeLCD2(int setpoint, float sensor);
 
 int adcToDegrees(int adc_value);
 
+int setpoint();
 int mode_1();
 int mode_2();
 void mode_3();
@@ -27,6 +30,8 @@ int motorSwitch();
 CY_ISR_PROTO(ISR_toggle_handler);
 CY_ISR_PROTO(ISR_print_handler);
 CY_ISR_PROTO(ISR_gradient_handler);
+CY_ISR_PROTO(ISR_motorSwitch_On_handler);
+CY_ISR_PROTO(ISR_motorSwitch_Off_handler);
 
 /* The LCD format in characters */
 #define LCD_ROWS                (2u)
