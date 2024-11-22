@@ -113,7 +113,7 @@ int main(void)
             //UART_1_PutString(buff);
             sprintf(outputBuffer, "%.2f %.2f \r\n", output,angle);
             UART_1_PutString(outputBuffer);
-            writeLCD(interfaceSetpoint(), angle);
+            //writeLCD(interfaceSetpoint(), angle);
             startCounter();
         }
         
