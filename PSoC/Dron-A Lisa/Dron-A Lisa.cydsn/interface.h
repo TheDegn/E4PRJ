@@ -18,6 +18,7 @@ int adcToDegrees(int adc_value);
 int interfaceSetpoint();
 
 //ISR Prototypes
+CY_ISR_PROTO(ISR_toggle_handler);
 CY_ISR_PROTO(ISR_motorSwitch_On_handler);
 CY_ISR_PROTO(ISR_motorSwitch_Off_handler);
 

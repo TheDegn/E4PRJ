@@ -36,6 +36,8 @@ Archive member included to satisfy reference by file (symbol)
                               .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1.o) (ADC_SAR_1_ISR)
 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1_theACLK.o)
                               .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1.o) (ADC_SAR_1_theACLK_SetModeRegister)
+.\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_toggle.o)
+                              .\CortexM3\ARM_GCC_541\Debug\interface.o (isr_toggle_StartEx)
 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CyBootAsmGnu.o)
                               .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o (CyDelayCycles)
 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CyFlash.o)
@@ -151,7 +153,6 @@ errno               0x4               c:/program files (x86)/cypress/psoc creato
 ADC_SAR_1_countsPer10Volt
                     0x4               .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1.o)
 angle               0x8               .\CortexM3\ARM_GCC_541\Debug\main.o
-tempbuffer          0x14              .\CortexM3\ARM_GCC_541\Debug\interface.o
 dieTemperature      0x2               .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CyFlash.o)
 ADC_SAR_1_offset    0x2               .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1.o)
 
@@ -185,27 +186,8 @@ Discarded input sections
                 0x00000000       0x60 .\CortexM3\ARM_GCC_541\Debug\sensor.o
  .rodata        0x00000000        0x4 .\CortexM3\ARM_GCC_541\Debug\sensor.o
  .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\interface.o
- .data          0x00000000        0x8 .\CortexM3\ARM_GCC_541\Debug\interface.o
- .bss           0x00000000       0x12 .\CortexM3\ARM_GCC_541\Debug\interface.o
- .text.ISR_motorSwitch_On_handler
-                0x00000000       0x1c .\CortexM3\ARM_GCC_541\Debug\interface.o
- .text.ISR_motorSwitch_Off_handler
-                0x00000000       0x1c .\CortexM3\ARM_GCC_541\Debug\interface.o
- .text.Init_LCD
-                0x00000000       0x34 .\CortexM3\ARM_GCC_541\Debug\interface.o
- .text.Init_ADC
-                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\interface.o
- .text.init_interface
-                0x00000000       0x20 .\CortexM3\ARM_GCC_541\Debug\interface.o
- .text.writeLCD
-                0x00000000       0x54 .\CortexM3\ARM_GCC_541\Debug\interface.o
- .text.adcToDegrees
-                0x00000000       0x34 .\CortexM3\ARM_GCC_541\Debug\interface.o
- .text.interfaceSetpoint
-                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\interface.o
- .rodata.str1.4
-                0x00000000       0x3d .\CortexM3\ARM_GCC_541\Debug\interface.o
- COMMON         0x00000000       0x28 .\CortexM3\ARM_GCC_541\Debug\interface.o
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\interface.o
+ COMMON         0x00000000       0x14 .\CortexM3\ARM_GCC_541\Debug\interface.o
  .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
  .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
  .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
@@ -388,7 +370,6 @@ Discarded input sections
                 0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CyLib.o)
  .text.CyXTAL_SetWdVoltage
                 0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CyLib.o)
- .text.CyHalt   0x00000000        0x4 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CyLib.o)
  .text.CyPLL_OUT_SetPQ
                 0x00000000       0x60 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CyLib.o)
  .text.CyPLL_OUT_SetSource
@@ -437,12 +418,8 @@ Discarded input sections
                 0x00000000       0x28 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CyLib.o)
  .text.CyIntGetSysVector
                 0x00000000       0x20 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CyLib.o)
- .text.CyIntSetVector
-                0x00000000       0x28 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CyLib.o)
  .text.CyIntGetVector
                 0x00000000       0x24 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CyLib.o)
- .text.CyIntSetPriority
-                0x00000000       0x30 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CyLib.o)
  .text.CyIntGetPriority
                 0x00000000       0x20 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CyLib.o)
  .text.CyIntGetState
@@ -530,8 +507,6 @@ Discarded input sections
                 0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_pid.o)
  .text.isr_pid_Start
                 0x00000000       0x1c .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_pid.o)
- .text.isr_pid_Stop
-                0x00000000       0x14 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_pid.o)
  .text.isr_pid_SetPending
                 0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_pid.o)
  .text.isr_pid_ClearPending
@@ -597,59 +572,25 @@ Discarded input sections
                 0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Motor_PWM.o)
  .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(LCD.o)
  .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(LCD.o)
- .bss           0x00000000        0x2 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(LCD.o)
- .text.LCD_WrCntrlNib
-                0x00000000       0x34 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(LCD.o)
- .text.LCD_WrDatNib
-                0x00000000       0x44 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(LCD.o)
- .text.LCD_IsReady
-                0x00000000       0xe4 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(LCD.o)
- .text.LCD_WriteData
-                0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(LCD.o)
- .text.LCD_PrintString
-                0x00000000       0x1c .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(LCD.o)
  .text.LCD_PutChar
                 0x00000000        0x8 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(LCD.o)
- .text.LCD_WriteControl
-                0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(LCD.o)
- .text.LCD_Init
-                0x00000000       0x74 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(LCD.o)
- .text.LCD_Enable
-                0x00000000       0x14 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(LCD.o)
- .text.LCD_Start
-                0x00000000       0x1c .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(LCD.o)
  .text.LCD_Stop
                 0x00000000       0x14 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(LCD.o)
- .text.LCD_Position
-                0x00000000       0x3c .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(LCD.o)
  .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(LCD_CustChars.o)
  .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(LCD_CustChars.o)
  .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(LCD_CustChars.o)
- .text.LCD_LoadCustomFonts
-                0x00000000       0x2c .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(LCD_CustChars.o)
- .rodata        0x00000000       0x40 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(LCD_CustChars.o)
  .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_motorSwitch_On.o)
  .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_motorSwitch_On.o)
  .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_motorSwitch_On.o)
  .text.isr_motorSwitch_On_Interrupt
                 0x00000000        0x4 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_motorSwitch_On.o)
- .text.isr_motorSwitch_On_SetVector
-                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_motorSwitch_On.o)
  .text.isr_motorSwitch_On_GetVector
                 0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_motorSwitch_On.o)
- .text.isr_motorSwitch_On_SetPriority
-                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_motorSwitch_On.o)
  .text.isr_motorSwitch_On_GetPriority
-                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_motorSwitch_On.o)
- .text.isr_motorSwitch_On_Enable
                 0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_motorSwitch_On.o)
  .text.isr_motorSwitch_On_GetState
                 0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_motorSwitch_On.o)
- .text.isr_motorSwitch_On_Disable
-                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_motorSwitch_On.o)
  .text.isr_motorSwitch_On_Start
-                0x00000000       0x1c .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_motorSwitch_On.o)
- .text.isr_motorSwitch_On_StartEx
                 0x00000000       0x1c .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_motorSwitch_On.o)
  .text.isr_motorSwitch_On_Stop
                 0x00000000       0x14 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_motorSwitch_On.o)
@@ -662,23 +603,13 @@ Discarded input sections
  .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_motorSwitch_Off.o)
  .text.isr_motorSwitch_Off_Interrupt
                 0x00000000        0x4 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_motorSwitch_Off.o)
- .text.isr_motorSwitch_Off_SetVector
-                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_motorSwitch_Off.o)
  .text.isr_motorSwitch_Off_GetVector
                 0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_motorSwitch_Off.o)
- .text.isr_motorSwitch_Off_SetPriority
-                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_motorSwitch_Off.o)
  .text.isr_motorSwitch_Off_GetPriority
-                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_motorSwitch_Off.o)
- .text.isr_motorSwitch_Off_Enable
                 0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_motorSwitch_Off.o)
  .text.isr_motorSwitch_Off_GetState
                 0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_motorSwitch_Off.o)
- .text.isr_motorSwitch_Off_Disable
-                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_motorSwitch_Off.o)
  .text.isr_motorSwitch_Off_Start
-                0x00000000       0x1c .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_motorSwitch_Off.o)
- .text.isr_motorSwitch_Off_StartEx
                 0x00000000       0x1c .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_motorSwitch_Off.o)
  .text.isr_motorSwitch_Off_Stop
                 0x00000000       0x14 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_motorSwitch_Off.o)
@@ -688,30 +619,15 @@ Discarded input sections
                 0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_motorSwitch_Off.o)
  .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1.o)
  .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1.o)
- .bss           0x00000000        0x1 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1.o)
- .text.ADC_SAR_1_CalcGain
-                0x00000000       0x64 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1.o)
- .text.ADC_SAR_1_Enable
-                0x00000000       0x94 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1.o)
  .text.ADC_SAR_1_Stop
                 0x00000000       0x48 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1.o)
  .text.ADC_SAR_1_SetPower
                 0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1.o)
- .text.ADC_SAR_1_SetResolution
-                0x00000000       0x38 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1.o)
- .text.ADC_SAR_1_Init
-                0x00000000       0x3c .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1.o)
- .text.ADC_SAR_1_Start
-                0x00000000       0x1c .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1.o)
- .text.ADC_SAR_1_StartConvert
-                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1.o)
  .text.ADC_SAR_1_StopConvert
                 0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1.o)
  .text.ADC_SAR_1_IsEndConversion
                 0x00000000       0x24 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1.o)
  .text.ADC_SAR_1_GetResult8
-                0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1.o)
- .text.ADC_SAR_1_GetResult16
                 0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1.o)
  .text.ADC_SAR_1_SetOffset
                 0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1.o)
@@ -725,12 +641,9 @@ Discarded input sections
                 0x00000000       0x48 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1.o)
  .text.ADC_SAR_1_CountsTo_Volts
                 0x00000000       0x50 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1.o)
- COMMON         0x00000000        0xa .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1.o)
  .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1_INT.o)
  .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1_INT.o)
  .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1_INT.o)
- .text.ADC_SAR_1_ISR
-                0x00000000        0x4 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1_INT.o)
  .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1_theACLK.o)
  .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1_theACLK.o)
  .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1_theACLK.o)
@@ -744,8 +657,6 @@ Discarded input sections
                 0x00000000       0x20 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1_theACLK.o)
  .text.ADC_SAR_1_theACLK_GetDividerRegister
                 0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1_theACLK.o)
- .text.ADC_SAR_1_theACLK_SetModeRegister
-                0x00000000       0x14 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1_theACLK.o)
  .text.ADC_SAR_1_theACLK_ClearModeRegister
                 0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1_theACLK.o)
  .text.ADC_SAR_1_theACLK_GetModeRegister
@@ -760,6 +671,25 @@ Discarded input sections
                 0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1_theACLK.o)
  .text.ADC_SAR_1_theACLK_GetPhaseRegister
                 0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1_theACLK.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_toggle.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_toggle.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_toggle.o)
+ .text.isr_toggle_Interrupt
+                0x00000000        0x4 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_toggle.o)
+ .text.isr_toggle_GetVector
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_toggle.o)
+ .text.isr_toggle_GetPriority
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_toggle.o)
+ .text.isr_toggle_GetState
+                0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_toggle.o)
+ .text.isr_toggle_Start
+                0x00000000       0x1c .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_toggle.o)
+ .text.isr_toggle_Stop
+                0x00000000       0x14 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_toggle.o)
+ .text.isr_toggle_SetPending
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_toggle.o)
+ .text.isr_toggle_ClearPending
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_toggle.o)
  .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CyBootAsmGnu.o)
  .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CyBootAsmGnu.o)
  .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CyFlash.o)
@@ -1104,7 +1034,7 @@ END GROUP
                 0x00000800                ee_size = (CY_APPL_LOADABLE && ! (CY_EE_IN_BTLDR))?(CY_EE_SIZE / CY_APPL_MAX):CY_EE_SIZE
                 [!provide]                PROVIDE (CY_ECC_OFFSET, ecc_offset)
 
-.text           0x00000000     0x3df4
+.text           0x00000000     0x454c
  CREATE_OBJECT_SYMBOLS
                 0x00000000                PROVIDE (__cy_interrupt_vector, RomVectors)
  *(.romvectors)
@@ -1130,555 +1060,701 @@ END GROUP
  .text.ISR_UART_rx_handler
                 0x00000174       0x24 .\CortexM3\ARM_GCC_541\Debug\main.o
                 0x00000174                ISR_UART_rx_handler
- .text.main     0x00000198       0xd0 .\CortexM3\ARM_GCC_541\Debug\main.o
+ .text.main     0x00000198       0xf0 .\CortexM3\ARM_GCC_541\Debug\main.o
                 0x00000198                main
- .text.stop     0x00000268       0x14 .\CortexM3\ARM_GCC_541\Debug\motor.o
-                0x00000268                stop
+ .text.ISR_motorSwitch_On_handler
+                0x00000288       0x10 .\CortexM3\ARM_GCC_541\Debug\main.o
+                0x00000288                ISR_motorSwitch_On_handler
+ .text.ISR_motorSwitch_Off_handler
+                0x00000298        0xc .\CortexM3\ARM_GCC_541\Debug\main.o
+                0x00000298                ISR_motorSwitch_Off_handler
+ .text.stop     0x000002a4       0x14 .\CortexM3\ARM_GCC_541\Debug\motor.o
+                0x000002a4                stop
  .text.Motor_Init
-                0x0000027c       0x10 .\CortexM3\ARM_GCC_541\Debug\motor.o
-                0x0000027c                Motor_Init
+                0x000002b8       0x10 .\CortexM3\ARM_GCC_541\Debug\motor.o
+                0x000002b8                Motor_Init
  .text.setspeed
-                0x0000028c       0x40 .\CortexM3\ARM_GCC_541\Debug\motor.o
-                0x0000028c                setspeed
+                0x000002c8       0x40 .\CortexM3\ARM_GCC_541\Debug\motor.o
+                0x000002c8                setspeed
  .text.PIDUpdate
-                0x000002cc       0xa4 .\CortexM3\ARM_GCC_541\Debug\PIDcontroller.o
-                0x000002cc                PIDUpdate
+                0x00000308       0xa4 .\CortexM3\ARM_GCC_541\Debug\PIDcontroller.o
+                0x00000308                PIDUpdate
  .text.sensor_isr_handler
-                0x00000370       0x18 .\CortexM3\ARM_GCC_541\Debug\sensor.o
-                0x00000370                sensor_isr_handler
+                0x000003ac       0x18 .\CortexM3\ARM_GCC_541\Debug\sensor.o
+                0x000003ac                sensor_isr_handler
  .text.initSensor
-                0x00000388       0x10 .\CortexM3\ARM_GCC_541\Debug\sensor.o
-                0x00000388                initSensor
+                0x000003c4       0x10 .\CortexM3\ARM_GCC_541\Debug\sensor.o
+                0x000003c4                initSensor
  .text.startBurst
-                0x00000398        0x8 .\CortexM3\ARM_GCC_541\Debug\sensor.o
-                0x00000398                startBurst
+                0x000003d4        0x8 .\CortexM3\ARM_GCC_541\Debug\sensor.o
+                0x000003d4                startBurst
  .text.stopBurst
-                0x000003a0        0x8 .\CortexM3\ARM_GCC_541\Debug\sensor.o
-                0x000003a0                stopBurst
+                0x000003dc        0x8 .\CortexM3\ARM_GCC_541\Debug\sensor.o
+                0x000003dc                stopBurst
  .text.startCounter
-                0x000003a8       0x10 .\CortexM3\ARM_GCC_541\Debug\sensor.o
-                0x000003a8                startCounter
+                0x000003e4       0x10 .\CortexM3\ARM_GCC_541\Debug\sensor.o
+                0x000003e4                startCounter
+ *fill*         0x000003f4        0x4 
  .text.calcAngle
-                0x000003b8       0x30 .\CortexM3\ARM_GCC_541\Debug\sensor.o
-                0x000003b8                calcAngle
+                0x000003f8       0x30 .\CortexM3\ARM_GCC_541\Debug\sensor.o
+                0x000003f8                calcAngle
  .text.IIRFilter
-                0x000003e8       0x2c .\CortexM3\ARM_GCC_541\Debug\sensor.o
-                0x000003e8                IIRFilter
+                0x00000428       0x2c .\CortexM3\ARM_GCC_541\Debug\sensor.o
+                0x00000428                IIRFilter
+ .text.ISR_toggle_handler
+                0x00000454       0x14 .\CortexM3\ARM_GCC_541\Debug\interface.o
+                0x00000454                ISR_toggle_handler
+ .text.Init_LCD
+                0x00000468       0x34 .\CortexM3\ARM_GCC_541\Debug\interface.o
+                0x00000468                Init_LCD
+ .text.Init_ADC
+                0x0000049c        0xc .\CortexM3\ARM_GCC_541\Debug\interface.o
+                0x0000049c                Init_ADC
+ .text.init_interface
+                0x000004a8       0x2c .\CortexM3\ARM_GCC_541\Debug\interface.o
+                0x000004a8                init_interface
+ .text.writeLCD
+                0x000004d4       0x54 .\CortexM3\ARM_GCC_541\Debug\interface.o
+                0x000004d4                writeLCD
+ .text.adcToDegrees
+                0x00000528       0x34 .\CortexM3\ARM_GCC_541\Debug\interface.o
+                0x00000528                adcToDegrees
+ .text.interfaceSetpoint
+                0x0000055c        0xc .\CortexM3\ARM_GCC_541\Debug\interface.o
+                0x0000055c                interfaceSetpoint
  .text.CyClockStartupError
-                0x00000414        0x4 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+                0x00000568        0x4 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
  .text.cfg_write_bytes32
-                0x00000418       0x34 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+                0x0000056c       0x34 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
  .text.CYMEMZERO
-                0x0000044c        0xc .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+                0x000005a0        0xc .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
  .text.AnalogSetDefault
-                0x00000458       0x80 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+                0x000005ac       0x80 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
  .text.CYCONFIGCPY
-                0x000004d8        0x8 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+                0x0000062c        0x8 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
  .text.ClockSetup
-                0x000004e0      0x124 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+                0x00000634      0x130 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
  .text.cyfitter_cfg
-                0x00000604      0x124 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
-                0x00000604                cyfitter_cfg
+                0x00000764      0x144 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+                0x00000764                cyfitter_cfg
  .text.IntDefaultHandler
-                0x00000728       0x10 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
-                0x00000728                IntDefaultHandler
- .text._sbrk    0x00000738       0x30 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
-                0x00000738                _sbrk
- .text.Start_c  0x00000768       0x4c .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
-                0x00000768                Start_c
+                0x000008a8       0x10 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+                0x000008a8                IntDefaultHandler
+ .text._sbrk    0x000008b8       0x30 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+                0x000008b8                _sbrk
+ .text.Start_c  0x000008e8       0x4c .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+                0x000008e8                Start_c
  .text.initialize_psoc
-                0x000007b4       0x68 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
-                0x000007b4                initialize_psoc
+                0x00000934       0x68 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+                0x00000934                initialize_psoc
  .text.Clock_1_Start
-                0x0000081c       0x1c .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Clock_1.o)
-                0x0000081c                Clock_1_Start
+                0x0000099c       0x1c .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Clock_1.o)
+                0x0000099c                Clock_1_Start
  .text.isr_uart_rx_SetVector
-                0x00000838        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_uart_rx.o)
-                0x00000838                isr_uart_rx_SetVector
+                0x000009b8        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_uart_rx.o)
+                0x000009b8                isr_uart_rx_SetVector
  .text.isr_uart_rx_SetPriority
-                0x00000844       0x10 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_uart_rx.o)
-                0x00000844                isr_uart_rx_SetPriority
+                0x000009c4       0x10 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_uart_rx.o)
+                0x000009c4                isr_uart_rx_SetPriority
  .text.isr_uart_rx_Enable
-                0x00000854        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_uart_rx.o)
-                0x00000854                isr_uart_rx_Enable
+                0x000009d4        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_uart_rx.o)
+                0x000009d4                isr_uart_rx_Enable
  .text.isr_uart_rx_Disable
-                0x00000860        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_uart_rx.o)
-                0x00000860                isr_uart_rx_Disable
+                0x000009e0        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_uart_rx.o)
+                0x000009e0                isr_uart_rx_Disable
  .text.isr_uart_rx_StartEx
-                0x0000086c       0x1c .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_uart_rx.o)
-                0x0000086c                isr_uart_rx_StartEx
+                0x000009ec       0x1c .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_uart_rx.o)
+                0x000009ec                isr_uart_rx_StartEx
  .text.UART_1_Init
-                0x00000888       0x2c .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(UART_1.o)
-                0x00000888                UART_1_Init
+                0x00000a08       0x28 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(UART_1.o)
+                0x00000a08                UART_1_Init
  .text.UART_1_Enable
-                0x000008b4       0x38 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(UART_1.o)
-                0x000008b4                UART_1_Enable
+                0x00000a30       0x38 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(UART_1.o)
+                0x00000a30                UART_1_Enable
  .text.UART_1_Start
-                0x000008ec       0x1c .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(UART_1.o)
-                0x000008ec                UART_1_Start
+                0x00000a68       0x1c .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(UART_1.o)
+                0x00000a68                UART_1_Start
  .text.UART_1_ReadRxData
-                0x00000908        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(UART_1.o)
-                0x00000908                UART_1_ReadRxData
+                0x00000a84        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(UART_1.o)
+                0x00000a84                UART_1_ReadRxData
  .text.UART_1_GetRxBufferSize
-                0x00000914       0x18 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(UART_1.o)
-                0x00000914                UART_1_GetRxBufferSize
+                0x00000a90       0x18 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(UART_1.o)
+                0x00000a90                UART_1_GetRxBufferSize
  .text.UART_1_WriteTxData
-                0x0000092c       0x14 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(UART_1.o)
-                0x0000092c                UART_1_WriteTxData
+                0x00000aa8       0x14 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(UART_1.o)
+                0x00000aa8                UART_1_WriteTxData
  .text.UART_1_PutChar
-                0x00000940       0x18 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(UART_1.o)
-                0x00000940                UART_1_PutChar
+                0x00000abc       0x18 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(UART_1.o)
+                0x00000abc                UART_1_PutChar
  .text.UART_1_PutString
-                0x00000958       0x24 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(UART_1.o)
-                0x00000958                UART_1_PutString
+                0x00000ad4       0x24 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(UART_1.o)
+                0x00000ad4                UART_1_PutString
  .text.UART_1_IntClock_Start
-                0x0000097c       0x1c .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(UART_1_IntClock.o)
-                0x0000097c                UART_1_IntClock_Start
- .text.CyDelay  0x00000998       0x2c .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CyLib.o)
-                0x00000998                CyDelay
+                0x00000af8       0x1c .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(UART_1_IntClock.o)
+                0x00000af8                UART_1_IntClock_Start
+ .text.CyHalt   0x00000b14        0x4 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CyLib.o)
+                0x00000b14                CyHalt
+ .text.CyDelay  0x00000b18       0x2c .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CyLib.o)
+                0x00000b18                CyDelay
  .text.CyDelayUs
-                0x000009c4       0x14 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CyLib.o)
-                0x000009c4                CyDelayUs
+                0x00000b44       0x14 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CyLib.o)
+                0x00000b44                CyDelayUs
+ .text.CyIntSetVector
+                0x00000b58       0x28 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CyLib.o)
+                0x00000b58                CyIntSetVector
+ .text.CyIntSetPriority
+                0x00000b80       0x30 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CyLib.o)
+                0x00000b80                CyIntSetPriority
  .text.isr_pid_SetVector
-                0x000009d8        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_pid.o)
-                0x000009d8                isr_pid_SetVector
+                0x00000bb0        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_pid.o)
+                0x00000bb0                isr_pid_SetVector
  .text.isr_pid_SetPriority
-                0x000009e4       0x10 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_pid.o)
-                0x000009e4                isr_pid_SetPriority
+                0x00000bbc       0x10 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_pid.o)
+                0x00000bbc                isr_pid_SetPriority
  .text.isr_pid_Enable
-                0x000009f4        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_pid.o)
-                0x000009f4                isr_pid_Enable
+                0x00000bcc        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_pid.o)
+                0x00000bcc                isr_pid_Enable
  .text.isr_pid_Disable
-                0x00000a00        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_pid.o)
-                0x00000a00                isr_pid_Disable
+                0x00000bd8        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_pid.o)
+                0x00000bd8                isr_pid_Disable
  .text.isr_pid_StartEx
-                0x00000a0c       0x1c .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_pid.o)
-                0x00000a0c                isr_pid_StartEx
+                0x00000be4       0x1c .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_pid.o)
+                0x00000be4                isr_pid_StartEx
+ .text.isr_pid_Stop
+                0x00000c00       0x14 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_pid.o)
+                0x00000c00                isr_pid_Stop
  .text.Counter_Sensor_Enable
-                0x00000a28       0x10 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Counter_Sensor.o)
-                0x00000a28                Counter_Sensor_Enable
+                0x00000c14       0x10 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Counter_Sensor.o)
+                0x00000c14                Counter_Sensor_Enable
  .text.Counter_Sensor_Stop
-                0x00000a38       0x10 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Counter_Sensor.o)
-                0x00000a38                Counter_Sensor_Stop
+                0x00000c24       0x10 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Counter_Sensor.o)
+                0x00000c24                Counter_Sensor_Stop
  .text.Counter_Sensor_SetInterruptMode
-                0x00000a48        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Counter_Sensor.o)
-                0x00000a48                Counter_Sensor_SetInterruptMode
+                0x00000c34        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Counter_Sensor.o)
+                0x00000c34                Counter_Sensor_SetInterruptMode
  .text.Counter_Sensor_ReadStatusRegister
-                0x00000a54        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Counter_Sensor.o)
-                0x00000a54                Counter_Sensor_ReadStatusRegister
+                0x00000c40        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Counter_Sensor.o)
+                0x00000c40                Counter_Sensor_ReadStatusRegister
  .text.Counter_Sensor_WriteCounter
-                0x00000a60        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Counter_Sensor.o)
-                0x00000a60                Counter_Sensor_WriteCounter
+                0x00000c4c        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Counter_Sensor.o)
+                0x00000c4c                Counter_Sensor_WriteCounter
  .text.Counter_Sensor_ReadCounter
-                0x00000a6c       0x14 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Counter_Sensor.o)
-                0x00000a6c                Counter_Sensor_ReadCounter
+                0x00000c58       0x14 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Counter_Sensor.o)
+                0x00000c58                Counter_Sensor_ReadCounter
  .text.Counter_Sensor_ReadCapture
-                0x00000a80        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Counter_Sensor.o)
-                0x00000a80                Counter_Sensor_ReadCapture
+                0x00000c6c        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Counter_Sensor.o)
+                0x00000c6c                Counter_Sensor_ReadCapture
  .text.Counter_Sensor_WritePeriod
-                0x00000a8c        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Counter_Sensor.o)
-                0x00000a8c                Counter_Sensor_WritePeriod
+                0x00000c78        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Counter_Sensor.o)
+                0x00000c78                Counter_Sensor_WritePeriod
  .text.Counter_Sensor_WriteCompare
-                0x00000a98        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Counter_Sensor.o)
-                0x00000a98                Counter_Sensor_WriteCompare
+                0x00000c84        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Counter_Sensor.o)
+                0x00000c84                Counter_Sensor_WriteCompare
  .text.Counter_Sensor_ClearFIFO
-                0x00000aa4       0x14 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Counter_Sensor.o)
-                0x00000aa4                Counter_Sensor_ClearFIFO
+                0x00000c90       0x14 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Counter_Sensor.o)
+                0x00000c90                Counter_Sensor_ClearFIFO
  .text.Counter_Sensor_Init
-                0x00000ab8       0x58 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Counter_Sensor.o)
-                0x00000ab8                Counter_Sensor_Init
+                0x00000ca4       0x58 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Counter_Sensor.o)
+                0x00000ca4                Counter_Sensor_Init
  .text.Counter_Sensor_Start
-                0x00000b10       0x1c .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Counter_Sensor.o)
-                0x00000b10                Counter_Sensor_Start
+                0x00000cfc       0x1c .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Counter_Sensor.o)
+                0x00000cfc                Counter_Sensor_Start
  .text.sensor_input_isr_SetVector
-                0x00000b2c        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(sensor_input_isr.o)
-                0x00000b2c                sensor_input_isr_SetVector
+                0x00000d18        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(sensor_input_isr.o)
+                0x00000d18                sensor_input_isr_SetVector
  .text.sensor_input_isr_SetPriority
-                0x00000b38       0x10 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(sensor_input_isr.o)
-                0x00000b38                sensor_input_isr_SetPriority
+                0x00000d24       0x10 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(sensor_input_isr.o)
+                0x00000d24                sensor_input_isr_SetPriority
  .text.sensor_input_isr_Enable
-                0x00000b48        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(sensor_input_isr.o)
-                0x00000b48                sensor_input_isr_Enable
+                0x00000d34        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(sensor_input_isr.o)
+                0x00000d34                sensor_input_isr_Enable
  .text.sensor_input_isr_Disable
-                0x00000b54        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(sensor_input_isr.o)
-                0x00000b54                sensor_input_isr_Disable
+                0x00000d40        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(sensor_input_isr.o)
+                0x00000d40                sensor_input_isr_Disable
  .text.sensor_input_isr_StartEx
-                0x00000b60       0x1c .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(sensor_input_isr.o)
-                0x00000b60                sensor_input_isr_StartEx
+                0x00000d4c       0x1c .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(sensor_input_isr.o)
+                0x00000d4c                sensor_input_isr_StartEx
  .text.Sensor_Out_Enable
-                0x00000b7c       0x10 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Sensor_Out.o)
-                0x00000b7c                Sensor_Out_Enable
+                0x00000d68       0x10 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Sensor_Out.o)
+                0x00000d68                Sensor_Out_Enable
  .text.Sensor_Out_Stop
-                0x00000b8c       0x10 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Sensor_Out.o)
-                0x00000b8c                Sensor_Out_Stop
+                0x00000d78       0x10 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Sensor_Out.o)
+                0x00000d78                Sensor_Out_Stop
  .text.Sensor_Out_WriteCounter
-                0x00000b9c        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Sensor_Out.o)
-                0x00000b9c                Sensor_Out_WriteCounter
+                0x00000d88        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Sensor_Out.o)
+                0x00000d88                Sensor_Out_WriteCounter
  .text.Sensor_Out_WritePeriod
-                0x00000ba8        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Sensor_Out.o)
-                0x00000ba8                Sensor_Out_WritePeriod
+                0x00000d94        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Sensor_Out.o)
+                0x00000d94                Sensor_Out_WritePeriod
  .text.Sensor_Out_WriteCompare1
-                0x00000bb4        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Sensor_Out.o)
-                0x00000bb4                Sensor_Out_WriteCompare1
+                0x00000da0        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Sensor_Out.o)
+                0x00000da0                Sensor_Out_WriteCompare1
  .text.Sensor_Out_WriteCompare2
-                0x00000bc0        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Sensor_Out.o)
-                0x00000bc0                Sensor_Out_WriteCompare2
+                0x00000dac        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Sensor_Out.o)
+                0x00000dac                Sensor_Out_WriteCompare2
  .text.Sensor_Out_SetInterruptMode
-                0x00000bcc        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Sensor_Out.o)
-                0x00000bcc                Sensor_Out_SetInterruptMode
+                0x00000db8        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Sensor_Out.o)
+                0x00000db8                Sensor_Out_SetInterruptMode
  .text.Sensor_Out_ReadStatusRegister
-                0x00000bd8        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Sensor_Out.o)
-                0x00000bd8                Sensor_Out_ReadStatusRegister
+                0x00000dc4        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Sensor_Out.o)
+                0x00000dc4                Sensor_Out_ReadStatusRegister
  .text.Sensor_Out_ReadCapture
-                0x00000be4        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Sensor_Out.o)
-                0x00000be4                Sensor_Out_ReadCapture
+                0x00000dd0        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Sensor_Out.o)
+                0x00000dd0                Sensor_Out_ReadCapture
  .text.Sensor_Out_ClearFIFO
-                0x00000bf0       0x14 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Sensor_Out.o)
-                0x00000bf0                Sensor_Out_ClearFIFO
+                0x00000ddc       0x14 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Sensor_Out.o)
+                0x00000ddc                Sensor_Out_ClearFIFO
  .text.Sensor_Out_Init
-                0x00000c04       0x58 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Sensor_Out.o)
-                0x00000c04                Sensor_Out_Init
+                0x00000df0       0x58 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Sensor_Out.o)
+                0x00000df0                Sensor_Out_Init
  .text.Sensor_Out_Start
-                0x00000c5c       0x1c .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Sensor_Out.o)
-                0x00000c5c                Sensor_Out_Start
+                0x00000e48       0x1c .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Sensor_Out.o)
+                0x00000e48                Sensor_Out_Start
  .text.Motor_PWM_Enable
-                0x00000c78       0x10 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Motor_PWM.o)
-                0x00000c78                Motor_PWM_Enable
+                0x00000e64       0x10 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Motor_PWM.o)
+                0x00000e64                Motor_PWM_Enable
  .text.Motor_PWM_WriteCounter
-                0x00000c88        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Motor_PWM.o)
-                0x00000c88                Motor_PWM_WriteCounter
+                0x00000e74        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Motor_PWM.o)
+                0x00000e74                Motor_PWM_WriteCounter
  .text.Motor_PWM_WritePeriod
-                0x00000c94        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Motor_PWM.o)
-                0x00000c94                Motor_PWM_WritePeriod
+                0x00000e80        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Motor_PWM.o)
+                0x00000e80                Motor_PWM_WritePeriod
  .text.Motor_PWM_WriteCompare1
-                0x00000ca0        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Motor_PWM.o)
-                0x00000ca0                Motor_PWM_WriteCompare1
+                0x00000e8c        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Motor_PWM.o)
+                0x00000e8c                Motor_PWM_WriteCompare1
  .text.Motor_PWM_WriteCompare2
-                0x00000cac        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Motor_PWM.o)
-                0x00000cac                Motor_PWM_WriteCompare2
+                0x00000e98        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Motor_PWM.o)
+                0x00000e98                Motor_PWM_WriteCompare2
  .text.Motor_PWM_SetInterruptMode
-                0x00000cb8        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Motor_PWM.o)
-                0x00000cb8                Motor_PWM_SetInterruptMode
+                0x00000ea4        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Motor_PWM.o)
+                0x00000ea4                Motor_PWM_SetInterruptMode
  .text.Motor_PWM_ReadStatusRegister
-                0x00000cc4        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Motor_PWM.o)
-                0x00000cc4                Motor_PWM_ReadStatusRegister
+                0x00000eb0        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Motor_PWM.o)
+                0x00000eb0                Motor_PWM_ReadStatusRegister
  .text.Motor_PWM_ReadCapture
-                0x00000cd0        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Motor_PWM.o)
-                0x00000cd0                Motor_PWM_ReadCapture
+                0x00000ebc        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Motor_PWM.o)
+                0x00000ebc                Motor_PWM_ReadCapture
  .text.Motor_PWM_ClearFIFO
-                0x00000cdc       0x14 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Motor_PWM.o)
-                0x00000cdc                Motor_PWM_ClearFIFO
+                0x00000ec8       0x14 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Motor_PWM.o)
+                0x00000ec8                Motor_PWM_ClearFIFO
  .text.Motor_PWM_Init
-                0x00000cf0       0x68 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Motor_PWM.o)
-                0x00000cf0                Motor_PWM_Init
+                0x00000edc       0x68 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Motor_PWM.o)
+                0x00000edc                Motor_PWM_Init
  .text.Motor_PWM_Start
-                0x00000d58       0x1c .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Motor_PWM.o)
-                0x00000d58                Motor_PWM_Start
- *fill*         0x00000d74        0x4 
- .text          0x00000d78       0x20 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CyBootAsmGnu.o)
-                0x00000d78                CyDelayCycles
-                0x00000d88                CyEnterCriticalSection
-                0x00000d90                CyExitCriticalSection
- .text          0x00000d98      0x370 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_addsubdf3.o)
-                0x00000d98                __aeabi_drsub
-                0x00000da0                __aeabi_dsub
-                0x00000da0                __subdf3
-                0x00000da4                __aeabi_dadd
-                0x00000da4                __adddf3
-                0x0000101c                __floatunsidf
-                0x0000101c                __aeabi_ui2d
-                0x0000103c                __floatsidf
-                0x0000103c                __aeabi_i2d
-                0x00001060                __aeabi_f2d
-                0x00001060                __extendsfdf2
-                0x0000109c                __floatundidf
-                0x0000109c                __aeabi_ul2d
-                0x000010ac                __floatdidf
-                0x000010ac                __aeabi_l2d
- .text          0x00001108      0x424 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_muldivdf3.o)
-                0x00001108                __aeabi_dmul
-                0x00001108                __muldf3
-                0x0000135c                __divdf3
-                0x0000135c                __aeabi_ddiv
- .text          0x0000152c       0xa0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_truncdfsf2.o)
-                0x0000152c                __truncdfsf2
-                0x0000152c                __aeabi_d2f
- .text          0x000015cc      0x21c c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_addsubsf3.o)
-                0x000015cc                __aeabi_frsub
-                0x000015d4                __subsf3
-                0x000015d4                __aeabi_fsub
-                0x000015d8                __aeabi_fadd
-                0x000015d8                __addsf3
-                0x00001738                __aeabi_ui2f
-                0x00001738                __floatunsisf
-                0x00001740                __aeabi_i2f
-                0x00001740                __floatsisf
-                0x0000175c                __aeabi_ul2f
-                0x0000175c                __floatundisf
-                0x0000176c                __aeabi_l2f
-                0x0000176c                __floatdisf
- .text          0x000017e8      0x2a0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_muldivsf3.o)
-                0x000017e8                __mulsf3
-                0x000017e8                __aeabi_fmul
-                0x00001950                __aeabi_fdiv
-                0x00001950                __divsf3
- .text          0x00001a88       0xec c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_cmpsf2.o)
-                0x00001a88                __gesf2
-                0x00001a88                __gtsf2
-                0x00001a90                __lesf2
-                0x00001a90                __ltsf2
-                0x00001a98                __nesf2
-                0x00001a98                __eqsf2
-                0x00001a98                __cmpsf2
-                0x00001af8                __aeabi_cfrcmple
-                0x00001b00                __aeabi_cfcmpeq
-                0x00001b00                __aeabi_cfcmple
-                0x00001b10                __aeabi_fcmpeq
-                0x00001b24                __aeabi_fcmplt
-                0x00001b38                __aeabi_fcmple
-                0x00001b4c                __aeabi_fcmpge
-                0x00001b60                __aeabi_fcmpgt
- .text          0x00001b74       0x4c c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_fixsfsi.o)
-                0x00001b74                __aeabi_f2iz
-                0x00001b74                __fixsfsi
- .text.__errno  0x00001bc0        0xc c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-errno.o)
-                0x00001bc0                __errno
+                0x00000f44       0x1c .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Motor_PWM.o)
+                0x00000f44                Motor_PWM_Start
+ .text.LCD_WrCntrlNib
+                0x00000f60       0x34 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(LCD.o)
+ .text.LCD_WrDatNib
+                0x00000f94       0x44 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(LCD.o)
+ .text.LCD_IsReady
+                0x00000fd8       0xe4 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(LCD.o)
+                0x00000fd8                LCD_IsReady
+ .text.LCD_WriteData
+                0x000010bc       0x18 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(LCD.o)
+                0x000010bc                LCD_WriteData
+ .text.LCD_PrintString
+                0x000010d4       0x1c .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(LCD.o)
+                0x000010d4                LCD_PrintString
+ .text.LCD_WriteControl
+                0x000010f0       0x18 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(LCD.o)
+                0x000010f0                LCD_WriteControl
+ .text.LCD_Init
+                0x00001108       0x74 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(LCD.o)
+                0x00001108                LCD_Init
+ .text.LCD_Enable
+                0x0000117c       0x14 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(LCD.o)
+                0x0000117c                LCD_Enable
+ .text.LCD_Start
+                0x00001190       0x1c .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(LCD.o)
+                0x00001190                LCD_Start
+ .text.LCD_Position
+                0x000011ac       0x3c .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(LCD.o)
+                0x000011ac                LCD_Position
+ .text.LCD_LoadCustomFonts
+                0x000011e8       0x2c .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(LCD_CustChars.o)
+                0x000011e8                LCD_LoadCustomFonts
+ .text.isr_motorSwitch_On_SetVector
+                0x00001214        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_motorSwitch_On.o)
+                0x00001214                isr_motorSwitch_On_SetVector
+ .text.isr_motorSwitch_On_SetPriority
+                0x00001220       0x10 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_motorSwitch_On.o)
+                0x00001220                isr_motorSwitch_On_SetPriority
+ .text.isr_motorSwitch_On_Enable
+                0x00001230        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_motorSwitch_On.o)
+                0x00001230                isr_motorSwitch_On_Enable
+ .text.isr_motorSwitch_On_Disable
+                0x0000123c        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_motorSwitch_On.o)
+                0x0000123c                isr_motorSwitch_On_Disable
+ .text.isr_motorSwitch_On_StartEx
+                0x00001248       0x1c .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_motorSwitch_On.o)
+                0x00001248                isr_motorSwitch_On_StartEx
+ .text.isr_motorSwitch_Off_SetVector
+                0x00001264        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_motorSwitch_Off.o)
+                0x00001264                isr_motorSwitch_Off_SetVector
+ .text.isr_motorSwitch_Off_SetPriority
+                0x00001270       0x10 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_motorSwitch_Off.o)
+                0x00001270                isr_motorSwitch_Off_SetPriority
+ .text.isr_motorSwitch_Off_Enable
+                0x00001280        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_motorSwitch_Off.o)
+                0x00001280                isr_motorSwitch_Off_Enable
+ .text.isr_motorSwitch_Off_Disable
+                0x0000128c        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_motorSwitch_Off.o)
+                0x0000128c                isr_motorSwitch_Off_Disable
+ .text.isr_motorSwitch_Off_StartEx
+                0x00001298       0x1c .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_motorSwitch_Off.o)
+                0x00001298                isr_motorSwitch_Off_StartEx
+ .text.ADC_SAR_1_CalcGain
+                0x000012b4       0x64 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1.o)
+ .text.ADC_SAR_1_Enable
+                0x00001318       0x94 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1.o)
+                0x00001318                ADC_SAR_1_Enable
+ .text.ADC_SAR_1_SetResolution
+                0x000013ac       0x38 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1.o)
+                0x000013ac                ADC_SAR_1_SetResolution
+ .text.ADC_SAR_1_Init
+                0x000013e4       0x3c .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1.o)
+                0x000013e4                ADC_SAR_1_Init
+ .text.ADC_SAR_1_Start
+                0x00001420       0x1c .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1.o)
+                0x00001420                ADC_SAR_1_Start
+ .text.ADC_SAR_1_StartConvert
+                0x0000143c       0x10 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1.o)
+                0x0000143c                ADC_SAR_1_StartConvert
+ .text.ADC_SAR_1_GetResult16
+                0x0000144c       0x18 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1.o)
+                0x0000144c                ADC_SAR_1_GetResult16
+ .text.ADC_SAR_1_ISR
+                0x00001464        0x4 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1_INT.o)
+                0x00001464                ADC_SAR_1_ISR
+ .text.ADC_SAR_1_theACLK_SetModeRegister
+                0x00001468       0x14 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1_theACLK.o)
+                0x00001468                ADC_SAR_1_theACLK_SetModeRegister
+ .text.isr_toggle_SetVector
+                0x0000147c        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_toggle.o)
+                0x0000147c                isr_toggle_SetVector
+ .text.isr_toggle_SetPriority
+                0x00001488       0x10 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_toggle.o)
+                0x00001488                isr_toggle_SetPriority
+ .text.isr_toggle_Enable
+                0x00001498        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_toggle.o)
+                0x00001498                isr_toggle_Enable
+ .text.isr_toggle_Disable
+                0x000014a4        0xc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_toggle.o)
+                0x000014a4                isr_toggle_Disable
+ .text.isr_toggle_StartEx
+                0x000014b0       0x1c .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_toggle.o)
+                0x000014b0                isr_toggle_StartEx
+ *fill*         0x000014cc        0x4 
+ .text          0x000014d0       0x20 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CyBootAsmGnu.o)
+                0x000014d0                CyDelayCycles
+                0x000014e0                CyEnterCriticalSection
+                0x000014e8                CyExitCriticalSection
+ .text          0x000014f0      0x370 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_addsubdf3.o)
+                0x000014f0                __aeabi_drsub
+                0x000014f8                __aeabi_dsub
+                0x000014f8                __subdf3
+                0x000014fc                __aeabi_dadd
+                0x000014fc                __adddf3
+                0x00001774                __floatunsidf
+                0x00001774                __aeabi_ui2d
+                0x00001794                __floatsidf
+                0x00001794                __aeabi_i2d
+                0x000017b8                __aeabi_f2d
+                0x000017b8                __extendsfdf2
+                0x000017f4                __floatundidf
+                0x000017f4                __aeabi_ul2d
+                0x00001804                __floatdidf
+                0x00001804                __aeabi_l2d
+ .text          0x00001860      0x424 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_muldivdf3.o)
+                0x00001860                __aeabi_dmul
+                0x00001860                __muldf3
+                0x00001ab4                __divdf3
+                0x00001ab4                __aeabi_ddiv
+ .text          0x00001c84       0xa0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_truncdfsf2.o)
+                0x00001c84                __truncdfsf2
+                0x00001c84                __aeabi_d2f
+ .text          0x00001d24      0x21c c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_addsubsf3.o)
+                0x00001d24                __aeabi_frsub
+                0x00001d2c                __subsf3
+                0x00001d2c                __aeabi_fsub
+                0x00001d30                __aeabi_fadd
+                0x00001d30                __addsf3
+                0x00001e90                __aeabi_ui2f
+                0x00001e90                __floatunsisf
+                0x00001e98                __aeabi_i2f
+                0x00001e98                __floatsisf
+                0x00001eb4                __aeabi_ul2f
+                0x00001eb4                __floatundisf
+                0x00001ec4                __aeabi_l2f
+                0x00001ec4                __floatdisf
+ .text          0x00001f40      0x2a0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_muldivsf3.o)
+                0x00001f40                __mulsf3
+                0x00001f40                __aeabi_fmul
+                0x000020a8                __aeabi_fdiv
+                0x000020a8                __divsf3
+ .text          0x000021e0       0xec c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_cmpsf2.o)
+                0x000021e0                __gesf2
+                0x000021e0                __gtsf2
+                0x000021e8                __lesf2
+                0x000021e8                __ltsf2
+                0x000021f0                __nesf2
+                0x000021f0                __eqsf2
+                0x000021f0                __cmpsf2
+                0x00002250                __aeabi_cfrcmple
+                0x00002258                __aeabi_cfcmpeq
+                0x00002258                __aeabi_cfcmple
+                0x00002268                __aeabi_fcmpeq
+                0x0000227c                __aeabi_fcmplt
+                0x00002290                __aeabi_fcmple
+                0x000022a4                __aeabi_fcmpge
+                0x000022b8                __aeabi_fcmpgt
+ .text          0x000022cc       0x4c c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_fixsfsi.o)
+                0x000022cc                __aeabi_f2iz
+                0x000022cc                __fixsfsi
+ .text.__errno  0x00002318        0xc c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-errno.o)
+                0x00002318                __errno
  .text.__libc_init_array
-                0x00001bcc       0x4c c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-init.o)
-                0x00001bcc                __libc_init_array
- .text.memcpy   0x00001c18       0x16 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memcpy-stub.o)
-                0x00001c18                memcpy
- .text.memset   0x00001c2e       0x10 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memset.o)
-                0x00001c2e                memset
- .text.__cvt    0x00001c3e       0xc0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-vfprintf_float.o)
-                0x00001c3e                __cvt
+                0x00002324       0x4c c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-init.o)
+                0x00002324                __libc_init_array
+ .text.memcpy   0x00002370       0x16 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memcpy-stub.o)
+                0x00002370                memcpy
+ .text.memset   0x00002386       0x10 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memset.o)
+                0x00002386                memset
+ .text.__cvt    0x00002396       0xc0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-vfprintf_float.o)
+                0x00002396                __cvt
  .text.__exponent
-                0x00001cfe       0x62 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-vfprintf_float.o)
-                0x00001cfe                __exponent
+                0x00002456       0x62 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-vfprintf_float.o)
+                0x00002456                __exponent
  .text._printf_float
-                0x00001d60      0x488 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-vfprintf_float.o)
-                0x00001d60                _printf_float
+                0x000024b8      0x488 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-vfprintf_float.o)
+                0x000024b8                _printf_float
  .text._printf_common
-                0x000021e8       0xec c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
-                0x000021e8                _printf_common
+                0x00002940       0xec c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
+                0x00002940                _printf_common
  .text._printf_i
-                0x000022d4      0x24c c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
-                0x000022d4                _printf_i
- .text.sprintf  0x00002520       0x48 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-sprintf.o)
-                0x00002520                siprintf
-                0x00002520                sprintf
- .text          0x00002568       0x10 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-strlen.o)
-                0x00002568                strlen
- .text.quorem   0x00002578      0x116 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-dtoa.o)
- *fill*         0x0000268e        0x2 
- .text._dtoa_r  0x00002690      0xb30 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-dtoa.o)
-                0x00002690                _dtoa_r
+                0x00002a2c      0x24c c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
+                0x00002a2c                _printf_i
+ .text.sprintf  0x00002c78       0x48 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-sprintf.o)
+                0x00002c78                siprintf
+                0x00002c78                sprintf
+ .text          0x00002cc0       0x10 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-strlen.o)
+                0x00002cc0                strlen
+ .text.quorem   0x00002cd0      0x116 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-dtoa.o)
+ *fill*         0x00002de6        0x2 
+ .text._dtoa_r  0x00002de8      0xb30 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-dtoa.o)
+                0x00002de8                _dtoa_r
  .text._localeconv_r
-                0x000031c0        0x8 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-locale.o)
-                0x000031c0                _localeconv_r
- .text.malloc   0x000031c8       0x10 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-malloc.o)
-                0x000031c8                malloc
- .text.memchr   0x000031d8       0x1c c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memchr-stub.o)
-                0x000031d8                memchr
- .text._Balloc  0x000031f4       0x6a c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-mprec.o)
-                0x000031f4                _Balloc
- .text._Bfree   0x0000325e       0x2e c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-mprec.o)
-                0x0000325e                _Bfree
+                0x00003918        0x8 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-locale.o)
+                0x00003918                _localeconv_r
+ .text.malloc   0x00003920       0x10 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-malloc.o)
+                0x00003920                malloc
+ .text.memchr   0x00003930       0x1c c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memchr-stub.o)
+                0x00003930                memchr
+ .text._Balloc  0x0000394c       0x6a c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-mprec.o)
+                0x0000394c                _Balloc
+ .text._Bfree   0x000039b6       0x2e c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-mprec.o)
+                0x000039b6                _Bfree
  .text.__multadd
-                0x0000328c       0x76 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-mprec.o)
-                0x0000328c                __multadd
+                0x000039e4       0x76 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-mprec.o)
+                0x000039e4                __multadd
  .text.__hi0bits
-                0x00003302       0x40 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-mprec.o)
-                0x00003302                __hi0bits
+                0x00003a5a       0x40 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-mprec.o)
+                0x00003a5a                __hi0bits
  .text.__lo0bits
-                0x00003342       0x5a c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-mprec.o)
-                0x00003342                __lo0bits
- .text.__i2b    0x0000339c       0x12 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-mprec.o)
-                0x0000339c                __i2b
+                0x00003a9a       0x5a c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-mprec.o)
+                0x00003a9a                __lo0bits
+ .text.__i2b    0x00003af4       0x12 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-mprec.o)
+                0x00003af4                __i2b
  .text.__multiply
-                0x000033ae      0x120 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-mprec.o)
-                0x000033ae                __multiply
- *fill*         0x000034ce        0x2 
+                0x00003b06      0x120 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-mprec.o)
+                0x00003b06                __multiply
+ *fill*         0x00003c26        0x2 
  .text.__pow5mult
-                0x000034d0       0x9c c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-mprec.o)
-                0x000034d0                __pow5mult
+                0x00003c28       0x9c c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-mprec.o)
+                0x00003c28                __pow5mult
  .text.__lshift
-                0x0000356c       0xa2 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-mprec.o)
-                0x0000356c                __lshift
- .text.__mcmp   0x0000360e       0x38 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-mprec.o)
-                0x0000360e                __mcmp
- .text.__mdiff  0x00003646       0xbe c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-mprec.o)
-                0x00003646                __mdiff
- .text.__d2b    0x00003704       0x9c c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-mprec.o)
-                0x00003704                __d2b
+                0x00003cc4       0xa2 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-mprec.o)
+                0x00003cc4                __lshift
+ .text.__mcmp   0x00003d66       0x38 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-mprec.o)
+                0x00003d66                __mcmp
+ .text.__mdiff  0x00003d9e       0xbe c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-mprec.o)
+                0x00003d9e                __mdiff
+ .text.__d2b    0x00003e5c       0x9c c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-mprec.o)
+                0x00003e5c                __d2b
  .text._calloc_r
-                0x000037a0       0x1c c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-callocr.o)
-                0x000037a0                _calloc_r
- .text._free_r  0x000037bc       0x98 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-freer.o)
-                0x000037bc                _free_r
+                0x00003ef8       0x1c c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-callocr.o)
+                0x00003ef8                _calloc_r
+ .text._free_r  0x00003f14       0x98 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-freer.o)
+                0x00003f14                _free_r
  .text._malloc_r
-                0x00003854       0xbc c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-mallocr.o)
-                0x00003854                _malloc_r
+                0x00003fac       0xbc c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-mallocr.o)
+                0x00003fac                _malloc_r
  .text.__ssputs_r
-                0x00003910       0xb2 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-svfprintf.o)
-                0x00003910                __ssputs_r
- *fill*         0x000039c2        0x2 
+                0x00004068       0xb2 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-svfprintf.o)
+                0x00004068                __ssputs_r
+ *fill*         0x0000411a        0x2 
  .text._svfprintf_r
-                0x000039c4      0x1e8 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-svfprintf.o)
-                0x000039c4                _svfiprintf_r
-                0x000039c4                _svfprintf_r
- .text._sbrk_r  0x00003bac       0x20 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-sbrkr.o)
-                0x00003bac                _sbrk_r
- .text.memmove  0x00003bcc       0x36 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memmove.o)
-                0x00003bcc                memmove
+                0x0000411c      0x1e8 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-svfprintf.o)
+                0x0000411c                _svfiprintf_r
+                0x0000411c                _svfprintf_r
+ .text._sbrk_r  0x00004304       0x20 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-sbrkr.o)
+                0x00004304                _sbrk_r
+ .text.memmove  0x00004324       0x36 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memmove.o)
+                0x00004324                memmove
  .text.__malloc_lock
-                0x00003c02        0x2 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-mlock.o)
-                0x00003c02                __malloc_lock
+                0x0000435a        0x2 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-mlock.o)
+                0x0000435a                __malloc_lock
  .text.__malloc_unlock
-                0x00003c04        0x2 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-mlock.o)
-                0x00003c04                __malloc_unlock
+                0x0000435c        0x2 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-mlock.o)
+                0x0000435c                __malloc_unlock
  .text._realloc_r
-                0x00003c06       0x4c c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-reallocr.o)
-                0x00003c06                _realloc_r
+                0x0000435e       0x4c c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-reallocr.o)
+                0x0000435e                _realloc_r
  .text._malloc_usable_size_r
-                0x00003c52       0x14 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-msizer.o)
-                0x00003c52                _malloc_usable_size_r
- *fill*         0x00003c66        0x2 
- .text          0x00003c68      0x110 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_cmpdf2.o)
-                0x00003c68                __gtdf2
-                0x00003c68                __gedf2
-                0x00003c70                __ltdf2
-                0x00003c70                __ledf2
-                0x00003c78                __nedf2
-                0x00003c78                __eqdf2
-                0x00003c78                __cmpdf2
-                0x00003cf4                __aeabi_cdrcmple
-                0x00003d04                __aeabi_cdcmpeq
-                0x00003d04                __aeabi_cdcmple
-                0x00003d14                __aeabi_dcmpeq
-                0x00003d28                __aeabi_dcmplt
-                0x00003d3c                __aeabi_dcmple
-                0x00003d50                __aeabi_dcmpge
-                0x00003d64                __aeabi_dcmpgt
- .text          0x00003d78       0x2c c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_unorddf2.o)
-                0x00003d78                __unorddf2
-                0x00003d78                __aeabi_dcmpun
- .text          0x00003da4       0x50 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_fixdfsi.o)
-                0x00003da4                __aeabi_d2iz
-                0x00003da4                __fixdfsi
+                0x000043aa       0x14 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-msizer.o)
+                0x000043aa                _malloc_usable_size_r
+ *fill*         0x000043be        0x2 
+ .text          0x000043c0      0x110 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_cmpdf2.o)
+                0x000043c0                __gtdf2
+                0x000043c0                __gedf2
+                0x000043c8                __ltdf2
+                0x000043c8                __ledf2
+                0x000043d0                __nedf2
+                0x000043d0                __eqdf2
+                0x000043d0                __cmpdf2
+                0x0000444c                __aeabi_cdrcmple
+                0x0000445c                __aeabi_cdcmpeq
+                0x0000445c                __aeabi_cdcmple
+                0x0000446c                __aeabi_dcmpeq
+                0x00004480                __aeabi_dcmplt
+                0x00004494                __aeabi_dcmple
+                0x000044a8                __aeabi_dcmpge
+                0x000044bc                __aeabi_dcmpgt
+ .text          0x000044d0       0x2c c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_unorddf2.o)
+                0x000044d0                __unorddf2
+                0x000044d0                __aeabi_dcmpun
+ .text          0x000044fc       0x50 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_fixdfsi.o)
+                0x000044fc                __aeabi_d2iz
+                0x000044fc                __fixdfsi
  *(.plt)
  *(.gnu.warning)
  *(.glue_7t)
- .glue_7t       0x00003df4        0x0 linker stubs
+ .glue_7t       0x0000454c        0x0 linker stubs
  *(.glue_7)
- .glue_7        0x00003df4        0x0 linker stubs
+ .glue_7        0x0000454c        0x0 linker stubs
  *(.vfp11_veneer)
- .vfp11_veneer  0x00003df4        0x0 linker stubs
+ .vfp11_veneer  0x0000454c        0x0 linker stubs
  *(.bootloader)
  *(.ARM.extab* .gnu.linkonce.armextab.*)
  *(.gcc_except_table)
 
-.v4_bx          0x00003df4        0x0
- .v4_bx         0x00003df4        0x0 linker stubs
+.v4_bx          0x0000454c        0x0
+ .v4_bx         0x0000454c        0x0 linker stubs
 
-.iplt           0x00003df4        0x0
- .iplt          0x00003df4        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
+.iplt           0x0000454c        0x0
+ .iplt          0x0000454c        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
 
 .eh_frame_hdr
  *(.eh_frame_hdr)
 
-.eh_frame       0x00003df4        0x4
+.eh_frame       0x0000454c        0x4
  *(.eh_frame)
- .eh_frame      0x00003df4        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
- .eh_frame      0x00003df4        0x4 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtend.o
+ .eh_frame      0x0000454c        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
+ .eh_frame      0x0000454c        0x4 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtend.o
                 [!provide]                PROVIDE (__exidx_start, .)
 
 .ARM.exidx
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
-                0x00003df8                __exidx_end = .
+                0x00004550                __exidx_end = .
 
-.rodata         0x00003df8      0x1f8
+.rodata         0x00004550      0x288
  *(.rodata .rodata.* .gnu.linkonce.r.*)
  .rodata.str1.4
-                0x00003df8       0x19 .\CortexM3\ARM_GCC_541\Debug\main.o
- *fill*         0x00003e11        0x3 
+                0x00004550       0x19 .\CortexM3\ARM_GCC_541\Debug\main.o
+ *fill*         0x00004569        0x3 
  .rodata.str1.4
-                0x00003e14       0x20 .\CortexM3\ARM_GCC_541\Debug\motor.o
- .rodata        0x00003e34       0x24 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+                0x0000456c       0x20 .\CortexM3\ARM_GCC_541\Debug\motor.o
+ .rodata.str1.4
+                0x0000458c       0x38 .\CortexM3\ARM_GCC_541\Debug\interface.o
+                                 0x35 (size before relaxing)
+ .rodata        0x000045c4       0x40 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .rodata        0x00004604       0x40 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(LCD_CustChars.o)
+                0x00004604                LCD_customFonts
  .rodata.str1.1
-                0x00003e58        0x2 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
+                0x00004644        0x2 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
  .rodata.str1.1
-                0x00003e5a       0x12 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-vfprintf_float.o)
+                0x00004646       0x12 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-vfprintf_float.o)
  .rodata.str1.1
-                0x00003e6c       0x22 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
+                0x00004658       0x22 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
  .rodata.str1.1
-                0x00003e8e        0xd c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-dtoa.o)
+                0x0000467a        0xd c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-dtoa.o)
                                   0xf (size before relaxing)
  .rodata.str1.1
-                0x00003e9b        0x8 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-locale.o)
+                0x00004687        0x8 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-locale.o)
                                   0xb (size before relaxing)
- *fill*         0x00003ea3        0x5 
+ *fill*         0x0000468f        0x1 
  .rodata.__mprec_tens
-                0x00003ea8       0xc8 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-mprec.o)
-                0x00003ea8                __mprec_tens
+                0x00004690       0xc8 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-mprec.o)
+                0x00004690                __mprec_tens
  .rodata.p05.5408
-                0x00003f70        0xc c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-mprec.o)
- *fill*         0x00003f7c        0x4 
+                0x00004758        0xc c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-mprec.o)
+ *fill*         0x00004764        0x4 
  .rodata.__mprec_bigtens
-                0x00003f80       0x28 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-mprec.o)
-                0x00003f80                __mprec_bigtens
+                0x00004768       0x28 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-mprec.o)
+                0x00004768                __mprec_bigtens
  .rodata.str1.1
-                0x00003fa8       0x11 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-svfprintf.o)
-                0x00003fbc                . = ALIGN (0x4)
- *fill*         0x00003fb9        0x3 
+                0x00004790       0x11 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-svfprintf.o)
+                0x000047a4                . = ALIGN (0x4)
+ *fill*         0x000047a1        0x3 
  *(.init)
- .init          0x00003fbc        0x4 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crti.o
-                0x00003fbc                _init
- .init          0x00003fc0        0x8 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtn.o
-                0x00003fc8                . = ALIGN (0x4)
-                0x00003fc8                __preinit_array_start = .
+ .init          0x000047a4        0x4 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crti.o
+                0x000047a4                _init
+ .init          0x000047a8        0x8 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtn.o
+                0x000047b0                . = ALIGN (0x4)
+                0x000047b0                __preinit_array_start = .
  *(.preinit_array)
-                0x00003fc8                __preinit_array_end = .
-                0x00003fc8                . = ALIGN (0x4)
-                0x00003fc8                __init_array_start = .
+                0x000047b0                __preinit_array_end = .
+                0x000047b0                . = ALIGN (0x4)
+                0x000047b0                __init_array_start = .
  *(SORT(.init_array.*))
  *(.init_array)
- .init_array    0x00003fc8        0x4 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
- .init_array    0x00003fcc        0x4 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
-                0x00003fd0                __init_array_end = .
-                0x00003fd0                . = ALIGN (0x4)
+ .init_array    0x000047b0        0x4 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
+ .init_array    0x000047b4        0x4 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+                0x000047b8                __init_array_end = .
+                0x000047b8                . = ALIGN (0x4)
  *(.fini)
- .fini          0x00003fd0        0x4 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crti.o
-                0x00003fd0                _fini
- .fini          0x00003fd4        0x8 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtn.o
-                0x00003fdc                . = ALIGN (0x4)
-                0x00003fdc                __fini_array_start = .
+ .fini          0x000047b8        0x4 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crti.o
+                0x000047b8                _fini
+ .fini          0x000047bc        0x8 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtn.o
+                0x000047c4                . = ALIGN (0x4)
+                0x000047c4                __fini_array_start = .
  *(.fini_array)
- .fini_array    0x00003fdc        0x4 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
+ .fini_array    0x000047c4        0x4 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
  *(SORT(.fini_array.*))
-                0x00003fe0                __fini_array_end = .
-                0x00003fe0                . = ALIGN (0x4)
+                0x000047c8                __fini_array_end = .
+                0x000047c8                . = ALIGN (0x4)
  *crtbegin.o(.ctors)
  *(EXCLUDE_FILE(*crtend.o) .ctors)
  *(SORT(.ctors.*))
  *crtend.o(.ctors)
-                0x00003fe0                . = ALIGN (0x4)
+                0x000047c8                . = ALIGN (0x4)
  *crtbegin.o(.dtors)
  *(EXCLUDE_FILE(*crtend.o) .dtors)
  *(SORT(.dtors.*))
  *crtend.o(.dtors)
-                0x00003fe0                . = ALIGN (0x4)
-                0x00003fe0                __cy_regions = .
-                0x00003fe0        0x4 LONG 0x3ff0 __cy_region_init_ram
-                0x00003fe4        0x4 LONG 0x1fff80c8 __cy_region_start_data
-                0x00003fe8        0x4 LONG 0xd0 __cy_region_init_size_ram
-                0x00003fec        0x4 LONG 0x198 __cy_region_zero_size_ram
-                0x00003ff0                __cy_regions_end = .
-                0x00003ff0                . = ALIGN (0x8)
-                0x00003ff0                _etext = .
+                0x000047c8                . = ALIGN (0x4)
+                0x000047c8                __cy_regions = .
+                0x000047c8        0x4 LONG 0x47d8 __cy_region_init_ram
+                0x000047cc        0x4 LONG 0x1fff80c8 __cy_region_start_data
+                0x000047d0        0x4 LONG 0xd0 __cy_region_init_size_ram
+                0x000047d4        0x4 LONG 0x1a0 __cy_region_zero_size_ram
+                0x000047d8                __cy_regions_end = .
+                0x000047d8                . = ALIGN (0x8)
+                0x000047d8                _etext = .
 
 .cy_checksum_exclude
-                0x00003ff0        0x0
+                0x000047d8        0x0
  *(.cy_checksum_exclude)
 
 .ramvectors     0x1fff8000       0xc0
@@ -1692,7 +1768,7 @@ END GROUP
  .noinit        0x1fff80c0        0x1 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CyLib.o)
                 0x1fff80c0                CyResetStatus
 
-.data           0x1fff80c8       0xd0 load address 0x00003ff0
+.data           0x1fff80c8       0xd0 load address 0x000047d8
                 0x1fff80c8                __cy_region_start_data = .
  *(.jcr)
  .jcr           0x1fff80c8        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
@@ -1708,27 +1784,28 @@ END GROUP
                 0x1fff80d8                iMin_
                 0x1fff80dc                iMax_
                 0x1fff80e0                kd_
- .data          0x1fff80e4        0x4 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
- .data          0x1fff80e8       0x10 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CyLib.o)
-                0x1fff80e8                cydelay_32k_ms
-                0x1fff80ec                cydelay_freq_khz
-                0x1fff80f0                cydelay_freq_mhz
-                0x1fff80f4                cydelay_freq_hz
+ .data          0x1fff80e4        0x4 .\CortexM3\ARM_GCC_541\Debug\interface.o
+                0x1fff80e4                block
+ .data          0x1fff80e8        0x4 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+ .data          0x1fff80ec       0x10 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CyLib.o)
+                0x1fff80ec                cydelay_32k_ms
+                0x1fff80f0                cydelay_freq_khz
+                0x1fff80f4                cydelay_freq_mhz
+                0x1fff80f8                cydelay_freq_hz
  .data.impure_data
-                0x1fff80f8       0x60 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
+                0x1fff80fc       0x60 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
  .data._impure_ptr
-                0x1fff8158        0x4 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
-                0x1fff8158                _impure_ptr
- .data.lconv    0x1fff815c       0x38 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-locale.o)
+                0x1fff815c        0x4 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
+                0x1fff815c                _impure_ptr
+ .data.lconv    0x1fff8160       0x38 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-locale.o)
                 0x1fff8198                . = ALIGN (0x8)
- *fill*         0x1fff8194        0x4 
  *(.ram)
                 0x1fff8198                _edata = .
 
-.igot.plt       0x1fff8198        0x0 load address 0x000040c0
+.igot.plt       0x1fff8198        0x0 load address 0x000048a8
  .igot.plt      0x1fff8198        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
 
-.bss            0x1fff8198      0x198 load address 0x000040c0
+.bss            0x1fff8198      0x1a0 load address 0x000048a8
                 0x1fff8198                PROVIDE (__bss_start__, .)
  *(.shbss)
  *(.bss .bss.* .gnu.linkonce.b.*)
@@ -1757,7 +1834,11 @@ END GROUP
                 0x1fff820f                Sensor_Out_initVar
  .bss           0x1fff8210        0x1 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Motor_PWM.o)
                 0x1fff8210                Motor_PWM_initVar
- *fill*         0x1fff8211        0x3 
+ .bss           0x1fff8211        0x2 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(LCD.o)
+                0x1fff8211                LCD_enableState
+                0x1fff8212                LCD_initVar
+ .bss           0x1fff8213        0x1 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1.o)
+                0x1fff8213                ADC_SAR_1_initVar
  .bss.__malloc_sbrk_start
                 0x1fff8214        0x4 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-mallocr.o)
                 0x1fff8214                __malloc_sbrk_start
@@ -1769,24 +1850,29 @@ END GROUP
  COMMON         0x1fff8220      0x108 .\CortexM3\ARM_GCC_541\Debug\main.o
                 0x1fff8220                outputBuffer
                 0x1fff8320                angle
- COMMON         0x1fff8328        0x4 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-reent.o)
-                0x1fff8328                errno
-                0x1fff8330                . = ALIGN (0x8)
- *fill*         0x1fff832c        0x4 
+ COMMON         0x1fff8328        0xa .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1.o)
+                0x1fff8328                ADC_SAR_1_countsPerVolt
+                0x1fff832a                ADC_SAR_1_shift
+                0x1fff832c                ADC_SAR_1_countsPer10Volt
+                0x1fff8330                ADC_SAR_1_offset
+ *fill*         0x1fff8332        0x2 
+ COMMON         0x1fff8334        0x4 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-reent.o)
+                0x1fff8334                errno
+                0x1fff8338                . = ALIGN (0x8)
  *(.ram.b)
-                0x1fff8330                _end = .
-                0x1fff8330                __end = .
-                0x1fff8330                PROVIDE (end, .)
-                0x1fff8330                PROVIDE (__bss_end__, .)
-                0x00003ff0                __cy_region_init_ram = LOADADDR (.data)
+                0x1fff8338                _end = .
+                0x1fff8338                __end = .
+                0x1fff8338                PROVIDE (end, .)
+                0x1fff8338                PROVIDE (__bss_end__, .)
+                0x000047d8                __cy_region_init_ram = LOADADDR (.data)
                 0x000000d0                __cy_region_init_size_ram = (_edata - ADDR (.data))
-                0x00000198                __cy_region_zero_size_ram = (_end - _edata)
+                0x000001a0                __cy_region_zero_size_ram = (_end - _edata)
 
-.heap           0x1fff8330      0x200 load address 0x000040c0
-                0x1fff8330                . = _end
-                0x1fff8530                . = (. + 0x200)
- *fill*         0x1fff8330      0x200 
-                0x1fff8530                __cy_heap_limit = .
+.heap           0x1fff8338      0x200 load address 0x000048a8
+                0x1fff8338                . = _end
+                0x1fff8538                . = (. + 0x200)
+ *fill*         0x1fff8338      0x200 
+                0x1fff8538                __cy_heap_limit = .
 
 .stack          0x20007800      0x800
                 0x20007800                __cy_stack_limit = .
@@ -1802,9 +1888,9 @@ END GROUP
 .cyloadablemeta
  *(.cyloadablemeta)
 
-.cyconfigecc    0x80000000      0x7ec
+.cyconfigecc    0x80000000      0x7e4
  *(.cyconfigecc)
- .cyconfigecc   0x80000000      0x7ec .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
+ .cyconfigecc   0x80000000      0x7e4 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
                 0x80000000                cy_meta_configecc
 
 .cycustnvl      0x90000000        0x4
@@ -1833,8 +1919,8 @@ END GROUP
  .cymeta        0x90500000        0xc .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
                 0x90500000                cy_metadata
 
-.rel.dyn        0x000040c0        0x0 load address 0x9050000c
- .rel.iplt      0x000040c0        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
+.rel.dyn        0x000048a8        0x0 load address 0x9050000c
+ .rel.iplt      0x000048a8        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
 
 .stab
  *(.stab)
@@ -1854,299 +1940,307 @@ END GROUP
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000      0xe98
+.debug_aranges  0x00000000      0xf20
  *(.debug_aranges)
  .debug_aranges
-                0x00000000       0x38 .\CortexM3\ARM_GCC_541\Debug\main.o
+                0x00000000       0x48 .\CortexM3\ARM_GCC_541\Debug\main.o
  .debug_aranges
-                0x00000038       0x30 .\CortexM3\ARM_GCC_541\Debug\motor.o
+                0x00000048       0x30 .\CortexM3\ARM_GCC_541\Debug\motor.o
  .debug_aranges
-                0x00000068       0x20 .\CortexM3\ARM_GCC_541\Debug\PIDcontroller.o
+                0x00000078       0x20 .\CortexM3\ARM_GCC_541\Debug\PIDcontroller.o
  .debug_aranges
-                0x00000088       0x28 .\CortexM3\ARM_GCC_541\Debug\tfTest.o
+                0x00000098       0x28 .\CortexM3\ARM_GCC_541\Debug\tfTest.o
  .debug_aranges
-                0x000000b0       0x60 .\CortexM3\ARM_GCC_541\Debug\sensor.o
+                0x000000c0       0x60 .\CortexM3\ARM_GCC_541\Debug\sensor.o
  .debug_aranges
-                0x00000110       0x58 .\CortexM3\ARM_GCC_541\Debug\interface.o
+                0x00000120       0x50 .\CortexM3\ARM_GCC_541\Debug\interface.o
  .debug_aranges
-                0x00000168       0x58 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+                0x00000170       0x58 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
  .debug_aranges
-                0x000001c0       0x18 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
+                0x000001c8       0x18 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
  .debug_aranges
-                0x000001d8       0x48 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+                0x000001e0       0x48 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
  .debug_aranges
-                0x00000220       0x70 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Clock_1.o)
+                0x00000228       0x70 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Clock_1.o)
  .debug_aranges
-                0x00000290       0x80 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_uart_rx.o)
+                0x00000298       0x80 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_uart_rx.o)
  .debug_aranges
-                0x00000310       0xf0 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(UART_1.o)
+                0x00000318       0xf0 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(UART_1.o)
  .debug_aranges
-                0x00000400       0x70 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(UART_1_IntClock.o)
+                0x00000408       0x70 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(UART_1_IntClock.o)
  .debug_aranges
-                0x00000470      0x2a0 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CyLib.o)
+                0x00000478      0x2a0 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CyLib.o)
  .debug_aranges
-                0x00000710       0x98 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(cyPm.o)
+                0x00000718       0x98 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(cyPm.o)
  .debug_aranges
-                0x000007a8       0x80 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_pid.o)
+                0x000007b0       0x80 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_pid.o)
  .debug_aranges
-                0x00000828       0x98 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Counter_Sensor.o)
+                0x00000830       0x98 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Counter_Sensor.o)
  .debug_aranges
-                0x000008c0       0x80 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(sensor_input_isr.o)
+                0x000008c8       0x80 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(sensor_input_isr.o)
  .debug_aranges
-                0x00000940       0xa8 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Sensor_Out.o)
+                0x00000948       0xa8 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Sensor_Out.o)
  .debug_aranges
-                0x000009e8       0xa8 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Motor_PWM.o)
+                0x000009f0       0xa8 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Motor_PWM.o)
  .debug_aranges
-                0x00000a90       0x78 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(LCD.o)
+                0x00000a98       0x78 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(LCD.o)
  .debug_aranges
-                0x00000b08       0x20 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(LCD_CustChars.o)
+                0x00000b10       0x20 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(LCD_CustChars.o)
  .debug_aranges
-                0x00000b28       0x80 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_motorSwitch_On.o)
+                0x00000b30       0x80 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_motorSwitch_On.o)
  .debug_aranges
-                0x00000ba8       0x80 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_motorSwitch_Off.o)
+                0x00000bb0       0x80 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_motorSwitch_Off.o)
  .debug_aranges
-                0x00000c28       0xa8 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1.o)
+                0x00000c30       0xa8 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1.o)
  .debug_aranges
-                0x00000cd0       0x20 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1_INT.o)
+                0x00000cd8       0x20 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1_INT.o)
  .debug_aranges
-                0x00000cf0       0x80 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1_theACLK.o)
+                0x00000cf8       0x80 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1_theACLK.o)
  .debug_aranges
-                0x00000d70       0x20 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CyBootAsmGnu.o)
+                0x00000d78       0x80 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_toggle.o)
  .debug_aranges
-                0x00000d90       0x88 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CyFlash.o)
+                0x00000df8       0x20 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CyBootAsmGnu.o)
  .debug_aranges
-                0x00000e18       0x80 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CySpc.o)
+                0x00000e18       0x88 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CyFlash.o)
+ .debug_aranges
+                0x00000ea0       0x80 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CySpc.o)
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x7a6d
+.debug_info     0x00000000     0x7dab
  *(.debug_info .gnu.linkonce.wi.*)
- .debug_info    0x00000000      0x51e .\CortexM3\ARM_GCC_541\Debug\main.o
- .debug_info    0x0000051e      0x1c2 .\CortexM3\ARM_GCC_541\Debug\motor.o
- .debug_info    0x000006e0      0x1fe .\CortexM3\ARM_GCC_541\Debug\PIDcontroller.o
- .debug_info    0x000008de      0x14c .\CortexM3\ARM_GCC_541\Debug\tfTest.o
- .debug_info    0x00000a2a      0x30e .\CortexM3\ARM_GCC_541\Debug\sensor.o
- .debug_info    0x00000d38      0x4ee .\CortexM3\ARM_GCC_541\Debug\interface.o
- .debug_info    0x00001226      0x597 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
- .debug_info    0x000017bd      0x139 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
- .debug_info    0x000018f6      0x3bb .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
- .debug_info    0x00001cb1      0x283 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Clock_1.o)
- .debug_info    0x00001f34      0x2d2 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_uart_rx.o)
- .debug_info    0x00002206      0x60c .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(UART_1.o)
- .debug_info    0x00002812      0x283 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(UART_1_IntClock.o)
- .debug_info    0x00002a95     0x1374 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CyLib.o)
- .debug_info    0x00003e09      0xa2a .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(cyPm.o)
- .debug_info    0x00004833      0x2d2 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_pid.o)
- .debug_info    0x00004b05      0x344 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Counter_Sensor.o)
- .debug_info    0x00004e49      0x2d2 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(sensor_input_isr.o)
- .debug_info    0x0000511b      0x37f .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Sensor_Out.o)
- .debug_info    0x0000549a      0x3a4 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Motor_PWM.o)
- .debug_info    0x0000583e      0x5c2 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(LCD.o)
- .debug_info    0x00005e00      0x159 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(LCD_CustChars.o)
- .debug_info    0x00005f59      0x2d2 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_motorSwitch_On.o)
- .debug_info    0x0000622b      0x2d2 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_motorSwitch_Off.o)
- .debug_info    0x000064fd      0x5c0 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1.o)
- .debug_info    0x00006abd       0x92 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1_INT.o)
- .debug_info    0x00006b4f      0x2c4 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1_theACLK.o)
- .debug_info    0x00006e13       0xbd .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CyBootAsmGnu.o)
- .debug_info    0x00006ed0      0x64d .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CyFlash.o)
- .debug_info    0x0000751d      0x550 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CySpc.o)
+ .debug_info    0x00000000      0x5c5 .\CortexM3\ARM_GCC_541\Debug\main.o
+ .debug_info    0x000005c5      0x1c2 .\CortexM3\ARM_GCC_541\Debug\motor.o
+ .debug_info    0x00000787      0x1fe .\CortexM3\ARM_GCC_541\Debug\PIDcontroller.o
+ .debug_info    0x00000985      0x14c .\CortexM3\ARM_GCC_541\Debug\tfTest.o
+ .debug_info    0x00000ad1      0x30e .\CortexM3\ARM_GCC_541\Debug\sensor.o
+ .debug_info    0x00000ddf      0x3d4 .\CortexM3\ARM_GCC_541\Debug\interface.o
+ .debug_info    0x000011b3      0x676 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .debug_info    0x00001829      0x139 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
+ .debug_info    0x00001962      0x3bb .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+ .debug_info    0x00001d1d      0x283 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Clock_1.o)
+ .debug_info    0x00001fa0      0x2d2 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_uart_rx.o)
+ .debug_info    0x00002272      0x60c .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(UART_1.o)
+ .debug_info    0x0000287e      0x283 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(UART_1_IntClock.o)
+ .debug_info    0x00002b01     0x1374 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CyLib.o)
+ .debug_info    0x00003e75      0xa2a .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(cyPm.o)
+ .debug_info    0x0000489f      0x2d2 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_pid.o)
+ .debug_info    0x00004b71      0x344 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Counter_Sensor.o)
+ .debug_info    0x00004eb5      0x2d2 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(sensor_input_isr.o)
+ .debug_info    0x00005187      0x37f .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Sensor_Out.o)
+ .debug_info    0x00005506      0x3a4 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Motor_PWM.o)
+ .debug_info    0x000058aa      0x5c2 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(LCD.o)
+ .debug_info    0x00005e6c      0x159 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(LCD_CustChars.o)
+ .debug_info    0x00005fc5      0x2d2 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_motorSwitch_On.o)
+ .debug_info    0x00006297      0x2d2 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_motorSwitch_Off.o)
+ .debug_info    0x00006569      0x5c0 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1.o)
+ .debug_info    0x00006b29       0x92 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1_INT.o)
+ .debug_info    0x00006bbb      0x2c4 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1_theACLK.o)
+ .debug_info    0x00006e7f      0x2d2 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_toggle.o)
+ .debug_info    0x00007151       0xbd .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CyBootAsmGnu.o)
+ .debug_info    0x0000720e      0x64d .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CyFlash.o)
+ .debug_info    0x0000785b      0x550 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CySpc.o)
 
-.debug_abbrev   0x00000000     0x25df
+.debug_abbrev   0x00000000     0x274e
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x13f .\CortexM3\ARM_GCC_541\Debug\main.o
  .debug_abbrev  0x0000013f       0xdf .\CortexM3\ARM_GCC_541\Debug\motor.o
  .debug_abbrev  0x0000021e       0xc3 .\CortexM3\ARM_GCC_541\Debug\PIDcontroller.o
  .debug_abbrev  0x000002e1       0xc0 .\CortexM3\ARM_GCC_541\Debug\tfTest.o
  .debug_abbrev  0x000003a1      0x134 .\CortexM3\ARM_GCC_541\Debug\sensor.o
- .debug_abbrev  0x000004d5      0x172 .\CortexM3\ARM_GCC_541\Debug\interface.o
- .debug_abbrev  0x00000647      0x1fe .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
- .debug_abbrev  0x00000845       0x77 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
- .debug_abbrev  0x000008bc      0x1e8 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
- .debug_abbrev  0x00000aa4      0x139 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Clock_1.o)
- .debug_abbrev  0x00000bdd      0x173 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_uart_rx.o)
- .debug_abbrev  0x00000d50      0x175 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(UART_1.o)
- .debug_abbrev  0x00000ec5      0x139 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(UART_1_IntClock.o)
- .debug_abbrev  0x00000ffe      0x254 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CyLib.o)
- .debug_abbrev  0x00001252      0x1ab .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(cyPm.o)
- .debug_abbrev  0x000013fd      0x173 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_pid.o)
- .debug_abbrev  0x00001570      0x117 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Counter_Sensor.o)
- .debug_abbrev  0x00001687      0x173 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(sensor_input_isr.o)
- .debug_abbrev  0x000017fa      0x133 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Sensor_Out.o)
- .debug_abbrev  0x0000192d      0x133 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Motor_PWM.o)
- .debug_abbrev  0x00001a60      0x159 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(LCD.o)
- .debug_abbrev  0x00001bb9       0xe2 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(LCD_CustChars.o)
- .debug_abbrev  0x00001c9b      0x173 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_motorSwitch_On.o)
- .debug_abbrev  0x00001e0e      0x173 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_motorSwitch_Off.o)
- .debug_abbrev  0x00001f81      0x1ac .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1.o)
- .debug_abbrev  0x0000212d       0x42 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1_INT.o)
- .debug_abbrev  0x0000216f      0x121 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1_theACLK.o)
- .debug_abbrev  0x00002290       0x14 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CyBootAsmGnu.o)
- .debug_abbrev  0x000022a4      0x1a7 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CyFlash.o)
- .debug_abbrev  0x0000244b      0x194 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CySpc.o)
+ .debug_abbrev  0x000004d5      0x15f .\CortexM3\ARM_GCC_541\Debug\interface.o
+ .debug_abbrev  0x00000634      0x20d .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .debug_abbrev  0x00000841       0x77 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
+ .debug_abbrev  0x000008b8      0x1e8 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+ .debug_abbrev  0x00000aa0      0x139 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Clock_1.o)
+ .debug_abbrev  0x00000bd9      0x173 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_uart_rx.o)
+ .debug_abbrev  0x00000d4c      0x175 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(UART_1.o)
+ .debug_abbrev  0x00000ec1      0x139 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(UART_1_IntClock.o)
+ .debug_abbrev  0x00000ffa      0x254 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CyLib.o)
+ .debug_abbrev  0x0000124e      0x1ab .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(cyPm.o)
+ .debug_abbrev  0x000013f9      0x173 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_pid.o)
+ .debug_abbrev  0x0000156c      0x117 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Counter_Sensor.o)
+ .debug_abbrev  0x00001683      0x173 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(sensor_input_isr.o)
+ .debug_abbrev  0x000017f6      0x133 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Sensor_Out.o)
+ .debug_abbrev  0x00001929      0x133 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Motor_PWM.o)
+ .debug_abbrev  0x00001a5c      0x159 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(LCD.o)
+ .debug_abbrev  0x00001bb5       0xe2 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(LCD_CustChars.o)
+ .debug_abbrev  0x00001c97      0x173 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_motorSwitch_On.o)
+ .debug_abbrev  0x00001e0a      0x173 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_motorSwitch_Off.o)
+ .debug_abbrev  0x00001f7d      0x1ac .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1.o)
+ .debug_abbrev  0x00002129       0x42 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1_INT.o)
+ .debug_abbrev  0x0000216b      0x121 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1_theACLK.o)
+ .debug_abbrev  0x0000228c      0x173 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_toggle.o)
+ .debug_abbrev  0x000023ff       0x14 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CyBootAsmGnu.o)
+ .debug_abbrev  0x00002413      0x1a7 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CyFlash.o)
+ .debug_abbrev  0x000025ba      0x194 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CySpc.o)
 
-.debug_line     0x00000000     0x3822
+.debug_line     0x00000000     0x39a8
  *(.debug_line)
- .debug_line    0x00000000      0x28e .\CortexM3\ARM_GCC_541\Debug\main.o
- .debug_line    0x0000028e      0x1b4 .\CortexM3\ARM_GCC_541\Debug\motor.o
- .debug_line    0x00000442      0x19c .\CortexM3\ARM_GCC_541\Debug\PIDcontroller.o
- .debug_line    0x000005de       0xc7 .\CortexM3\ARM_GCC_541\Debug\tfTest.o
- .debug_line    0x000006a5      0x225 .\CortexM3\ARM_GCC_541\Debug\sensor.o
- .debug_line    0x000008ca      0x2a6 .\CortexM3\ARM_GCC_541\Debug\interface.o
- .debug_line    0x00000b70      0x1f4 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
- .debug_line    0x00000d64      0x141 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
- .debug_line    0x00000ea5      0x234 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
- .debug_line    0x000010d9      0x176 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Clock_1.o)
- .debug_line    0x0000124f      0x138 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_uart_rx.o)
- .debug_line    0x00001387      0x2c0 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(UART_1.o)
- .debug_line    0x00001647      0x17e .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(UART_1_IntClock.o)
- .debug_line    0x000017c5      0x816 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CyLib.o)
- .debug_line    0x00001fdb      0x367 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(cyPm.o)
- .debug_line    0x00002342      0x134 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_pid.o)
- .debug_line    0x00002476      0x18e .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Counter_Sensor.o)
- .debug_line    0x00002604      0x13d .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(sensor_input_isr.o)
- .debug_line    0x00002741      0x1ae .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Sensor_Out.o)
- .debug_line    0x000028ef      0x1b0 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Motor_PWM.o)
- .debug_line    0x00002a9f      0x188 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(LCD.o)
- .debug_line    0x00002c27       0x83 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(LCD_CustChars.o)
- .debug_line    0x00002caa      0x13f .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_motorSwitch_On.o)
- .debug_line    0x00002de9      0x140 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_motorSwitch_Off.o)
- .debug_line    0x00002f29      0x220 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1.o)
- .debug_line    0x00003149       0x56 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1_INT.o)
- .debug_line    0x0000319f      0x1a3 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1_theACLK.o)
- .debug_line    0x00003342       0x66 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CyBootAsmGnu.o)
- .debug_line    0x000033a8      0x21a .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CyFlash.o)
- .debug_line    0x000035c2      0x260 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CySpc.o)
+ .debug_line    0x00000000      0x2c3 .\CortexM3\ARM_GCC_541\Debug\main.o
+ .debug_line    0x000002c3      0x1b4 .\CortexM3\ARM_GCC_541\Debug\motor.o
+ .debug_line    0x00000477      0x19c .\CortexM3\ARM_GCC_541\Debug\PIDcontroller.o
+ .debug_line    0x00000613       0xc7 .\CortexM3\ARM_GCC_541\Debug\tfTest.o
+ .debug_line    0x000006da      0x225 .\CortexM3\ARM_GCC_541\Debug\sensor.o
+ .debug_line    0x000008ff      0x2a2 .\CortexM3\ARM_GCC_541\Debug\interface.o
+ .debug_line    0x00000ba1      0x212 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .debug_line    0x00000db3      0x141 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
+ .debug_line    0x00000ef4      0x234 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+ .debug_line    0x00001128      0x176 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Clock_1.o)
+ .debug_line    0x0000129e      0x138 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_uart_rx.o)
+ .debug_line    0x000013d6      0x2c0 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(UART_1.o)
+ .debug_line    0x00001696      0x17e .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(UART_1_IntClock.o)
+ .debug_line    0x00001814      0x816 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CyLib.o)
+ .debug_line    0x0000202a      0x367 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(cyPm.o)
+ .debug_line    0x00002391      0x134 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_pid.o)
+ .debug_line    0x000024c5      0x18e .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Counter_Sensor.o)
+ .debug_line    0x00002653      0x13d .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(sensor_input_isr.o)
+ .debug_line    0x00002790      0x1ae .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Sensor_Out.o)
+ .debug_line    0x0000293e      0x1b0 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Motor_PWM.o)
+ .debug_line    0x00002aee      0x188 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(LCD.o)
+ .debug_line    0x00002c76       0x83 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(LCD_CustChars.o)
+ .debug_line    0x00002cf9      0x13f .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_motorSwitch_On.o)
+ .debug_line    0x00002e38      0x140 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_motorSwitch_Off.o)
+ .debug_line    0x00002f78      0x220 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1.o)
+ .debug_line    0x00003198       0x56 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1_INT.o)
+ .debug_line    0x000031ee      0x1a3 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1_theACLK.o)
+ .debug_line    0x00003391      0x137 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_toggle.o)
+ .debug_line    0x000034c8       0x66 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CyBootAsmGnu.o)
+ .debug_line    0x0000352e      0x21a .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CyFlash.o)
+ .debug_line    0x00003748      0x260 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CySpc.o)
 
-.debug_frame    0x00000000     0x2d4c
+.debug_frame    0x00000000     0x2e60
  *(.debug_frame)
- .debug_frame   0x00000000       0x80 .\CortexM3\ARM_GCC_541\Debug\main.o
- .debug_frame   0x00000080       0x64 .\CortexM3\ARM_GCC_541\Debug\motor.o
- .debug_frame   0x000000e4       0x3c .\CortexM3\ARM_GCC_541\Debug\PIDcontroller.o
- .debug_frame   0x00000120       0x50 .\CortexM3\ARM_GCC_541\Debug\tfTest.o
- .debug_frame   0x00000170      0x11c .\CortexM3\ARM_GCC_541\Debug\sensor.o
- .debug_frame   0x0000028c       0xec .\CortexM3\ARM_GCC_541\Debug\interface.o
- .debug_frame   0x00000378       0xfc .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
- .debug_frame   0x00000474       0xb8 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
- .debug_frame   0x0000052c       0xe0 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Clock_1.o)
- .debug_frame   0x0000060c      0x104 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_uart_rx.o)
- .debug_frame   0x00000710      0x250 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(UART_1.o)
- .debug_frame   0x00000960       0xe0 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(UART_1_IntClock.o)
- .debug_frame   0x00000a40      0x738 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CyLib.o)
- .debug_frame   0x00001178      0x1f8 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(cyPm.o)
- .debug_frame   0x00001370      0x104 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_pid.o)
- .debug_frame   0x00001474      0x134 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Counter_Sensor.o)
- .debug_frame   0x000015a8      0x104 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(sensor_input_isr.o)
- .debug_frame   0x000016ac      0x154 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Sensor_Out.o)
- .debug_frame   0x00001800      0x154 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Motor_PWM.o)
- .debug_frame   0x00001954      0x16c .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(LCD.o)
- .debug_frame   0x00001ac0       0x30 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(LCD_CustChars.o)
- .debug_frame   0x00001af0      0x104 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_motorSwitch_On.o)
- .debug_frame   0x00001bf4      0x104 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_motorSwitch_Off.o)
- .debug_frame   0x00001cf8      0x1b0 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1.o)
- .debug_frame   0x00001ea8       0x20 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1_INT.o)
- .debug_frame   0x00001ec8      0x100 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1_theACLK.o)
- .debug_frame   0x00001fc8      0x194 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CyFlash.o)
- .debug_frame   0x0000215c      0x180 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CySpc.o)
- .debug_frame   0x000022dc       0x34 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-sf_sin.o)
- .debug_frame   0x00002310       0x48 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-ef_rem_pio2.o)
- .debug_frame   0x00002358       0x34 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-kf_cos.o)
- .debug_frame   0x0000238c       0x50 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-kf_rem_pio2.o)
- .debug_frame   0x000023dc       0x34 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-kf_sin.o)
- .debug_frame   0x00002410       0x20 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-sf_fabs.o)
- .debug_frame   0x00002430       0x30 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-sf_floor.o)
- .debug_frame   0x00002460       0x2c c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-sf_scalbn.o)
- .debug_frame   0x0000248c       0x20 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-sf_copysign.o)
- .debug_frame   0x000024ac       0x44 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_aeabi_ldivmod.o)
- .debug_frame   0x000024f0       0x38 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_udivmoddi4.o)
- .debug_frame   0x00002528       0x20 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-errno.o)
- .debug_frame   0x00002548       0x28 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-exit.o)
- .debug_frame   0x00002570       0x2c c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-init.o)
- .debug_frame   0x0000259c       0x28 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memcpy-stub.o)
- .debug_frame   0x000025c4       0x20 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memset.o)
- .debug_frame   0x000025e4       0x8c c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-vfprintf_float.o)
- .debug_frame   0x00002670       0x60 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
- .debug_frame   0x000026d0       0x70 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-sprintf.o)
- .debug_frame   0x00002740       0x6c c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-dtoa.o)
- .debug_frame   0x000027ac       0x98 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-locale.o)
- .debug_frame   0x00002844       0x30 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-malloc.o)
- .debug_frame   0x00002874       0x28 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memchr-stub.o)
- .debug_frame   0x0000289c      0x234 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-mprec.o)
- .debug_frame   0x00002ad0       0x2c c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-callocr.o)
- .debug_frame   0x00002afc       0x38 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-freer.o)
- .debug_frame   0x00002b34       0x2c c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-mallocr.o)
- .debug_frame   0x00002b60       0x90 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-svfprintf.o)
- .debug_frame   0x00002bf0       0x2c c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-sbrkr.o)
- .debug_frame   0x00002c1c       0x20 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-strcmp.o)
- .debug_frame   0x00002c3c       0x28 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memmove.o)
- .debug_frame   0x00002c64       0x30 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-mlock.o)
- .debug_frame   0x00002c94       0x3c c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-reallocr.o)
- .debug_frame   0x00002cd0       0x5c c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-reent.o)
- .debug_frame   0x00002d2c       0x20 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-msizer.o)
+ .debug_frame   0x00000000       0xb8 .\CortexM3\ARM_GCC_541\Debug\main.o
+ .debug_frame   0x000000b8       0x64 .\CortexM3\ARM_GCC_541\Debug\motor.o
+ .debug_frame   0x0000011c       0x3c .\CortexM3\ARM_GCC_541\Debug\PIDcontroller.o
+ .debug_frame   0x00000158       0x50 .\CortexM3\ARM_GCC_541\Debug\tfTest.o
+ .debug_frame   0x000001a8      0x11c .\CortexM3\ARM_GCC_541\Debug\sensor.o
+ .debug_frame   0x000002c4       0xc4 .\CortexM3\ARM_GCC_541\Debug\interface.o
+ .debug_frame   0x00000388       0xfc .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .debug_frame   0x00000484       0xb8 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+ .debug_frame   0x0000053c       0xe0 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Clock_1.o)
+ .debug_frame   0x0000061c      0x104 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_uart_rx.o)
+ .debug_frame   0x00000720      0x250 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(UART_1.o)
+ .debug_frame   0x00000970       0xe0 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(UART_1_IntClock.o)
+ .debug_frame   0x00000a50      0x738 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CyLib.o)
+ .debug_frame   0x00001188      0x1f8 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(cyPm.o)
+ .debug_frame   0x00001380      0x104 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_pid.o)
+ .debug_frame   0x00001484      0x134 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Counter_Sensor.o)
+ .debug_frame   0x000015b8      0x104 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(sensor_input_isr.o)
+ .debug_frame   0x000016bc      0x154 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Sensor_Out.o)
+ .debug_frame   0x00001810      0x154 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Motor_PWM.o)
+ .debug_frame   0x00001964      0x16c .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(LCD.o)
+ .debug_frame   0x00001ad0       0x30 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(LCD_CustChars.o)
+ .debug_frame   0x00001b00      0x104 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_motorSwitch_On.o)
+ .debug_frame   0x00001c04      0x104 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_motorSwitch_Off.o)
+ .debug_frame   0x00001d08      0x1b0 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1.o)
+ .debug_frame   0x00001eb8       0x20 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1_INT.o)
+ .debug_frame   0x00001ed8      0x100 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1_theACLK.o)
+ .debug_frame   0x00001fd8      0x104 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_toggle.o)
+ .debug_frame   0x000020dc      0x194 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CyFlash.o)
+ .debug_frame   0x00002270      0x180 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CySpc.o)
+ .debug_frame   0x000023f0       0x34 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-sf_sin.o)
+ .debug_frame   0x00002424       0x48 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-ef_rem_pio2.o)
+ .debug_frame   0x0000246c       0x34 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-kf_cos.o)
+ .debug_frame   0x000024a0       0x50 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-kf_rem_pio2.o)
+ .debug_frame   0x000024f0       0x34 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-kf_sin.o)
+ .debug_frame   0x00002524       0x20 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-sf_fabs.o)
+ .debug_frame   0x00002544       0x30 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-sf_floor.o)
+ .debug_frame   0x00002574       0x2c c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-sf_scalbn.o)
+ .debug_frame   0x000025a0       0x20 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-sf_copysign.o)
+ .debug_frame   0x000025c0       0x44 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_aeabi_ldivmod.o)
+ .debug_frame   0x00002604       0x38 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_udivmoddi4.o)
+ .debug_frame   0x0000263c       0x20 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-errno.o)
+ .debug_frame   0x0000265c       0x28 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-exit.o)
+ .debug_frame   0x00002684       0x2c c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-init.o)
+ .debug_frame   0x000026b0       0x28 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memcpy-stub.o)
+ .debug_frame   0x000026d8       0x20 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memset.o)
+ .debug_frame   0x000026f8       0x8c c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-vfprintf_float.o)
+ .debug_frame   0x00002784       0x60 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
+ .debug_frame   0x000027e4       0x70 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-sprintf.o)
+ .debug_frame   0x00002854       0x6c c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-dtoa.o)
+ .debug_frame   0x000028c0       0x98 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-locale.o)
+ .debug_frame   0x00002958       0x30 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-malloc.o)
+ .debug_frame   0x00002988       0x28 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memchr-stub.o)
+ .debug_frame   0x000029b0      0x234 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-mprec.o)
+ .debug_frame   0x00002be4       0x2c c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-callocr.o)
+ .debug_frame   0x00002c10       0x38 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-freer.o)
+ .debug_frame   0x00002c48       0x2c c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-mallocr.o)
+ .debug_frame   0x00002c74       0x90 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-svfprintf.o)
+ .debug_frame   0x00002d04       0x2c c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-sbrkr.o)
+ .debug_frame   0x00002d30       0x20 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-strcmp.o)
+ .debug_frame   0x00002d50       0x28 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memmove.o)
+ .debug_frame   0x00002d78       0x30 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-mlock.o)
+ .debug_frame   0x00002da8       0x3c c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-reallocr.o)
+ .debug_frame   0x00002de4       0x5c c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-reent.o)
+ .debug_frame   0x00002e40       0x20 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-msizer.o)
 
-.debug_str      0x00000000     0x2e36
+.debug_str      0x00000000     0x2f62
  *(.debug_str)
- .debug_str     0x00000000      0x335 .\CortexM3\ARM_GCC_541\Debug\main.o
-                                0x38c (size before relaxing)
- .debug_str     0x00000335       0x6b .\CortexM3\ARM_GCC_541\Debug\motor.o
+ .debug_str     0x00000000      0x3a1 .\CortexM3\ARM_GCC_541\Debug\main.o
+                                0x3f8 (size before relaxing)
+ .debug_str     0x000003a1       0x66 .\CortexM3\ARM_GCC_541\Debug\motor.o
                                 0x260 (size before relaxing)
- .debug_str     0x000003a0       0x38 .\CortexM3\ARM_GCC_541\Debug\PIDcontroller.o
+ .debug_str     0x00000407       0x38 .\CortexM3\ARM_GCC_541\Debug\PIDcontroller.o
                                 0x250 (size before relaxing)
- .debug_str     0x000003d8       0x37 .\CortexM3\ARM_GCC_541\Debug\tfTest.o
+ .debug_str     0x0000043f       0x37 .\CortexM3\ARM_GCC_541\Debug\tfTest.o
                                 0x1ee (size before relaxing)
- .debug_str     0x0000040f       0xf7 .\CortexM3\ARM_GCC_541\Debug\sensor.o
+ .debug_str     0x00000476      0x104 .\CortexM3\ARM_GCC_541\Debug\sensor.o
                                 0x319 (size before relaxing)
- .debug_str     0x00000506      0x1ae .\CortexM3\ARM_GCC_541\Debug\interface.o
-                                0x393 (size before relaxing)
- .debug_str     0x000006b4      0x17e .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
-                                0x346 (size before relaxing)
- .debug_str     0x00000832       0x75 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
-                                0x211 (size before relaxing)
- .debug_str     0x000008a7      0x144 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
-                                0x337 (size before relaxing)
- .debug_str     0x000009eb      0x15a .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Clock_1.o)
-                                0x31b (size before relaxing)
- .debug_str     0x00000b45      0x13e .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_uart_rx.o)
-                                0x327 (size before relaxing)
- .debug_str     0x00000c83      0x2b8 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(UART_1.o)
-                                0x4e0 (size before relaxing)
- .debug_str     0x00000f3b      0x14c .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(UART_1_IntClock.o)
+ .debug_str     0x0000057a      0x125 .\CortexM3\ARM_GCC_541\Debug\interface.o
+                                0x32d (size before relaxing)
+ .debug_str     0x0000069f      0x1b3 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
                                 0x37b (size before relaxing)
- .debug_str     0x00001087      0x7e3 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CyLib.o)
+ .debug_str     0x00000852       0x75 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
+                                0x211 (size before relaxing)
+ .debug_str     0x000008c7      0x144 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+                                0x337 (size before relaxing)
+ .debug_str     0x00000a0b      0x15a .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Clock_1.o)
+                                0x31b (size before relaxing)
+ .debug_str     0x00000b65      0x13e .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_uart_rx.o)
+                                0x327 (size before relaxing)
+ .debug_str     0x00000ca3      0x2b8 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(UART_1.o)
+                                0x4e0 (size before relaxing)
+ .debug_str     0x00000f5b      0x14c .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(UART_1_IntClock.o)
+                                0x37b (size before relaxing)
+ .debug_str     0x000010a7      0x7e3 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CyLib.o)
                                 0xa74 (size before relaxing)
- .debug_str     0x0000186a      0x365 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(cyPm.o)
+ .debug_str     0x0000188a      0x365 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(cyPm.o)
                                 0x760 (size before relaxing)
- .debug_str     0x00001bcf       0xf2 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_pid.o)
+ .debug_str     0x00001bef       0xe5 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_pid.o)
                                 0x2ef (size before relaxing)
- .debug_str     0x00001cc1      0x1db .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Counter_Sensor.o)
+ .debug_str     0x00001cd4      0x1db .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Counter_Sensor.o)
                                 0x430 (size before relaxing)
- .debug_str     0x00001e9c      0x167 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(sensor_input_isr.o)
+ .debug_str     0x00001eaf      0x167 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(sensor_input_isr.o)
                                 0x36d (size before relaxing)
- .debug_str     0x00002003      0x1eb .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Sensor_Out.o)
+ .debug_str     0x00002016      0x1eb .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Sensor_Out.o)
                                 0x410 (size before relaxing)
- .debug_str     0x000021ee      0x1a2 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Motor_PWM.o)
+ .debug_str     0x00002201      0x1a2 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Motor_PWM.o)
                                 0x408 (size before relaxing)
- .debug_str     0x00002390       0xe8 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(LCD.o)
+ .debug_str     0x000023a3       0xe8 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(LCD.o)
                                 0x30f (size before relaxing)
- .debug_str     0x00002478       0x32 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(LCD_CustChars.o)
+ .debug_str     0x0000248b       0x32 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(LCD_CustChars.o)
                                 0x22b (size before relaxing)
- .debug_str     0x000024aa      0x181 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_motorSwitch_On.o)
+ .debug_str     0x000024bd      0x181 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_motorSwitch_On.o)
                                 0x389 (size before relaxing)
- .debug_str     0x0000262b      0x18e .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_motorSwitch_Off.o)
+ .debug_str     0x0000263e      0x18e .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_motorSwitch_Off.o)
                                 0x397 (size before relaxing)
- .debug_str     0x000027b9      0x22c .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1.o)
+ .debug_str     0x000027cc      0x22c .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1.o)
                                 0x4ea (size before relaxing)
- .debug_str     0x000029e5       0x35 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1_INT.o)
+ .debug_str     0x000029f8       0x35 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1_INT.o)
                                 0x1c8 (size before relaxing)
- .debug_str     0x00002a1a      0x1bc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1_theACLK.o)
+ .debug_str     0x00002a2d      0x1bc .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1_theACLK.o)
                                 0x3e2 (size before relaxing)
- .debug_str     0x00002bd6      0x1b4 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CyFlash.o)
+ .debug_str     0x00002be9      0x119 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_toggle.o)
+                                0x319 (size before relaxing)
+ .debug_str     0x00002d02      0x1b4 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CyFlash.o)
                                 0x3ed (size before relaxing)
- .debug_str     0x00002d8a       0xac .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CySpc.o)
+ .debug_str     0x00002eb6       0xac .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CySpc.o)
                                 0x365 (size before relaxing)
 
-.debug_loc      0x00000000     0x2c3c
+.debug_loc      0x00000000     0x2d43
  *(.debug_loc)
  .debug_loc     0x00000000       0x52 .\CortexM3\ARM_GCC_541\Debug\main.o
  .debug_loc     0x00000052       0xb6 .\CortexM3\ARM_GCC_541\Debug\motor.o
@@ -2154,61 +2248,63 @@ END GROUP
  .debug_loc     0x0000029a       0xae .\CortexM3\ARM_GCC_541\Debug\tfTest.o
  .debug_loc     0x00000348       0x9a .\CortexM3\ARM_GCC_541\Debug\sensor.o
  .debug_loc     0x000003e2       0xb3 .\CortexM3\ARM_GCC_541\Debug\interface.o
- .debug_loc     0x00000495      0x1fd .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
- .debug_loc     0x00000692      0x144 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
- .debug_loc     0x000007d6      0x128 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Clock_1.o)
- .debug_loc     0x000008fe       0x56 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_uart_rx.o)
- .debug_loc     0x00000954      0x258 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(UART_1.o)
- .debug_loc     0x00000bac      0x128 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(UART_1_IntClock.o)
- .debug_loc     0x00000cd4      0xa11 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CyLib.o)
- .debug_loc     0x000016e5      0x1e4 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(cyPm.o)
- .debug_loc     0x000018c9       0x56 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_pid.o)
- .debug_loc     0x0000191f       0x31 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Counter_Sensor.o)
- .debug_loc     0x00001950       0x56 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(sensor_input_isr.o)
- .debug_loc     0x000019a6       0x26 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Sensor_Out.o)
- .debug_loc     0x000019cc       0x26 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Motor_PWM.o)
- .debug_loc     0x000019f2      0x2bd .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(LCD.o)
- .debug_loc     0x00001caf       0x48 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(LCD_CustChars.o)
- .debug_loc     0x00001cf7       0x56 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_motorSwitch_On.o)
- .debug_loc     0x00001d4d       0x56 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_motorSwitch_Off.o)
- .debug_loc     0x00001da3      0x295 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1.o)
- .debug_loc     0x00002038      0x14d .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1_theACLK.o)
- .debug_loc     0x00002185      0x3b2 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CyFlash.o)
- .debug_loc     0x00002537      0x705 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CySpc.o)
+ .debug_loc     0x00000495      0x2ae .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .debug_loc     0x00000743      0x144 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+ .debug_loc     0x00000887      0x128 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Clock_1.o)
+ .debug_loc     0x000009af       0x56 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_uart_rx.o)
+ .debug_loc     0x00000a05      0x258 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(UART_1.o)
+ .debug_loc     0x00000c5d      0x128 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(UART_1_IntClock.o)
+ .debug_loc     0x00000d85      0xa11 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CyLib.o)
+ .debug_loc     0x00001796      0x1e4 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(cyPm.o)
+ .debug_loc     0x0000197a       0x56 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_pid.o)
+ .debug_loc     0x000019d0       0x31 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Counter_Sensor.o)
+ .debug_loc     0x00001a01       0x56 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(sensor_input_isr.o)
+ .debug_loc     0x00001a57       0x26 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Sensor_Out.o)
+ .debug_loc     0x00001a7d       0x26 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Motor_PWM.o)
+ .debug_loc     0x00001aa3      0x2bd .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(LCD.o)
+ .debug_loc     0x00001d60       0x48 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(LCD_CustChars.o)
+ .debug_loc     0x00001da8       0x56 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_motorSwitch_On.o)
+ .debug_loc     0x00001dfe       0x56 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_motorSwitch_Off.o)
+ .debug_loc     0x00001e54      0x295 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1.o)
+ .debug_loc     0x000020e9      0x14d .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1_theACLK.o)
+ .debug_loc     0x00002236       0x56 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_toggle.o)
+ .debug_loc     0x0000228c      0x3b2 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CyFlash.o)
+ .debug_loc     0x0000263e      0x705 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CySpc.o)
 
 .debug_macinfo
  *(.debug_macinfo)
 
-.debug_ranges   0x00000000      0xca0
+.debug_ranges   0x00000000      0xd18
  *(.debug_ranges)
- .debug_ranges  0x00000000       0x28 .\CortexM3\ARM_GCC_541\Debug\main.o
- .debug_ranges  0x00000028       0x20 .\CortexM3\ARM_GCC_541\Debug\motor.o
- .debug_ranges  0x00000048       0x10 .\CortexM3\ARM_GCC_541\Debug\PIDcontroller.o
- .debug_ranges  0x00000058       0x18 .\CortexM3\ARM_GCC_541\Debug\tfTest.o
- .debug_ranges  0x00000070       0x50 .\CortexM3\ARM_GCC_541\Debug\sensor.o
- .debug_ranges  0x000000c0       0x48 .\CortexM3\ARM_GCC_541\Debug\interface.o
- .debug_ranges  0x00000108       0x48 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
- .debug_ranges  0x00000150       0x38 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
- .debug_ranges  0x00000188       0x60 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Clock_1.o)
- .debug_ranges  0x000001e8       0x70 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_uart_rx.o)
- .debug_ranges  0x00000258       0xe0 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(UART_1.o)
- .debug_ranges  0x00000338       0x60 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(UART_1_IntClock.o)
- .debug_ranges  0x00000398      0x290 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CyLib.o)
- .debug_ranges  0x00000628       0x88 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(cyPm.o)
- .debug_ranges  0x000006b0       0x70 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_pid.o)
- .debug_ranges  0x00000720       0x88 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Counter_Sensor.o)
- .debug_ranges  0x000007a8       0x70 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(sensor_input_isr.o)
- .debug_ranges  0x00000818       0x98 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Sensor_Out.o)
- .debug_ranges  0x000008b0       0x98 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Motor_PWM.o)
- .debug_ranges  0x00000948       0x68 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(LCD.o)
- .debug_ranges  0x000009b0       0x10 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(LCD_CustChars.o)
- .debug_ranges  0x000009c0       0x70 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_motorSwitch_On.o)
- .debug_ranges  0x00000a30       0x70 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_motorSwitch_Off.o)
- .debug_ranges  0x00000aa0       0x98 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1.o)
- .debug_ranges  0x00000b38       0x10 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1_INT.o)
- .debug_ranges  0x00000b48       0x70 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1_theACLK.o)
- .debug_ranges  0x00000bb8       0x78 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CyFlash.o)
- .debug_ranges  0x00000c30       0x70 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CySpc.o)
+ .debug_ranges  0x00000000       0x38 .\CortexM3\ARM_GCC_541\Debug\main.o
+ .debug_ranges  0x00000038       0x20 .\CortexM3\ARM_GCC_541\Debug\motor.o
+ .debug_ranges  0x00000058       0x10 .\CortexM3\ARM_GCC_541\Debug\PIDcontroller.o
+ .debug_ranges  0x00000068       0x18 .\CortexM3\ARM_GCC_541\Debug\tfTest.o
+ .debug_ranges  0x00000080       0x50 .\CortexM3\ARM_GCC_541\Debug\sensor.o
+ .debug_ranges  0x000000d0       0x40 .\CortexM3\ARM_GCC_541\Debug\interface.o
+ .debug_ranges  0x00000110       0x48 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .debug_ranges  0x00000158       0x38 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+ .debug_ranges  0x00000190       0x60 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Clock_1.o)
+ .debug_ranges  0x000001f0       0x70 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_uart_rx.o)
+ .debug_ranges  0x00000260       0xe0 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(UART_1.o)
+ .debug_ranges  0x00000340       0x60 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(UART_1_IntClock.o)
+ .debug_ranges  0x000003a0      0x290 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CyLib.o)
+ .debug_ranges  0x00000630       0x88 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(cyPm.o)
+ .debug_ranges  0x000006b8       0x70 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_pid.o)
+ .debug_ranges  0x00000728       0x88 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Counter_Sensor.o)
+ .debug_ranges  0x000007b0       0x70 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(sensor_input_isr.o)
+ .debug_ranges  0x00000820       0x98 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Sensor_Out.o)
+ .debug_ranges  0x000008b8       0x98 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Motor_PWM.o)
+ .debug_ranges  0x00000950       0x68 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(LCD.o)
+ .debug_ranges  0x000009b8       0x10 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(LCD_CustChars.o)
+ .debug_ranges  0x000009c8       0x70 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_motorSwitch_On.o)
+ .debug_ranges  0x00000a38       0x70 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_motorSwitch_Off.o)
+ .debug_ranges  0x00000aa8       0x98 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1.o)
+ .debug_ranges  0x00000b40       0x10 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1_INT.o)
+ .debug_ranges  0x00000b50       0x70 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1_theACLK.o)
+ .debug_ranges  0x00000bc0       0x70 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_toggle.o)
+ .debug_ranges  0x00000c30       0x78 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CyFlash.o)
+ .debug_ranges  0x00000ca8       0x70 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CySpc.o)
 
 .comment        0x00000000       0x6e
  .comment       0x00000000       0x6e .\CortexM3\ARM_GCC_541\Debug\main.o
@@ -2239,6 +2335,7 @@ END GROUP
  .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1.o)
  .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1_INT.o)
  .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1_theACLK.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_toggle.o)
  .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CyFlash.o)
  .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CySpc.o)
 
@@ -2321,111 +2418,113 @@ END GROUP
  .ARM.attributes
                 0x00000593       0x33 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1_theACLK.o)
  .ARM.attributes
-                0x000005c6       0x21 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CyBootAsmGnu.o)
+                0x000005c6       0x33 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_toggle.o)
  .ARM.attributes
-                0x000005e7       0x33 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CyFlash.o)
+                0x000005f9       0x21 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CyBootAsmGnu.o)
  .ARM.attributes
-                0x0000061a       0x33 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CySpc.o)
+                0x0000061a       0x33 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CyFlash.o)
  .ARM.attributes
-                0x0000064d       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-sf_sin.o)
+                0x0000064d       0x33 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CySpc.o)
  .ARM.attributes
-                0x0000067a       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-ef_rem_pio2.o)
+                0x00000680       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-sf_sin.o)
  .ARM.attributes
-                0x000006a7       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-kf_cos.o)
+                0x000006ad       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-ef_rem_pio2.o)
  .ARM.attributes
-                0x000006d4       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-kf_rem_pio2.o)
+                0x000006da       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-kf_cos.o)
  .ARM.attributes
-                0x00000701       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-kf_sin.o)
+                0x00000707       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-kf_rem_pio2.o)
  .ARM.attributes
-                0x0000072e       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-sf_fabs.o)
+                0x00000734       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-kf_sin.o)
  .ARM.attributes
-                0x0000075b       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-sf_floor.o)
+                0x00000761       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-sf_fabs.o)
  .ARM.attributes
-                0x00000788       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-sf_scalbn.o)
+                0x0000078e       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-sf_floor.o)
  .ARM.attributes
-                0x000007b5       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-sf_copysign.o)
+                0x000007bb       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-sf_scalbn.o)
  .ARM.attributes
-                0x000007e2       0x1d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_addsubdf3.o)
+                0x000007e8       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-sf_copysign.o)
  .ARM.attributes
-                0x000007ff       0x1d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_muldivdf3.o)
+                0x00000815       0x1d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_addsubdf3.o)
  .ARM.attributes
-                0x0000081c       0x1d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_truncdfsf2.o)
+                0x00000832       0x1d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_muldivdf3.o)
  .ARM.attributes
-                0x00000839       0x1d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_addsubsf3.o)
+                0x0000084f       0x1d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_truncdfsf2.o)
  .ARM.attributes
-                0x00000856       0x1d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_muldivsf3.o)
+                0x0000086c       0x1d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_addsubsf3.o)
  .ARM.attributes
-                0x00000873       0x1d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_cmpsf2.o)
+                0x00000889       0x1d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_muldivsf3.o)
  .ARM.attributes
-                0x00000890       0x1d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_fixsfsi.o)
+                0x000008a6       0x1d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_cmpsf2.o)
  .ARM.attributes
-                0x000008ad       0x1d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_aeabi_ldivmod.o)
+                0x000008c3       0x1d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_fixsfsi.o)
  .ARM.attributes
-                0x000008ca       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_udivmoddi4.o)
+                0x000008e0       0x1d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_aeabi_ldivmod.o)
  .ARM.attributes
-                0x000008f7       0x1d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_dvmd_tls.o)
+                0x000008fd       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_udivmoddi4.o)
  .ARM.attributes
-                0x00000914       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-errno.o)
+                0x0000092a       0x1d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_dvmd_tls.o)
  .ARM.attributes
-                0x00000941       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-exit.o)
+                0x00000947       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-errno.o)
  .ARM.attributes
-                0x0000096e       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
+                0x00000974       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-exit.o)
  .ARM.attributes
-                0x0000099b       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-init.o)
+                0x000009a1       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
  .ARM.attributes
-                0x000009c8       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memcpy-stub.o)
+                0x000009ce       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-init.o)
  .ARM.attributes
-                0x000009f5       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memset.o)
+                0x000009fb       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memcpy-stub.o)
  .ARM.attributes
-                0x00000a22       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-vfprintf_float.o)
+                0x00000a28       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memset.o)
  .ARM.attributes
-                0x00000a4f       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
+                0x00000a55       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-vfprintf_float.o)
  .ARM.attributes
-                0x00000a7c       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-sprintf.o)
+                0x00000a82       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
  .ARM.attributes
-                0x00000aa9       0x17 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-strlen.o)
+                0x00000aaf       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-sprintf.o)
  .ARM.attributes
-                0x00000ac0       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-dtoa.o)
+                0x00000adc       0x17 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-strlen.o)
  .ARM.attributes
-                0x00000aed       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-locale.o)
+                0x00000af3       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-dtoa.o)
  .ARM.attributes
-                0x00000b1a       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-malloc.o)
+                0x00000b20       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-locale.o)
  .ARM.attributes
-                0x00000b47       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memchr-stub.o)
+                0x00000b4d       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-malloc.o)
  .ARM.attributes
-                0x00000b74       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-mprec.o)
+                0x00000b7a       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memchr-stub.o)
  .ARM.attributes
-                0x00000ba1       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-callocr.o)
+                0x00000ba7       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-mprec.o)
  .ARM.attributes
-                0x00000bce       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-freer.o)
+                0x00000bd4       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-callocr.o)
  .ARM.attributes
-                0x00000bfb       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-mallocr.o)
+                0x00000c01       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-freer.o)
  .ARM.attributes
-                0x00000c28       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-svfprintf.o)
+                0x00000c2e       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-mallocr.o)
  .ARM.attributes
-                0x00000c55       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-sbrkr.o)
+                0x00000c5b       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-svfprintf.o)
  .ARM.attributes
-                0x00000c82       0x1b c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-strcmp.o)
+                0x00000c88       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-sbrkr.o)
  .ARM.attributes
-                0x00000c9d       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memmove.o)
+                0x00000cb5       0x1b c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-strcmp.o)
  .ARM.attributes
-                0x00000cca       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-mlock.o)
+                0x00000cd0       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memmove.o)
  .ARM.attributes
-                0x00000cf7       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-reallocr.o)
+                0x00000cfd       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-mlock.o)
  .ARM.attributes
-                0x00000d24       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-reent.o)
+                0x00000d2a       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-reallocr.o)
  .ARM.attributes
-                0x00000d51       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-msizer.o)
+                0x00000d57       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-reent.o)
  .ARM.attributes
-                0x00000d7e       0x1d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_cmpdf2.o)
+                0x00000d84       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-msizer.o)
  .ARM.attributes
-                0x00000d9b       0x1d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_unorddf2.o)
+                0x00000db1       0x1d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_cmpdf2.o)
  .ARM.attributes
-                0x00000db8       0x1d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_fixdfsi.o)
+                0x00000dce       0x1d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_unorddf2.o)
  .ARM.attributes
-                0x00000dd5       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtend.o
+                0x00000deb       0x1d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_fixdfsi.o)
  .ARM.attributes
-                0x00000e02       0x1d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtn.o
+                0x00000e08       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtend.o
+ .ARM.attributes
+                0x00000e35       0x1d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtn.o
 
 /DISCARD/
  *(.note.GNU-stack)

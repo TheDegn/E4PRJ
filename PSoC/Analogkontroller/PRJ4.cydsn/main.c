@@ -28,8 +28,8 @@ int main(void)
             mode_3();
             CyDelay(160);  
         }   */     
-        /*float s = -12.345;
+        float s = -12.345;
         writeLCD2(setpoint(), s);
-        CyDelay(160);*/
+        CyDelay(160);
     }
 }

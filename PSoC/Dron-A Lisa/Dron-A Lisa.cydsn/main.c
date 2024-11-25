@@ -9,6 +9,7 @@
 CY_ISR_PROTO(PID_HANDLER);
 
 
+//values from PID
 char outputBuffer[256];
 extern float kp_;
 extern float ki_;
@@ -16,7 +17,6 @@ extern float kd_;
 extern float iMin_;
 extern float iMax_;
 extern float dt_;
-
 float output = 0;
 float measurement = 0;
 float proportional = 0;
@@ -25,8 +25,10 @@ float derivative = 0;
 float error = 0;
 float setpoint = 0;
 
-extern int newCountFlag;
+//values from interface
+//extern int newCountFlag;
 extern long count;
+extern int block;
 double angle;
 int step = 0;
 
@@ -102,20 +104,26 @@ int main(void)
         CyDelay(3);
         stopBurst();
         CyDelay(3);
-        if (newCountFlag == 1)
+        /*if (newCountFlag == 1)
         {
-            newCountFlag = 0;
+            newCountFlag = 0;*/
             
             count = IIRFilter(count);
             angle = calcAngle(count);
+            
+            // read interface and update setpoint
+            if (block)
+            {
+                setpoint = interfaceSetpoint();
+            }
             
             //sprintf(buff, "%i %.2f  \r\n", step,  angle);
             //UART_1_PutString(buff);
             sprintf(outputBuffer, "%.2f %.2f \r\n", output,angle);
             UART_1_PutString(outputBuffer);
-            //writeLCD(interfaceSetpoint(), angle);
+            writeLCD(setpoint, angle);
             startCounter();
-        }
+        //}
         
     }
 }
@@ -144,4 +152,14 @@ CY_ISR(PID_HANDLER)
         setspeed(2,170);
     }
     
+}
+
+CY_ISR(ISR_motorSwitch_On_handler)
+{
+    isr_pid_StartEx(PID_HANDLER);
+}
+CY_ISR(ISR_motorSwitch_Off_handler)
+{
+    isr_pid_Stop();
+    stop();
 }

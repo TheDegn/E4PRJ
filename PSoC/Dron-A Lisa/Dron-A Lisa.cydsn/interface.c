@@ -2,15 +2,8 @@
 #include "interface.h"
 
 // Global Variels.
-int16_t convertedResult = 0;
-int toggle = 3;
-int deg = 0;
 char LCDbuffer[20];
-int block = 0;
-char tempbuffer[20];
-int pass = 1;
-int gradientShift = 0;
-int gradientCount = 0;
+int block = 1;
 
 // Define constants
 #define adc_min 30   // ADC value corresponding to -41 degrees
@@ -19,23 +12,13 @@ int gradientCount = 0;
 #define deg_max 35   // Maximum degrees
 
 
-CY_ISR(ISR_motorSwitch_On_handler)
-{
-    LCD_ClearDisplay();
-    LCD_Position(0, 0);
-    LCD_PrintString("On");
-}
-CY_ISR(ISR_motorSwitch_Off_handler)
-{
-    LCD_ClearDisplay();
-    LCD_Position(0, 0);
-    LCD_PrintString("Off");
-}
+
 
 void init_interface()
 {
     Init_LCD();
     Init_ADC();
+    isr_toggle_StartEx(ISR_toggle_handler);
     isr_motorSwitch_On_StartEx(ISR_motorSwitch_On_handler);
     isr_motorSwitch_Off_StartEx(ISR_motorSwitch_Off_handler);
 }
@@ -92,4 +75,9 @@ int adcToDegrees(int adc_value)
     int degrees = ((adc_value - adc_min) * (deg_max - deg_min)) / (adc_max - adc_min) + deg_min;
 
     return degrees;
+}
+
+CY_ISR(ISR_toggle_handler)
+{
+    block = !block;
 }

@@ -1,6 +1,6 @@
 // ======================================================================
 // Dron-A Lisa.v generated from TopDesign.cysch
-// 11/22/2024 at 11:43
+// 11/25/2024 at 10:04
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -910,9 +910,30 @@ module ADC_SAR_v3_10_5 (
 
 endmodule
 
+// Component: Debouncer_v1_0
+`ifdef CY_BLK_DIR
+`undef CY_BLK_DIR
+`endif
+
+`ifdef WARP
+`define CY_BLK_DIR "C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\CyComponentLibrary\CyComponentLibrary.cylib\Debouncer_v1_0"
+`include "C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\CyComponentLibrary\CyComponentLibrary.cylib\Debouncer_v1_0\Debouncer_v1_0.v"
+`else
+`define CY_BLK_DIR "C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\CyComponentLibrary\CyComponentLibrary.cylib\Debouncer_v1_0"
+`include "C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\CyComponentLibrary\CyComponentLibrary.cylib\Debouncer_v1_0\Debouncer_v1_0.v"
+`endif
+
 // top
 module top ;
 
+          wire  Net_444;
+          wire  Net_442;
+          wire  Net_441;
+          wire  Net_440;
+          wire  Net_439;
+          wire  Net_45;
+          wire  Net_438;
+          wire  Net_445;
     electrical  Net_437;
     electrical  Net_436;
     electrical  Net_435;
@@ -1750,7 +1771,7 @@ module top ;
 
 
 	cy_isr_v1_0
-		#(.int_type(2'b10))
+		#(.int_type(2'b00))
 		isr_motorSwitch_On
 		 (.int_signal(Net_231));
 
@@ -1760,7 +1781,7 @@ module top ;
 
 
 	cy_isr_v1_0
-		#(.int_type(2'b10))
+		#(.int_type(2'b00))
 		isr_motorSwitch_Off
 		 (.int_signal(Net_428));
 
@@ -1849,6 +1870,114 @@ module top ;
 		  .out_reset({1'b0}));
 
 	assign tmpOE__Pin_ADC_in_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
+
+	wire [0:0] tmpOE__Pin_sw_net;
+	wire [0:0] tmpIO_0__Pin_sw_net;
+	wire [0:0] tmpINTERRUPT_0__Pin_sw_net;
+	electrical [0:0] tmpSIOVREF__Pin_sw_net;
+
+	cy_psoc3_pins_v1_10
+		#(.id("f176f256-f9aa-4db3-8dc3-3ce77bbf5d77"),
+		  .drive_mode(3'b010),
+		  .ibuf_enabled(1'b1),
+		  .init_dr_st(1'b1),
+		  .input_clk_en(0),
+		  .input_sync(1'b0),
+		  .input_sync_mode(1'b0),
+		  .intr_mode(2'b00),
+		  .invert_in_clock(0),
+		  .invert_in_clock_en(0),
+		  .invert_in_reset(0),
+		  .invert_out_clock(0),
+		  .invert_out_clock_en(0),
+		  .invert_out_reset(0),
+		  .io_voltage(""),
+		  .layout_mode("CONTIGUOUS"),
+		  .oe_conn(1'b0),
+		  .oe_reset(0),
+		  .oe_sync(1'b0),
+		  .output_clk_en(0),
+		  .output_clock_mode(1'b0),
+		  .output_conn(1'b0),
+		  .output_mode(1'b0),
+		  .output_reset(0),
+		  .output_sync(1'b0),
+		  .pa_in_clock(-1),
+		  .pa_in_clock_en(-1),
+		  .pa_in_reset(-1),
+		  .pa_out_clock(-1),
+		  .pa_out_clock_en(-1),
+		  .pa_out_reset(-1),
+		  .pin_aliases(""),
+		  .pin_mode("I"),
+		  .por_state(4),
+		  .sio_group_cnt(0),
+		  .sio_hyst(1'b1),
+		  .sio_ibuf(""),
+		  .sio_info(2'b00),
+		  .sio_obuf(""),
+		  .sio_refsel(""),
+		  .sio_vtrip(""),
+		  .sio_hifreq(""),
+		  .sio_vohsel(""),
+		  .slew_rate(1'b0),
+		  .spanning(0),
+		  .use_annotation(1'b0),
+		  .vtrip(2'b00),
+		  .width(1),
+		  .ovt_hyst_trim(1'b0),
+		  .ovt_needed(1'b0),
+		  .ovt_slew_control(2'b00),
+		  .input_buffer_sel(2'b00))
+		Pin_sw
+		 (.oe(tmpOE__Pin_sw_net),
+		  .y({1'b0}),
+		  .fb({Net_445}),
+		  .io({tmpIO_0__Pin_sw_net[0:0]}),
+		  .siovref(tmpSIOVREF__Pin_sw_net),
+		  .interrupt({tmpINTERRUPT_0__Pin_sw_net[0:0]}),
+		  .in_clock({1'b0}),
+		  .in_clock_en({1'b1}),
+		  .in_reset({1'b0}),
+		  .out_clock({1'b0}),
+		  .out_clock_en({1'b1}),
+		  .out_reset({1'b0}));
+
+	assign tmpOE__Pin_sw_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
+
+
+	cy_isr_v1_0
+		#(.int_type(2'b00))
+		isr_toggle
+		 (.int_signal(Net_438));
+
+
+
+    assign Net_438 = ~Net_45;
+
+    Debouncer_v1_0 Debouncer_1 (
+        .clock(Net_439),
+        .d(Net_445),
+        .either(Net_440),
+        .neg(Net_441),
+        .pos(Net_442),
+        .q(Net_45));
+    defparam Debouncer_1.EitherEdgeDetect = 1;
+    defparam Debouncer_1.NegEdgeDetect = 1;
+    defparam Debouncer_1.PosEdgeDetect = 1;
+    defparam Debouncer_1.SignalWidth = 1;
+
+
+	cy_clock_v1_0
+		#(.id("33c9f9e9-a51a-4d82-9516-e7f5b2e2961c"),
+		  .source_clock_id(""),
+		  .divisor(0),
+		  .period("5000000000000"),
+		  .is_direct(0),
+		  .is_digital(1))
+		Clock_6
+		 (.clock_out(Net_439));
+
 
 
 

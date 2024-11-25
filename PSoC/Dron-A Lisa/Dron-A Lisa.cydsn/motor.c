@@ -9,8 +9,6 @@ void Motor_Init()
     stop();
 }
 
-
-
 // Stop both motors
 void stop()
 {

@@ -1,5 +1,5 @@
 # Dron-A Lisa
-# 2024-11-22 10:43:19Z
+# 2024-11-25 09:04:34Z
 
 # IO_0@[IOP=(1)][IoId=(0)] is reserved: SWDDebugEnabled
 dont_use_io iocell 1 0
@@ -23,4 +23,5 @@ set_io "\LCD:LCDPort(5)\" iocell 2 5
 set_io "\LCD:LCDPort(6)\" iocell 2 6
 set_io "MotorSwitchPin(0)" iocell 15 3
 set_io "Pin_ADC_in(0)" iocell 0 0
+set_io "Pin_sw(0)" iocell 15 4
 set_location "\ADC_SAR_1:ADC_SAR\" sarcell -1 -1 0
