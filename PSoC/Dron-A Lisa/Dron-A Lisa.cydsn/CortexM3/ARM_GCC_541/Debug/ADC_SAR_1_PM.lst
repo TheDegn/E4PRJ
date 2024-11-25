@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\degn\AppData\Local\Temp\ccXAMuiS.s 			page 1
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc2wTW5c.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\degn\AppData\Local\Temp\ccXAMuiS.s 			page 1
   28:Generated_Source\PSoC5/ADC_SAR_1_PM.c **** 
   29:Generated_Source\PSoC5/ADC_SAR_1_PM.c **** 
   30:Generated_Source\PSoC5/ADC_SAR_1_PM.c **** /*******************************************************************************
-ARM GAS  C:\Users\degn\AppData\Local\Temp\ccXAMuiS.s 			page 2
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc2wTW5c.s 			page 2
 
 
   31:Generated_Source\PSoC5/ADC_SAR_1_PM.c **** * Function Name: ADC_SAR_1_SaveConfig
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\degn\AppData\Local\Temp\ccXAMuiS.s 			page 1
   47              		@ args = 0, pretend = 0, frame = 0
   48              		@ frame_needed = 0, uses_anonymous_args = 0
   49              		@ link register save eliminated.
-ARM GAS  C:\Users\degn\AppData\Local\Temp\ccXAMuiS.s 			page 3
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc2wTW5c.s 			page 3
 
 
   50 0000 7047     		bx	lr
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\degn\AppData\Local\Temp\ccXAMuiS.s 			page 1
   94:Generated_Source\PSoC5/ADC_SAR_1_PM.c ****         if((ADC_SAR_1_SAR_CSR0_REG & ADC_SAR_1_SAR_SOF_START_CONV) != 0u)
   76              		.loc 1 94 0
   77 000c 0A4B     		ldr	r3, .L9+4
-ARM GAS  C:\Users\degn\AppData\Local\Temp\ccXAMuiS.s 			page 4
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc2wTW5c.s 			page 4
 
 
   78 000e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\degn\AppData\Local\Temp\ccXAMuiS.s 			page 1
  108:Generated_Source\PSoC5/ADC_SAR_1_PM.c **** }
  109:Generated_Source\PSoC5/ADC_SAR_1_PM.c **** 
  110:Generated_Source\PSoC5/ADC_SAR_1_PM.c **** 
-ARM GAS  C:\Users\degn\AppData\Local\Temp\ccXAMuiS.s 			page 5
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc2wTW5c.s 			page 5
 
 
  111:Generated_Source\PSoC5/ADC_SAR_1_PM.c **** /*******************************************************************************
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\degn\AppData\Local\Temp\ccXAMuiS.s 			page 1
  143 001a 08BD     		pop	{r3, pc}
  144              	.L15:
  145              		.align	2
-ARM GAS  C:\Users\degn\AppData\Local\Temp\ccXAMuiS.s 			page 6
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc2wTW5c.s 			page 6
 
 
  146              	.L14:
@@ -327,14 +327,14 @@ ARM GAS  C:\Users\degn\AppData\Local\Temp\ccXAMuiS.s 			page 1
  169 000c 63000000 		.4byte	.LASF22
  170 0010 0C       		.byte	0xc
  171 0011 00000000 		.4byte	.LASF23
- 172 0015 33010000 		.4byte	.LASF24
+ 172 0015 90010000 		.4byte	.LASF24
  173 0019 00000000 		.4byte	.Ldebug_ranges0+0
  174 001d 00000000 		.4byte	0
  175 0021 00000000 		.4byte	.Ldebug_line0
  176 0025 02       		.uleb128 0x2
  177 0026 01       		.byte	0x1
  178 0027 06       		.byte	0x6
- 179 0028 72020000 		.4byte	.LASF0
+ 179 0028 6A020000 		.4byte	.LASF0
  180 002c 02       		.uleb128 0x2
  181 002d 01       		.byte	0x1
  182 002e 08       		.byte	0x8
@@ -342,7 +342,7 @@ ARM GAS  C:\Users\degn\AppData\Local\Temp\ccXAMuiS.s 			page 1
  184 0033 02       		.uleb128 0x2
  185 0034 02       		.byte	0x2
  186 0035 05       		.byte	0x5
- 187 0036 4D020000 		.4byte	.LASF2
+ 187 0036 45020000 		.4byte	.LASF2
  188 003a 02       		.uleb128 0x2
  189 003b 02       		.byte	0x2
  190 003c 07       		.byte	0x7
@@ -350,7 +350,7 @@ ARM GAS  C:\Users\degn\AppData\Local\Temp\ccXAMuiS.s 			page 1
  192 0041 02       		.uleb128 0x2
  193 0042 04       		.byte	0x4
  194 0043 05       		.byte	0x5
- 195 0044 5D020000 		.4byte	.LASF4
+ 195 0044 55020000 		.4byte	.LASF4
  196 0048 02       		.uleb128 0x2
  197 0049 04       		.byte	0x4
  198 004a 07       		.byte	0x7
@@ -358,14 +358,14 @@ ARM GAS  C:\Users\degn\AppData\Local\Temp\ccXAMuiS.s 			page 1
  200 004f 02       		.uleb128 0x2
  201 0050 08       		.byte	0x8
  202 0051 05       		.byte	0x5
-ARM GAS  C:\Users\degn\AppData\Local\Temp\ccXAMuiS.s 			page 7
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc2wTW5c.s 			page 7
 
 
- 203 0052 FF010000 		.4byte	.LASF6
+ 203 0052 F7010000 		.4byte	.LASF6
  204 0056 02       		.uleb128 0x2
  205 0057 08       		.byte	0x8
  206 0058 07       		.byte	0x7
- 207 0059 D8010000 		.4byte	.LASF7
+ 207 0059 69010000 		.4byte	.LASF7
  208 005d 03       		.uleb128 0x3
  209 005e 04       		.byte	0x4
  210 005f 05       		.byte	0x5
@@ -373,9 +373,9 @@ ARM GAS  C:\Users\degn\AppData\Local\Temp\ccXAMuiS.s 			page 1
  212 0064 02       		.uleb128 0x2
  213 0065 04       		.byte	0x4
  214 0066 07       		.byte	0x7
- 215 0067 B3010000 		.4byte	.LASF8
+ 215 0067 44010000 		.4byte	.LASF8
  216 006b 04       		.uleb128 0x4
- 217 006c 57020000 		.4byte	.LASF12
+ 217 006c 4F020000 		.4byte	.LASF12
  218 0070 02       		.byte	0x2
  219 0071 E901     		.2byte	0x1e9
  220 0073 2C000000 		.4byte	0x2c
@@ -390,7 +390,7 @@ ARM GAS  C:\Users\degn\AppData\Local\Temp\ccXAMuiS.s 			page 1
  229 0085 02       		.uleb128 0x2
  230 0086 01       		.byte	0x1
  231 0087 08       		.byte	0x8
- 232 0088 0D020000 		.4byte	.LASF11
+ 232 0088 05020000 		.4byte	.LASF11
  233 008c 04       		.uleb128 0x4
  234 008d F1000000 		.4byte	.LASF13
  235 0091 02       		.byte	0x2
@@ -404,7 +404,7 @@ ARM GAS  C:\Users\degn\AppData\Local\Temp\ccXAMuiS.s 			page 1
  243 00a0 2A       		.byte	0x2a
  244 00a1 B2000000 		.4byte	0xb2
  245 00a5 07       		.uleb128 0x7
- 246 00a6 66020000 		.4byte	.LASF25
+ 246 00a6 5E020000 		.4byte	.LASF25
  247 00aa 03       		.byte	0x3
  248 00ab 2C       		.byte	0x2c
  249 00ac 6B000000 		.4byte	0x6b
@@ -416,9 +416,9 @@ ARM GAS  C:\Users\degn\AppData\Local\Temp\ccXAMuiS.s 			page 1
  255 00b8 2D       		.byte	0x2d
  256 00b9 9D000000 		.4byte	0x9d
  257 00bd 09       		.uleb128 0x9
- 258 00be 21020000 		.4byte	.LASF15
+ 258 00be 19020000 		.4byte	.LASF15
  259 00c2 01       		.byte	0x1
-ARM GAS  C:\Users\degn\AppData\Local\Temp\ccXAMuiS.s 			page 8
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc2wTW5c.s 			page 8
 
 
  260 00c3 2C       		.byte	0x2c
@@ -427,7 +427,7 @@ ARM GAS  C:\Users\degn\AppData\Local\Temp\ccXAMuiS.s 			page 1
  263 00cc 01       		.uleb128 0x1
  264 00cd 9C       		.byte	0x9c
  265 00ce 09       		.uleb128 0x9
- 266 00cf C0010000 		.4byte	.LASF16
+ 266 00cf 51010000 		.4byte	.LASF16
  267 00d3 01       		.byte	0x1
  268 00d4 40       		.byte	0x40
  269 00d5 00000000 		.4byte	.LFB1
@@ -435,7 +435,7 @@ ARM GAS  C:\Users\degn\AppData\Local\Temp\ccXAMuiS.s 			page 1
  271 00dd 01       		.uleb128 0x1
  272 00de 9C       		.byte	0x9c
  273 00df 0A       		.uleb128 0xa
- 274 00e0 EF010000 		.4byte	.LASF17
+ 274 00e0 80010000 		.4byte	.LASF17
  275 00e4 01       		.byte	0x1
  276 00e5 5A       		.byte	0x5a
  277 00e6 00000000 		.4byte	.LFB2
@@ -464,7 +464,7 @@ ARM GAS  C:\Users\degn\AppData\Local\Temp\ccXAMuiS.s 			page 1
  300 0121 4D010000 		.4byte	0x14d
  301 0125 00       		.byte	0
  302 0126 0C       		.uleb128 0xc
- 303 0127 A2010000 		.4byte	.LASF26
+ 303 0127 33010000 		.4byte	.LASF26
  304 012b 01       		.byte	0x1
  305 012c 18       		.byte	0x18
  306 012d B2000000 		.4byte	0xb2
@@ -472,21 +472,21 @@ ARM GAS  C:\Users\degn\AppData\Local\Temp\ccXAMuiS.s 			page 1
  308 0132 03       		.byte	0x3
  309 0133 00000000 		.4byte	ADC_SAR_1_backup
  310 0137 0D       		.uleb128 0xd
- 311 0138 12020000 		.4byte	.LASF19
- 312 013c 12020000 		.4byte	.LASF19
+ 311 0138 0A020000 		.4byte	.LASF19
+ 312 013c 0A020000 		.4byte	.LASF19
  313 0140 03       		.byte	0x3
  314 0141 35       		.byte	0x35
  315 0142 0D       		.uleb128 0xd
  316 0143 1B010000 		.4byte	.LASF20
-ARM GAS  C:\Users\degn\AppData\Local\Temp\ccXAMuiS.s 			page 9
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc2wTW5c.s 			page 9
 
 
  317 0147 1B010000 		.4byte	.LASF20
  318 014b 03       		.byte	0x3
  319 014c 44       		.byte	0x44
  320 014d 0D       		.uleb128 0xd
- 321 014e 36020000 		.4byte	.LASF21
- 322 0152 36020000 		.4byte	.LASF21
+ 321 014e 2E020000 		.4byte	.LASF21
+ 322 0152 2E020000 		.4byte	.LASF21
  323 0156 03       		.byte	0x3
  324 0157 D1       		.byte	0xd1
  325 0158 00       		.byte	0
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\degn\AppData\Local\Temp\ccXAMuiS.s 			page 1
  371 002b 00       		.byte	0
  372 002c 03       		.uleb128 0x3
  373 002d 0E       		.uleb128 0xe
-ARM GAS  C:\Users\degn\AppData\Local\Temp\ccXAMuiS.s 			page 10
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc2wTW5c.s 			page 10
 
 
  374 002e 3A       		.uleb128 0x3a
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\degn\AppData\Local\Temp\ccXAMuiS.s 			page 1
  428 0064 00       		.byte	0
  429 0065 00       		.byte	0
  430 0066 09       		.uleb128 0x9
-ARM GAS  C:\Users\degn\AppData\Local\Temp\ccXAMuiS.s 			page 11
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc2wTW5c.s 			page 11
 
 
  431 0067 2E       		.uleb128 0x2e
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\degn\AppData\Local\Temp\ccXAMuiS.s 			page 1
  485 00a1 00       		.byte	0
  486 00a2 00       		.byte	0
  487 00a3 0C       		.uleb128 0xc
-ARM GAS  C:\Users\degn\AppData\Local\Temp\ccXAMuiS.s 			page 12
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc2wTW5c.s 			page 12
 
 
  488 00a4 34       		.uleb128 0x34
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\degn\AppData\Local\Temp\ccXAMuiS.s 			page 1
  542 0008 00000000 		.4byte	.LFB1
  543 000c 02000000 		.4byte	.LFE1
  544 0010 00000000 		.4byte	.LFB2
-ARM GAS  C:\Users\degn\AppData\Local\Temp\ccXAMuiS.s 			page 13
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc2wTW5c.s 			page 13
 
 
  545 0014 40000000 		.4byte	.LFE2
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\degn\AppData\Local\Temp\ccXAMuiS.s 			page 1
  567              	.LASF13:
  568 00f1 72656738 		.ascii	"reg8\000"
  568      00
-ARM GAS  C:\Users\degn\AppData\Local\Temp\ccXAMuiS.s 			page 14
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc2wTW5c.s 			page 14
 
 
  569              	.LASF5:
@@ -802,95 +802,93 @@ ARM GAS  C:\Users\degn\AppData\Local\Temp\ccXAMuiS.s 			page 1
  575              	.LASF10:
  576 012c 646F7562 		.ascii	"double\000"
  576      6C6500
- 577              	.LASF24:
- 578 0133 433A5C55 		.ascii	"C:\\Users\\degn\\OneDrive - Aarhus universitet\\Skr"
- 578      73657273 
- 578      5C646567 
- 578      6E5C4F6E 
- 578      65447269 
- 579 0162 69766562 		.ascii	"ivebord\\AU\\E4\\PRJ4\\Git\\E4PRJ\\PSoC\\Dron-A Lis"
- 579      6F72645C 
- 579      41555C45 
- 579      345C5052 
- 579      4A345C47 
- 580 018e 615C4472 		.ascii	"a\\Dron-A Lisa.cydsn\000"
- 580      6F6E2D41 
- 580      204C6973 
- 580      612E6379 
- 580      64736E00 
- 581              	.LASF26:
- 582 01a2 4144435F 		.ascii	"ADC_SAR_1_backup\000"
+ 577              	.LASF26:
+ 578 0133 4144435F 		.ascii	"ADC_SAR_1_backup\000"
+ 578      5341525F 
+ 578      315F6261 
+ 578      636B7570 
+ 578      00
+ 579              	.LASF8:
+ 580 0144 756E7369 		.ascii	"unsigned int\000"
+ 580      676E6564 
+ 580      20696E74 
+ 580      00
+ 581              	.LASF16:
+ 582 0151 4144435F 		.ascii	"ADC_SAR_1_RestoreConfig\000"
  582      5341525F 
- 582      315F6261 
- 582      636B7570 
- 582      00
- 583              	.LASF8:
- 584 01b3 756E7369 		.ascii	"unsigned int\000"
- 584      676E6564 
- 584      20696E74 
- 584      00
- 585              	.LASF16:
- 586 01c0 4144435F 		.ascii	"ADC_SAR_1_RestoreConfig\000"
+ 582      315F5265 
+ 582      73746F72 
+ 582      65436F6E 
+ 583              	.LASF7:
+ 584 0169 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 584      206C6F6E 
+ 584      6720756E 
+ 584      7369676E 
+ 584      65642069 
+ 585              	.LASF17:
+ 586 0180 4144435F 		.ascii	"ADC_SAR_1_Sleep\000"
  586      5341525F 
- 586      315F5265 
- 586      73746F72 
- 586      65436F6E 
- 587              	.LASF7:
- 588 01d8 6C6F6E67 		.ascii	"long long unsigned int\000"
- 588      206C6F6E 
-ARM GAS  C:\Users\degn\AppData\Local\Temp\ccXAMuiS.s 			page 15
+ 586      315F536C 
+ 586      65657000 
+ 587              	.LASF24:
+ 588 0190 433A5C55 		.ascii	"C:\\Users\\Jacob\\OneDrive - Aarhus universitet\\4."
+ 588      73657273 
+ 588      5C4A6163 
+ 588      6F625C4F 
+ 588      6E654472 
+ 589 01bf 2053656D 		.ascii	" Semester\\PRJ4\\E4PRJ\\PSoC\\Dron-A Lisa\\Dron-A L"
+ 589      65737465 
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc2wTW5c.s 			page 15
 
 
- 588      6720756E 
- 588      7369676E 
- 588      65642069 
- 589              	.LASF17:
- 590 01ef 4144435F 		.ascii	"ADC_SAR_1_Sleep\000"
- 590      5341525F 
- 590      315F536C 
- 590      65657000 
+ 589      725C5052 
+ 589      4A345C45 
+ 589      3450524A 
+ 590 01ed 6973612E 		.ascii	"isa.cydsn\000"
+ 590      63796473 
+ 590      6E00
  591              	.LASF6:
- 592 01ff 6C6F6E67 		.ascii	"long long int\000"
+ 592 01f7 6C6F6E67 		.ascii	"long long int\000"
  592      206C6F6E 
  592      6720696E 
  592      7400
  593              	.LASF11:
- 594 020d 63686172 		.ascii	"char\000"
+ 594 0205 63686172 		.ascii	"char\000"
  594      00
  595              	.LASF19:
- 596 0212 4144435F 		.ascii	"ADC_SAR_1_Stop\000"
+ 596 020a 4144435F 		.ascii	"ADC_SAR_1_Stop\000"
  596      5341525F 
  596      315F5374 
  596      6F7000
  597              	.LASF15:
- 598 0221 4144435F 		.ascii	"ADC_SAR_1_SaveConfig\000"
+ 598 0219 4144435F 		.ascii	"ADC_SAR_1_SaveConfig\000"
  598      5341525F 
  598      315F5361 
  598      7665436F 
  598      6E666967 
  599              	.LASF21:
- 600 0236 4144435F 		.ascii	"ADC_SAR_1_StartConvert\000"
+ 600 022e 4144435F 		.ascii	"ADC_SAR_1_StartConvert\000"
  600      5341525F 
  600      315F5374 
  600      61727443 
  600      6F6E7665 
  601              	.LASF2:
- 602 024d 73686F72 		.ascii	"short int\000"
+ 602 0245 73686F72 		.ascii	"short int\000"
  602      7420696E 
  602      7400
  603              	.LASF12:
- 604 0257 75696E74 		.ascii	"uint8\000"
+ 604 024f 75696E74 		.ascii	"uint8\000"
  604      3800
  605              	.LASF4:
- 606 025d 6C6F6E67 		.ascii	"long int\000"
+ 606 0255 6C6F6E67 		.ascii	"long int\000"
  606      20696E74 
  606      00
  607              	.LASF25:
- 608 0266 656E6162 		.ascii	"enableState\000"
+ 608 025e 656E6162 		.ascii	"enableState\000"
  608      6C655374 
  608      61746500 
  609              	.LASF0:
- 610 0272 7369676E 		.ascii	"signed char\000"
+ 610 026a 7369676E 		.ascii	"signed char\000"
  610      65642063 
  610      68617200 
  611              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

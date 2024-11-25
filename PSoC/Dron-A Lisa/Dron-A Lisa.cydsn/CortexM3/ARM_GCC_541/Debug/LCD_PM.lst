@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\degn\AppData\Local\Temp\ccCU8zWP.s 			page 1
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccsTT4V8.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\degn\AppData\Local\Temp\ccCU8zWP.s 			page 1
   28:Generated_Source\PSoC5/LCD_PM.c **** *  Does nothing, provided for consistency.
   29:Generated_Source\PSoC5/LCD_PM.c **** *
   30:Generated_Source\PSoC5/LCD_PM.c **** * Parameters:
-ARM GAS  C:\Users\degn\AppData\Local\Temp\ccCU8zWP.s 			page 2
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccsTT4V8.s 			page 2
 
 
   31:Generated_Source\PSoC5/LCD_PM.c **** *  None.
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\degn\AppData\Local\Temp\ccCU8zWP.s 			page 1
   55              		.align	2
   56              		.global	LCD_Sleep
   57              		.thumb
-ARM GAS  C:\Users\degn\AppData\Local\Temp\ccCU8zWP.s 			page 3
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccsTT4V8.s 			page 3
 
 
   58              		.thumb_func
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\degn\AppData\Local\Temp\ccCU8zWP.s 			page 1
   87              		.size	LCD_Sleep, .-LCD_Sleep
   88              		.section	.text.LCD_Wakeup,"ax",%progbits
   89              		.align	2
-ARM GAS  C:\Users\degn\AppData\Local\Temp\ccCU8zWP.s 			page 4
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccsTT4V8.s 			page 4
 
 
   90              		.global	LCD_Wakeup
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\degn\AppData\Local\Temp\ccCU8zWP.s 			page 1
  113 000e 08BD     		pop	{r3, pc}
  114              	.L11:
  115              		.align	2
-ARM GAS  C:\Users\degn\AppData\Local\Temp\ccCU8zWP.s 			page 5
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccsTT4V8.s 			page 5
 
 
  116              	.L10:
@@ -267,14 +267,14 @@ ARM GAS  C:\Users\degn\AppData\Local\Temp\ccCU8zWP.s 			page 1
  139 000c 66000000 		.4byte	.LASF20
  140 0010 0C       		.byte	0xc
  141 0011 23000000 		.4byte	.LASF21
- 142 0015 20010000 		.4byte	.LASF22
+ 142 0015 61010000 		.4byte	.LASF22
  143 0019 00000000 		.4byte	.Ldebug_ranges0+0
  144 001d 00000000 		.4byte	0
  145 0021 00000000 		.4byte	.Ldebug_line0
  146 0025 02       		.uleb128 0x2
  147 0026 01       		.byte	0x1
  148 0027 06       		.byte	0x6
- 149 0028 25020000 		.4byte	.LASF0
+ 149 0028 1D020000 		.4byte	.LASF0
  150 002c 02       		.uleb128 0x2
  151 002d 01       		.byte	0x1
  152 002e 08       		.byte	0x8
@@ -282,7 +282,7 @@ ARM GAS  C:\Users\degn\AppData\Local\Temp\ccCU8zWP.s 			page 1
  154 0033 02       		.uleb128 0x2
  155 0034 02       		.byte	0x2
  156 0035 05       		.byte	0x5
- 157 0036 F5010000 		.4byte	.LASF2
+ 157 0036 ED010000 		.4byte	.LASF2
  158 003a 02       		.uleb128 0x2
  159 003b 02       		.byte	0x2
  160 003c 07       		.byte	0x7
@@ -290,7 +290,7 @@ ARM GAS  C:\Users\degn\AppData\Local\Temp\ccCU8zWP.s 			page 1
  162 0041 02       		.uleb128 0x2
  163 0042 04       		.byte	0x4
  164 0043 05       		.byte	0x5
- 165 0044 10020000 		.4byte	.LASF4
+ 165 0044 08020000 		.4byte	.LASF4
  166 0048 02       		.uleb128 0x2
  167 0049 04       		.byte	0x4
  168 004a 07       		.byte	0x7
@@ -298,14 +298,14 @@ ARM GAS  C:\Users\degn\AppData\Local\Temp\ccCU8zWP.s 			page 1
  170 004f 02       		.uleb128 0x2
  171 0050 08       		.byte	0x8
  172 0051 05       		.byte	0x5
-ARM GAS  C:\Users\degn\AppData\Local\Temp\ccCU8zWP.s 			page 6
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccsTT4V8.s 			page 6
 
 
- 173 0052 D0010000 		.4byte	.LASF6
+ 173 0052 C8010000 		.4byte	.LASF6
  174 0056 02       		.uleb128 0x2
  175 0057 08       		.byte	0x8
  176 0058 07       		.byte	0x7
- 177 0059 B9010000 		.4byte	.LASF7
+ 177 0059 4A010000 		.4byte	.LASF7
  178 005d 03       		.uleb128 0x3
  179 005e 04       		.byte	0x4
  180 005f 05       		.byte	0x5
@@ -313,9 +313,9 @@ ARM GAS  C:\Users\degn\AppData\Local\Temp\ccCU8zWP.s 			page 1
  182 0064 02       		.uleb128 0x2
  183 0065 04       		.byte	0x4
  184 0066 07       		.byte	0x7
- 185 0067 AC010000 		.4byte	.LASF8
+ 185 0067 3D010000 		.4byte	.LASF8
  186 006b 04       		.uleb128 0x4
- 187 006c FF010000 		.4byte	.LASF12
+ 187 006c F7010000 		.4byte	.LASF12
  188 0070 02       		.byte	0x2
  189 0071 E901     		.2byte	0x1e9
  190 0073 2C000000 		.4byte	0x2c
@@ -330,21 +330,21 @@ ARM GAS  C:\Users\degn\AppData\Local\Temp\ccCU8zWP.s 			page 1
  199 0085 02       		.uleb128 0x2
  200 0086 01       		.byte	0x1
  201 0087 08       		.byte	0x8
- 202 0088 DE010000 		.4byte	.LASF11
+ 202 0088 D6010000 		.4byte	.LASF11
  203 008c 05       		.uleb128 0x5
  204 008d 01       		.byte	0x1
  205 008e 03       		.byte	0x3
  206 008f 2C       		.byte	0x2c
  207 0090 A1000000 		.4byte	0xa1
  208 0094 06       		.uleb128 0x6
- 209 0095 19020000 		.4byte	.LASF23
+ 209 0095 11020000 		.4byte	.LASF23
  210 0099 03       		.byte	0x3
  211 009a 2E       		.byte	0x2e
  212 009b 6B000000 		.4byte	0x6b
  213 009f 00       		.byte	0
  214 00a0 00       		.byte	0
  215 00a1 07       		.uleb128 0x7
- 216 00a2 E3010000 		.4byte	.LASF13
+ 216 00a2 DB010000 		.4byte	.LASF13
  217 00a6 03       		.byte	0x3
  218 00a7 2F       		.byte	0x2f
  219 00a8 8C000000 		.4byte	0x8c
@@ -357,8 +357,8 @@ ARM GAS  C:\Users\degn\AppData\Local\Temp\ccCU8zWP.s 			page 1
  226 00bb 01       		.uleb128 0x1
  227 00bc 9C       		.byte	0x9c
  228 00bd 08       		.uleb128 0x8
- 229 00be 9A010000 		.4byte	.LASF15
-ARM GAS  C:\Users\degn\AppData\Local\Temp\ccCU8zWP.s 			page 7
+ 229 00be 2B010000 		.4byte	.LASF15
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccsTT4V8.s 			page 7
 
 
  230 00c2 01       		.byte	0x1
@@ -381,7 +381,7 @@ ARM GAS  C:\Users\degn\AppData\Local\Temp\ccCU8zWP.s 			page 1
  247 00e8 28010000 		.4byte	0x128
  248 00ec 00       		.byte	0
  249 00ed 09       		.uleb128 0x9
- 250 00ee 31020000 		.4byte	.LASF17
+ 250 00ee 29020000 		.4byte	.LASF17
  251 00f2 01       		.byte	0x1
  252 00f3 6B       		.byte	0x6b
  253 00f4 00000000 		.4byte	.LFB3
@@ -394,7 +394,7 @@ ARM GAS  C:\Users\degn\AppData\Local\Temp\ccCU8zWP.s 			page 1
  260 0107 33010000 		.4byte	0x133
  261 010b 00       		.byte	0
  262 010c 0B       		.uleb128 0xb
- 263 010d 05020000 		.4byte	.LASF24
+ 263 010d FD010000 		.4byte	.LASF24
  264 0111 01       		.byte	0x1
  265 0112 14       		.byte	0x14
  266 0113 A1000000 		.4byte	0xa1
@@ -412,13 +412,13 @@ ARM GAS  C:\Users\degn\AppData\Local\Temp\ccCU8zWP.s 			page 1
  278 0131 03       		.byte	0x3
  279 0132 39       		.byte	0x39
  280 0133 0D       		.uleb128 0xd
- 281 0134 8F010000 		.4byte	.LASF19
- 282 0138 8F010000 		.4byte	.LASF19
+ 281 0134 20010000 		.4byte	.LASF19
+ 282 0138 20010000 		.4byte	.LASF19
  283 013c 03       		.byte	0x3
  284 013d 37       		.byte	0x37
  285 013e 00       		.byte	0
  286              		.section	.debug_abbrev,"",%progbits
-ARM GAS  C:\Users\degn\AppData\Local\Temp\ccCU8zWP.s 			page 8
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccsTT4V8.s 			page 8
 
 
  287              	.Ldebug_abbrev0:
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\degn\AppData\Local\Temp\ccCU8zWP.s 			page 1
  341 0035 00       		.byte	0
  342 0036 05       		.uleb128 0x5
  343 0037 13       		.uleb128 0x13
-ARM GAS  C:\Users\degn\AppData\Local\Temp\ccCU8zWP.s 			page 9
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccsTT4V8.s 			page 9
 
 
  344 0038 01       		.byte	0x1
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\degn\AppData\Local\Temp\ccCU8zWP.s 			page 1
  398 006e 12       		.uleb128 0x12
  399 006f 06       		.uleb128 0x6
  400 0070 40       		.uleb128 0x40
-ARM GAS  C:\Users\degn\AppData\Local\Temp\ccCU8zWP.s 			page 10
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccsTT4V8.s 			page 10
 
 
  401 0071 18       		.uleb128 0x18
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\degn\AppData\Local\Temp\ccCU8zWP.s 			page 1
  455 00ab 0C       		.uleb128 0xc
  456 00ac 34       		.uleb128 0x34
  457 00ad 00       		.byte	0
-ARM GAS  C:\Users\degn\AppData\Local\Temp\ccCU8zWP.s 			page 11
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccsTT4V8.s 			page 11
 
 
  458 00ae 03       		.uleb128 0x3
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\degn\AppData\Local\Temp\ccCU8zWP.s 			page 1
  512 0008 00000000 		.4byte	.LFB1
  513 000c 02000000 		.4byte	.LFE1
  514 0010 00000000 		.4byte	.LFB2
-ARM GAS  C:\Users\degn\AppData\Local\Temp\ccCU8zWP.s 			page 12
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccsTT4V8.s 			page 12
 
 
  515 0014 18000000 		.4byte	.LFE2
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\degn\AppData\Local\Temp\ccCU8zWP.s 			page 1
  539      37373135 
  540 00cc 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
  540      66756E63 
-ARM GAS  C:\Users\degn\AppData\Local\Temp\ccCU8zWP.s 			page 13
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccsTT4V8.s 			page 13
 
 
  540      74696F6E 
@@ -739,85 +739,83 @@ ARM GAS  C:\Users\degn\AppData\Local\Temp\ccCU8zWP.s 			page 1
  545              	.LASF10:
  546 0119 646F7562 		.ascii	"double\000"
  546      6C6500
- 547              	.LASF22:
- 548 0120 433A5C55 		.ascii	"C:\\Users\\degn\\OneDrive - Aarhus universitet\\Skr"
- 548      73657273 
- 548      5C646567 
- 548      6E5C4F6E 
- 548      65447269 
- 549 014f 69766562 		.ascii	"ivebord\\AU\\E4\\PRJ4\\Git\\E4PRJ\\PSoC\\Dron-A Lis"
- 549      6F72645C 
- 549      41555C45 
- 549      345C5052 
- 549      4A345C47 
- 550 017b 615C4472 		.ascii	"a\\Dron-A Lisa.cydsn\000"
- 550      6F6E2D41 
- 550      204C6973 
- 550      612E6379 
- 550      64736E00 
- 551              	.LASF19:
- 552 018f 4C43445F 		.ascii	"LCD_Enable\000"
- 552      456E6162 
- 552      6C6500
- 553              	.LASF15:
- 554 019a 4C43445F 		.ascii	"LCD_RestoreConfig\000"
- 554      52657374 
- 554      6F726543 
- 554      6F6E6669 
- 554      6700
- 555              	.LASF8:
- 556 01ac 756E7369 		.ascii	"unsigned int\000"
- 556      676E6564 
- 556      20696E74 
- 556      00
- 557              	.LASF7:
- 558 01b9 6C6F6E67 		.ascii	"long long unsigned int\000"
- 558      206C6F6E 
- 558      6720756E 
- 558      7369676E 
- 558      65642069 
+ 547              	.LASF19:
+ 548 0120 4C43445F 		.ascii	"LCD_Enable\000"
+ 548      456E6162 
+ 548      6C6500
+ 549              	.LASF15:
+ 550 012b 4C43445F 		.ascii	"LCD_RestoreConfig\000"
+ 550      52657374 
+ 550      6F726543 
+ 550      6F6E6669 
+ 550      6700
+ 551              	.LASF8:
+ 552 013d 756E7369 		.ascii	"unsigned int\000"
+ 552      676E6564 
+ 552      20696E74 
+ 552      00
+ 553              	.LASF7:
+ 554 014a 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 554      206C6F6E 
+ 554      6720756E 
+ 554      7369676E 
+ 554      65642069 
+ 555              	.LASF22:
+ 556 0161 433A5C55 		.ascii	"C:\\Users\\Jacob\\OneDrive - Aarhus universitet\\4."
+ 556      73657273 
+ 556      5C4A6163 
+ 556      6F625C4F 
+ 556      6E654472 
+ 557 0190 2053656D 		.ascii	" Semester\\PRJ4\\E4PRJ\\PSoC\\Dron-A Lisa\\Dron-A L"
+ 557      65737465 
+ 557      725C5052 
+ 557      4A345C45 
+ 557      3450524A 
+ 558 01be 6973612E 		.ascii	"isa.cydsn\000"
+ 558      63796473 
+ 558      6E00
  559              	.LASF6:
- 560 01d0 6C6F6E67 		.ascii	"long long int\000"
-ARM GAS  C:\Users\degn\AppData\Local\Temp\ccCU8zWP.s 			page 14
-
-
+ 560 01c8 6C6F6E67 		.ascii	"long long int\000"
  560      206C6F6E 
  560      6720696E 
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccsTT4V8.s 			page 14
+
+
  560      7400
  561              	.LASF11:
- 562 01de 63686172 		.ascii	"char\000"
+ 562 01d6 63686172 		.ascii	"char\000"
  562      00
  563              	.LASF13:
- 564 01e3 4C43445F 		.ascii	"LCD_BACKUP_STRUCT\000"
+ 564 01db 4C43445F 		.ascii	"LCD_BACKUP_STRUCT\000"
  564      4241434B 
  564      55505F53 
  564      54525543 
  564      5400
  565              	.LASF2:
- 566 01f5 73686F72 		.ascii	"short int\000"
+ 566 01ed 73686F72 		.ascii	"short int\000"
  566      7420696E 
  566      7400
  567              	.LASF12:
- 568 01ff 75696E74 		.ascii	"uint8\000"
+ 568 01f7 75696E74 		.ascii	"uint8\000"
  568      3800
  569              	.LASF24:
- 570 0205 4C43445F 		.ascii	"LCD_backup\000"
+ 570 01fd 4C43445F 		.ascii	"LCD_backup\000"
  570      6261636B 
  570      757000
  571              	.LASF4:
- 572 0210 6C6F6E67 		.ascii	"long int\000"
+ 572 0208 6C6F6E67 		.ascii	"long int\000"
  572      20696E74 
  572      00
  573              	.LASF23:
- 574 0219 656E6162 		.ascii	"enableState\000"
+ 574 0211 656E6162 		.ascii	"enableState\000"
  574      6C655374 
  574      61746500 
  575              	.LASF0:
- 576 0225 7369676E 		.ascii	"signed char\000"
+ 576 021d 7369676E 		.ascii	"signed char\000"
  576      65642063 
  576      68617200 
  577              	.LASF17:
- 578 0231 4C43445F 		.ascii	"LCD_Wakeup\000"
+ 578 0229 4C43445F 		.ascii	"LCD_Wakeup\000"
  578      57616B65 
  578      757000
  579              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
