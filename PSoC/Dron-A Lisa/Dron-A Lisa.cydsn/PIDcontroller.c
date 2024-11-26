@@ -1,8 +1,10 @@
 #include "PIDcontroller.h"
 
-float kp_ = 1;
-float ki_ = 0;
-float kd_ = 0;
+float kp_ = 0.9;
+float Ti_ = 15000;
+float ki_ = 0.00003;
+float Td_ = 250;
+float kd_ = 225;
 float iMin_ = -100;
 float iMax_ = 100;
 float dt_ = 20;

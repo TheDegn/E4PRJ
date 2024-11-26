@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc5zF1xf.s 			page 1
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc44P1JR.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc5zF1xf.s 			page 1
   24:main.c        **** float derivative = 0;
   25:main.c        **** float error = 0;
   26:main.c        **** float setpoint = 0;
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc5zF1xf.s 			page 2
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc44P1JR.s 			page 2
 
 
   27:main.c        **** 
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc5zF1xf.s 			page 1
   81:main.c        ****     
   82:main.c        ****     //UART
   83:main.c        ****     UART_1_Start();
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc5zF1xf.s 			page 3
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc44P1JR.s 			page 3
 
 
   84:main.c        ****     isr_uart_rx_StartEx(ISR_UART_rx_handler);
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc5zF1xf.s 			page 1
   33              		.cfi_startproc
   34              		@ args = 0, pretend = 0, frame = 0
   35              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc5zF1xf.s 			page 4
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc44P1JR.s 			page 4
 
 
   36 0000 10B5     		push	{r4, lr}
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc5zF1xf.s 			page 1
   66 0034 FFF7FEFF 		bl	setspeed
   67              	.LVL4:
  161:main.c        ****     setspeed(2,170+(output));
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc5zF1xf.s 			page 5
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc44P1JR.s 			page 5
 
 
   68              		.loc 1 161 0
@@ -252,10 +252,8 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc5zF1xf.s 			page 1
   76 0046 0220     		movs	r0, #2
   77 0048 FFF7FEFF 		bl	setspeed
   78              	.LVL7:
- 162:main.c        ****     
- 163:main.c        ****     
- 164:main.c        **** }
-  79              		.loc 1 164 0
+ 162:main.c        **** }
+  79              		.loc 1 162 0
   80 004c 02B0     		add	sp, sp, #8
   81              		.cfi_def_cfa_offset 8
   82              		@ sp needed
@@ -298,11 +296,11 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc5zF1xf.s 			page 1
  117 000c 0A       		.byte	(.L10-.L8)/2
  118 000d 0E       		.byte	(.L11-.L8)/2
  119              		.p2align 1
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc5zF1xf.s 			page 6
-
-
  120              	.L7:
   41:main.c        ****         break;
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc44P1JR.s 			page 6
+
+
  121              		.loc 1 41 0
  122 000e 084A     		ldr	r2, .L12
  123 0010 084B     		ldr	r3, .L12+4
@@ -358,11 +356,11 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc5zF1xf.s 			page 1
   59:main.c        ****     uint8_t bytesToRead = UART_1_GetRxBufferSize(); // Get the number of bytes to read
  167              		.loc 1 59 0
  168              		.cfi_startproc
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc5zF1xf.s 			page 7
-
-
  169              		@ args = 0, pretend = 0, frame = 0
  170              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc44P1JR.s 			page 7
+
+
  171 0000 38B5     		push	{r3, r4, r5, lr}
  172              		.cfi_def_cfa_offset 16
  173              		.cfi_offset 3, -16
@@ -418,11 +416,11 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc5zF1xf.s 			page 1
  215              		.section	.text.main,"ax",%progbits
  216              		.align	2
  217              		.global	main
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc5zF1xf.s 			page 8
-
-
  218              		.thumb
  219              		.thumb_func
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc44P1JR.s 			page 8
+
+
  220              		.type	main, %function
  221              	main:
  222              	.LFB66:
@@ -478,11 +476,11 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc5zF1xf.s 			page 1
  263              		.loc 1 100 0
  264 0024 FFF7FEFF 		bl	initSensor
  265              	.LVL24:
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc5zF1xf.s 			page 9
-
-
  102:main.c        ****     
  266              		.loc 1 102 0
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc44P1JR.s 			page 9
+
+
  267 0028 2748     		ldr	r0, .L24+8
  268 002a FFF7FEFF 		bl	UART_1_PutString
  269              	.LVL25:
@@ -538,11 +536,11 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc5zF1xf.s 			page 1
  310              	.LVL35:
  311 006a FFF7FEFF 		bl	__aeabi_i2f
  312              	.LVL36:
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc5zF1xf.s 			page 10
-
-
  313 006e 1A4B     		ldr	r3, .L24+24
  314 0070 9860     		str	r0, [r3, #8]	@ float
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc44P1JR.s 			page 10
+
+
  315              	.L20:
  123:main.c        ****         UART_1_PutString(outputBuffer);
  316              		.loc 1 123 0
@@ -598,11 +596,11 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc5zF1xf.s 			page 1
  360 00bc 0134     		adds	r4, r4, #1
  361              	.LVL46:
  132:main.c        **** }
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc5zF1xf.s 			page 11
-
-
  362              		.loc 1 132 0
  363 00be B7E7     		b	.L22
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc44P1JR.s 			page 11
+
+
  364              	.L25:
  365              		.align	2
  366              	.L24:
@@ -627,10 +625,10 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc5zF1xf.s 			page 1
  385              		.type	ISR_motorSwitch_On_handler, %function
  386              	ISR_motorSwitch_On_handler:
  387              	.LFB68:
- 165:main.c        **** 
- 166:main.c        **** CY_ISR(ISR_motorSwitch_On_handler)
- 167:main.c        **** {
- 388              		.loc 1 167 0
+ 163:main.c        **** 
+ 164:main.c        **** CY_ISR(ISR_motorSwitch_On_handler)
+ 165:main.c        **** {
+ 388              		.loc 1 165 0
  389              		.cfi_startproc
  390              		@ args = 0, pretend = 0, frame = 0
  391              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -638,8 +636,8 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc5zF1xf.s 			page 1
  393              		.cfi_def_cfa_offset 8
  394              		.cfi_offset 3, -8
  395              		.cfi_offset 14, -4
- 168:main.c        ****     isr_pid_StartEx(PID_HANDLER);
- 396              		.loc 1 168 0
+ 166:main.c        ****     isr_pid_StartEx(PID_HANDLER);
+ 396              		.loc 1 166 0
  397 0002 0248     		ldr	r0, .L28
  398 0004 FFF7FEFF 		bl	isr_pid_StartEx
  399              	.LVL47:
@@ -658,14 +656,14 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc5zF1xf.s 			page 1
  412              		.thumb_func
  413              		.type	ISR_motorSwitch_Off_handler, %function
  414              	ISR_motorSwitch_Off_handler:
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc5zF1xf.s 			page 12
-
-
  415              	.LFB69:
- 169:main.c        **** }
- 170:main.c        **** CY_ISR(ISR_motorSwitch_Off_handler)
- 171:main.c        **** {
- 416              		.loc 1 171 0
+ 167:main.c        **** }
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc44P1JR.s 			page 12
+
+
+ 168:main.c        **** CY_ISR(ISR_motorSwitch_Off_handler)
+ 169:main.c        **** {
+ 416              		.loc 1 169 0
  417              		.cfi_startproc
  418              		@ args = 0, pretend = 0, frame = 0
  419              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -673,12 +671,12 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc5zF1xf.s 			page 1
  421              		.cfi_def_cfa_offset 8
  422              		.cfi_offset 3, -8
  423              		.cfi_offset 14, -4
- 172:main.c        ****     isr_pid_Stop();
- 424              		.loc 1 172 0
+ 170:main.c        ****     isr_pid_Stop();
+ 424              		.loc 1 170 0
  425 0002 FFF7FEFF 		bl	isr_pid_Stop
  426              	.LVL48:
- 173:main.c        ****     stop();
- 427              		.loc 1 173 0
+ 171:main.c        ****     stop();
+ 427              		.loc 1 171 0
  428 0006 FFF7FEFF 		bl	stop
  429              	.LVL49:
  430 000a 08BD     		pop	{r3, pc}
@@ -718,11 +716,11 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc5zF1xf.s 			page 1
  459              		.size	proportional, 4
  460              	proportional:
  461 0004 00000000 		.space	4
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc5zF1xf.s 			page 13
-
-
  462              		.type	setpoint, %object
  463              		.size	setpoint, 4
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc44P1JR.s 			page 13
+
+
  464              	setpoint:
  465 0008 00000000 		.space	4
  466              		.type	derivative, %object
@@ -778,11 +776,11 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc5zF1xf.s 			page 1
  516 0026 04       		.byte	0x4
  517 0027 04       		.byte	0x4
  518 0028 D5000000 		.4byte	.LASF0
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc5zF1xf.s 			page 14
-
-
  519 002c 02       		.uleb128 0x2
  520 002d 01       		.byte	0x1
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc44P1JR.s 			page 14
+
+
  521 002e 06       		.byte	0x6
  522 002f BF010000 		.4byte	.LASF1
  523 0033 03       		.uleb128 0x3
@@ -838,11 +836,11 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc5zF1xf.s 			page 1
  573 008f 33000000 		.4byte	0x33
  574 0093 03       		.uleb128 0x3
  575 0094 4E020000 		.4byte	.LASF13
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc5zF1xf.s 			page 15
-
-
  576 0098 03       		.byte	0x3
  577 0099 2C       		.byte	0x2c
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc44P1JR.s 			page 15
+
+
  578 009a 53000000 		.4byte	0x53
  579 009e 02       		.uleb128 0x2
  580 009f 08       		.byte	0x8
@@ -898,11 +896,11 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc5zF1xf.s 			page 1
  630 00f5 32040000 		.4byte	0x432
  631 00f9 03010000 		.4byte	0x103
  632 00fd 07       		.uleb128 0x7
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc5zF1xf.s 			page 16
-
-
  633 00fe 01       		.uleb128 0x1
  634 00ff 50       		.byte	0x50
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc44P1JR.s 			page 16
+
+
  635 0100 01       		.uleb128 0x1
  636 0101 31       		.byte	0x31
  637 0102 00       		.byte	0
@@ -958,11 +956,11 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc5zF1xf.s 			page 1
  687 0170 88000000 		.4byte	0x88
  688 0174 3F000000 		.4byte	.LLST2
  689 0178 0D       		.uleb128 0xd
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc5zF1xf.s 			page 17
-
-
  690 0179 0E000000 		.4byte	.LVL12
  691 017d 3D040000 		.4byte	0x43d
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc44P1JR.s 			page 17
+
+
  692 0181 06       		.uleb128 0x6
  693 0182 14000000 		.4byte	.LVL14
  694 0186 48040000 		.4byte	0x448
@@ -1018,11 +1016,11 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc5zF1xf.s 			page 1
  744 01f5 FF010000 		.4byte	0x1ff
  745 01f9 07       		.uleb128 0x7
  746 01fa 01       		.uleb128 0x1
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc5zF1xf.s 			page 18
-
-
  747 01fb 50       		.byte	0x50
  748 01fc 01       		.uleb128 0x1
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc44P1JR.s 			page 18
+
+
  749 01fd 33       		.byte	0x33
  750 01fe 00       		.byte	0
  751 01ff 0D       		.uleb128 0xd
@@ -1078,11 +1076,11 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc5zF1xf.s 			page 1
  801 0267 06       		.uleb128 0x6
  802 0268 B6000000 		.4byte	.LVL43
  803 026c B6040000 		.4byte	0x4b6
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc5zF1xf.s 			page 19
-
-
  804 0270 7C020000 		.4byte	0x27c
  805 0274 07       		.uleb128 0x7
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc44P1JR.s 			page 19
+
+
  806 0275 01       		.uleb128 0x1
  807 0276 51       		.byte	0x51
  808 0277 03       		.uleb128 0x3
@@ -1138,17 +1136,17 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc5zF1xf.s 			page 1
  858 02eb 01       		.uleb128 0x1
  859 02ec 50       		.byte	0x50
  860 02ed 05       		.uleb128 0x5
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc5zF1xf.s 			page 20
-
-
  861 02ee 03       		.byte	0x3
  862 02ef 00000000 		.4byte	.LC0
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc44P1JR.s 			page 20
+
+
  863 02f3 00       		.byte	0
  864 02f4 00       		.byte	0
  865 02f5 09       		.uleb128 0x9
  866 02f6 7A000000 		.4byte	.LASF23
  867 02fa 01       		.byte	0x1
- 868 02fb A6       		.byte	0xa6
+ 868 02fb A4       		.byte	0xa4
  869 02fc 00000000 		.4byte	.LFB68
  870 0300 10000000 		.4byte	.LFE68-.LFB68
  871 0304 01       		.uleb128 0x1
@@ -1168,7 +1166,7 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc5zF1xf.s 			page 1
  885 031e 09       		.uleb128 0x9
  886 031f 0B020000 		.4byte	.LASF24
  887 0323 01       		.byte	0x1
- 888 0324 AA       		.byte	0xaa
+ 888 0324 A8       		.byte	0xa8
  889 0325 00000000 		.4byte	.LFB69
  890 0329 0C000000 		.4byte	.LFE69-.LFB69
  891 032d 01       		.uleb128 0x1
@@ -1198,11 +1196,11 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc5zF1xf.s 			page 1
  915 0367 14       		.uleb128 0x14
  916 0368 56020000 		.4byte	.LASF26
  917 036c 01       		.byte	0x1
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc5zF1xf.s 			page 21
-
-
  918 036d 0D       		.byte	0xd
  919 036e 57030000 		.4byte	0x357
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc44P1JR.s 			page 21
+
+
  920 0372 05       		.uleb128 0x5
  921 0373 03       		.byte	0x3
  922 0374 00000000 		.4byte	outputBuffer
@@ -1258,11 +1256,11 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc5zF1xf.s 			page 1
  972 03df 35030000 		.4byte	.LASF33
  973 03e3 01       		.byte	0x1
  974 03e4 1A       		.byte	0x1a
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc5zF1xf.s 			page 22
-
-
  975 03e5 25000000 		.4byte	0x25
  976 03e9 05       		.uleb128 0x5
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc44P1JR.s 			page 22
+
+
  977 03ea 03       		.byte	0x3
  978 03eb 00000000 		.4byte	setpoint
  979 03ef 15       		.uleb128 0x15
@@ -1318,11 +1316,11 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc5zF1xf.s 			page 1
  1029 045d 73       		.byte	0x73
  1030 045e 16       		.uleb128 0x16
  1031 045f 22010000 		.4byte	.LASF43
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc5zF1xf.s 			page 23
-
-
  1032 0463 22010000 		.4byte	.LASF43
  1033 0467 08       		.byte	0x8
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc44P1JR.s 			page 23
+
+
  1034 0468 02       		.byte	0x2
  1035 0469 16       		.uleb128 0x16
  1036 046a D9030000 		.4byte	.LASF44
@@ -1378,11 +1376,11 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc5zF1xf.s 			page 1
  1086 04d8 BB000000 		.4byte	.LASF54
  1087 04dc BB000000 		.4byte	.LASF54
  1088 04e0 07       		.byte	0x7
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc5zF1xf.s 			page 24
-
-
  1089 04e1 54       		.byte	0x54
  1090 04e2 16       		.uleb128 0x16
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc44P1JR.s 			page 24
+
+
  1091 04e3 46000000 		.4byte	.LASF55
  1092 04e7 46000000 		.4byte	.LASF55
  1093 04eb 0C       		.byte	0xc
@@ -1438,11 +1436,11 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc5zF1xf.s 			page 1
  1143 000f 10       		.uleb128 0x10
  1144 0010 17       		.uleb128 0x17
  1145 0011 00       		.byte	0
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc5zF1xf.s 			page 25
-
-
  1146 0012 00       		.byte	0
  1147 0013 02       		.uleb128 0x2
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc44P1JR.s 			page 25
+
+
  1148 0014 24       		.uleb128 0x24
  1149 0015 00       		.byte	0
  1150 0016 0B       		.uleb128 0xb
@@ -1498,11 +1496,11 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc5zF1xf.s 			page 1
  1200 0048 18       		.uleb128 0x18
  1201 0049 9642     		.uleb128 0x2116
  1202 004b 19       		.uleb128 0x19
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc5zF1xf.s 			page 26
-
-
  1203 004c 01       		.uleb128 0x1
  1204 004d 13       		.uleb128 0x13
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc44P1JR.s 			page 26
+
+
  1205 004e 00       		.byte	0
  1206 004f 00       		.byte	0
  1207 0050 06       		.uleb128 0x6
@@ -1558,11 +1556,11 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc5zF1xf.s 			page 1
  1257 008a 01       		.uleb128 0x1
  1258 008b 13       		.uleb128 0x13
  1259 008c 00       		.byte	0
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc5zF1xf.s 			page 27
-
-
  1260 008d 00       		.byte	0
  1261 008e 0A       		.uleb128 0xa
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc44P1JR.s 			page 27
+
+
  1262 008f 05       		.uleb128 0x5
  1263 0090 00       		.byte	0
  1264 0091 03       		.uleb128 0x3
@@ -1618,11 +1616,11 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc5zF1xf.s 			page 1
  1314 00c5 3F       		.uleb128 0x3f
  1315 00c6 19       		.uleb128 0x19
  1316 00c7 03       		.uleb128 0x3
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc5zF1xf.s 			page 28
-
-
  1317 00c8 0E       		.uleb128 0xe
  1318 00c9 3A       		.uleb128 0x3a
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc44P1JR.s 			page 28
+
+
  1319 00ca 0B       		.uleb128 0xb
  1320 00cb 3B       		.uleb128 0x3b
  1321 00cc 0B       		.uleb128 0xb
@@ -1678,11 +1676,11 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc5zF1xf.s 			page 1
  1371 0100 00       		.byte	0
  1372 0101 11       		.uleb128 0x11
  1373 0102 35       		.uleb128 0x35
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc5zF1xf.s 			page 29
-
-
  1374 0103 00       		.byte	0
  1375 0104 49       		.uleb128 0x49
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc44P1JR.s 			page 29
+
+
  1376 0105 13       		.uleb128 0x13
  1377 0106 00       		.byte	0
  1378 0107 00       		.byte	0
@@ -1738,11 +1736,11 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc5zF1xf.s 			page 1
  1428 0139 19       		.uleb128 0x19
  1429 013a 00       		.byte	0
  1430 013b 00       		.byte	0
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc5zF1xf.s 			page 30
-
-
  1431 013c 16       		.uleb128 0x16
  1432 013d 2E       		.uleb128 0x2e
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc44P1JR.s 			page 30
+
+
  1433 013e 00       		.byte	0
  1434 013f 3F       		.uleb128 0x3f
  1435 0140 19       		.uleb128 0x19
@@ -1798,11 +1796,11 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc5zF1xf.s 			page 1
  1485 0056 30000000 		.4byte	.LVL26
  1486 005a 0200     		.2byte	0x2
  1487 005c 30       		.byte	0x30
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc5zF1xf.s 			page 31
-
-
  1488 005d 9F       		.byte	0x9f
  1489 005e 30000000 		.4byte	.LVL26
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc44P1JR.s 			page 31
+
+
  1490 0062 A8000000 		.4byte	.LVL41
  1491 0066 0100     		.2byte	0x1
  1492 0068 54       		.byte	0x54
@@ -1858,11 +1856,11 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc5zF1xf.s 			page 1
  1542              		.section	.debug_line,"",%progbits
  1543              	.Ldebug_line0:
  1544 0000 D4020000 		.section	.debug_str,"MS",%progbits,1
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc5zF1xf.s 			page 32
-
-
  1544      02003402 
  1544      00000201 
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc44P1JR.s 			page 32
+
+
  1544      FB0E0D00 
  1544      01010101 
  1545              	.LASF45:
@@ -1918,11 +1916,11 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc5zF1xf.s 			page 1
  1566 0095 64657269 		.ascii	"derivative\000"
  1566      76617469 
  1566      766500
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc5zF1xf.s 			page 33
-
-
  1567              	.LASF38:
  1568 00a0 50494455 		.ascii	"PIDUpdate\000"
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc44P1JR.s 			page 33
+
+
  1568      70646174 
  1568      6500
  1569              	.LASF39:
@@ -1978,11 +1976,11 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc5zF1xf.s 			page 1
  1594      74427572 
  1594      737400
  1595              	.LASF51:
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc5zF1xf.s 			page 34
-
-
  1596 012d 77726974 		.ascii	"writeLCD\000"
  1596      654C4344 
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc44P1JR.s 			page 34
+
+
  1596      00
  1597              	.LASF16:
  1598 0136 6C6F6E67 		.ascii	"long double\000"
@@ -2038,11 +2036,11 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc5zF1xf.s 			page 1
  1617              	.LASF24:
  1618 020b 4953525F 		.ascii	"ISR_motorSwitch_Off_handler\000"
  1618      6D6F746F 
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc5zF1xf.s 			page 35
-
-
  1618      72537769 
  1618      7463685F 
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc44P1JR.s 			page 35
+
+
  1618      4F66665F 
  1619              	.LASF4:
  1620 0227 73686F72 		.ascii	"short unsigned int\000"
@@ -2098,11 +2096,11 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc5zF1xf.s 			page 1
  1642      6420696E 
  1642      7400
  1643              	.LASF21:
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc5zF1xf.s 			page 36
-
-
  1644 02b4 62797465 		.ascii	"bytesToRead\000"
  1644      73546F52 
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc44P1JR.s 			page 36
+
+
  1644      65616400 
  1645              	.LASF42:
  1646 02c0 55415254 		.ascii	"UART_1_GetRxBufferSize\000"
@@ -2158,11 +2156,11 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc5zF1xf.s 			page 1
  1669              	.LASF62:
  1670 034b 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
  1670      43313120 
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc5zF1xf.s 			page 37
-
-
  1670      352E342E 
  1670      31203230 
+ARM GAS  C:\Users\Jacob\AppData\Local\Temp\cc44P1JR.s 			page 37
+
+
  1670      31363036 
  1671 037e 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
  1671      20726576 
