@@ -27,8 +27,4 @@ void setspeed(int Motor, int setpoint)
     {
         Motor_PWM_WriteCompare2(setpoint_ + 1000);
     }
-    else
-    {
-        UART_1_PutString("You have made a grave mistake\r\n");
-    }
 }

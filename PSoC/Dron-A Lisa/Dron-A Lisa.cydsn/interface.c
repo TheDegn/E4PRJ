@@ -11,9 +11,6 @@ int block = 0;
 #define deg_min -35  // Minimum degrees
 #define deg_max 35   // Maximum degrees
 
-
-
-
 void init_interface()
 {
     Init_LCD();

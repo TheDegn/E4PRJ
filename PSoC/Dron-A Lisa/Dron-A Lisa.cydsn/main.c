@@ -159,8 +159,6 @@ CY_ISR(PID_HANDLER)
     
     setspeed(1,200-(output));
     setspeed(2,170+(output));
-    
-    
 }
 
 CY_ISR(ISR_motorSwitch_On_handler)
