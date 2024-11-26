@@ -85,10 +85,10 @@ int main(void)
     
     //motor
     Motor_Init();
-    CyDelay(5000);
-    setspeed(1,200);
-    setspeed(2,175);
-    CyDelay(2000);
+    // CyDelay(5000);
+    // setspeed(1,200);
+    // setspeed(2,175);
+    // CyDelay(2000);
     
     //PID
     if (MotorSwitchPin_Read()) // to avoid motor turning on if switch is off at startup
@@ -140,6 +140,7 @@ CY_ISR(PID_HANDLER)
     //tfTest(test,200,170);
     output = PIDUpdate(setpoint, angle, &proportional, &integral, &derivative);
     //to motor somehow
+    /*
     if(output<0)
     {
         setspeed(1,200-(output/50));
@@ -154,11 +155,11 @@ CY_ISR(PID_HANDLER)
     {
         setspeed(1,200);
         setspeed(2,170);
-    }
-    /*
-    setspeed(1,200-(output/100));
-    setspeed(2,170+(output/100));
-    */
+    }*/
+    
+    setspeed(1,200-(output));
+    setspeed(2,170+(output));
+    
     
 }
 

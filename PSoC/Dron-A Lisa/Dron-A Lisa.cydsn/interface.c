@@ -3,7 +3,7 @@
 
 // Global Variels.
 char LCDbuffer[20];
-int block = 1;
+int block = 0;
 
 // Define constants
 #define adc_min 30   // ADC value corresponding to -41 degrees
