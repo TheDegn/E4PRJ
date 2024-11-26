@@ -91,40 +91,44 @@ int main(void)
     CyDelay(2000);
     
     //PID
-    isr_pid_StartEx(PID_HANDLER);
+    if (MotorSwitchPin_Read()) // to avoid motor turning on if switch is off at startup
+    {
+        isr_pid_StartEx(PID_HANDLER);
+    }
     
     //sensor
     initSensor();
     
     UART_1_PutString("started!");
     
-    for(;;)
+    for(int i = 0;;++i)
     {
         startBurst();
         CyDelay(3);
         stopBurst();
         CyDelay(3);
-        /*if (newCountFlag == 1)
+
+            
+        count = IIRFilter(count);
+        angle = calcAngle(count);
+            
+        // read interface and update setpoint
+        if (block)
         {
-            newCountFlag = 0;*/
+            setpoint = interfaceSetpoint();
+        }
             
-            count = IIRFilter(count);
-            angle = calcAngle(count);
-            
-            // read interface and update setpoint
-            if (block)
-            {
-                setpoint = interfaceSetpoint();
-            }
-            
-            //sprintf(buff, "%i %.2f  \r\n", step,  angle);
-            //UART_1_PutString(buff);
-            sprintf(outputBuffer, "%.2f %.2f \r\n", output,angle);
-            UART_1_PutString(outputBuffer);
-            writeLCD(setpoint, angle);
-            startCounter();
-        //}
+        //sprintf(buff, "%i %.2f  \r\n", step,  angle);
+        //UART_1_PutString(buff);
+        sprintf(outputBuffer, "%.2f %.2f \r\n", output,angle);
+        UART_1_PutString(outputBuffer);
         
+        if (i >= 50)
+        {
+            writeLCD(setpoint, angle);
+            i = 0;
+        }
+        startCounter();
     }
 }
  //float counter = 0;
@@ -151,6 +155,10 @@ CY_ISR(PID_HANDLER)
         setspeed(1,200);
         setspeed(2,170);
     }
+    /*
+    setspeed(1,200-(output/100));
+    setspeed(2,170+(output/100));
+    */
     
 }
 
