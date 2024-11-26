@@ -6,8 +6,8 @@ char LCDbuffer[20];
 int block = 0;
 
 // Define constants
-#define adc_min 30   // ADC value corresponding to -41 degrees
-#define adc_max 4050 // ADC value corresponding to +41 degrees
+#define adc_min 30   // ADC value corresponding to -35 degrees
+#define adc_max 4050 // ADC value corresponding to +35 degrees
 #define deg_min -35  // Minimum degrees
 #define deg_max 35   // Maximum degrees
 
