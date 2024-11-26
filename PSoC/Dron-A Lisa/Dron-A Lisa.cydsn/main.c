@@ -169,4 +169,5 @@ CY_ISR(ISR_motorSwitch_Off_handler)
 {
     isr_pid_Stop();
     stop();
+    UART_1_PutString("STOPPED\r\n\n\n\n\n");
 }
