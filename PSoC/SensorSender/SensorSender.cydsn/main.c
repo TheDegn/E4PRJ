@@ -23,6 +23,7 @@ int main(void)
     startBurst();*/
     for(;;)
     {
+        startCounter();
         startBurst();
         //startCounter();
         CyDelay(3);
@@ -32,20 +33,12 @@ int main(void)
         CyDelay(3);
     
 
-        if (newCountFlag == 1)
-        {
-            //time = calcTime(count);
-            
-            newCountFlag = 0;
-            
-            //count = FIRMovingAverage(count);
-            count = IIRFilter(count);
-            angle = calcAngle(count);
-            sprintf(buff, " %.2f  \r\n", angle);
+
+            sprintf(buff, " %li  \r\n", count);
             UART_1_PutString(buff);
-            startCounter();
+            
             //startBurst();
-        }
+        
         
         /*startCounter();
         startBurst();
