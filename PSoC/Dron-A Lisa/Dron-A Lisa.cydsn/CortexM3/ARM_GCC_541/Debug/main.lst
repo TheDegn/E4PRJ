@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 1
+ARM GAS  C:\Users\degn\AppData\Local\Temp\cc9eU2Ha.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 1
   24:main.c        **** float derivative = 0;
   25:main.c        **** float error = 0;
   26:main.c        **** float setpoint = 0;
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 2
+ARM GAS  C:\Users\degn\AppData\Local\Temp\cc9eU2Ha.s 			page 2
 
 
   27:main.c        **** 
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 1
   81:main.c        ****     
   82:main.c        ****     //UART
   83:main.c        ****     UART_1_Start();
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 3
+ARM GAS  C:\Users\degn\AppData\Local\Temp\cc9eU2Ha.s 			page 3
 
 
   84:main.c        ****     isr_uart_rx_StartEx(ISR_UART_rx_handler);
@@ -158,41 +158,40 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 1
  118:main.c        ****             setpoint = interfaceSetpoint();
  119:main.c        ****         }
  120:main.c        ****             
- 121:main.c        ****         //sprintf(buff, "%i %.2f  \r\n", step,  angle);
- 122:main.c        ****         //UART_1_PutString(buff);
- 123:main.c        ****         sprintf(outputBuffer, "%.2f %.2f \r\n", output,angle);
- 124:main.c        ****         UART_1_PutString(outputBuffer);
- 125:main.c        ****         
- 126:main.c        ****         if (i >= 50)
- 127:main.c        ****         {
- 128:main.c        ****             writeLCD(setpoint, angle);
- 129:main.c        ****             i = 0;
- 130:main.c        ****         }
- 131:main.c        ****         startCounter();
- 132:main.c        ****     }
- 133:main.c        **** }
- 134:main.c        ****  //float counter = 0;
- 135:main.c        **** CY_ISR(PID_HANDLER)
- 136:main.c        **** {
-  32              		.loc 1 136 0
+ 121:main.c        **** 
+ 122:main.c        ****         sprintf(outputBuffer, "%.2f %.2f \r\n", output,angle);
+ 123:main.c        ****         UART_1_PutString(outputBuffer);
+ 124:main.c        ****         
+ 125:main.c        ****         if (i >= 50)
+ 126:main.c        ****         {
+ 127:main.c        ****             writeLCD(setpoint, angle);
+ 128:main.c        ****             i = 0;
+ 129:main.c        ****         }
+ 130:main.c        ****         startCounter();
+ 131:main.c        ****     }
+ 132:main.c        **** }
+ 133:main.c        ****  //float counter = 0;
+ 134:main.c        **** CY_ISR(PID_HANDLER)
+ 135:main.c        **** {
+  32              		.loc 1 135 0
   33              		.cfi_startproc
   34              		@ args = 0, pretend = 0, frame = 0
   35              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 4
-
-
   36 0000 10B5     		push	{r4, lr}
+ARM GAS  C:\Users\degn\AppData\Local\Temp\cc9eU2Ha.s 			page 4
+
+
   37              		.cfi_def_cfa_offset 8
   38              		.cfi_offset 4, -8
   39              		.cfi_offset 14, -4
   40 0002 82B0     		sub	sp, sp, #8
   41              		.cfi_def_cfa_offset 16
- 137:main.c        ****     
- 138:main.c        ****     //float test = sinFunc(0.1,(counter++ * (1/333)));
- 139:main.c        ****     //sprintf(outputBuffer, "%f \r\n", test);
- 140:main.c        ****     //tfTest(test,200,170);
- 141:main.c        ****     output = PIDUpdate(setpoint, angle, &proportional, &integral, &derivative);
-  42              		.loc 1 141 0
+ 136:main.c        ****     
+ 137:main.c        ****     //float test = sinFunc(0.1,(counter++ * (1/333)));
+ 138:main.c        ****     //sprintf(outputBuffer, "%f \r\n", test);
+ 139:main.c        ****     //tfTest(test,200,170);
+ 140:main.c        ****     output = PIDUpdate(setpoint, angle, &proportional, &integral, &derivative);
+  42              		.loc 1 140 0
   43 0004 124C     		ldr	r4, .L3
   44 0006 134B     		ldr	r3, .L3+4
   45 0008 D3E90001 		ldrd	r0, [r3]
@@ -208,26 +207,26 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 1
   55              	.LVL1:
   56 0022 0146     		mov	r1, r0
   57 0024 2061     		str	r0, [r4, #16]	@ float
- 142:main.c        ****     //to motor somehow
- 143:main.c        ****     /*
- 144:main.c        ****     if(output<0)
- 145:main.c        ****     {
- 146:main.c        ****         setspeed(1,200-(output/50));
- 147:main.c        ****         setspeed(2,170);
- 148:main.c        ****     }
- 149:main.c        ****     else if(output>0)
- 150:main.c        ****     {
- 151:main.c        ****         setspeed(2,170+(output/50));
- 152:main.c        ****         setspeed(1,200);
- 153:main.c        ****     }
- 154:main.c        ****     else
- 155:main.c        ****     {
- 156:main.c        ****         setspeed(1,200);
- 157:main.c        ****         setspeed(2,170);
- 158:main.c        ****     }*/
- 159:main.c        ****     
- 160:main.c        ****     setspeed(1,200-(output));
-  58              		.loc 1 160 0
+ 141:main.c        ****     //to motor somehow
+ 142:main.c        ****     /*
+ 143:main.c        ****     if(output<0)
+ 144:main.c        ****     {
+ 145:main.c        ****         setspeed(1,200-(output/50));
+ 146:main.c        ****         setspeed(2,170);
+ 147:main.c        ****     }
+ 148:main.c        ****     else if(output>0)
+ 149:main.c        ****     {
+ 150:main.c        ****         setspeed(2,170+(output/50));
+ 151:main.c        ****         setspeed(1,200);
+ 152:main.c        ****     }
+ 153:main.c        ****     else
+ 154:main.c        ****     {
+ 155:main.c        ****         setspeed(1,200);
+ 156:main.c        ****         setspeed(2,170);
+ 157:main.c        ****     }*/
+ 158:main.c        ****     
+ 159:main.c        ****     setspeed(1,200-(output));
+  58              		.loc 1 159 0
   59 0026 0C48     		ldr	r0, .L3+8
   60 0028 FFF7FEFF 		bl	__aeabi_fsub
   61              	.LVL2:
@@ -237,11 +236,11 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 1
   65 0032 0120     		movs	r0, #1
   66 0034 FFF7FEFF 		bl	setspeed
   67              	.LVL4:
- 161:main.c        ****     setspeed(2,170+(output));
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 5
+ 160:main.c        ****     setspeed(2,170+(output));
+  68              		.loc 1 160 0
+ARM GAS  C:\Users\degn\AppData\Local\Temp\cc9eU2Ha.s 			page 5
 
 
-  68              		.loc 1 161 0
   69 0038 0849     		ldr	r1, .L3+12
   70 003a 2069     		ldr	r0, [r4, #16]	@ float
   71 003c FFF7FEFF 		bl	__aeabi_fadd
@@ -252,8 +251,8 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 1
   76 0046 0220     		movs	r0, #2
   77 0048 FFF7FEFF 		bl	setspeed
   78              	.LVL7:
- 162:main.c        **** }
-  79              		.loc 1 162 0
+ 161:main.c        **** }
+  79              		.loc 1 161 0
   80 004c 02B0     		add	sp, sp, #8
   81              		.cfi_def_cfa_offset 8
   82              		@ sp needed
@@ -298,10 +297,10 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 1
  119              		.p2align 1
  120              	.L7:
   41:main.c        ****         break;
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 6
-
-
  121              		.loc 1 41 0
+ARM GAS  C:\Users\degn\AppData\Local\Temp\cc9eU2Ha.s 			page 6
+
+
  122 000e 084A     		ldr	r2, .L12
  123 0010 084B     		ldr	r3, .L12+4
  124 0012 9A60     		str	r2, [r3, #8]	@ float
@@ -358,10 +357,10 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 1
  168              		.cfi_startproc
  169              		@ args = 0, pretend = 0, frame = 0
  170              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 7
-
-
  171 0000 38B5     		push	{r3, r4, r5, lr}
+ARM GAS  C:\Users\degn\AppData\Local\Temp\cc9eU2Ha.s 			page 7
+
+
  172              		.cfi_def_cfa_offset 16
  173              		.cfi_offset 3, -16
  174              		.cfi_offset 4, -12
@@ -418,10 +417,10 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 1
  217              		.global	main
  218              		.thumb
  219              		.thumb_func
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 8
-
-
  220              		.type	main, %function
+ARM GAS  C:\Users\degn\AppData\Local\Temp\cc9eU2Ha.s 			page 8
+
+
  221              	main:
  222              	.LFB66:
   75:main.c        ****     CyGlobalIntEnable; /* Enable global interrupts. */
@@ -478,10 +477,10 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 1
  265              	.LVL24:
  102:main.c        ****     
  266              		.loc 1 102 0
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 9
-
-
  267 0028 2748     		ldr	r0, .L24+8
+ARM GAS  C:\Users\degn\AppData\Local\Temp\cc9eU2Ha.s 			page 9
+
+
  268 002a FFF7FEFF 		bl	UART_1_PutString
  269              	.LVL25:
  270              	.LBB3:
@@ -538,12 +537,12 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 1
  312              	.LVL36:
  313 006e 1A4B     		ldr	r3, .L24+24
  314 0070 9860     		str	r0, [r3, #8]	@ float
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 10
-
-
  315              	.L20:
- 123:main.c        ****         UART_1_PutString(outputBuffer);
- 316              		.loc 1 123 0
+ARM GAS  C:\Users\degn\AppData\Local\Temp\cc9eU2Ha.s 			page 10
+
+
+ 122:main.c        ****         UART_1_PutString(outputBuffer);
+ 316              		.loc 1 122 0
  317 0072 194B     		ldr	r3, .L24+24
  318 0074 1869     		ldr	r0, [r3, #16]	@ float
  319 0076 FFF7FEFF 		bl	__aeabi_f2d
@@ -558,17 +557,17 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 1
  328 008c 2846     		mov	r0, r5
  329 008e FFF7FEFF 		bl	sprintf
  330              	.LVL38:
- 124:main.c        ****         
- 331              		.loc 1 124 0
+ 123:main.c        ****         
+ 331              		.loc 1 123 0
  332 0092 2846     		mov	r0, r5
  333 0094 FFF7FEFF 		bl	UART_1_PutString
  334              	.LVL39:
- 126:main.c        ****         {
- 335              		.loc 1 126 0
+ 125:main.c        ****         {
+ 335              		.loc 1 125 0
  336 0098 312C     		cmp	r4, #49
  337 009a 0DDD     		ble	.L21
- 128:main.c        ****             i = 0;
- 338              		.loc 1 128 0
+ 127:main.c        ****             i = 0;
+ 338              		.loc 1 127 0
  339 009c 0C4B     		ldr	r3, .L24+16
  340 009e D3E90001 		ldrd	r0, [r3]
  341 00a2 FFF7FEFF 		bl	__aeabi_d2f
@@ -582,26 +581,26 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 1
  349 00b0 2146     		mov	r1, r4
  350 00b2 FFF7FEFF 		bl	writeLCD
  351              	.LVL43:
- 129:main.c        ****         }
- 352              		.loc 1 129 0
+ 128:main.c        ****         }
+ 352              		.loc 1 128 0
  353 00b6 0024     		movs	r4, #0
  354              	.LVL44:
  355              	.L21:
- 131:main.c        ****     }
- 356              		.loc 1 131 0
+ 130:main.c        ****     }
+ 356              		.loc 1 130 0
  357 00b8 FFF7FEFF 		bl	startCounter
  358              	.LVL45:
  104:main.c        ****     {
  359              		.loc 1 104 0
  360 00bc 0134     		adds	r4, r4, #1
  361              	.LVL46:
- 132:main.c        **** }
- 362              		.loc 1 132 0
+ 131:main.c        **** }
+ 362              		.loc 1 131 0
  363 00be B7E7     		b	.L22
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 11
-
-
  364              	.L25:
+ARM GAS  C:\Users\degn\AppData\Local\Temp\cc9eU2Ha.s 			page 11
+
+
  365              		.align	2
  366              	.L24:
  367 00c0 00000000 		.word	ISR_UART_rx_handler
@@ -625,10 +624,10 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 1
  385              		.type	ISR_motorSwitch_On_handler, %function
  386              	ISR_motorSwitch_On_handler:
  387              	.LFB68:
- 163:main.c        **** 
- 164:main.c        **** CY_ISR(ISR_motorSwitch_On_handler)
- 165:main.c        **** {
- 388              		.loc 1 165 0
+ 162:main.c        **** 
+ 163:main.c        **** CY_ISR(ISR_motorSwitch_On_handler)
+ 164:main.c        **** {
+ 388              		.loc 1 164 0
  389              		.cfi_startproc
  390              		@ args = 0, pretend = 0, frame = 0
  391              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -636,8 +635,8 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 1
  393              		.cfi_def_cfa_offset 8
  394              		.cfi_offset 3, -8
  395              		.cfi_offset 14, -4
- 166:main.c        ****     isr_pid_StartEx(PID_HANDLER);
- 396              		.loc 1 166 0
+ 165:main.c        ****     isr_pid_StartEx(PID_HANDLER);
+ 396              		.loc 1 165 0
  397 0002 0248     		ldr	r0, .L28
  398 0004 FFF7FEFF 		bl	isr_pid_StartEx
  399              	.LVL47:
@@ -657,13 +656,13 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 1
  413              		.type	ISR_motorSwitch_Off_handler, %function
  414              	ISR_motorSwitch_Off_handler:
  415              	.LFB69:
- 167:main.c        **** }
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 12
+ 166:main.c        **** }
+ 167:main.c        **** CY_ISR(ISR_motorSwitch_Off_handler)
+ARM GAS  C:\Users\degn\AppData\Local\Temp\cc9eU2Ha.s 			page 12
 
 
- 168:main.c        **** CY_ISR(ISR_motorSwitch_Off_handler)
- 169:main.c        **** {
- 416              		.loc 1 169 0
+ 168:main.c        **** {
+ 416              		.loc 1 168 0
  417              		.cfi_startproc
  418              		@ args = 0, pretend = 0, frame = 0
  419              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -671,16 +670,16 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 1
  421              		.cfi_def_cfa_offset 8
  422              		.cfi_offset 3, -8
  423              		.cfi_offset 14, -4
- 170:main.c        ****     isr_pid_Stop();
- 424              		.loc 1 170 0
+ 169:main.c        ****     isr_pid_Stop();
+ 424              		.loc 1 169 0
  425 0002 FFF7FEFF 		bl	isr_pid_Stop
  426              	.LVL48:
- 171:main.c        ****     stop();
- 427              		.loc 1 171 0
+ 170:main.c        ****     stop();
+ 427              		.loc 1 170 0
  428 0006 FFF7FEFF 		bl	stop
  429              	.LVL49:
- 172:main.c        ****     UART_1_PutString("STOPPED\r\n\n\n\n\n");
- 430              		.loc 1 172 0
+ 171:main.c        ****     UART_1_PutString("STOPPED\r\n\n\n\n\n");
+ 430              		.loc 1 171 0
  431 000a 0248     		ldr	r0, .L32
  432 000c FFF7FEFF 		bl	UART_1_PutString
  433              	.LVL50:
@@ -718,10 +717,10 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 1
  460              	.LC2:
  461 001c 53544F50 		.ascii	"STOPPED\015\012\012\012\012\012\000"
  461      5045440D 
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 13
-
-
  461      0A0A0A0A 
+ARM GAS  C:\Users\degn\AppData\Local\Temp\cc9eU2Ha.s 			page 13
+
+
  461      0A00
  462              		.bss
  463              		.align	2
@@ -778,15 +777,15 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 1
  514 0000 3F050000 		.4byte	0x53f
  515 0004 0400     		.2byte	0x4
  516 0006 00000000 		.4byte	.Ldebug_abbrev0
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 14
-
-
  517 000a 04       		.byte	0x4
+ARM GAS  C:\Users\degn\AppData\Local\Temp\cc9eU2Ha.s 			page 14
+
+
  518 000b 01       		.uleb128 0x1
- 519 000c 4B030000 		.4byte	.LASF62
+ 519 000c 53030000 		.4byte	.LASF62
  520 0010 0C       		.byte	0xc
- 521 0011 9B020000 		.4byte	.LASF63
- 522 0015 42010000 		.4byte	.LASF64
+ 521 0011 A3020000 		.4byte	.LASF63
+ 522 0015 F4000000 		.4byte	.LASF64
  523 0019 00000000 		.4byte	.Ldebug_ranges0+0
  524 001d 00000000 		.4byte	0
  525 0021 00000000 		.4byte	.Ldebug_line0
@@ -797,16 +796,16 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 1
  530 002c 02       		.uleb128 0x2
  531 002d 01       		.byte	0x1
  532 002e 06       		.byte	0x6
- 533 002f BF010000 		.4byte	.LASF1
+ 533 002f C7010000 		.4byte	.LASF1
  534 0033 03       		.uleb128 0x3
- 535 0034 12010000 		.4byte	.LASF5
+ 535 0034 81010000 		.4byte	.LASF5
  536 0038 02       		.byte	0x2
  537 0039 1D       		.byte	0x1d
  538 003a 3E000000 		.4byte	0x3e
  539 003e 02       		.uleb128 0x2
  540 003f 01       		.byte	0x1
  541 0040 08       		.byte	0x8
- 542 0041 A9010000 		.4byte	.LASF2
+ 542 0041 B1010000 		.4byte	.LASF2
  543 0045 02       		.uleb128 0x2
  544 0046 02       		.byte	0x2
  545 0047 05       		.byte	0x5
@@ -814,20 +813,20 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 1
  547 004c 02       		.uleb128 0x2
  548 004d 02       		.byte	0x2
  549 004e 07       		.byte	0x7
- 550 004f 27020000 		.4byte	.LASF4
+ 550 004f 2F020000 		.4byte	.LASF4
  551 0053 03       		.uleb128 0x3
- 552 0054 08030000 		.4byte	.LASF6
+ 552 0054 10030000 		.4byte	.LASF6
  553 0058 02       		.byte	0x2
  554 0059 3F       		.byte	0x3f
  555 005a 5E000000 		.4byte	0x5e
  556 005e 02       		.uleb128 0x2
  557 005f 04       		.byte	0x4
  558 0060 05       		.byte	0x5
- 559 0061 F4000000 		.4byte	.LASF7
+ 559 0061 63010000 		.4byte	.LASF7
  560 0065 02       		.uleb128 0x2
  561 0066 04       		.byte	0x4
  562 0067 07       		.byte	0x7
- 563 0068 A2020000 		.4byte	.LASF8
+ 563 0068 AA020000 		.4byte	.LASF8
  564 006c 02       		.uleb128 0x2
  565 006d 08       		.byte	0x8
  566 006e 05       		.byte	0x5
@@ -835,32 +834,32 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 1
  568 0073 02       		.uleb128 0x2
  569 0074 08       		.byte	0x8
  570 0075 07       		.byte	0x7
- 571 0076 DA010000 		.4byte	.LASF10
+ 571 0076 E2010000 		.4byte	.LASF10
  572 007a 04       		.uleb128 0x4
  573 007b 04       		.byte	0x4
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 15
-
-
  574 007c 05       		.byte	0x5
+ARM GAS  C:\Users\degn\AppData\Local\Temp\cc9eU2Ha.s 			page 15
+
+
  575 007d 696E7400 		.ascii	"int\000"
  576 0081 02       		.uleb128 0x2
  577 0082 04       		.byte	0x4
  578 0083 07       		.byte	0x7
- 579 0084 F1010000 		.4byte	.LASF11
+ 579 0084 F9010000 		.4byte	.LASF11
  580 0088 03       		.uleb128 0x3
  581 0089 B3000000 		.4byte	.LASF12
  582 008d 03       		.byte	0x3
  583 008e 18       		.byte	0x18
  584 008f 33000000 		.4byte	0x33
  585 0093 03       		.uleb128 0x3
- 586 0094 4E020000 		.4byte	.LASF13
+ 586 0094 56020000 		.4byte	.LASF13
  587 0098 03       		.byte	0x3
  588 0099 2C       		.byte	0x2c
  589 009a 53000000 		.4byte	0x53
  590 009e 02       		.uleb128 0x2
  591 009f 08       		.byte	0x8
  592 00a0 04       		.byte	0x4
- 593 00a1 D7020000 		.4byte	.LASF14
+ 593 00a1 DF020000 		.4byte	.LASF14
  594 00a5 02       		.uleb128 0x2
  595 00a6 01       		.byte	0x1
  596 00a7 08       		.byte	0x8
@@ -868,15 +867,15 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 1
  598 00ac 02       		.uleb128 0x2
  599 00ad 08       		.byte	0x8
  600 00ae 04       		.byte	0x4
- 601 00af 36010000 		.4byte	.LASF16
+ 601 00af A5010000 		.4byte	.LASF16
  602 00b3 02       		.uleb128 0x2
  603 00b4 04       		.byte	0x4
  604 00b5 07       		.byte	0x7
  605 00b6 3D000000 		.4byte	.LASF17
  606 00ba 05       		.uleb128 0x5
- 607 00bb FD000000 		.4byte	.LASF18
+ 607 00bb 6C010000 		.4byte	.LASF18
  608 00bf 01       		.byte	0x1
- 609 00c0 87       		.byte	0x87
+ 609 00c0 86       		.byte	0x86
  610 00c1 00000000 		.4byte	.LFB67
  611 00c5 60000000 		.4byte	.LFE67-.LFB67
  612 00c9 01       		.uleb128 0x1
@@ -898,10 +897,10 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 1
  628 00e5 02       		.uleb128 0x2
  629 00e6 74       		.byte	0x74
  630 00e7 00       		.sleb128 0
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 16
-
-
  631 00e8 07       		.uleb128 0x7
+ARM GAS  C:\Users\degn\AppData\Local\Temp\cc9eU2Ha.s 			page 16
+
+
  632 00e9 02       		.uleb128 0x2
  633 00ea 7D       		.byte	0x7d
  634 00eb 00       		.sleb128 0
@@ -930,7 +929,7 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 1
  657 0111 00       		.byte	0
  658 0112 00       		.byte	0
  659 0113 09       		.uleb128 0x9
- 660 0114 E1030000 		.4byte	.LASF19
+ 660 0114 E9030000 		.4byte	.LASF19
  661 0118 01       		.byte	0x1
  662 0119 24       		.byte	0x24
  663 011a 00000000 		.4byte	.LFB64
@@ -955,13 +954,13 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 1
  682 0148 9C       		.byte	0x9c
  683 0149 B0010000 		.4byte	0x1b0
  684 014d 0B       		.uleb128 0xb
- 685 014e B4020000 		.4byte	.LASF21
+ 685 014e BC020000 		.4byte	.LASF21
  686 0152 01       		.byte	0x1
  687 0153 3C       		.byte	0x3c
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 17
-
-
  688 0154 88000000 		.4byte	0x88
+ARM GAS  C:\Users\degn\AppData\Local\Temp\cc9eU2Ha.s 			page 17
+
+
  689 0158 21000000 		.4byte	.LLST1
  690 015c 0C       		.uleb128 0xc
  691 015d 0A000000 		.4byte	.LBB2
@@ -1003,7 +1002,7 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 1
  727 01ab 66040000 		.4byte	0x466
  728 01af 00       		.byte	0
  729 01b0 0E       		.uleb128 0xe
- 730 01b1 49020000 		.4byte	.LASF65
+ 730 01b1 51020000 		.4byte	.LASF65
  731 01b5 01       		.byte	0x1
  732 01b6 4A       		.byte	0x4a
  733 01b7 7A000000 		.4byte	0x7a
@@ -1018,10 +1017,10 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 1
  742 01d2 86020000 		.4byte	0x286
  743 01d6 0F       		.uleb128 0xf
  744 01d7 6900     		.ascii	"i\000"
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 18
-
-
  745 01d9 01       		.byte	0x1
+ARM GAS  C:\Users\degn\AppData\Local\Temp\cc9eU2Ha.s 			page 18
+
+
  746 01da 68       		.byte	0x68
  747 01db 7A000000 		.4byte	0x7a
  748 01df 52000000 		.4byte	.LLST3
@@ -1078,10 +1077,10 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 1
  799 024e 0C000000 		.4byte	.LC1
  800 0252 00       		.byte	0
  801 0253 06       		.uleb128 0x6
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 19
-
-
  802 0254 98000000 		.4byte	.LVL39
+ARM GAS  C:\Users\degn\AppData\Local\Temp\cc9eU2Ha.s 			page 19
+
+
  803 0258 BE040000 		.4byte	0x4be
  804 025c 67020000 		.4byte	0x267
  805 0260 07       		.uleb128 0x7
@@ -1138,10 +1137,10 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 1
  856 02cf 01       		.uleb128 0x1
  857 02d0 50       		.byte	0x50
  858 02d1 05       		.uleb128 0x5
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 20
-
-
  859 02d2 03       		.byte	0x3
+ARM GAS  C:\Users\degn\AppData\Local\Temp\cc9eU2Ha.s 			page 20
+
+
  860 02d3 00000000 		.4byte	PID_HANDLER
  861 02d7 00       		.byte	0
  862 02d8 0D       		.uleb128 0xd
@@ -1161,7 +1160,7 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 1
  876 02f5 09       		.uleb128 0x9
  877 02f6 7A000000 		.4byte	.LASF23
  878 02fa 01       		.byte	0x1
- 879 02fb A4       		.byte	0xa4
+ 879 02fb A3       		.byte	0xa3
  880 02fc 00000000 		.4byte	.LFB68
  881 0300 10000000 		.4byte	.LFE68-.LFB68
  882 0304 01       		.uleb128 0x1
@@ -1179,9 +1178,9 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 1
  894 031c 00       		.byte	0
  895 031d 00       		.byte	0
  896 031e 09       		.uleb128 0x9
- 897 031f 0B020000 		.4byte	.LASF24
+ 897 031f 13020000 		.4byte	.LASF24
  898 0323 01       		.byte	0x1
- 899 0324 A8       		.byte	0xa8
+ 899 0324 A7       		.byte	0xa7
  900 0325 00000000 		.4byte	.LFB69
  901 0329 18000000 		.4byte	.LFE69-.LFB69
  902 032d 01       		.uleb128 0x1
@@ -1198,17 +1197,17 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 1
  913 034a BE040000 		.4byte	0x4be
  914 034e 07       		.uleb128 0x7
  915 034f 01       		.uleb128 0x1
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 21
-
-
  916 0350 50       		.byte	0x50
+ARM GAS  C:\Users\degn\AppData\Local\Temp\cc9eU2Ha.s 			page 21
+
+
  917 0351 05       		.uleb128 0x5
  918 0352 03       		.byte	0x3
  919 0353 1C000000 		.4byte	.LC2
  920 0357 00       		.byte	0
  921 0358 00       		.byte	0
  922 0359 10       		.uleb128 0x10
- 923 035a 3E030000 		.4byte	.LASF25
+ 923 035a 46030000 		.4byte	.LASF25
  924 035e 04       		.byte	0x4
  925 035f 1207     		.2byte	0x712
  926 0361 65030000 		.4byte	0x365
@@ -1222,7 +1221,7 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 1
  934 0378 FF       		.byte	0xff
  935 0379 00       		.byte	0
  936 037a 14       		.uleb128 0x14
- 937 037b 56020000 		.4byte	.LASF26
+ 937 037b 5E020000 		.4byte	.LASF26
  938 037f 01       		.byte	0x1
  939 0380 0D       		.byte	0xd
  940 0381 6A030000 		.4byte	0x36a
@@ -1230,7 +1229,7 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 1
  942 0386 03       		.byte	0x3
  943 0387 00000000 		.4byte	outputBuffer
  944 038b 14       		.uleb128 0x14
- 945 038c 28030000 		.4byte	.LASF27
+ 945 038c 30030000 		.4byte	.LASF27
  946 0390 01       		.byte	0x1
  947 0391 14       		.byte	0x14
  948 0392 25000000 		.4byte	0x25
@@ -1238,7 +1237,7 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 1
  950 0397 03       		.byte	0x3
  951 0398 00000000 		.4byte	output
  952 039c 14       		.uleb128 0x14
- 953 039d 75020000 		.4byte	.LASF28
+ 953 039d 7D020000 		.4byte	.LASF28
  954 03a1 01       		.byte	0x1
  955 03a2 15       		.byte	0x15
  956 03a3 25000000 		.4byte	0x25
@@ -1246,7 +1245,7 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 1
  958 03a8 03       		.byte	0x3
  959 03a9 00000000 		.4byte	measurement
  960 03ad 14       		.uleb128 0x14
- 961 03ae 81020000 		.4byte	.LASF29
+ 961 03ae 89020000 		.4byte	.LASF29
  962 03b2 01       		.byte	0x1
  963 03b3 16       		.byte	0x16
  964 03b4 25000000 		.4byte	0x25
@@ -1254,14 +1253,14 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 1
  966 03b9 03       		.byte	0x3
  967 03ba 00000000 		.4byte	proportional
  968 03be 14       		.uleb128 0x14
- 969 03bf 09010000 		.4byte	.LASF30
+ 969 03bf 78010000 		.4byte	.LASF30
  970 03c3 01       		.byte	0x1
  971 03c4 17       		.byte	0x17
  972 03c5 25000000 		.4byte	0x25
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 22
-
-
  973 03c9 05       		.uleb128 0x5
+ARM GAS  C:\Users\degn\AppData\Local\Temp\cc9eU2Ha.s 			page 22
+
+
  974 03ca 03       		.byte	0x3
  975 03cb 00000000 		.4byte	integral
  976 03cf 14       		.uleb128 0x14
@@ -1273,7 +1272,7 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 1
  982 03db 03       		.byte	0x3
  983 03dc 00000000 		.4byte	derivative
  984 03e0 14       		.uleb128 0x14
- 985 03e1 2F030000 		.4byte	.LASF32
+ 985 03e1 37030000 		.4byte	.LASF32
  986 03e5 01       		.byte	0x1
  987 03e6 19       		.byte	0x19
  988 03e7 25000000 		.4byte	0x25
@@ -1281,7 +1280,7 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 1
  990 03ec 03       		.byte	0x3
  991 03ed 00000000 		.4byte	error
  992 03f1 14       		.uleb128 0x14
- 993 03f2 35030000 		.4byte	.LASF33
+ 993 03f2 3D030000 		.4byte	.LASF33
  994 03f6 01       		.byte	0x1
  995 03f7 1A       		.byte	0x1a
  996 03f8 25000000 		.4byte	0x25
@@ -1289,17 +1288,17 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 1
  998 03fd 03       		.byte	0x3
  999 03fe 00000000 		.4byte	setpoint
  1000 0402 15       		.uleb128 0x15
- 1001 0403 02030000 		.4byte	.LASF34
+ 1001 0403 0A030000 		.4byte	.LASF34
  1002 0407 01       		.byte	0x1
  1003 0408 1E       		.byte	0x1e
  1004 0409 5E000000 		.4byte	0x5e
  1005 040d 15       		.uleb128 0x15
- 1006 040e 1C010000 		.4byte	.LASF35
+ 1006 040e 8B010000 		.4byte	.LASF35
  1007 0412 01       		.byte	0x1
  1008 0413 1F       		.byte	0x1f
  1009 0414 7A000000 		.4byte	0x7a
  1010 0418 14       		.uleb128 0x14
- 1011 0419 22030000 		.4byte	.LASF36
+ 1011 0419 2A030000 		.4byte	.LASF36
  1012 041d 01       		.byte	0x1
  1013 041e 20       		.byte	0x20
  1014 041f 9E000000 		.4byte	0x9e
@@ -1307,7 +1306,7 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 1
  1016 0424 03       		.byte	0x3
  1017 0425 00000000 		.4byte	angle
  1018 0429 14       		.uleb128 0x14
- 1019 042a FF030000 		.4byte	.LASF37
+ 1019 042a 07040000 		.4byte	.LASF37
  1020 042e 01       		.byte	0x1
  1021 042f 21       		.byte	0x21
  1022 0430 7A000000 		.4byte	0x7a
@@ -1318,10 +1317,10 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 1
  1027 043b A0000000 		.4byte	.LASF38
  1028 043f A0000000 		.4byte	.LASF38
  1029 0443 05       		.byte	0x5
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 23
-
-
  1030 0444 0A       		.byte	0xa
+ARM GAS  C:\Users\degn\AppData\Local\Temp\cc9eU2Ha.s 			page 23
+
+
  1031 0445 16       		.uleb128 0x16
  1032 0446 AA000000 		.4byte	.LASF39
  1033 044a AA000000 		.4byte	.LASF39
@@ -1333,23 +1332,23 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 1
  1039 0459 07       		.byte	0x7
  1040 045a 6F       		.byte	0x6f
  1041 045b 16       		.uleb128 0x16
- 1042 045c EF020000 		.4byte	.LASF41
- 1043 0460 EF020000 		.4byte	.LASF41
+ 1042 045c F7020000 		.4byte	.LASF41
+ 1043 0460 F7020000 		.4byte	.LASF41
  1044 0464 07       		.byte	0x7
  1045 0465 88       		.byte	0x88
  1046 0466 16       		.uleb128 0x16
- 1047 0467 C0020000 		.4byte	.LASF42
- 1048 046b C0020000 		.4byte	.LASF42
+ 1047 0467 C8020000 		.4byte	.LASF42
+ 1048 046b C8020000 		.4byte	.LASF42
  1049 046f 07       		.byte	0x7
  1050 0470 73       		.byte	0x73
  1051 0471 16       		.uleb128 0x16
- 1052 0472 22010000 		.4byte	.LASF43
- 1053 0476 22010000 		.4byte	.LASF43
+ 1052 0472 91010000 		.4byte	.LASF43
+ 1053 0476 91010000 		.4byte	.LASF43
  1054 047a 08       		.byte	0x8
  1055 047b 02       		.byte	0x2
  1056 047c 16       		.uleb128 0x16
- 1057 047d D9030000 		.4byte	.LASF44
- 1058 0481 D9030000 		.4byte	.LASF44
+ 1057 047d E1030000 		.4byte	.LASF44
+ 1058 0481 E1030000 		.4byte	.LASF44
  1059 0485 09       		.byte	0x9
  1060 0486 76       		.byte	0x76
  1061 0487 16       		.uleb128 0x16
@@ -1358,8 +1357,8 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 1
  1064 0490 08       		.byte	0x8
  1065 0491 03       		.byte	0x3
  1066 0492 16       		.uleb128 0x16
- 1067 0493 3F020000 		.4byte	.LASF46
- 1068 0497 3F020000 		.4byte	.LASF46
+ 1067 0493 47020000 		.4byte	.LASF46
+ 1068 0497 47020000 		.4byte	.LASF46
  1069 049b 08       		.byte	0x8
  1070 049c 08       		.byte	0x8
  1071 049d 16       		.uleb128 0x16
@@ -1368,36 +1367,36 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 1
  1074 04a6 08       		.byte	0x8
  1075 04a7 06       		.byte	0x6
  1076 04a8 16       		.uleb128 0x16
- 1077 04a9 63020000 		.4byte	.LASF48
- 1078 04ad 63020000 		.4byte	.LASF48
+ 1077 04a9 6B020000 		.4byte	.LASF48
+ 1078 04ad 6B020000 		.4byte	.LASF48
  1079 04b1 0A       		.byte	0xa
  1080 04b2 12       		.byte	0x12
  1081 04b3 16       		.uleb128 0x16
- 1082 04b4 B7010000 		.4byte	.LASF49
- 1083 04b8 B7010000 		.4byte	.LASF49
+ 1082 04b4 BF010000 		.4byte	.LASF49
+ 1083 04b8 BF010000 		.4byte	.LASF49
  1084 04bc 0B       		.byte	0xb
  1085 04bd E7       		.byte	0xe7
  1086 04be 16       		.uleb128 0x16
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 24
+ 1087 04bf E6020000 		.4byte	.LASF50
+ARM GAS  C:\Users\degn\AppData\Local\Temp\cc9eU2Ha.s 			page 24
 
 
- 1087 04bf DE020000 		.4byte	.LASF50
- 1088 04c3 DE020000 		.4byte	.LASF50
+ 1088 04c3 E6020000 		.4byte	.LASF50
  1089 04c7 07       		.byte	0x7
  1090 04c8 8B       		.byte	0x8b
  1091 04c9 16       		.uleb128 0x16
- 1092 04ca 2D010000 		.4byte	.LASF51
- 1093 04ce 2D010000 		.4byte	.LASF51
+ 1092 04ca 9C010000 		.4byte	.LASF51
+ 1093 04ce 9C010000 		.4byte	.LASF51
  1094 04d2 0A       		.byte	0xa
  1095 04d3 0E       		.byte	0xe
  1096 04d4 16       		.uleb128 0x16
- 1097 04d5 FE010000 		.4byte	.LASF52
- 1098 04d9 FE010000 		.4byte	.LASF52
+ 1097 04d5 06020000 		.4byte	.LASF52
+ 1098 04d9 06020000 		.4byte	.LASF52
  1099 04dd 08       		.byte	0x8
  1100 04de 04       		.byte	0x4
  1101 04df 16       		.uleb128 0x16
- 1102 04e0 CB010000 		.4byte	.LASF53
- 1103 04e4 CB010000 		.4byte	.LASF53
+ 1102 04e0 D3010000 		.4byte	.LASF53
+ 1103 04e4 D3010000 		.4byte	.LASF53
  1104 04e8 0A       		.byte	0xa
  1105 04e9 09       		.byte	0x9
  1106 04ea 16       		.uleb128 0x16
@@ -1411,8 +1410,8 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 1
  1114 04fe 0C       		.byte	0xc
  1115 04ff 18       		.byte	0x18
  1116 0500 16       		.uleb128 0x16
- 1117 0501 F4030000 		.4byte	.LASF56
- 1118 0505 F4030000 		.4byte	.LASF56
+ 1117 0501 FC030000 		.4byte	.LASF56
+ 1118 0505 FC030000 		.4byte	.LASF56
  1119 0509 06       		.byte	0x6
  1120 050a 01       		.byte	0x1
  1121 050b 16       		.uleb128 0x16
@@ -1421,8 +1420,8 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 1
  1124 0514 0D       		.byte	0xd
  1125 0515 29       		.byte	0x29
  1126 0516 16       		.uleb128 0x16
- 1127 0517 12030000 		.4byte	.LASF58
- 1128 051b 12030000 		.4byte	.LASF58
+ 1127 0517 1A030000 		.4byte	.LASF58
+ 1128 051b 1A030000 		.4byte	.LASF58
  1129 051f 0E       		.byte	0xe
  1130 0520 18       		.byte	0x18
  1131 0521 16       		.uleb128 0x16
@@ -1431,17 +1430,17 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 1
  1134 052a 08       		.byte	0x8
  1135 052b 01       		.byte	0x1
  1136 052c 16       		.uleb128 0x16
- 1137 052d 8E020000 		.4byte	.LASF60
- 1138 0531 8E020000 		.4byte	.LASF60
+ 1137 052d 96020000 		.4byte	.LASF60
+ 1138 0531 96020000 		.4byte	.LASF60
  1139 0535 0E       		.byte	0xe
  1140 0536 19       		.byte	0x19
  1141 0537 16       		.uleb128 0x16
- 1142 0538 3A020000 		.4byte	.LASF61
- 1143 053c 3A020000 		.4byte	.LASF61
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 25
-
-
+ 1142 0538 42020000 		.4byte	.LASF61
+ 1143 053c 42020000 		.4byte	.LASF61
  1144 0540 06       		.byte	0x6
+ARM GAS  C:\Users\degn\AppData\Local\Temp\cc9eU2Ha.s 			page 25
+
+
  1145 0541 02       		.byte	0x2
  1146 0542 00       		.byte	0
  1147              		.section	.debug_abbrev,"",%progbits
@@ -1498,10 +1497,10 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 1
  1198 0031 0B       		.uleb128 0xb
  1199 0032 03       		.uleb128 0x3
  1200 0033 08       		.uleb128 0x8
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 26
-
-
  1201 0034 00       		.byte	0
+ARM GAS  C:\Users\degn\AppData\Local\Temp\cc9eU2Ha.s 			page 26
+
+
  1202 0035 00       		.byte	0
  1203 0036 05       		.uleb128 0x5
  1204 0037 2E       		.uleb128 0x2e
@@ -1558,10 +1557,10 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 1
  1255 0072 00       		.byte	0
  1256 0073 00       		.byte	0
  1257 0074 09       		.uleb128 0x9
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 27
-
-
  1258 0075 2E       		.uleb128 0x2e
+ARM GAS  C:\Users\degn\AppData\Local\Temp\cc9eU2Ha.s 			page 27
+
+
  1259 0076 01       		.byte	0x1
  1260 0077 3F       		.uleb128 0x3f
  1261 0078 19       		.uleb128 0x19
@@ -1618,10 +1617,10 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 1
  1312 00ac 0C       		.uleb128 0xc
  1313 00ad 0B       		.uleb128 0xb
  1314 00ae 01       		.byte	0x1
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 28
-
-
  1315 00af 11       		.uleb128 0x11
+ARM GAS  C:\Users\degn\AppData\Local\Temp\cc9eU2Ha.s 			page 28
+
+
  1316 00b0 01       		.uleb128 0x1
  1317 00b1 12       		.uleb128 0x12
  1318 00b2 06       		.uleb128 0x6
@@ -1678,10 +1677,10 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 1
  1369 00e9 0B       		.uleb128 0xb
  1370 00ea 49       		.uleb128 0x49
  1371 00eb 13       		.uleb128 0x13
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 29
-
-
  1372 00ec 02       		.uleb128 0x2
+ARM GAS  C:\Users\degn\AppData\Local\Temp\cc9eU2Ha.s 			page 29
+
+
  1373 00ed 17       		.uleb128 0x17
  1374 00ee 00       		.byte	0
  1375 00ef 00       		.byte	0
@@ -1738,10 +1737,10 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 1
  1426 0122 0B       		.uleb128 0xb
  1427 0123 49       		.uleb128 0x49
  1428 0124 13       		.uleb128 0x13
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 30
-
-
  1429 0125 3F       		.uleb128 0x3f
+ARM GAS  C:\Users\degn\AppData\Local\Temp\cc9eU2Ha.s 			page 30
+
+
  1430 0126 19       		.uleb128 0x19
  1431 0127 02       		.uleb128 0x2
  1432 0128 18       		.uleb128 0x18
@@ -1798,10 +1797,10 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 1
  1483 0018 9F       		.byte	0x9f
  1484 0019 00000000 		.4byte	0
  1485 001d 00000000 		.4byte	0
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 31
-
-
  1486              	.LLST1:
+ARM GAS  C:\Users\degn\AppData\Local\Temp\cc9eU2Ha.s 			page 31
+
+
  1487 0021 08000000 		.4byte	.LVL11
  1488 0025 1C000000 		.4byte	.LVL16
  1489 0029 0100     		.2byte	0x1
@@ -1858,10 +1857,10 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 1
  1540 002c E4000000 		.4byte	.LFE66-.LFB66
  1541 0030 00000000 		.4byte	.LFB68
  1542 0034 10000000 		.4byte	.LFE68-.LFB68
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 32
-
-
  1543 0038 00000000 		.4byte	.LFB69
+ARM GAS  C:\Users\degn\AppData\Local\Temp\cc9eU2Ha.s 			page 32
+
+
  1544 003c 18000000 		.4byte	.LFE69-.LFB69
  1545 0040 00000000 		.4byte	0
  1546 0044 00000000 		.4byte	0
@@ -1918,10 +1917,10 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 1
  1579 0046 6973725F 		.ascii	"isr_uart_rx_StartEx\000"
  1579      75617274 
  1579      5F72785F 
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 33
-
-
  1579      53746172 
+ARM GAS  C:\Users\degn\AppData\Local\Temp\cc9eU2Ha.s 			page 33
+
+
  1579      74457800 
  1580              	.LASF9:
  1581 005a 6C6F6E67 		.ascii	"long long int\000"
@@ -1977,240 +1976,242 @@ ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 1
  1602              	.LASF15:
  1603 00ef 63686172 		.ascii	"char\000"
  1603      00
- 1604              	.LASF7:
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 34
+ 1604              	.LASF64:
+ 1605 00f4 433A5C55 		.ascii	"C:\\Users\\degn\\OneDrive - Aarhus universitet\\Skr"
+ARM GAS  C:\Users\degn\AppData\Local\Temp\cc9eU2Ha.s 			page 34
 
 
- 1605 00f4 6C6F6E67 		.ascii	"long int\000"
- 1605      20696E74 
- 1605      00
- 1606              	.LASF18:
- 1607 00fd 5049445F 		.ascii	"PID_HANDLER\000"
- 1607      48414E44 
- 1607      4C455200 
- 1608              	.LASF30:
- 1609 0109 696E7465 		.ascii	"integral\000"
- 1609      6772616C 
+ 1605      73657273 
+ 1605      5C646567 
+ 1605      6E5C4F6E 
+ 1605      65447269 
+ 1606 0123 69766562 		.ascii	"ivebord\\AU\\E4\\PRJ4\\Git\\E4PRJ\\PSoC\\Dron-A Lis"
+ 1606      6F72645C 
+ 1606      41555C45 
+ 1606      345C5052 
+ 1606      4A345C47 
+ 1607 014f 615C4472 		.ascii	"a\\Dron-A Lisa.cydsn\000"
+ 1607      6F6E2D41 
+ 1607      204C6973 
+ 1607      612E6379 
+ 1607      64736E00 
+ 1608              	.LASF7:
+ 1609 0163 6C6F6E67 		.ascii	"long int\000"
+ 1609      20696E74 
  1609      00
- 1610              	.LASF5:
- 1611 0112 5F5F7569 		.ascii	"__uint8_t\000"
- 1611      6E74385F 
- 1611      7400
- 1612              	.LASF35:
- 1613 011c 626C6F63 		.ascii	"block\000"
- 1613      6B00
- 1614              	.LASF43:
- 1615 0122 73746172 		.ascii	"startBurst\000"
- 1615      74427572 
- 1615      737400
- 1616              	.LASF51:
- 1617 012d 77726974 		.ascii	"writeLCD\000"
- 1617      654C4344 
- 1617      00
- 1618              	.LASF16:
- 1619 0136 6C6F6E67 		.ascii	"long double\000"
- 1619      20646F75 
- 1619      626C6500 
- 1620              	.LASF64:
- 1621 0142 433A5C55 		.ascii	"C:\\Users\\Jacob\\OneDrive - Aarhus universitet\\4."
- 1621      73657273 
- 1621      5C4A6163 
- 1621      6F625C4F 
- 1621      6E654472 
- 1622 0171 2053656D 		.ascii	" Semester\\PRJ4\\E4PRJ\\PSoC\\Dron-A Lisa\\Dron-A L"
- 1622      65737465 
- 1622      725C5052 
- 1622      4A345C45 
- 1622      3450524A 
- 1623 019f 6973612E 		.ascii	"isa.cydsn\000"
- 1623      63796473 
- 1623      6E00
+ 1610              	.LASF18:
+ 1611 016c 5049445F 		.ascii	"PID_HANDLER\000"
+ 1611      48414E44 
+ 1611      4C455200 
+ 1612              	.LASF30:
+ 1613 0178 696E7465 		.ascii	"integral\000"
+ 1613      6772616C 
+ 1613      00
+ 1614              	.LASF5:
+ 1615 0181 5F5F7569 		.ascii	"__uint8_t\000"
+ 1615      6E74385F 
+ 1615      7400
+ 1616              	.LASF35:
+ 1617 018b 626C6F63 		.ascii	"block\000"
+ 1617      6B00
+ 1618              	.LASF43:
+ 1619 0191 73746172 		.ascii	"startBurst\000"
+ 1619      74427572 
+ 1619      737400
+ 1620              	.LASF51:
+ 1621 019c 77726974 		.ascii	"writeLCD\000"
+ 1621      654C4344 
+ 1621      00
+ 1622              	.LASF16:
+ 1623 01a5 6C6F6E67 		.ascii	"long double\000"
+ 1623      20646F75 
+ 1623      626C6500 
  1624              	.LASF2:
- 1625 01a9 756E7369 		.ascii	"unsigned char\000"
+ 1625 01b1 756E7369 		.ascii	"unsigned char\000"
  1625      676E6564 
  1625      20636861 
  1625      7200
  1626              	.LASF49:
- 1627 01b7 73707269 		.ascii	"sprintf\000"
+ 1627 01bf 73707269 		.ascii	"sprintf\000"
  1627      6E746600 
  1628              	.LASF1:
- 1629 01bf 7369676E 		.ascii	"signed char\000"
+ 1629 01c7 7369676E 		.ascii	"signed char\000"
  1629      65642063 
  1629      68617200 
+ARM GAS  C:\Users\degn\AppData\Local\Temp\cc9eU2Ha.s 			page 35
+
+
  1630              	.LASF53:
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 35
-
-
- 1631 01cb 696E6974 		.ascii	"init_interface\000"
+ 1631 01d3 696E6974 		.ascii	"init_interface\000"
  1631      5F696E74 
  1631      65726661 
  1631      636500
  1632              	.LASF10:
- 1633 01da 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1633 01e2 6C6F6E67 		.ascii	"long long unsigned int\000"
  1633      206C6F6E 
  1633      6720756E 
  1633      7369676E 
  1633      65642069 
  1634              	.LASF11:
- 1635 01f1 756E7369 		.ascii	"unsigned int\000"
+ 1635 01f9 756E7369 		.ascii	"unsigned int\000"
  1635      676E6564 
  1635      20696E74 
  1635      00
  1636              	.LASF52:
- 1637 01fe 73746172 		.ascii	"startCounter\000"
+ 1637 0206 73746172 		.ascii	"startCounter\000"
  1637      74436F75 
  1637      6E746572 
  1637      00
  1638              	.LASF24:
- 1639 020b 4953525F 		.ascii	"ISR_motorSwitch_Off_handler\000"
+ 1639 0213 4953525F 		.ascii	"ISR_motorSwitch_Off_handler\000"
  1639      6D6F746F 
  1639      72537769 
  1639      7463685F 
  1639      4F66665F 
  1640              	.LASF4:
- 1641 0227 73686F72 		.ascii	"short unsigned int\000"
+ 1641 022f 73686F72 		.ascii	"short unsigned int\000"
  1641      7420756E 
  1641      7369676E 
  1641      65642069 
  1641      6E7400
  1642              	.LASF61:
- 1643 023a 73746F70 		.ascii	"stop\000"
+ 1643 0242 73746F70 		.ascii	"stop\000"
  1643      00
  1644              	.LASF46:
- 1645 023f 49495246 		.ascii	"IIRFilter\000"
+ 1645 0247 49495246 		.ascii	"IIRFilter\000"
  1645      696C7465 
  1645      7200
  1646              	.LASF65:
- 1647 0249 6D61696E 		.ascii	"main\000"
+ 1647 0251 6D61696E 		.ascii	"main\000"
  1647      00
  1648              	.LASF13:
- 1649 024e 696E7433 		.ascii	"int32_t\000"
+ 1649 0256 696E7433 		.ascii	"int32_t\000"
  1649      325F7400 
  1650              	.LASF26:
- 1651 0256 6F757470 		.ascii	"outputBuffer\000"
+ 1651 025e 6F757470 		.ascii	"outputBuffer\000"
  1651      75744275 
  1651      66666572 
  1651      00
  1652              	.LASF48:
- 1653 0263 696E7465 		.ascii	"interfaceSetpoint\000"
+ 1653 026b 696E7465 		.ascii	"interfaceSetpoint\000"
  1653      72666163 
  1653      65536574 
  1653      706F696E 
  1653      7400
+ARM GAS  C:\Users\degn\AppData\Local\Temp\cc9eU2Ha.s 			page 36
+
+
  1654              	.LASF28:
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 36
-
-
- 1655 0275 6D656173 		.ascii	"measurement\000"
+ 1655 027d 6D656173 		.ascii	"measurement\000"
  1655      7572656D 
  1655      656E7400 
  1656              	.LASF29:
- 1657 0281 70726F70 		.ascii	"proportional\000"
+ 1657 0289 70726F70 		.ascii	"proportional\000"
  1657      6F727469 
  1657      6F6E616C 
  1657      00
  1658              	.LASF60:
- 1659 028e 6973725F 		.ascii	"isr_pid_Stop\000"
+ 1659 0296 6973725F 		.ascii	"isr_pid_Stop\000"
  1659      7069645F 
  1659      53746F70 
  1659      00
  1660              	.LASF63:
- 1661 029b 6D61696E 		.ascii	"main.c\000"
+ 1661 02a3 6D61696E 		.ascii	"main.c\000"
  1661      2E6300
  1662              	.LASF8:
- 1663 02a2 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1663 02aa 6C6F6E67 		.ascii	"long unsigned int\000"
  1663      20756E73 
  1663      69676E65 
  1663      6420696E 
  1663      7400
  1664              	.LASF21:
- 1665 02b4 62797465 		.ascii	"bytesToRead\000"
+ 1665 02bc 62797465 		.ascii	"bytesToRead\000"
  1665      73546F52 
  1665      65616400 
  1666              	.LASF42:
- 1667 02c0 55415254 		.ascii	"UART_1_GetRxBufferSize\000"
+ 1667 02c8 55415254 		.ascii	"UART_1_GetRxBufferSize\000"
  1667      5F315F47 
  1667      65745278 
  1667      42756666 
  1667      65725369 
  1668              	.LASF14:
- 1669 02d7 646F7562 		.ascii	"double\000"
+ 1669 02df 646F7562 		.ascii	"double\000"
  1669      6C6500
  1670              	.LASF50:
- 1671 02de 55415254 		.ascii	"UART_1_PutString\000"
+ 1671 02e6 55415254 		.ascii	"UART_1_PutString\000"
  1671      5F315F50 
  1671      75745374 
  1671      72696E67 
  1671      00
  1672              	.LASF41:
- 1673 02ef 55415254 		.ascii	"UART_1_WriteTxData\000"
+ 1673 02f7 55415254 		.ascii	"UART_1_WriteTxData\000"
  1673      5F315F57 
  1673      72697465 
  1673      54784461 
  1673      746100
  1674              	.LASF34:
- 1675 0302 636F756E 		.ascii	"count\000"
+ 1675 030a 636F756E 		.ascii	"count\000"
  1675      7400
  1676              	.LASF6:
- 1677 0308 5F5F696E 		.ascii	"__int32_t\000"
+ 1677 0310 5F5F696E 		.ascii	"__int32_t\000"
  1677      7433325F 
  1677      7400
  1678              	.LASF58:
- 1679 0312 6973725F 		.ascii	"isr_pid_StartEx\000"
+ 1679 031a 6973725F 		.ascii	"isr_pid_StartEx\000"
+ARM GAS  C:\Users\degn\AppData\Local\Temp\cc9eU2Ha.s 			page 37
+
+
  1679      7069645F 
-ARM GAS  C:\Users\Jacob\AppData\Local\Temp\ccGhVsuI.s 			page 37
-
-
  1679      53746172 
  1679      74457800 
  1680              	.LASF36:
- 1681 0322 616E676C 		.ascii	"angle\000"
+ 1681 032a 616E676C 		.ascii	"angle\000"
  1681      6500
  1682              	.LASF27:
- 1683 0328 6F757470 		.ascii	"output\000"
+ 1683 0330 6F757470 		.ascii	"output\000"
  1683      757400
  1684              	.LASF32:
- 1685 032f 6572726F 		.ascii	"error\000"
+ 1685 0337 6572726F 		.ascii	"error\000"
  1685      7200
  1686              	.LASF33:
- 1687 0335 73657470 		.ascii	"setpoint\000"
+ 1687 033d 73657470 		.ascii	"setpoint\000"
  1687      6F696E74 
  1687      00
  1688              	.LASF25:
- 1689 033e 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 1689 0346 49544D5F 		.ascii	"ITM_RxBuffer\000"
  1689      52784275 
  1689      66666572 
  1689      00
  1690              	.LASF62:
- 1691 034b 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1691 0353 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
  1691      43313120 
  1691      352E342E 
  1691      31203230 
  1691      31363036 
- 1692 037e 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 1692 0386 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
  1692      20726576 
  1692      6973696F 
  1692      6E203233 
  1692      37373135 
- 1693 03b1 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 1693 03b9 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
  1693      66756E63 
  1693      74696F6E 
  1693      2D736563 
  1693      74696F6E 
  1694              	.LASF44:
- 1695 03d9 43794465 		.ascii	"CyDelay\000"
+ 1695 03e1 43794465 		.ascii	"CyDelay\000"
  1695      6C617900 
  1696              	.LASF19:
- 1697 03e1 68616E64 		.ascii	"handleByteReceived\000"
+ 1697 03e9 68616E64 		.ascii	"handleByteReceived\000"
  1697      6C654279 
  1697      74655265 
  1697      63656976 
  1697      656400
  1698              	.LASF56:
- 1699 03f4 4D6F746F 		.ascii	"Motor_Init\000"
+ 1699 03fc 4D6F746F 		.ascii	"Motor_Init\000"
  1699      725F496E 
  1699      697400
  1700              	.LASF37:
- 1701 03ff 73746570 		.ascii	"step\000"
+ 1701 0407 73746570 		.ascii	"step\000"
  1701      00
  1702              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

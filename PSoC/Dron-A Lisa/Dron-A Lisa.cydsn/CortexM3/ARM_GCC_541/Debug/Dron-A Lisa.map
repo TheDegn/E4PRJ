@@ -2198,13 +2198,13 @@ END GROUP
 
 .debug_str      0x00000000     0x305c
  *(.debug_str)
- .debug_str     0x00000000      0x3ad .\CortexM3\ARM_GCC_541\Debug\main.o
-                                0x404 (size before relaxing)
- .debug_str     0x000003ad       0x66 .\CortexM3\ARM_GCC_541\Debug\motor.o
+ .debug_str     0x00000000      0x3b5 .\CortexM3\ARM_GCC_541\Debug\main.o
+                                0x40c (size before relaxing)
+ .debug_str     0x000003b5       0xcd .\CortexM3\ARM_GCC_541\Debug\motor.o
                                 0x247 (size before relaxing)
- .debug_str     0x00000413       0x38 .\CortexM3\ARM_GCC_541\Debug\PIDcontroller.o
-                                0x248 (size before relaxing)
- .debug_str     0x0000044b       0xa6 .\CortexM3\ARM_GCC_541\Debug\tfTest.o
+ .debug_str     0x00000482       0x38 .\CortexM3\ARM_GCC_541\Debug\PIDcontroller.o
+                                0x250 (size before relaxing)
+ .debug_str     0x000004ba       0x37 .\CortexM3\ARM_GCC_541\Debug\tfTest.o
                                 0x1ee (size before relaxing)
  .debug_str     0x000004f1      0x104 .\CortexM3\ARM_GCC_541\Debug\sensor.o
                                 0x311 (size before relaxing)
@@ -2554,4 +2554,4 @@ END GROUP
 
 /DISCARD/
  *(.note.GNU-stack)
-OUTPUT(C:\Users\Jacob\OneDrive - Aarhus universitet\4. Semester\PRJ4\E4PRJ\PSoC\Dron-A Lisa\Dron-A Lisa.cydsn\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.elf elf32-littlearm)
+OUTPUT(C:\Users\degn\OneDrive - Aarhus universitet\Skrivebord\AU\E4\PRJ4\Git\E4PRJ\PSoC\Dron-A Lisa\Dron-A Lisa.cydsn\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.elf elf32-littlearm)

@@ -118,8 +118,7 @@ int main(void)
             setpoint = interfaceSetpoint();
         }
             
-        //sprintf(buff, "%i %.2f  \r\n", step,  angle);
-        //UART_1_PutString(buff);
+
         sprintf(outputBuffer, "%.2f %.2f \r\n", output,angle);
         UART_1_PutString(outputBuffer);
         
