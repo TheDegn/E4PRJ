@@ -2209,7 +2209,7 @@ END GROUP
  .debug_str     0x000004f1      0x104 .\CortexM3\ARM_GCC_541\Debug\sensor.o
                                 0x311 (size before relaxing)
  .debug_str     0x000005f5      0x125 .\CortexM3\ARM_GCC_541\Debug\interface.o
-                                0x325 (size before relaxing)
+                                0x32d (size before relaxing)
  .debug_str     0x0000071a      0x1b3 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
                                 0x373 (size before relaxing)
  .debug_str     0x000008cd       0x75 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
@@ -2261,37 +2261,37 @@ END GROUP
  .debug_str     0x00002fb0       0xac .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CySpc.o)
                                 0x35d (size before relaxing)
 
-.debug_loc      0x00000000     0x2d97
+.debug_loc      0x00000000     0x2d98
  *(.debug_loc)
  .debug_loc     0x00000000       0x88 .\CortexM3\ARM_GCC_541\Debug\main.o
  .debug_loc     0x00000088       0x92 .\CortexM3\ARM_GCC_541\Debug\motor.o
  .debug_loc     0x0000011a      0x192 .\CortexM3\ARM_GCC_541\Debug\PIDcontroller.o
  .debug_loc     0x000002ac       0xae .\CortexM3\ARM_GCC_541\Debug\tfTest.o
  .debug_loc     0x0000035a       0x9a .\CortexM3\ARM_GCC_541\Debug\sensor.o
- .debug_loc     0x000003f4       0xb3 .\CortexM3\ARM_GCC_541\Debug\interface.o
- .debug_loc     0x000004a7      0x2ae .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
- .debug_loc     0x00000755      0x144 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
- .debug_loc     0x00000899      0x128 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Clock_1.o)
- .debug_loc     0x000009c1       0x56 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_uart_rx.o)
- .debug_loc     0x00000a17      0x258 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(UART_1.o)
- .debug_loc     0x00000c6f      0x128 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(UART_1_IntClock.o)
- .debug_loc     0x00000d97      0xa11 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CyLib.o)
- .debug_loc     0x000017a8      0x1e4 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(cyPm.o)
- .debug_loc     0x0000198c       0x56 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_pid.o)
- .debug_loc     0x000019e2       0x31 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Counter_Sensor.o)
- .debug_loc     0x00001a13       0x56 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(sensor_input_isr.o)
- .debug_loc     0x00001a69       0x26 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Sensor_Out.o)
- .debug_loc     0x00001a8f       0x26 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Motor_PWM.o)
- .debug_loc     0x00001ab5      0x2bd .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(LCD.o)
- .debug_loc     0x00001d72       0x48 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(LCD_CustChars.o)
- .debug_loc     0x00001dba       0x42 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(MotorSwitchPin.o)
- .debug_loc     0x00001dfc       0x56 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_motorSwitch_On.o)
- .debug_loc     0x00001e52       0x56 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_motorSwitch_Off.o)
- .debug_loc     0x00001ea8      0x295 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1.o)
- .debug_loc     0x0000213d      0x14d .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1_theACLK.o)
- .debug_loc     0x0000228a       0x56 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_toggle.o)
- .debug_loc     0x000022e0      0x3b2 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CyFlash.o)
- .debug_loc     0x00002692      0x705 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CySpc.o)
+ .debug_loc     0x000003f4       0xb4 .\CortexM3\ARM_GCC_541\Debug\interface.o
+ .debug_loc     0x000004a8      0x2ae .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .debug_loc     0x00000756      0x144 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+ .debug_loc     0x0000089a      0x128 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Clock_1.o)
+ .debug_loc     0x000009c2       0x56 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_uart_rx.o)
+ .debug_loc     0x00000a18      0x258 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(UART_1.o)
+ .debug_loc     0x00000c70      0x128 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(UART_1_IntClock.o)
+ .debug_loc     0x00000d98      0xa11 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CyLib.o)
+ .debug_loc     0x000017a9      0x1e4 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(cyPm.o)
+ .debug_loc     0x0000198d       0x56 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_pid.o)
+ .debug_loc     0x000019e3       0x31 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Counter_Sensor.o)
+ .debug_loc     0x00001a14       0x56 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(sensor_input_isr.o)
+ .debug_loc     0x00001a6a       0x26 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Sensor_Out.o)
+ .debug_loc     0x00001a90       0x26 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(Motor_PWM.o)
+ .debug_loc     0x00001ab6      0x2bd .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(LCD.o)
+ .debug_loc     0x00001d73       0x48 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(LCD_CustChars.o)
+ .debug_loc     0x00001dbb       0x42 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(MotorSwitchPin.o)
+ .debug_loc     0x00001dfd       0x56 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_motorSwitch_On.o)
+ .debug_loc     0x00001e53       0x56 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_motorSwitch_Off.o)
+ .debug_loc     0x00001ea9      0x295 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1.o)
+ .debug_loc     0x0000213e      0x14d .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(ADC_SAR_1_theACLK.o)
+ .debug_loc     0x0000228b       0x56 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(isr_toggle.o)
+ .debug_loc     0x000022e1      0x3b2 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CyFlash.o)
+ .debug_loc     0x00002693      0x705 .\CortexM3\ARM_GCC_541\Debug\Dron-A Lisa.a(CySpc.o)
 
 .debug_macinfo
  *(.debug_macinfo)
