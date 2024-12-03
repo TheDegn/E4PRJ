@@ -49,6 +49,17 @@ void handleByteReceived(uint8_t byteReceived)
     case '4':
         setpoint = -20;
         break;
+    case 'f':
+        {
+            isr_pid_Stop();
+            for (int i = 50; i < 1001; i=i+50)
+            {
+                setspeed(1,i);
+                setspeed(2,i);
+                CyDelay(1000);
+            }
+        }
+        break;
     default:
         // Do nothing for unrecognized commands
         break;
