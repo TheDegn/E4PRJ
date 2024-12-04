@@ -115,9 +115,9 @@ int main(void)
     for(int i = 0;;++i)
     {
         startBurst();
-        CyDelay(3);
+        CyDelay(1);
         stopBurst();
-        CyDelay(3);
+        CyDelay(1);
 
             
         count = IIRFilter(count);
@@ -133,7 +133,7 @@ int main(void)
         sprintf(outputBuffer, "%.2f %.2f \r\n", output,angle);
         UART_1_PutString(outputBuffer);
         
-        if (i >= 50)
+        if (i >= 25)
         {
             writeLCD(setpoint, angle);
             i = 0;
